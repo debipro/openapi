@@ -2583,7 +2583,7 @@ paths:
                     example: Record not found
                 title: Not Found
       tags:
-        - Customers
+        - Clientes
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -4105,7 +4105,7 @@ paths:
                         example: Unauthorized
                     title: No autorizado
       tags:
-        - Exports
+        - Informes
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -4386,7 +4386,7 @@ paths:
                   message: The given data was invalid.
                 title: Error de Validación
       tags:
-        - Exports
+        - Informes
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -4629,7 +4629,7 @@ paths:
                     example: Record not found
                 title: Not Found
       tags:
-        - Exports
+        - Informes
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -13192,7 +13192,7 @@ paths:
                   message: The given data was invalid.
                 title: Error de Validación
       tags:
-        - Payment Methods
+        - Métodos de Pago
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -13315,7 +13315,7 @@ paths:
                     example: Record not found
                 title: Not Found
       tags:
-        - Payment Methods
+        - Métodos de Pago
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -18109,7 +18109,7 @@ paths:
                   message: The given data was invalid.
                 title: Error de Validación
       tags:
-        - Payments
+        - Pagos
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -18250,7 +18250,7 @@ paths:
                     example: Record not found
                 title: Not Found
       tags:
-        - Payments
+        - Pagos
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -18398,7 +18398,7 @@ paths:
                     example: Record not found
                 title: Not Found
       tags:
-        - Payments
+        - Pagos
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -18564,7 +18564,7 @@ paths:
                   message: The given data was invalid.
                 title: Error de Validación
       tags:
-        - Payments
+        - Pagos
       x-codeSamples:
         - lang: Shell + Curl
           source: |-

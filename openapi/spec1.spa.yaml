@@ -1978,7 +1978,7 @@ paths:
                     example: Record not found
                 title: Not Found
       tags:
-        - Customers
+        - Clientes
   /v1/events:
     get:
       operationId: GetEvents
@@ -3015,7 +3015,7 @@ paths:
                         example: Unauthorized
                     title: No autorizado
       tags:
-        - Exports
+        - Informes
     post:
       operationId: createExport
       summary: Crear una exportación
@@ -3208,7 +3208,7 @@ paths:
                   message: The given data was invalid.
                 title: Error de Validación
       tags:
-        - Exports
+        - Informes
   '/v1/exports/{id}':
     get:
       operationId: retrieveExport
@@ -3337,7 +3337,7 @@ paths:
                     example: Record not found
                 title: Not Found
       tags:
-        - Exports
+        - Informes
   /v1/imports:
     get:
       operationId: GetImports
@@ -9898,7 +9898,7 @@ paths:
                   message: The given data was invalid.
                 title: Error de Validación
       tags:
-        - Payment Methods
+        - Métodos de Pago
   '/v1/payment_methods/{id}/detach':
     post:
       operationId: detachPaymentMethodFromCustomer
@@ -9930,7 +9930,7 @@ paths:
                     example: Record not found
                 title: Not Found
       tags:
-        - Payment Methods
+        - Métodos de Pago
   /v1/payments:
     get:
       operationId: PaymentsGetPayments
@@ -14073,7 +14073,7 @@ paths:
                   message: The given data was invalid.
                 title: Error de Validación
       tags:
-        - Payments
+        - Pagos
   '/v1/payments/{id}/transaction':
     get:
       operationId: getPaymentTransaction
@@ -14141,7 +14141,7 @@ paths:
                     example: Record not found
                 title: Not Found
       tags:
-        - Payments
+        - Pagos
   '/v1/payments/{id}/transaction/match_candidates':
     get:
       operationId: getPaymentTransactionMatchCandidates
@@ -14216,7 +14216,7 @@ paths:
                     example: Record not found
                 title: Not Found
       tags:
-        - Payments
+        - Pagos
   '/v1/payments/{id}/transaction/match':
     post:
       operationId: matchPaymentTransaction
@@ -14309,7 +14309,7 @@ paths:
                   message: The given data was invalid.
                 title: Error de Validación
       tags:
-        - Payments
+        - Pagos
   /v1/payments/search:
     get:
       operationId: PaymentsSearch

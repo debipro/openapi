@@ -2175,7 +2175,7 @@
           }
         },
         "tags": [
-          "Customers"
+          "Clientes"
         ]
       }
     },
@@ -3570,7 +3570,7 @@
           }
         },
         "tags": [
-          "Exports"
+          "Informes"
         ]
       },
       "post": {
@@ -3827,7 +3827,7 @@
           }
         },
         "tags": [
-          "Exports"
+          "Informes"
         ]
       }
     },
@@ -3999,7 +3999,7 @@
           }
         },
         "tags": [
-          "Exports"
+          "Informes"
         ]
       }
     },
@@ -12671,7 +12671,7 @@
           }
         },
         "tags": [
-          "Payment Methods"
+          "Métodos de Pago"
         ]
       }
     },
@@ -12717,7 +12717,7 @@
           }
         },
         "tags": [
-          "Payment Methods"
+          "Métodos de Pago"
         ]
       }
     },
@@ -17982,7 +17982,7 @@
           }
         },
         "tags": [
-          "Payments"
+          "Pagos"
         ]
       }
     },
@@ -18069,7 +18069,7 @@
           }
         },
         "tags": [
-          "Payments"
+          "Pagos"
         ]
       }
     },
@@ -18166,7 +18166,7 @@
           }
         },
         "tags": [
-          "Payments"
+          "Pagos"
         ]
       }
     },
@@ -18295,7 +18295,7 @@
           }
         },
         "tags": [
-          "Payments"
+          "Pagos"
         ]
       }
     },

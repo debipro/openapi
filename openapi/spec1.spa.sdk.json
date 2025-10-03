@@ -2357,7 +2357,7 @@
           }
         },
         "tags": [
-          "Customers"
+          "Clientes"
         ],
         "x-codeSamples": [
           {
@@ -3908,7 +3908,7 @@
           }
         },
         "tags": [
-          "Exports"
+          "Informes"
         ],
         "x-codeSamples": [
           {
@@ -4191,7 +4191,7 @@
           }
         },
         "tags": [
-          "Exports"
+          "Informes"
         ],
         "x-codeSamples": [
           {
@@ -4389,7 +4389,7 @@
           }
         },
         "tags": [
-          "Exports"
+          "Informes"
         ],
         "x-codeSamples": [
           {
@@ -13607,7 +13607,7 @@
           }
         },
         "tags": [
-          "Payment Methods"
+          "Métodos de Pago"
         ],
         "x-codeSamples": [
           {
@@ -13679,7 +13679,7 @@
           }
         },
         "tags": [
-          "Payment Methods"
+          "Métodos de Pago"
         ],
         "x-codeSamples": [
           {
@@ -19152,7 +19152,7 @@
           }
         },
         "tags": [
-          "Payments"
+          "Pagos"
         ],
         "x-codeSamples": [
           {
@@ -19265,7 +19265,7 @@
           }
         },
         "tags": [
-          "Payments"
+          "Pagos"
         ],
         "x-codeSamples": [
           {
@@ -19388,7 +19388,7 @@
           }
         },
         "tags": [
-          "Payments"
+          "Pagos"
         ],
         "x-codeSamples": [
           {
@@ -19543,7 +19543,7 @@
           }
         },
         "tags": [
-          "Payments"
+          "Pagos"
         ],
         "x-codeSamples": [
           {
