@@ -11395,7 +11395,16 @@
                   "transfer": {
                     "description": "This object represents a bank transfer payment method.",
                     "type": "object",
-                    "properties": {},
+                    "properties": {
+                      "sender_name": {
+                        "description": "Name of the person or entity making the transfer.",
+                        "type": "string"
+                      },
+                      "sender_id": {
+                        "description": "Identification number of the person or entity making the transfer.",
+                        "type": "string"
+                      }
+                    },
                     "title": "Transfer"
                   },
                   "strict": {
@@ -11405,188 +11414,70 @@
                 }
               },
               "examples": {
-                "card": {
-                  "summary": "Credit Card",
+                "card-basic": {
+                  "summary": "Card - Basic",
                   "value": {
-                    "data": {
-                      "card": {
-                        "country": "AR",
-                        "expiration_month": null,
-                        "expiration_year": null,
-                        "fingerprint": "0sZQikKp4lImAgIo",
-                        "issuer": null,
-                        "funding": "credit",
-                        "last_four_digits": "4242",
-                        "name": "Visa",
-                        "network": "visa",
-                        "providers": {
-                          "available": [
-                            "fiserv-argentina"
-                          ],
-                          "preferred": "fiserv-argentina"
-                        }
-                      },
-                      "created_at": "2022-02-01T23:13:04-03:00",
-                      "id": "PMBja4YZ2GDR",
-                      "livemode": true,
-                      "metadata": null,
-                      "object": "payment_method",
-                      "type": "card",
-                      "updated_at": "2022-02-01T23:13:04-03:00"
+                    "type": "card",
+                    "card": {
+                      "number": "4242424242424242"
+                    }
+                  }
+                },
+                "card-complete": {
+                  "summary": "Card - Complete with Expiration and Security Code",
+                  "value": {
+                    "type": "card",
+                    "card": {
+                      "number": "4242424242424242",
+                      "expiration_year": 2035,
+                      "expiration_month": 12,
+                      "security_code": "123"
+                    }
+                  }
+                },
+                "cbu-alias": {
+                  "summary": "CBU - Using Alias with Identification",
+                  "value": {
+                    "type": "cbu",
+                    "cbu": {
+                      "alias": "juanperez",
+                      "identification": true
+                    }
+                  }
+                },
+                "cbu-number": {
+                  "summary": "CBU - Using Account Number with Identification",
+                  "value": {
+                    "type": "cbu",
+                    "cbu": {
+                      "number": "2859363672283668188432",
+                      "identification": true
                     }
                   }
                 },
                 "sepa_debit": {
-                  "summary": "SEPA Debit Payment Method for IBAN Accounts",
+                  "summary": "SEPA Debit - IBAN Account",
                   "value": {
-                    "data": {
-                      "id": "PMja4OP0e4WR",
-                      "object": "payment_method",
-                      "type": "sepa_debit",
-                      "sepa_debit": {
-                        "bank": "CAIXABANK",
-                        "country": "ES",
-                        "last_four_digits": "1332",
-                        "providers": {
-                          "available": [],
-                          "preferred": null
-                        }
-                      },
-                      "created_at": "2024-04-28T17:40:01-03:00",
-                      "livemode": true,
-                      "metadata": null,
-                      "updated_at": "2024-04-28T17:40:01-03:00"
-                    }
-                  }
-                },
-                "cbu": {
-                  "summary": "CBU Bank Account",
-                  "value": {
-                    "data": {
-                      "cbu": {
-                        "bank": "Banco de la Nación Argentina",
-                        "country": "AR",
-                        "fingerprint": "jhA2lx68sNppN90k",
-                        "last_four_digits": "0013",
-                        "providers": {
-                          "available": [
-                            "cbu-galicia"
-                          ],
-                          "preferred": "cbu-galicia"
-                        }
-                      },
-                      "created_at": "2022-11-05T20:43:29-03:00",
-                      "id": "PMBKkz3wjEW9",
-                      "livemode": false,
-                      "metadata": null,
-                      "object": "payment_method",
-                      "type": "cbu",
-                      "updated_at": "2022-11-05T20:43:29-03:00"
-                    }
-                  }
-                },
-                "cbu_enhanced": {
-                  "summary": "CBU Bank Account with Enhanced Identification",
-                  "value": {
-                    "data": {
-                      "cbu": {
-                        "bank": "Banco de la Nación Argentina",
-                        "country": "AR",
-                        "fingerprint": "jhA2lx68sNppN90k",
-                        "identification": {
-                          "account_routing": {
-                            "address": "******************0025",
-                            "scheme": "CBU"
-                          },
-                          "bank_routing": {
-                            "address": "BANCO INDUSTRIAL S.A.",
-                            "code": "322",
-                            "scheme": "NAME"
-                          },
-                          "currency": "ARS",
-                          "is_active": true,
-                          "label": "BOCHA.ASTRO.NUEZ",
-                          "owners": [
-                            {
-                              "display_name": "Diaz, Bruno",
-                              "id": "20223385072",
-                              "id_type": "CUIT",
-                              "is_physical_person": true
-                            },
-                            {
-                              "display_name": "Parker, Peter",
-                              "id": "20313380002",
-                              "id_type": "CUIT",
-                              "is_physical_person": true
-                            }
-                          ],
-                          "type": "CC"
-                        },
-                        "last_four_digits": "0013",
-                        "providers": {
-                          "available": [
-                            "cbu-galicia"
-                          ],
-                          "preferred": "cbu-galicia"
-                        }
-                      },
-                      "created_at": "2022-11-05T20:43:29-03:00",
-                      "id": "PMBKkz3wjEW9",
-                      "livemode": false,
-                      "metadata": null,
-                      "object": "payment_method",
-                      "type": "cbu",
-                      "updated_at": "2022-11-05T20:43:29-03:00"
-                    }
-                  }
-                },
-                "cvu": {
-                  "summary": "CVU Account",
-                  "value": {
-                    "data": {
-                      "id": "PMr0AkerW4N1",
-                      "object": "payment_method",
-                      "type": "cvu",
-                      "cvu": {
-                        "account_number": "0001371211179340101691",
-                        "last_four_digits": "1691",
-                        "providers": {
-                          "available": [
-                            "bind-transfers"
-                          ],
-                          "preferred": "bind-transfers"
-                        },
-                        "fingerprint": "R1YRXJAn7SVSH8Jb"
-                      },
-                      "livemode": false,
-                      "metadata": null,
-                      "customer_id": null,
-                      "created_at": "2025-09-25T16:52:58-03:00",
-                      "updated_at": "2025-09-25T16:52:58-03:00"
+                    "type": "sepa_debit",
+                    "sepa_debit": {
+                      "iban": "ES9121000418450200051332"
                     }
                   }
                 },
                 "transfer": {
-                  "summary": "Transfer Payment Method",
+                  "summary": "Transfer - With Sender Information",
                   "value": {
-                    "data": {
-                      "id": "PMeO2koZD7jG",
-                      "object": "payment_method",
-                      "type": "transfer",
-                      "transfer": {
-                        "sender_id": null,
-                        "sender_name": null,
-                        "providers": {
-                          "available": [],
-                          "preferred": null
-                        }
-                      },
-                      "livemode": false,
-                      "metadata": null,
-                      "customer_id": null,
-                      "created_at": "2025-09-25T16:54:02-03:00",
-                      "updated_at": "2025-09-25T16:54:02-03:00"
+                    "type": "transfer",
+                    "transfer": {
+                      "sender_name": "Juan Perez",
+                      "sender_id": "1234567890"
                     }
+                  }
+                },
+                "cvu": {
+                  "summary": "CVU - Basic",
+                  "value": {
+                    "type": "cvu"
                   }
                 }
               }
@@ -12232,27 +12123,27 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://api.debi.pro/v1/payment_methods \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"cvu\":{},\"transfer\":{},\"strict\":true}'"
+            "source": "curl --request POST \\\n  --url https://api.debi.pro/v1/payment_methods \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"cvu\":{},\"transfer\":{\"sender_name\":\"string\",\"sender_id\":\"string\"},\"strict\":true}'"
           },
           {
             "lang": "Node + Request",
-            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.debi.pro/v1/payment_methods',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    type: 'card',\n    card: {\n      number: 'string',\n      expiration_year: 0,\n      expiration_month: 0,\n      security_code: 'string'\n    },\n    cbu: {number: 'string', alias: 'string', identification: true},\n    sepa_debit: {iban: 'string'},\n    cvu: {},\n    transfer: {},\n    strict: true\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.debi.pro/v1/payment_methods',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    type: 'card',\n    card: {\n      number: 'string',\n      expiration_year: 0,\n      expiration_month: 0,\n      security_code: 'string'\n    },\n    cbu: {number: 'string', alias: 'string', identification: true},\n    sepa_debit: {iban: 'string'},\n    cvu: {},\n    transfer: {sender_name: 'string', sender_id: 'string'},\n    strict: true\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
           },
           {
             "lang": "Php + Http1",
-            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/payment_methods');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"cvu\":{},\"transfer\":{},\"strict\":true}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/payment_methods');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"cvu\":{},\"transfer\":{\"sender_name\":\"string\",\"sender_id\":\"string\"},\"strict\":true}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
           },
           {
             "lang": "Python + Requests",
-            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/payment_methods\"\n\npayload = {\n    \"type\": \"card\",\n    \"card\": {\n        \"number\": \"string\",\n        \"expiration_year\": 0,\n        \"expiration_month\": 0,\n        \"security_code\": \"string\"\n    },\n    \"cbu\": {\n        \"number\": \"string\",\n        \"alias\": \"string\",\n        \"identification\": True\n    },\n    \"sepa_debit\": {\"iban\": \"string\"},\n    \"cvu\": {},\n    \"transfer\": {},\n    \"strict\": True\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
+            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/payment_methods\"\n\npayload = {\n    \"type\": \"card\",\n    \"card\": {\n        \"number\": \"string\",\n        \"expiration_year\": 0,\n        \"expiration_month\": 0,\n        \"security_code\": \"string\"\n    },\n    \"cbu\": {\n        \"number\": \"string\",\n        \"alias\": \"string\",\n        \"identification\": True\n    },\n    \"sepa_debit\": {\"iban\": \"string\"},\n    \"cvu\": {},\n    \"transfer\": {\n        \"sender_name\": \"string\",\n        \"sender_id\": \"string\"\n    },\n    \"strict\": True\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
           },
           {
             "lang": "Java + Unirest",
-            "source": "HttpResponse<String> response = Unirest.post(\"https://api.debi.pro/v1/payment_methods\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0,\\\"security_code\\\":\\\"string\\\"},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\",\\\"alias\\\":\\\"string\\\",\\\"identification\\\":true},\\\"sepa_debit\\\":{\\\"iban\\\":\\\"string\\\"},\\\"cvu\\\":{},\\\"transfer\\\":{},\\\"strict\\\":true}\")\n  .asString();"
+            "source": "HttpResponse<String> response = Unirest.post(\"https://api.debi.pro/v1/payment_methods\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0,\\\"security_code\\\":\\\"string\\\"},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\",\\\"alias\\\":\\\"string\\\",\\\"identification\\\":true},\\\"sepa_debit\\\":{\\\"iban\\\":\\\"string\\\"},\\\"cvu\\\":{},\\\"transfer\\\":{\\\"sender_name\\\":\\\"string\\\",\\\"sender_id\\\":\\\"string\\\"},\\\"strict\\\":true}\")\n  .asString();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payment_methods\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0,\\\"security_code\\\":\\\"string\\\"},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\",\\\"alias\\\":\\\"string\\\",\\\"identification\\\":true},\\\"sepa_debit\\\":{\\\"iban\\\":\\\"string\\\"},\\\"cvu\\\":{},\\\"transfer\\\":{},\\\"strict\\\":true}\"\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payment_methods\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0,\\\"security_code\\\":\\\"string\\\"},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\",\\\"alias\\\":\\\"string\\\",\\\"identification\\\":true},\\\"sepa_debit\\\":{\\\"iban\\\":\\\"string\\\"},\\\"cvu\\\":{},\\\"transfer\\\":{\\\"sender_name\\\":\\\"string\\\",\\\"sender_id\\\":\\\"string\\\"},\\\"strict\\\":true}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
         ]
       }
@@ -12661,188 +12552,70 @@
                   }
                 },
                 "examples": {
-                  "card": {
-                    "summary": "Credit Card",
+                  "card-basic": {
+                    "summary": "Card - Basic",
                     "value": {
-                      "data": {
-                        "card": {
-                          "country": "AR",
-                          "expiration_month": null,
-                          "expiration_year": null,
-                          "fingerprint": "0sZQikKp4lImAgIo",
-                          "issuer": null,
-                          "funding": "credit",
-                          "last_four_digits": "4242",
-                          "name": "Visa",
-                          "network": "visa",
-                          "providers": {
-                            "available": [
-                              "fiserv-argentina"
-                            ],
-                            "preferred": "fiserv-argentina"
-                          }
-                        },
-                        "created_at": "2022-02-01T23:13:04-03:00",
-                        "id": "PMBja4YZ2GDR",
-                        "livemode": true,
-                        "metadata": null,
-                        "object": "payment_method",
-                        "type": "card",
-                        "updated_at": "2022-02-01T23:13:04-03:00"
+                      "type": "card",
+                      "card": {
+                        "number": "4242424242424242"
+                      }
+                    }
+                  },
+                  "card-complete": {
+                    "summary": "Card - Complete with Expiration and Security Code",
+                    "value": {
+                      "type": "card",
+                      "card": {
+                        "number": "4242424242424242",
+                        "expiration_year": 2035,
+                        "expiration_month": 12,
+                        "security_code": "123"
+                      }
+                    }
+                  },
+                  "cbu-alias": {
+                    "summary": "CBU - Using Alias with Identification",
+                    "value": {
+                      "type": "cbu",
+                      "cbu": {
+                        "alias": "juanperez",
+                        "identification": true
+                      }
+                    }
+                  },
+                  "cbu-number": {
+                    "summary": "CBU - Using Account Number with Identification",
+                    "value": {
+                      "type": "cbu",
+                      "cbu": {
+                        "number": "2859363672283668188432",
+                        "identification": true
                       }
                     }
                   },
                   "sepa_debit": {
-                    "summary": "SEPA Debit Payment Method for IBAN Accounts",
+                    "summary": "SEPA Debit - IBAN Account",
                     "value": {
-                      "data": {
-                        "id": "PMja4OP0e4WR",
-                        "object": "payment_method",
-                        "type": "sepa_debit",
-                        "sepa_debit": {
-                          "bank": "CAIXABANK",
-                          "country": "ES",
-                          "last_four_digits": "1332",
-                          "providers": {
-                            "available": [],
-                            "preferred": null
-                          }
-                        },
-                        "created_at": "2024-04-28T17:40:01-03:00",
-                        "livemode": true,
-                        "metadata": null,
-                        "updated_at": "2024-04-28T17:40:01-03:00"
-                      }
-                    }
-                  },
-                  "cbu": {
-                    "summary": "CBU Bank Account",
-                    "value": {
-                      "data": {
-                        "cbu": {
-                          "bank": "Banco de la Nación Argentina",
-                          "country": "AR",
-                          "fingerprint": "jhA2lx68sNppN90k",
-                          "last_four_digits": "0013",
-                          "providers": {
-                            "available": [
-                              "cbu-galicia"
-                            ],
-                            "preferred": "cbu-galicia"
-                          }
-                        },
-                        "created_at": "2022-11-05T20:43:29-03:00",
-                        "id": "PMBKkz3wjEW9",
-                        "livemode": false,
-                        "metadata": null,
-                        "object": "payment_method",
-                        "type": "cbu",
-                        "updated_at": "2022-11-05T20:43:29-03:00"
-                      }
-                    }
-                  },
-                  "cbu_enhanced": {
-                    "summary": "CBU Bank Account with Enhanced Identification",
-                    "value": {
-                      "data": {
-                        "cbu": {
-                          "bank": "Banco de la Nación Argentina",
-                          "country": "AR",
-                          "fingerprint": "jhA2lx68sNppN90k",
-                          "identification": {
-                            "account_routing": {
-                              "address": "******************0025",
-                              "scheme": "CBU"
-                            },
-                            "bank_routing": {
-                              "address": "BANCO INDUSTRIAL S.A.",
-                              "code": "322",
-                              "scheme": "NAME"
-                            },
-                            "currency": "ARS",
-                            "is_active": true,
-                            "label": "BOCHA.ASTRO.NUEZ",
-                            "owners": [
-                              {
-                                "display_name": "Diaz, Bruno",
-                                "id": "20223385072",
-                                "id_type": "CUIT",
-                                "is_physical_person": true
-                              },
-                              {
-                                "display_name": "Parker, Peter",
-                                "id": "20313380002",
-                                "id_type": "CUIT",
-                                "is_physical_person": true
-                              }
-                            ],
-                            "type": "CC"
-                          },
-                          "last_four_digits": "0013",
-                          "providers": {
-                            "available": [
-                              "cbu-galicia"
-                            ],
-                            "preferred": "cbu-galicia"
-                          }
-                        },
-                        "created_at": "2022-11-05T20:43:29-03:00",
-                        "id": "PMBKkz3wjEW9",
-                        "livemode": false,
-                        "metadata": null,
-                        "object": "payment_method",
-                        "type": "cbu",
-                        "updated_at": "2022-11-05T20:43:29-03:00"
-                      }
-                    }
-                  },
-                  "cvu": {
-                    "summary": "CVU Account",
-                    "value": {
-                      "data": {
-                        "id": "PMr0AkerW4N1",
-                        "object": "payment_method",
-                        "type": "cvu",
-                        "cvu": {
-                          "account_number": "0001371211179340101691",
-                          "last_four_digits": "1691",
-                          "providers": {
-                            "available": [
-                              "bind-transfers"
-                            ],
-                            "preferred": "bind-transfers"
-                          },
-                          "fingerprint": "R1YRXJAn7SVSH8Jb"
-                        },
-                        "livemode": false,
-                        "metadata": null,
-                        "customer_id": null,
-                        "created_at": "2025-09-25T16:52:58-03:00",
-                        "updated_at": "2025-09-25T16:52:58-03:00"
+                      "type": "sepa_debit",
+                      "sepa_debit": {
+                        "iban": "ES9121000418450200051332"
                       }
                     }
                   },
                   "transfer": {
-                    "summary": "Transfer Payment Method",
+                    "summary": "Transfer - With Sender Information",
                     "value": {
-                      "data": {
-                        "id": "PMeO2koZD7jG",
-                        "object": "payment_method",
-                        "type": "transfer",
-                        "transfer": {
-                          "sender_id": null,
-                          "sender_name": null,
-                          "providers": {
-                            "available": [],
-                            "preferred": null
-                          }
-                        },
-                        "livemode": false,
-                        "metadata": null,
-                        "customer_id": null,
-                        "created_at": "2025-09-25T16:54:02-03:00",
-                        "updated_at": "2025-09-25T16:54:02-03:00"
+                      "type": "transfer",
+                      "transfer": {
+                        "sender_name": "Juan Perez",
+                        "sender_id": "1234567890"
                       }
+                    }
+                  },
+                  "cvu": {
+                    "summary": "CVU - Basic",
+                    "value": {
+                      "type": "cvu"
                     }
                   }
                 }

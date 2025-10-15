@@ -8304,154 +8304,64 @@ paths:
                 transfer:
                   description: Este objeto representa un método de pago por transferencia bancaria.
                   type: object
-                  properties: {}
+                  properties:
+                    sender_name:
+                      description: Nombre de la persona o entidad que realiza la transferencia.
+                      type: string
+                    sender_id:
+                      description: Número de identificación de la persona o entidad que realiza la transferencia.
+                      type: string
                   title: Transferencia
                 strict:
                   description: 'Si es verdadero, el método de pago no se podrá crear si la cuenta no tiene habilitado un medio de cobro para procesar este método de pago.'
                   type: boolean
             examples:
-              card:
-                summary: Tarjeta de Crédito
+              card-basic:
+                summary: Tarjeta - Básico
                 value:
-                  data:
-                    card:
-                      country: AR
-                      expiration_month: null
-                      expiration_year: null
-                      fingerprint: 0sZQikKp4lImAgIo
-                      issuer: null
-                      funding: credit
-                      last_four_digits: '4242'
-                      name: Visa
-                      network: visa
-                      providers:
-                        available:
-                          - fiserv-argentina
-                        preferred: fiserv-argentina
-                    created_at: '2022-02-01T23:13:04-03:00'
-                    id: PMBja4YZ2GDR
-                    livemode: true
-                    metadata: null
-                    object: payment_method
-                    type: card
-                    updated_at: '2022-02-01T23:13:04-03:00'
+                  type: card
+                  card:
+                    number: '4242424242424242'
+              card-complete:
+                summary: Tarjeta - Completo con Vencimiento y Código de Seguridad
+                value:
+                  type: card
+                  card:
+                    number: '4242424242424242'
+                    expiration_year: 2035
+                    expiration_month: 12
+                    security_code: '123'
+              cbu-alias:
+                summary: CBU - Usando Alias con Identificación
+                value:
+                  type: cbu
+                  cbu:
+                    alias: juanperez
+                    identification: true
+              cbu-number:
+                summary: CBU - Usando Número de Cuenta con Identificación
+                value:
+                  type: cbu
+                  cbu:
+                    number: '2859363672283668188432'
+                    identification: true
               sepa_debit:
-                summary: Método de Pago SEPA Débito para cuentas IBAN
+                summary: SEPA Débito - Cuenta IBAN
                 value:
-                  data:
-                    id: PMja4OP0e4WR
-                    object: payment_method
-                    type: sepa_debit
-                    sepa_debit:
-                      bank: CAIXABANK
-                      country: ES
-                      last_four_digits: '1332'
-                      providers:
-                        available: []
-                        preferred: null
-                    created_at: '2024-04-28T17:40:01-03:00'
-                    livemode: true
-                    metadata: null
-                    updated_at: '2024-04-28T17:40:01-03:00'
-              cbu:
-                summary: Cuenta Bancaria CBU
-                value:
-                  data:
-                    cbu:
-                      bank: Banco de la Nación Argentina
-                      country: AR
-                      fingerprint: jhA2lx68sNppN90k
-                      last_four_digits: '0013'
-                      providers:
-                        available:
-                          - cbu-galicia
-                        preferred: cbu-galicia
-                    created_at: '2022-11-05T20:43:29-03:00'
-                    id: PMBKkz3wjEW9
-                    livemode: false
-                    metadata: null
-                    object: payment_method
-                    type: cbu
-                    updated_at: '2022-11-05T20:43:29-03:00'
-              cbu_enhanced:
-                summary: Cuenta Bancaria CBU con Identificación Extendida
-                value:
-                  data:
-                    cbu:
-                      bank: Banco de la Nación Argentina
-                      country: AR
-                      fingerprint: jhA2lx68sNppN90k
-                      identification:
-                        account_routing:
-                          address: '******************0025'
-                          scheme: CBU
-                        bank_routing:
-                          address: BANCO INDUSTRIAL S.A.
-                          code: '322'
-                          scheme: NAME
-                        currency: ARS
-                        is_active: true
-                        label: BOCHA.ASTRO.NUEZ
-                        owners:
-                          - display_name: 'Diaz, Bruno'
-                            id: '20223385072'
-                            id_type: CUIT
-                            is_physical_person: true
-                          - display_name: 'Parker, Peter'
-                            id: '20313380002'
-                            id_type: CUIT
-                            is_physical_person: true
-                        type: CC
-                      last_four_digits: '0013'
-                      providers:
-                        available:
-                          - cbu-galicia
-                        preferred: cbu-galicia
-                    created_at: '2022-11-05T20:43:29-03:00'
-                    id: PMBKkz3wjEW9
-                    livemode: false
-                    metadata: null
-                    object: payment_method
-                    type: cbu
-                    updated_at: '2022-11-05T20:43:29-03:00'
-              cvu:
-                summary: Cuenta CVU
-                value:
-                  data:
-                    id: PMr0AkerW4N1
-                    object: payment_method
-                    type: cvu
-                    cvu:
-                      account_number: '0001371211179340101691'
-                      last_four_digits: '1691'
-                      providers:
-                        available:
-                          - bind-transfers
-                        preferred: bind-transfers
-                      fingerprint: R1YRXJAn7SVSH8Jb
-                    livemode: false
-                    metadata: null
-                    customer_id: null
-                    created_at: '2025-09-25T16:52:58-03:00'
-                    updated_at: '2025-09-25T16:52:58-03:00'
+                  type: sepa_debit
+                  sepa_debit:
+                    iban: ES9121000418450200051332
               transfer:
-                summary: Método de Pago por Transferencia
+                summary: Transferencia - Con Información del Remitente
                 value:
-                  data:
-                    id: PMeO2koZD7jG
-                    object: payment_method
-                    type: transfer
-                    transfer:
-                      sender_id: null
-                      sender_name: null
-                      providers:
-                        available: []
-                        preferred: null
-                    livemode: false
-                    metadata: null
-                    customer_id: null
-                    created_at: '2025-09-25T16:54:02-03:00'
-                    updated_at: '2025-09-25T16:54:02-03:00'
+                  type: transfer
+                  transfer:
+                    sender_name: Juan Perez
+                    sender_id: '1234567890'
+              cvu:
+                summary: CVU - Básico
+                value:
+                  type: cvu
       responses:
         '201':
           description: Método de Pago creado
@@ -9239,148 +9149,52 @@ paths:
                         example: '2022-02-11T23:19:22-03:00'
                     title: Método de pago
               examples:
-                card:
-                  summary: Tarjeta de Crédito
+                card-basic:
+                  summary: Tarjeta - Básico
                   value:
-                    data:
-                      card:
-                        country: AR
-                        expiration_month: null
-                        expiration_year: null
-                        fingerprint: 0sZQikKp4lImAgIo
-                        issuer: null
-                        funding: credit
-                        last_four_digits: '4242'
-                        name: Visa
-                        network: visa
-                        providers:
-                          available:
-                            - fiserv-argentina
-                          preferred: fiserv-argentina
-                      created_at: '2022-02-01T23:13:04-03:00'
-                      id: PMBja4YZ2GDR
-                      livemode: true
-                      metadata: null
-                      object: payment_method
-                      type: card
-                      updated_at: '2022-02-01T23:13:04-03:00'
+                    type: card
+                    card:
+                      number: '4242424242424242'
+                card-complete:
+                  summary: Tarjeta - Completo con Vencimiento y Código de Seguridad
+                  value:
+                    type: card
+                    card:
+                      number: '4242424242424242'
+                      expiration_year: 2035
+                      expiration_month: 12
+                      security_code: '123'
+                cbu-alias:
+                  summary: CBU - Usando Alias con Identificación
+                  value:
+                    type: cbu
+                    cbu:
+                      alias: juanperez
+                      identification: true
+                cbu-number:
+                  summary: CBU - Usando Número de Cuenta con Identificación
+                  value:
+                    type: cbu
+                    cbu:
+                      number: '2859363672283668188432'
+                      identification: true
                 sepa_debit:
-                  summary: Método de Pago SEPA Débito para cuentas IBAN
+                  summary: SEPA Débito - Cuenta IBAN
                   value:
-                    data:
-                      id: PMja4OP0e4WR
-                      object: payment_method
-                      type: sepa_debit
-                      sepa_debit:
-                        bank: CAIXABANK
-                        country: ES
-                        last_four_digits: '1332'
-                        providers:
-                          available: []
-                          preferred: null
-                      created_at: '2024-04-28T17:40:01-03:00'
-                      livemode: true
-                      metadata: null
-                      updated_at: '2024-04-28T17:40:01-03:00'
-                cbu:
-                  summary: Cuenta Bancaria CBU
-                  value:
-                    data:
-                      cbu:
-                        bank: Banco de la Nación Argentina
-                        country: AR
-                        fingerprint: jhA2lx68sNppN90k
-                        last_four_digits: '0013'
-                        providers:
-                          available:
-                            - cbu-galicia
-                          preferred: cbu-galicia
-                      created_at: '2022-11-05T20:43:29-03:00'
-                      id: PMBKkz3wjEW9
-                      livemode: false
-                      metadata: null
-                      object: payment_method
-                      type: cbu
-                      updated_at: '2022-11-05T20:43:29-03:00'
-                cbu_enhanced:
-                  summary: Cuenta Bancaria CBU con Identificación Extendida
-                  value:
-                    data:
-                      cbu:
-                        bank: Banco de la Nación Argentina
-                        country: AR
-                        fingerprint: jhA2lx68sNppN90k
-                        identification:
-                          account_routing:
-                            address: '******************0025'
-                            scheme: CBU
-                          bank_routing:
-                            address: BANCO INDUSTRIAL S.A.
-                            code: '322'
-                            scheme: NAME
-                          currency: ARS
-                          is_active: true
-                          label: BOCHA.ASTRO.NUEZ
-                          owners:
-                            - display_name: 'Diaz, Bruno'
-                              id: '20223385072'
-                              id_type: CUIT
-                              is_physical_person: true
-                            - display_name: 'Parker, Peter'
-                              id: '20313380002'
-                              id_type: CUIT
-                              is_physical_person: true
-                          type: CC
-                        last_four_digits: '0013'
-                        providers:
-                          available:
-                            - cbu-galicia
-                          preferred: cbu-galicia
-                      created_at: '2022-11-05T20:43:29-03:00'
-                      id: PMBKkz3wjEW9
-                      livemode: false
-                      metadata: null
-                      object: payment_method
-                      type: cbu
-                      updated_at: '2022-11-05T20:43:29-03:00'
-                cvu:
-                  summary: Cuenta CVU
-                  value:
-                    data:
-                      id: PMr0AkerW4N1
-                      object: payment_method
-                      type: cvu
-                      cvu:
-                        account_number: '0001371211179340101691'
-                        last_four_digits: '1691'
-                        providers:
-                          available:
-                            - bind-transfers
-                          preferred: bind-transfers
-                        fingerprint: R1YRXJAn7SVSH8Jb
-                      livemode: false
-                      metadata: null
-                      customer_id: null
-                      created_at: '2025-09-25T16:52:58-03:00'
-                      updated_at: '2025-09-25T16:52:58-03:00'
+                    type: sepa_debit
+                    sepa_debit:
+                      iban: ES9121000418450200051332
                 transfer:
-                  summary: Método de Pago por Transferencia
+                  summary: Transferencia - Con Información del Remitente
                   value:
-                    data:
-                      id: PMeO2koZD7jG
-                      object: payment_method
-                      type: transfer
-                      transfer:
-                        sender_id: null
-                        sender_name: null
-                        providers:
-                          available: []
-                          preferred: null
-                      livemode: false
-                      metadata: null
-                      customer_id: null
-                      created_at: '2025-09-25T16:54:02-03:00'
-                      updated_at: '2025-09-25T16:54:02-03:00'
+                    type: transfer
+                    transfer:
+                      sender_name: Juan Perez
+                      sender_id: '1234567890'
+                cvu:
+                  summary: CVU - Básico
+                  value:
+                    type: cvu
         '401':
           description: No autorizado
           content:
