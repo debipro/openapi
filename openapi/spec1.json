@@ -5281,7 +5281,7 @@
                             "example": false
                           },
                           "binary_mode": {
-                            "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                            "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                             "type": "boolean",
                             "example": true
                           },
@@ -5575,7 +5575,7 @@
                     "example": false
                   },
                   "binary_mode": {
-                    "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                    "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                     "type": "boolean",
                     "example": true
                   },
@@ -6015,7 +6015,7 @@
                           "example": false
                         },
                         "binary_mode": {
-                          "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                          "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                           "type": "boolean",
                           "example": true
                         },
@@ -6366,7 +6366,7 @@
                           "example": false
                         },
                         "binary_mode": {
-                          "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                          "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                           "type": "boolean",
                           "example": true
                         },
@@ -6619,7 +6619,7 @@
                     "example": true
                   },
                   "binary_mode": {
-                    "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                    "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                     "type": "boolean",
                     "example": true
                   },
@@ -7041,7 +7041,7 @@
                           "example": false
                         },
                         "binary_mode": {
-                          "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                          "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                           "type": "boolean",
                           "example": true
                         },
@@ -13330,7 +13330,7 @@
                             "example": null
                           },
                           "binary_mode": {
-                            "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                            "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                             "type": "boolean",
                             "example": true
                           },
@@ -13601,7 +13601,7 @@
         "summary": "Create a payment",
         "description": "Create a payment.",
         "requestBody": {
-          "required": false,
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
@@ -13621,30 +13621,30 @@
                     "example": "CSgaZlLaPMZO."
                   },
                   "payment_method_id": {
-                    "description": "The [Payment Method ID](#tag/Payment-Methods) for this payment.\n",
+                    "description": "The [Payment Method ID](#tag/Payment-Methods) for this payment. If you don't send this parameter, the payment will be collected using the default payment method for the customer. If the customer doesn't have a default payment method, the payment will stay in status `incomplete`, until it is updated via session, billing portal, or API.\n",
                     "type": "string",
                     "example": "PMBja4YZ2GDR."
                   },
                   "charge_date": {
-                    "description": "A future date on which the payment should be collected. If not specified, the payment will be collected as soon as possible.",
+                    "description": "A future or present date on which the payment should be collected (Should be today or a future date). If not specified, the payment will be collected as soon as possible.",
                     "type": "string",
                     "format": "date"
                   },
                   "can_auto_retry_until": {
-                    "description": "The maximum date the payment could be retried automatically.",
+                    "description": "The maximum date the payment could be retried automatically. If null, will apply the default value for the user.",
                     "type": "string",
                     "format": "date"
                   },
                   "auto_retries_max_attempts": {
-                    "description": "The maximum amount of times the payment could be retried automatically.",
+                    "description": "The maximum amount of times the payment could be retried automatically. If null, will apply the default value for the user.",
                     "type": "integer"
                   },
                   "gateway_identifier": {
-                    "description": "Gateway identifier for your payment.",
+                    "description": "Gateway identifier for your payment. This value is used to identify the payment in the gateway. Sometimes gateways show this value as a descriptor in bank statements. If you don't send this parameter, the gateway will generate a random identifier. This value is not updatable once the payment is created.",
                     "type": "string"
                   },
                   "binary_mode": {
-                    "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                    "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                     "type": "boolean",
                     "example": true
                   },
@@ -13679,8 +13679,7 @@
                 "required": [
                   "amount",
                   "description",
-                  "customer_id",
-                  "payment_method_id"
+                  "customer_id"
                 ]
               }
             }
@@ -14414,7 +14413,7 @@
                           "example": null
                         },
                         "binary_mode": {
-                          "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                          "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                           "type": "boolean",
                           "example": true
                         },
@@ -15356,7 +15355,7 @@
                           "example": null
                         },
                         "binary_mode": {
-                          "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                          "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                           "type": "boolean",
                           "example": true
                         },
@@ -16379,7 +16378,7 @@
                           "example": null
                         },
                         "binary_mode": {
-                          "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                          "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                           "type": "boolean",
                           "example": true
                         },
@@ -17483,7 +17482,7 @@
                       "example": null
                     },
                     "binary_mode": {
-                      "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                      "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                       "type": "boolean",
                       "example": true
                     },
@@ -18868,7 +18867,7 @@
                             "example": null
                           },
                           "binary_mode": {
-                            "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                            "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                             "type": "boolean",
                             "example": true
                           },
@@ -19966,7 +19965,7 @@
                     "example": null
                   },
                   "binary_mode": {
-                    "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                    "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                     "type": "boolean",
                     "example": true
                   },
@@ -20304,7 +20303,7 @@
                           "example": true
                         },
                         "binary_mode": {
-                          "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                          "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                           "type": "boolean",
                           "example": true
                         },
@@ -20638,7 +20637,7 @@
                           "example": true
                         },
                         "binary_mode": {
-                          "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+                          "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
                           "type": "boolean",
                           "example": true
                         },
@@ -30191,7 +30190,7 @@
         ]
       },
       "binary_mode": {
-        "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+        "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
         "type": "boolean",
         "example": true
       },
@@ -30440,7 +30439,7 @@
             "example": false
           },
           "binary_mode": {
-            "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+            "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
             "type": "boolean",
             "example": true
           },
@@ -31999,7 +31998,7 @@
             "example": null
           },
           "binary_mode": {
-            "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+            "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
             "type": "boolean",
             "example": true
           },
@@ -32311,7 +32310,7 @@
             "example": true
           },
           "binary_mode": {
-            "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+            "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
             "type": "boolean",
             "example": true
           },
@@ -34064,7 +34063,7 @@
             "example": false
           },
           "binary_mode": {
-            "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+            "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
             "type": "boolean",
             "example": true
           },
@@ -35508,7 +35507,7 @@
             "example": null
           },
           "binary_mode": {
-            "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+            "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
             "type": "boolean",
             "example": true
           },
@@ -36289,7 +36288,7 @@
             "example": true
           },
           "binary_mode": {
-            "description": "Forces instantaneous payment processing, providing an immediate status of either `approved` or `rejected` within the request response. This setting eliminates automatic retries for failed payments, ensuring a swift and conclusive outcome.\n",
+            "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
             "type": "boolean",
             "example": true
           },
