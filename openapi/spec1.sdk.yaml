@@ -71,14 +71,14 @@ info:
 
     ```json
     {
-        "message": "The given data was invalid.",
-        "errors": {
-            "organization_name": ["El campo debe tener algún valor."],
-            "mobile_number": ["El campo debe tener algún valor."],
-            "province": ["El campo debe tener algún valor."],
-            "locality": ["El campo debe tener algún valor."],
-            "address": ["El campo debe tener algún valor."]
-        }
+      "message": "The given data was invalid.",
+      "errors": {
+        "organization_name": ["El campo debe tener algún valor."],
+        "mobile_number": ["El campo debe tener algún valor."],
+        "province": ["El campo debe tener algún valor."],
+        "locality": ["El campo debe tener algún valor."],
+        "address": ["El campo debe tener algún valor."]
+      }
     }
     ```
 
@@ -86,7 +86,7 @@ info:
 
     ```json
     {
-        "message": "Unauthenticated."
+      "message": "Unauthenticated."
     }
     ```
     # Idempotent Requests
@@ -221,49 +221,49 @@ info:
 
     ```json
     {
-        "id": "EVPYeJeyeJ7r",
-        "created_at": "2019-05-23T20:18:28-0300",
-        "data": {
-            "object": {
-                "id": "CS9PL8eeo8aB",
-                "paid": false,
-                "amount": 1600,
-                "status": "pending_submission",
-                "gateway": "GWd1e9nQwK7v",
-                "currency": "ARS",
-                "customer": {
-                    "id": "CS9PL8eeo8aB",
-                    "name": "Máximo Irizarry",
-                    "email": "mirrizarry@paez.com",
-                    "livemode": true,
-                    "metadata": { "key": "value" },
-                    "created_at": "2018-05-01T11:45:14-0300",
-                    "updated_at": "2018-05-01T11:45:14-0300",
-                    "gateway_identifier": "001234",
-                    "mobile_number": "+5493812596655",
-                    "identification_type": "",
-                    "identification_number": ""
-                },
-                "livemode": true,
-                "metadata": { "key": "value" },
-                "retryable": false,
-                "created_at": "2018-05-01T11:45:14-0300",
-                "updated_at": "2018-05-01T11:45:14-0300",
-                "charge_date": "2019-05-15",
-                "description": "Pago extra",
-                "subscription": null,
-                "name": "Máximo Irizarry",
-                "email": "mirrizarry@paez.com",
-                "gateway_identifier": "456700",
-                "mobile_number": "+5493812596655",
-                "identification_type": "",
-                "identification_number": ""
-            }
-        },
-        "livemode": true,
-        "resource": "payment",
-        "resource_id": "PY6b3Rr6nRMo",
-        "type": "payment.retrying"
+      "id": "EVPYeJeyeJ7r",
+      "created_at": "2019-05-23T20:18:28-0300",
+      "data": {
+        "object": {
+          "id": "CS9PL8eeo8aB",
+          "paid": false,
+          "amount": 1600,
+          "status": "pending_submission",
+          "gateway": "GWd1e9nQwK7v",
+          "currency": "ARS",
+          "customer": {
+            "id": "CS9PL8eeo8aB",
+            "name": "Máximo Irizarry",
+            "email": "mirrizarry@paez.com",
+            "livemode": true,
+            "metadata": { "key": "value" },
+            "created_at": "2018-05-01T11:45:14-0300",
+            "updated_at": "2018-05-01T11:45:14-0300",
+            "gateway_identifier": "001234",
+            "mobile_number": "+5493812596655",
+            "identification_type": "",
+            "identification_number": ""
+          },
+          "livemode": true,
+          "metadata": { "key": "value" },
+          "retryable": false,
+          "created_at": "2018-05-01T11:45:14-0300",
+          "updated_at": "2018-05-01T11:45:14-0300",
+          "charge_date": "2019-05-15",
+          "description": "Pago extra",
+          "subscription": null,
+          "name": "Máximo Irizarry",
+          "email": "mirrizarry@paez.com",
+          "gateway_identifier": "456700",
+          "mobile_number": "+5493812596655",
+          "identification_type": "",
+          "identification_number": ""
+        }
+      },
+      "livemode": true,
+      "resource": "payment",
+      "resource_id": "PY6b3Rr6nRMo",
+      "type": "payment.retrying"
     }
     ```
 
@@ -948,7 +948,6 @@ paths:
                 message: The given data was invalid.
       tags:
         - Customers
-      x-codegen-request-body-name: body
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -1058,6 +1057,7 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+      x-codegen-request-body-name: body
   '/v1/customers/{id}':
     get:
       operationId: CustomersGetCustomer
@@ -1503,7 +1503,6 @@ paths:
                 message: The given data was invalid.
       tags:
         - Customers
-      x-codegen-request-body-name: body
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -1609,6 +1608,7 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+      x-codegen-request-body-name: body
   '/v1/customers/{id}/actions/archive':
     post:
       operationId: CustomersArchiveCustomer
@@ -2295,6 +2295,7 @@ paths:
                                 - unknown
                                 - visa
                             providers:
+                              description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                               type: object
                               properties:
                                 available:
@@ -2376,6 +2377,7 @@ paths:
                               type: string
                               example: '9876'
                             providers:
+                              description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                               type: object
                               properties:
                                 available:
@@ -5175,7 +5177,6 @@ paths:
                 message: The given data was invalid.
       tags:
         - Imports
-      x-codegen-request-body-name: body
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -5279,6 +5280,7 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+      x-codegen-request-body-name: body
   '/v1/imports/{id}':
     get:
       operationId: ImportsGetImport
@@ -8615,6 +8617,7 @@ paths:
                                     - unknown
                                     - visa
                                 providers:
+                                  description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -8696,6 +8699,7 @@ paths:
                                   type: string
                                   example: '9876'
                                 providers:
+                                  description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -9096,7 +9100,6 @@ paths:
                 title: Unauthorized
       tags:
         - Mandates
-      x-codegen-request-body-name: body
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -9191,6 +9194,7 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+      x-codegen-request-body-name: body
   '/v1/mandates/{id}':
     get:
       operationId: MandatesGetMandate
@@ -9427,6 +9431,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -9508,6 +9513,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -10235,6 +10241,7 @@ paths:
                                     - unknown
                                     - visa
                                 providers:
+                                  description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -10316,6 +10323,7 @@ paths:
                                   type: string
                                   example: '9876'
                                 providers:
+                                  description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -10791,6 +10799,7 @@ paths:
                                 - unknown
                                 - visa
                             providers:
+                              description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                               type: object
                               properties:
                                 available:
@@ -10872,6 +10881,7 @@ paths:
                               type: string
                               example: '9876'
                             providers:
+                              description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                               type: object
                               properties:
                                 available:
@@ -11168,8 +11178,8 @@ paths:
             puts response.read_body
     post:
       operationId: PaymentMethodsCreatePaymentMethod
-      summary: Create a payment method
-      description: Create a payment method
+      summary: 'Create a payment method (for validation,classification, identification or future use on payments)'
+      description: 'Creating a payment method allows you to tokenize the payment method, validate that it meets validation rules, and use it in future payments. It also allows us to classify it based on its properties to make business decisions. Additionally, by adding the identification parameter with the value true, we can identify the bank account as a CBU to determine its owners, or send an alias to determine its corresponding CBU and its owners. In the case of business accounts, an array with the corresponding co-owners will be returned.'
       requestBody:
         required: false
         content:
@@ -11211,10 +11221,10 @@ paths:
                       description: Bank account number.
                       type: string
                     alias:
-                      description: 'Bank account alias. Available upon request, contact Support.'
+                      description: 'Bank account alias. If you send the alias in the POST and the identification is true, it will return the corresponding CBU. Available upon request, contact Support.'
                       type: string
                     identification:
-                      description: 'Enhanced bank account identification. Available upon request, contact Support.'
+                      description: 'Enhanced bank account identification, when sending in the POST, it will perform the identification, returning in this parameter the owners or co-owners of the account. Available upon request, contact Support.'
                       type: boolean
                   title: CBU
                 sepa_debit:
@@ -11383,6 +11393,7 @@ paths:
                               - unknown
                               - visa
                           providers:
+                            description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                             type: object
                             properties:
                               available:
@@ -11464,6 +11475,7 @@ paths:
                             type: string
                             example: '9876'
                           providers:
+                            description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                             type: object
                             properties:
                               available:
@@ -11994,6 +12006,7 @@ paths:
                               - unknown
                               - visa
                           providers:
+                            description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                             type: object
                             properties:
                               available:
@@ -12075,6 +12088,7 @@ paths:
                             type: string
                             example: '9876'
                           providers:
+                            description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                             type: object
                             properties:
                               available:
@@ -12472,6 +12486,7 @@ paths:
                                 - unknown
                                 - visa
                             providers:
+                              description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                               type: object
                               properties:
                                 available:
@@ -12553,6 +12568,7 @@ paths:
                               type: string
                               example: '9876'
                             providers:
+                              description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                               type: object
                               properties:
                                 available:
@@ -13536,6 +13552,7 @@ paths:
                                     - unknown
                                     - visa
                                 providers:
+                                  description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -13617,6 +13634,7 @@ paths:
                                   type: string
                                   example: '9876'
                                 providers:
+                                  description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -14473,6 +14491,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -14554,6 +14573,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -14834,7 +14854,6 @@ paths:
                 title: Unauthorized
       tags:
         - Payments
-      x-codegen-request-body-name: body
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -14938,6 +14957,7 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+      x-codegen-request-body-name: body
   '/v1/payments/{id}':
     get:
       operationId: PaymentsGetPayment
@@ -15310,6 +15330,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -15391,6 +15412,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -16179,6 +16201,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -16260,6 +16283,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -16542,7 +16566,6 @@ paths:
                     title: Unauthorized
       tags:
         - Payments
-      x-codegen-request-body-name: body
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -16634,6 +16657,7 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+      x-codegen-request-body-name: body
   '/v1/payments/{id}/actions/cancel':
     post:
       operationId: PaymentsCancelPayment
@@ -17337,6 +17361,7 @@ paths:
                               - unknown
                               - visa
                           providers:
+                            description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                             type: object
                             properties:
                               available:
@@ -17418,6 +17443,7 @@ paths:
                             type: string
                             example: '9876'
                           providers:
+                            description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                             type: object
                             properties:
                               available:
@@ -18727,6 +18753,7 @@ paths:
                                     - unknown
                                     - visa
                                 providers:
+                                  description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -18808,6 +18835,7 @@ paths:
                                   type: string
                                   example: '9876'
                                 providers:
+                                  description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -19742,7 +19770,6 @@ paths:
                 message: The given data was invalid.
       tags:
         - Refunds
-      x-codegen-request-body-name: body
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -19844,6 +19871,7 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+      x-codegen-request-body-name: body
   '/v1/refunds/{id}':
     get:
       operationId: RefundsGetRefund
@@ -20519,7 +20547,6 @@ paths:
                 message: The given data was invalid.
       tags:
         - Sessions
-      x-codegen-request-body-name: body
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -20628,6 +20655,7 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+      x-codegen-request-body-name: body
   '/v1/sessions/{id}':
     get:
       operationId: SessionsGetSession
@@ -21308,6 +21336,7 @@ paths:
                                     - unknown
                                     - visa
                                 providers:
+                                  description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -21389,6 +21418,7 @@ paths:
                                   type: string
                                   example: '9876'
                                 providers:
+                                  description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -22114,6 +22144,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -22195,6 +22226,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -22878,6 +22910,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -22959,6 +22992,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -23695,6 +23729,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -23776,6 +23811,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -24391,6 +24427,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -24472,6 +24509,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -25051,6 +25089,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -25132,6 +25171,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -25717,6 +25757,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -25798,6 +25839,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -26400,6 +26442,7 @@ paths:
                                     - unknown
                                     - visa
                                 providers:
+                                  description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -26481,6 +26524,7 @@ paths:
                                   type: string
                                   example: '9876'
                                 providers:
+                                  description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -27343,7 +27387,6 @@ paths:
                 message: The given data was invalid.
       tags:
         - Webhooks
-      x-codegen-request-body-name: body
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -27439,6 +27482,7 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+      x-codegen-request-body-name: body
   '/v1/webhooks/{id}':
     get:
       operationId: WebhooksGetWebhook
@@ -27751,7 +27795,6 @@ paths:
                 message: The given data was invalid.
       tags:
         - Webhooks
-      x-codegen-request-body-name: body
       x-codeSamples:
         - lang: Shell + Curl
           source: |-
@@ -27843,6 +27886,7 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+      x-codegen-request-body-name: body
     delete:
       operationId: WebhooksDeleteWebhook
       summary: Delete a webhook
@@ -28311,6 +28355,7 @@ components:
             - unknown
             - visa
         providers:
+          description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
           type: object
           properties:
             available:
@@ -28392,6 +28437,7 @@ components:
           type: string
           example: '9876'
         providers:
+          description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
           type: object
           properties:
             available:
@@ -28559,6 +28605,7 @@ components:
                 - unknown
                 - visa
             providers:
+              description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
               type: object
               properties:
                 available:
@@ -28640,6 +28687,7 @@ components:
               type: string
               example: '9876'
             providers:
+              description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
               type: object
               properties:
                 available:
@@ -29845,6 +29893,7 @@ components:
                     - unknown
                     - visa
                 providers:
+                  description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                   type: object
                   properties:
                     available:
@@ -29926,6 +29975,7 @@ components:
                   type: string
                   example: '9876'
                 providers:
+                  description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                   type: object
                   properties:
                     available:
@@ -30533,6 +30583,7 @@ components:
                     - unknown
                     - visa
                 providers:
+                  description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                   type: object
                   properties:
                     available:
@@ -30614,6 +30665,7 @@ components:
                   type: string
                   example: '9876'
                 providers:
+                  description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                   type: object
                   properties:
                     available:
@@ -31389,6 +31441,7 @@ components:
                     - unknown
                     - visa
                 providers:
+                  description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                   type: object
                   properties:
                     available:
@@ -31470,6 +31523,7 @@ components:
                   type: string
                   example: '9876'
                 providers:
+                  description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                   type: object
                   properties:
                     available:
@@ -32698,6 +32752,7 @@ components:
                     - unknown
                     - visa
                 providers:
+                  description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                   type: object
                   properties:
                     available:
@@ -32779,6 +32834,7 @@ components:
                   type: string
                   example: '9876'
                 providers:
+                  description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                   type: object
                   properties:
                     available:
@@ -33289,6 +33345,7 @@ components:
                     - unknown
                     - visa
                 providers:
+                  description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                   type: object
                   properties:
                     available:
@@ -33370,6 +33427,7 @@ components:
                   type: string
                   example: '9876'
                 providers:
+                  description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                   type: object
                   properties:
                     available:
@@ -33721,6 +33779,7 @@ components:
                 - unknown
                 - visa
             providers:
+              description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
               type: object
               properties:
                 available:
@@ -33802,6 +33861,7 @@ components:
               type: string
               example: '9876'
             providers:
+              description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
               type: object
               properties:
                 available:
@@ -34509,6 +34569,7 @@ components:
                     - unknown
                     - visa
                 providers:
+                  description: 'Available providers on your account that can be used to process this payment method. For example: mercadopago, payway, etc.'
                   type: object
                   properties:
                     available:
@@ -34590,6 +34651,7 @@ components:
                   type: string
                   example: '9876'
                 providers:
+                  description: 'Available providers on your account that can be used to process this payment method. For example: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                   type: object
                   properties:
                     available:
@@ -35403,7 +35465,7 @@ tags:
       <SchemaDefinition schemaRef="#/components/schemas/mandate" exampleRef="#/components/examples/mandate" showReadOnly={true} showWriteOnly={true} />
   - name: Payment Methods
     description: |
-      PaymentMethod objects represent your customer's payment instruments. You can use them with to create Payments or Subscriptions to a Customer.
+      PaymentMethod objects represent your customer's payment instruments. You can use them with to create Payments or Subscriptions to a Customer. Also you can create them for tokenization, validation, classification, identification or future use on payments.
 
       <SchemaDefinition schemaRef="#/components/schemas/payment_method" exampleRef="#/components/examples/payment_method" showReadOnly={true} showWriteOnly={true} />
   - name: Payments

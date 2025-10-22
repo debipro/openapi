@@ -71,14 +71,14 @@ info:
 
     ```json
     {
-        "message": "The given data was invalid.",
-        "errors": {
-            "organization_name": ["El campo debe tener algún valor."],
-            "mobile_number": ["El campo debe tener algún valor."],
-            "province": ["El campo debe tener algún valor."],
-            "locality": ["El campo debe tener algún valor."],
-            "address": ["El campo debe tener algún valor."]
-        }
+      "message": "The given data was invalid.",
+      "errors": {
+        "organization_name": ["El campo debe tener algún valor."],
+        "mobile_number": ["El campo debe tener algún valor."],
+        "province": ["El campo debe tener algún valor."],
+        "locality": ["El campo debe tener algún valor."],
+        "address": ["El campo debe tener algún valor."]
+      }
     }
     ```
 
@@ -86,7 +86,7 @@ info:
 
     ```json
     {
-        "message": "Unauthenticated."
+      "message": "Unauthenticated."
     }
     ```
     # Idempotencia
@@ -221,49 +221,49 @@ info:
 
     ```json
     {
-        "id": "EVPYeJeyeJ7r",
-        "created_at": "2019-05-23T20:18:28-0300",
-        "data": {
-            "object": {
-                "id": "CS9PL8eeo8aB",
-                "paid": false,
-                "amount": 1600,
-                "status": "pending_submission",
-                "gateway": "GWd1e9nQwK7v",
-                "currency": "ARS",
-                "customer": {
-                    "id": "CS9PL8eeo8aB",
-                    "name": "Máximo Irizarry",
-                    "email": "mirrizarry@paez.com",
-                    "livemode": true,
-                    "metadata": { "key": "value" },
-                    "created_at": "2018-05-01T11:45:14-0300",
-                    "updated_at": "2018-05-01T11:45:14-0300",
-                    "gateway_identifier": "001234",
-                    "mobile_number": "+5493812596655",
-                    "identification_type": "",
-                    "identification_number": ""
-                },
-                "livemode": true,
-                "metadata": { "key": "value" },
-                "retryable": false,
-                "created_at": "2018-05-01T11:45:14-0300",
-                "updated_at": "2018-05-01T11:45:14-0300",
-                "charge_date": "2019-05-15",
-                "description": "Pago extra",
-                "subscription": null,
-                "name": "Máximo Irizarry",
-                "email": "mirrizarry@paez.com",
-                "gateway_identifier": "456700",
-                "mobile_number": "+5493812596655",
-                "identification_type": "",
-                "identification_number": ""
-            }
-        },
-        "livemode": true,
-        "resource": "payment",
-        "resource_id": "PY6b3Rr6nRMo",
-        "type": "payment.retrying"
+      "id": "EVPYeJeyeJ7r",
+      "created_at": "2019-05-23T20:18:28-0300",
+      "data": {
+        "object": {
+          "id": "CS9PL8eeo8aB",
+          "paid": false,
+          "amount": 1600,
+          "status": "pending_submission",
+          "gateway": "GWd1e9nQwK7v",
+          "currency": "ARS",
+          "customer": {
+            "id": "CS9PL8eeo8aB",
+            "name": "Máximo Irizarry",
+            "email": "mirrizarry@paez.com",
+            "livemode": true,
+            "metadata": { "key": "value" },
+            "created_at": "2018-05-01T11:45:14-0300",
+            "updated_at": "2018-05-01T11:45:14-0300",
+            "gateway_identifier": "001234",
+            "mobile_number": "+5493812596655",
+            "identification_type": "",
+            "identification_number": ""
+          },
+          "livemode": true,
+          "metadata": { "key": "value" },
+          "retryable": false,
+          "created_at": "2018-05-01T11:45:14-0300",
+          "updated_at": "2018-05-01T11:45:14-0300",
+          "charge_date": "2019-05-15",
+          "description": "Pago extra",
+          "subscription": null,
+          "name": "Máximo Irizarry",
+          "email": "mirrizarry@paez.com",
+          "gateway_identifier": "456700",
+          "mobile_number": "+5493812596655",
+          "identification_type": "",
+          "identification_number": ""
+        }
+      },
+      "livemode": true,
+      "resource": "payment",
+      "resource_id": "PY6b3Rr6nRMo",
+      "type": "payment.retrying"
     }
     ```
 
@@ -1705,6 +1705,7 @@ paths:
                                 - unknown
                                 - visa
                             providers:
+                              description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                               type: object
                               properties:
                                 available:
@@ -1786,6 +1787,7 @@ paths:
                               type: string
                               example: '9876'
                             providers:
+                              description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                               type: object
                               properties:
                                 available:
@@ -6231,6 +6233,7 @@ paths:
                                     - unknown
                                     - visa
                                 providers:
+                                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -6312,6 +6315,7 @@ paths:
                                   type: string
                                   example: '9876'
                                 providers:
+                                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -6865,6 +6869,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -6946,6 +6951,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -7462,6 +7468,7 @@ paths:
                                     - unknown
                                     - visa
                                 providers:
+                                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -7543,6 +7550,7 @@ paths:
                                   type: string
                                   example: '9876'
                                 providers:
+                                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -7941,6 +7949,7 @@ paths:
                                 - unknown
                                 - visa
                             providers:
+                              description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                               type: object
                               properties:
                                 available:
@@ -8022,6 +8031,7 @@ paths:
                               type: string
                               example: '9876'
                             providers:
+                              description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                               type: object
                               properties:
                                 available:
@@ -8239,8 +8249,8 @@ paths:
         - Métodos de Pago
     post:
       operationId: PaymentMethodsCreatePaymentMethod
-      summary: Crear un método de pago
-      description: Crear un método de pago
+      summary: 'Crear un método de pago para validación, clasificación, identificación o futuro uso en pagos.'
+      description: 'Crear un método de pago, permite tokenizar el método de pago, validar que cumple las reglas de validación, y ser usado en futuros pagos. A su vez nos permite clasificarlo según sus propiedades para tomar decisiones de negocio. Adicionalmente, agregando el parámetro identification con el valor true, podemos identificar la cuenta bancaria de tipo CBU para saber quienes son sus propietarios, o enviar enviar un alias y determinar cual es su cbu correspondiente y quienes son sus propietarios. En caso de cuentas empresariales, se devolverá un array con los co propietarios correspondientes.'
       requestBody:
         required: false
         content:
@@ -8282,10 +8292,10 @@ paths:
                       description: CBU de la cuenta bancaria.
                       type: string
                     alias:
-                      description: 'Alias de la cuenta bancaria. Para activar esta funcionalidad, contacte a Soporte.'
+                      description: 'Alias de la cuenta bancaria. Si envía el alias en el POST y la identificación es true, devolverá el CBU correspondiente. Para activar esta funcionalidad, contacte a Soporte.'
                       type: string
                     identification:
-                      description: 'Identificación extendida de la cuenta bancaria. Para activar esta funcionalidad, contacte a Soporte.'
+                      description: 'Identificación extendida de la cuenta bancaria, al enviar en el POST, realizará la identificación, devolviendo en este parámetro los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                       type: boolean
                   title: CBU
                 sepa_debit:
@@ -8454,6 +8464,7 @@ paths:
                               - unknown
                               - visa
                           providers:
+                            description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                             type: object
                             properties:
                               available:
@@ -8535,6 +8546,7 @@ paths:
                             type: string
                             example: '9876'
                           providers:
+                            description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                             type: object
                             properties:
                               available:
@@ -8943,6 +8955,7 @@ paths:
                               - unknown
                               - visa
                           providers:
+                            description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                             type: object
                             properties:
                               available:
@@ -9024,6 +9037,7 @@ paths:
                             type: string
                             example: '9876'
                           providers:
+                            description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                             type: object
                             properties:
                               available:
@@ -9350,6 +9364,7 @@ paths:
                                 - unknown
                                 - visa
                             providers:
+                              description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                               type: object
                               properties:
                                 available:
@@ -9431,6 +9446,7 @@ paths:
                               type: string
                               example: '9876'
                             providers:
+                              description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                               type: object
                               properties:
                                 available:
@@ -10175,6 +10191,7 @@ paths:
                                     - unknown
                                     - visa
                                 providers:
+                                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -10256,6 +10273,7 @@ paths:
                                   type: string
                                   example: '9876'
                                 providers:
+                                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -11029,6 +11047,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -11110,6 +11129,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -11772,6 +11792,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -11853,6 +11874,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -12577,6 +12599,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -12658,6 +12681,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -13434,6 +13458,7 @@ paths:
                               - unknown
                               - visa
                           providers:
+                            description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                             type: object
                             properties:
                               available:
@@ -13515,6 +13540,7 @@ paths:
                             type: string
                             example: '9876'
                           providers:
+                            description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                             type: object
                             properties:
                               available:
@@ -14520,6 +14546,7 @@ paths:
                                     - unknown
                                     - visa
                                 providers:
+                                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -14601,6 +14628,7 @@ paths:
                                   type: string
                                   example: '9876'
                                 providers:
+                                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -16587,6 +16615,7 @@ paths:
                                     - unknown
                                     - visa
                                 providers:
+                                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -16668,6 +16697,7 @@ paths:
                                   type: string
                                   example: '9876'
                                 providers:
+                                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -17311,6 +17341,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -17392,6 +17423,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -17975,6 +18007,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -18056,6 +18089,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -18726,6 +18760,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -18807,6 +18842,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -19322,6 +19358,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -19403,6 +19440,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -19916,6 +19954,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -19997,6 +20036,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -20516,6 +20556,7 @@ paths:
                                   - unknown
                                   - visa
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -20597,6 +20638,7 @@ paths:
                                 type: string
                                 example: '9876'
                               providers:
+                                description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                 type: object
                                 properties:
                                   available:
@@ -21133,6 +21175,7 @@ paths:
                                     - unknown
                                     - visa
                                 providers:
+                                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -21214,6 +21257,7 @@ paths:
                                   type: string
                                   example: '9876'
                                 providers:
+                                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                                   type: object
                                   properties:
                                     available:
@@ -22554,6 +22598,7 @@ components:
             - unknown
             - visa
         providers:
+          description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
           type: object
           properties:
             available:
@@ -22635,6 +22680,7 @@ components:
           type: string
           example: '9876'
         providers:
+          description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
           type: object
           properties:
             available:
@@ -22802,6 +22848,7 @@ components:
                 - unknown
                 - visa
             providers:
+              description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
               type: object
               properties:
                 available:
@@ -22883,6 +22930,7 @@ components:
               type: string
               example: '9876'
             providers:
+              description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
               type: object
               properties:
                 available:
@@ -24119,6 +24167,7 @@ components:
                     - unknown
                     - visa
                 providers:
+                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                   type: object
                   properties:
                     available:
@@ -24200,6 +24249,7 @@ components:
                   type: string
                   example: '9876'
                 providers:
+                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                   type: object
                   properties:
                     available:
@@ -24819,6 +24869,7 @@ components:
                     - unknown
                     - visa
                 providers:
+                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                   type: object
                   properties:
                     available:
@@ -24900,6 +24951,7 @@ components:
                   type: string
                   example: '9876'
                 providers:
+                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                   type: object
                   properties:
                     available:
@@ -25686,6 +25738,7 @@ components:
                     - unknown
                     - visa
                 providers:
+                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                   type: object
                   properties:
                     available:
@@ -25767,6 +25820,7 @@ components:
                   type: string
                   example: '9876'
                 providers:
+                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                   type: object
                   properties:
                     available:
@@ -27021,6 +27075,7 @@ components:
                     - unknown
                     - visa
                 providers:
+                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                   type: object
                   properties:
                     available:
@@ -27102,6 +27157,7 @@ components:
                   type: string
                   example: '9876'
                 providers:
+                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                   type: object
                   properties:
                     available:
@@ -27622,6 +27678,7 @@ components:
                     - unknown
                     - visa
                 providers:
+                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                   type: object
                   properties:
                     available:
@@ -27703,6 +27760,7 @@ components:
                   type: string
                   example: '9876'
                 providers:
+                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                   type: object
                   properties:
                     available:
@@ -28058,6 +28116,7 @@ components:
                 - unknown
                 - visa
             providers:
+              description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
               type: object
               properties:
                 available:
@@ -28139,6 +28198,7 @@ components:
               type: string
               example: '9876'
             providers:
+              description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
               type: object
               properties:
                 available:
@@ -28856,6 +28916,7 @@ components:
                     - unknown
                     - visa
                 providers:
+                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: fiserv-argentina, mercadopago, etc.'
                   type: object
                   properties:
                     available:
@@ -28937,6 +28998,7 @@ components:
                   type: string
                   example: '9876'
                 providers:
+                  description: 'Proveedores disponibles en tu cuenta que pueden ser usados para procesar este método de pago. Por ejemplo: cbu-galicia, cbu-patagonia, cbu-bind, etc.'
                   type: object
                   properties:
                     available:
@@ -29753,7 +29815,7 @@ tags:
       <SchemaDefinition schemaRef="#/components/schemas/mandate" exampleRef="#/components/examples/mandate" showReadOnly={true} showWriteOnly={true} />
   - name: Métodos de Pago
     description: |
-      Estos objetos representan los Métodos de Pago de su cliente. Puede usarlos para crear pagos o suscripciones a un cliente.
+      Estos objetos representan los Métodos de Pago de su cliente. Puede usarlos para crear pagos o suscripciones a un cliente. También puede crearlos para tokenizar, validar, clasificar, identificar o futuro uso en pagos.
 
       <SchemaDefinition schemaRef="#/components/schemas/payment_method" exampleRef="#/components/examples/payment_method" showReadOnly={true} showWriteOnly={true} />
   - name: Pagos
