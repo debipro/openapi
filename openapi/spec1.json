@@ -10513,16 +10513,16 @@
                     "type": "object",
                     "properties": {
                       "number": {
-                        "description": "Bank account number (22 digits). `Required` if you don't send an `alias` in the payload. If you send the `alias` in the POST and the identification is `true`, you don't need to indicate the `cbu` number, and as a response you will receive the `cbu` number corresponding to that `alias`.",
+                        "description": "Bank account number called `CBU` in Argentina (22 digits). If `identification` is `true`, requires sending the `secret key` in the header of the request, otherwise with public key is enough (useful when creating payment methods from the browser). `Required` if you don't send an `alias` in the payload. If you send the `alias` in the POST and the identification is `true`, you don't need to indicate the `cbu` number, and as a response you will receive the `cbu` number corresponding to that `alias`.\n",
                         "type": "string"
                       },
                       "alias": {
-                        "description": "Bank account `alias`. If you send the `alias` in the POST and the parameter `identification` is `true`, it will return the corresponding `cbu`number. Available upon request, contact Support.",
+                        "description": "Requires sending the `secret key` in the header of the request. Bank account `alias` that you want to identify. If you send the `alias` in the POST and the parameter `identification` is `true`, it will return the corresponding `cbu`number. Available upon request, contact Support.",
                         "type": "string",
                         "example": "juanperez"
                       },
                       "identification": {
-                        "description": "Enhanced bank account identification, when sending in the POST, it will perform the identification, returning in this parameter the owners or co-owners of the account. Also if you send an `alias` in the payload, you don't need to indicate the `cbu` number, and as a response you will receive the CBU corresponding to that alias. Available upon request, contact Support.",
+                        "description": "Requires sending the `secret key` in the header of the request. Enhanced bank account identification, when sending in the POST, it will perform the identification, returning in this parameter the owners or co-owners of the account. Also if you send an `alias` in the payload, you don't need to indicate the `cbu` number, and as a response you will receive the CBU corresponding to that alias. Available upon request, contact Support.",
                         "type": "boolean"
                       }
                     },

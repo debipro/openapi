@@ -11371,7 +11371,7 @@
                     "type": "object",
                     "properties": {
                       "number": {
-                        "description": "CBU de la cuenta bancaria (22 dígitos). `Requerido` si no envías un `alias` en el payload. Si envías el `alias` en el POST y el parámetro `identification` es `true`, no es necesario indicar el número de CBU, y como respuesta obtendremos el número de CBU correspondiente a ese `alias`.",
+                        "description": "Número de cuenta bancaria llamado `CBU` en Argentina (22 dígitos). Si el parámetro `identification` es `true`, requiere enviar la `secret key` en el header de la solicitud, de lo contrario con la `public key` es suficiente (útil cuando se crean métodos de pago desde el navegador). `Requerido` si no envías un `alias` en el payload. Si envías el `alias` en el POST y el parámetro `identification` es `true`, no es necesario indicar el número de CBU, y como respuesta obtendremos el número de CBU correspondiente a ese `alias`.",
                         "type": "string"
                       },
                       "alias": {
@@ -11380,7 +11380,7 @@
                         "example": "juanperez"
                       },
                       "identification": {
-                        "description": "Identificación extendida de la cuenta bancaria, al enviar en el POST, realizará la identificación, devolviendo en este parámetro los propietarios o co propietarios de la cuenta. También si envías un `alias` en el payload, no es necesario indicar el número de `cbu`, y como respuesta obtendremos el número de `cbu` correspondiente a ese `alias`. Para activar esta funcionalidad, contacte a Soporte.",
+                        "description": "Requiere enviar la `secret key` en el header de la solicitud. Identificación extendida de la cuenta bancaria, al enviar en el POST, realizará la identificación, devolviendo en este parámetro los propietarios o co propietarios de la cuenta. También si envías un `alias` en el payload, no es necesario indicar el número de `cbu`, y como respuesta obtendremos el número de `cbu` correspondiente a ese `alias`. Para activar esta funcionalidad, contacte a Soporte.",
                         "type": "boolean"
                       }
                     },
