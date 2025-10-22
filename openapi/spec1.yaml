@@ -1765,7 +1765,7 @@ paths:
                               type: string
                               example: 8712yh2uihiu1123sxas
                             identification:
-                              description: Enhanced bank account identification.
+                              description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                               type: object
                             last_four_digits:
                               description: Bank account last four digits.
@@ -6242,7 +6242,7 @@ paths:
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 identification:
-                                  description: Enhanced bank account identification.
+                                  description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                   type: object
                                 last_four_digits:
                                   description: Bank account last four digits.
@@ -6870,7 +6870,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Enhanced bank account identification.
+                                description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                 type: object
                               last_four_digits:
                                 description: Bank account last four digits.
@@ -7461,7 +7461,7 @@ paths:
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 identification:
-                                  description: Enhanced bank account identification.
+                                  description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                   type: object
                                 last_four_digits:
                                   description: Bank account last four digits.
@@ -7937,7 +7937,7 @@ paths:
                               type: string
                               example: 8712yh2uihiu1123sxas
                             identification:
-                              description: Enhanced bank account identification.
+                              description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                               type: object
                             last_four_digits:
                               description: Bank account last four digits.
@@ -8161,7 +8161,10 @@ paths:
     post:
       operationId: PaymentMethodsCreatePaymentMethod
       summary: 'Create a payment method (for validation,classification, identification or future use on payments)'
-      description: 'Creating a payment method allows you to tokenize the payment method, validate that it meets validation rules, and use it in future payments. It also allows us to classify it based on its properties to make business decisions. Additionally, by adding the identification parameter with the value true, we can identify the bank account as a CBU to determine its owners, or send an alias to determine its corresponding CBU and its owners. In the case of business accounts, an array with the corresponding co-owners will be returned.'
+      description: |
+        Creating a payment method allows you to tokenize the payment method, validate that it meets validation rules, and use it in future payments. It also allows us to classify it based on its properties to make business decisions.
+
+        Additionally, for payment method type `cbu`, adding the identification parameter with the value `true`, we can identify the bank account to determine its owners, or send an alias to determine its corresponding CBU and its owners. In the case of business accounts, the object created will contain an array with the corresponding co-owners. If you send an `alias` parameter in the payload, you don't need to indicate the CBU number, and as a response you will receive the CBU corresponding to that alias.
       requestBody:
         required: false
         content:
@@ -8200,13 +8203,14 @@ paths:
                   type: object
                   properties:
                     number:
-                      description: Bank account number.
+                      description: 'Bank account number (22 digits). `Required` if you don''t send an `alias` in the payload. If you send the `alias` in the POST and the identification is `true`, you don''t need to indicate the `cbu` number, and as a response you will receive the `cbu` number corresponding to that `alias`.'
                       type: string
                     alias:
-                      description: 'Bank account alias. If you send the alias in the POST and the identification is true, it will return the corresponding CBU. Available upon request, contact Support.'
+                      description: 'Bank account `alias`. If you send the `alias` in the POST and the parameter `identification` is `true`, it will return the corresponding `cbu`number. Available upon request, contact Support.'
                       type: string
+                      example: juanperez
                     identification:
-                      description: 'Enhanced bank account identification, when sending in the POST, it will perform the identification, returning in this parameter the owners or co-owners of the account. Available upon request, contact Support.'
+                      description: 'Enhanced bank account identification, when sending in the POST, it will perform the identification, returning in this parameter the owners or co-owners of the account. Also if you send an `alias` in the payload, you don''t need to indicate the `cbu` number, and as a response you will receive the CBU corresponding to that alias. Available upon request, contact Support.'
                       type: boolean
                   title: CBU
                 sepa_debit:
@@ -8450,7 +8454,7 @@ paths:
                             type: string
                             example: 8712yh2uihiu1123sxas
                           identification:
-                            description: Enhanced bank account identification.
+                            description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                             type: object
                           last_four_digits:
                             description: Bank account last four digits.
@@ -8939,7 +8943,7 @@ paths:
                             type: string
                             example: 8712yh2uihiu1123sxas
                           identification:
-                            description: Enhanced bank account identification.
+                            description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                             type: object
                           last_four_digits:
                             description: Bank account last four digits.
@@ -9346,7 +9350,7 @@ paths:
                               type: string
                               example: 8712yh2uihiu1123sxas
                             identification:
-                              description: Enhanced bank account identification.
+                              description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                               type: object
                             last_four_digits:
                               description: Bank account last four digits.
@@ -10166,7 +10170,7 @@ paths:
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 identification:
-                                  description: Enhanced bank account identification.
+                                  description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                   type: object
                                 last_four_digits:
                                   description: Bank account last four digits.
@@ -11013,7 +11017,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Enhanced bank account identification.
+                                description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                 type: object
                               last_four_digits:
                                 description: Bank account last four digits.
@@ -11749,7 +11753,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Enhanced bank account identification.
+                                description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                 type: object
                               last_four_digits:
                                 description: Bank account last four digits.
@@ -12547,7 +12551,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Enhanced bank account identification.
+                                description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                 type: object
                               last_four_digits:
                                 description: Bank account last four digits.
@@ -13397,7 +13401,7 @@ paths:
                             type: string
                             example: 8712yh2uihiu1123sxas
                           identification:
-                            description: Enhanced bank account identification.
+                            description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                             type: object
                           last_four_digits:
                             description: Bank account last four digits.
@@ -14476,7 +14480,7 @@ paths:
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 identification:
-                                  description: Enhanced bank account identification.
+                                  description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                   type: object
                                 last_four_digits:
                                   description: Bank account last four digits.
@@ -16534,7 +16538,7 @@ paths:
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 identification:
-                                  description: Enhanced bank account identification.
+                                  description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                   type: object
                                 last_four_digits:
                                   description: Bank account last four digits.
@@ -17254,7 +17258,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Enhanced bank account identification.
+                                description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                 type: object
                               last_four_digits:
                                 description: Bank account last four digits.
@@ -17913,7 +17917,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Enhanced bank account identification.
+                                description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                 type: object
                               last_four_digits:
                                 description: Bank account last four digits.
@@ -18659,7 +18663,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Enhanced bank account identification.
+                                description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                 type: object
                               last_four_digits:
                                 description: Bank account last four digits.
@@ -19250,7 +19254,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Enhanced bank account identification.
+                                description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                 type: object
                               last_four_digits:
                                 description: Bank account last four digits.
@@ -19839,7 +19843,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Enhanced bank account identification.
+                                description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                 type: object
                               last_four_digits:
                                 description: Bank account last four digits.
@@ -20434,7 +20438,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Enhanced bank account identification.
+                                description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                 type: object
                               last_four_digits:
                                 description: Bank account last four digits.
@@ -21046,7 +21050,7 @@ paths:
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 identification:
-                                  description: Enhanced bank account identification.
+                                  description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                                   type: object
                                 last_four_digits:
                                   description: Bank account last four digits.
@@ -22457,7 +22461,7 @@ components:
           type: string
           example: 8712yh2uihiu1123sxas
         identification:
-          description: Enhanced bank account identification.
+          description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
           type: object
         last_four_digits:
           description: Bank account last four digits.
@@ -22707,7 +22711,7 @@ components:
               type: string
               example: 8712yh2uihiu1123sxas
             identification:
-              description: Enhanced bank account identification.
+              description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
               type: object
             last_four_digits:
               description: Bank account last four digits.
@@ -23995,7 +23999,7 @@ components:
                   type: string
                   example: 8712yh2uihiu1123sxas
                 identification:
-                  description: Enhanced bank account identification.
+                  description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                   type: object
                 last_four_digits:
                   description: Bank account last four digits.
@@ -24685,7 +24689,7 @@ components:
                   type: string
                   example: 8712yh2uihiu1123sxas
                 identification:
-                  description: Enhanced bank account identification.
+                  description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                   type: object
                 last_four_digits:
                   description: Bank account last four digits.
@@ -25543,7 +25547,7 @@ components:
                   type: string
                   example: 8712yh2uihiu1123sxas
                 identification:
-                  description: Enhanced bank account identification.
+                  description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                   type: object
                 last_four_digits:
                   description: Bank account last four digits.
@@ -26854,7 +26858,7 @@ components:
                   type: string
                   example: 8712yh2uihiu1123sxas
                 identification:
-                  description: Enhanced bank account identification.
+                  description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                   type: object
                 last_four_digits:
                   description: Bank account last four digits.
@@ -27447,7 +27451,7 @@ components:
                   type: string
                   example: 8712yh2uihiu1123sxas
                 identification:
-                  description: Enhanced bank account identification.
+                  description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                   type: object
                 last_four_digits:
                   description: Bank account last four digits.
@@ -27881,7 +27885,7 @@ components:
               type: string
               example: 8712yh2uihiu1123sxas
             identification:
-              description: Enhanced bank account identification.
+              description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
               type: object
             last_four_digits:
               description: Bank account last four digits.
@@ -28671,7 +28675,7 @@ components:
                   type: string
                   example: 8712yh2uihiu1123sxas
                 identification:
-                  description: Enhanced bank account identification.
+                  description: 'Enhanced bank account identification. Contains the owners or co-owners of the account. Available upon request, contact Support.'
                   type: object
                 last_four_digits:
                   description: Bank account last four digits.

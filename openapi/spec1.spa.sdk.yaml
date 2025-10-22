@@ -2385,7 +2385,7 @@ paths:
                               type: string
                               example: 8712yh2uihiu1123sxas
                             identification:
-                              description: Identificación extendida de la cuenta bancaria.
+                              description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                               type: object
                             last_four_digits:
                               description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -8758,7 +8758,7 @@ paths:
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 identification:
-                                  description: Identificación extendida de la cuenta bancaria.
+                                  description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                   type: object
                                 last_four_digits:
                                   description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -9580,7 +9580,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Identificación extendida de la cuenta bancaria.
+                                description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                 type: object
                               last_four_digits:
                                 description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -10398,7 +10398,7 @@ paths:
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 identification:
-                                  description: Identificación extendida de la cuenta bancaria.
+                                  description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                   type: object
                                 last_four_digits:
                                   description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -10961,7 +10961,7 @@ paths:
                               type: string
                               example: 8712yh2uihiu1123sxas
                             identification:
-                              description: Identificación extendida de la cuenta bancaria.
+                              description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                               type: object
                             last_four_digits:
                               description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -11268,7 +11268,10 @@ paths:
     post:
       operationId: PaymentMethodsCreatePaymentMethod
       summary: 'Crear un método de pago para validación, clasificación, identificación o futuro uso en pagos.'
-      description: 'Crear un método de pago, permite tokenizar el método de pago, validar que cumple las reglas de validación, y ser usado en futuros pagos. A su vez nos permite clasificarlo según sus propiedades para tomar decisiones de negocio. Adicionalmente, agregando el parámetro identification con el valor true, podemos identificar la cuenta bancaria de tipo CBU para saber quienes son sus propietarios, o enviar enviar un alias y determinar cual es su cbu correspondiente y quienes son sus propietarios. En caso de cuentas empresariales, se devolverá un array con los co propietarios correspondientes.'
+      description: |
+        Crear un método de pago, permite tokenizar el método de pago, validar que cumple las reglas de validación, y ser usado en futuros pagos. A su vez nos permite clasificarlo según sus propiedades para tomar decisiones de negocio.
+
+        Adicionalmente, para el tipo de método de pago `cbu`, agregando el parámetro `identification` con el valor `true`, podemos identificar la cuenta bancaria para determinar su propietario, o enviar un alias y determinar cual es su CBU correspondiente y quién es su propietario. En caso de cuentas empresariales, el objeto creado contendrá un array con los co propietarios correspondientes. Si envías un parámetro `alias` en el payload, no es necesario indicar el número de CBU, y como respuesta obtendremos el CBU correspondiente a ese alias.
       requestBody:
         required: false
         content:
@@ -11307,13 +11310,14 @@ paths:
                   type: object
                   properties:
                     number:
-                      description: CBU de la cuenta bancaria.
+                      description: 'CBU de la cuenta bancaria (22 dígitos). `Requerido` si no envías un `alias` en el payload. Si envías el `alias` en el POST y el parámetro `identification` es `true`, no es necesario indicar el número de CBU, y como respuesta obtendremos el número de CBU correspondiente a ese `alias`.'
                       type: string
                     alias:
-                      description: 'Alias de la cuenta bancaria. Si envía el alias en el POST y la identificación es true, devolverá el CBU correspondiente. Para activar esta funcionalidad, contacte a Soporte.'
+                      description: 'Alias de la cuenta bancaria. Si envía el `alias` en el POST y el parámetro `identification` es `true`, devolverá el número de CBU correspondiente. Para activar esta funcionalidad, contacte a Soporte.'
                       type: string
+                      example: juanperez
                     identification:
-                      description: 'Identificación extendida de la cuenta bancaria, al enviar en el POST, realizará la identificación, devolviendo en este parámetro los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
+                      description: 'Identificación extendida de la cuenta bancaria, al enviar en el POST, realizará la identificación, devolviendo en este parámetro los propietarios o co propietarios de la cuenta. También si envías un `alias` en el payload, no es necesario indicar el número de `cbu`, y como respuesta obtendremos el número de `cbu` correspondiente a ese `alias`. Para activar esta funcionalidad, contacte a Soporte.'
                       type: boolean
                   title: CBU
                 sepa_debit:
@@ -11557,7 +11561,7 @@ paths:
                             type: string
                             example: 8712yh2uihiu1123sxas
                           identification:
-                            description: Identificación extendida de la cuenta bancaria.
+                            description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                             type: object
                           last_four_digits:
                             description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -11875,7 +11879,7 @@ paths:
               --url https://api.debi.pro/v1/payment_methods \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
-              --data '{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","alias":"string","identification":true},"sepa_debit":{"iban":"string"},"cvu":{},"transfer":{"sender_name":"string","sender_id":"string"},"strict":true}'
+              --data '{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","alias":"juanperez","identification":true},"sepa_debit":{"iban":"string"},"cvu":{},"transfer":{"sender_name":"string","sender_id":"string"},"strict":true}'
         - lang: Node + Request
           source: |
             const request = require('request');
@@ -11895,7 +11899,7 @@ paths:
                   expiration_month: 0,
                   security_code: 'string'
                 },
-                cbu: {number: 'string', alias: 'string', identification: true},
+                cbu: {number: 'string', alias: 'juanperez', identification: true},
                 sepa_debit: {iban: 'string'},
                 cvu: {},
                 transfer: {sender_name: 'string', sender_id: 'string'},
@@ -11922,7 +11926,7 @@ paths:
               'Authorization' => 'Bearer sk_live_...'
             ]);
 
-            $request->setBody('{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","alias":"string","identification":true},"sepa_debit":{"iban":"string"},"cvu":{},"transfer":{"sender_name":"string","sender_id":"string"},"strict":true}');
+            $request->setBody('{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","alias":"juanperez","identification":true},"sepa_debit":{"iban":"string"},"cvu":{},"transfer":{"sender_name":"string","sender_id":"string"},"strict":true}');
 
             try {
               $response = $request->send();
@@ -11947,7 +11951,7 @@ paths:
                 },
                 "cbu": {
                     "number": "string",
-                    "alias": "string",
+                    "alias": "juanperez",
                     "identification": True
                 },
                 "sepa_debit": {"iban": "string"},
@@ -11971,7 +11975,7 @@ paths:
             HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/payment_methods")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
-              .body("{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"cvu\":{},\"transfer\":{\"sender_name\":\"string\",\"sender_id\":\"string\"},\"strict\":true}")
+              .body("{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"juanperez\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"cvu\":{},\"transfer\":{\"sender_name\":\"string\",\"sender_id\":\"string\"},\"strict\":true}")
               .asString();
         - lang: Ruby + Native
           source: |-
@@ -11988,7 +11992,7 @@ paths:
             request = Net::HTTP::Post.new(url)
             request["content-type"] = 'application/json'
             request["Authorization"] = 'Bearer sk_live_...'
-            request.body = "{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"string\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"cvu\":{},\"transfer\":{\"sender_name\":\"string\",\"sender_id\":\"string\"},\"strict\":true}"
+            request.body = "{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"juanperez\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"cvu\":{},\"transfer\":{\"sender_name\":\"string\",\"sender_id\":\"string\"},\"strict\":true}"
 
             response = http.request(request)
             puts response.read_body
@@ -12172,7 +12176,7 @@ paths:
                             type: string
                             example: 8712yh2uihiu1123sxas
                           identification:
-                            description: Identificación extendida de la cuenta bancaria.
+                            description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                             type: object
                           last_four_digits:
                             description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -12654,7 +12658,7 @@ paths:
                               type: string
                               example: 8712yh2uihiu1123sxas
                             identification:
-                              description: Identificación extendida de la cuenta bancaria.
+                              description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                               type: object
                             last_four_digits:
                               description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -13727,7 +13731,7 @@ paths:
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 identification:
-                                  description: Identificación extendida de la cuenta bancaria.
+                                  description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                   type: object
                                 last_four_digits:
                                   description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -14675,7 +14679,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Identificación extendida de la cuenta bancaria.
+                                description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                 type: object
                               last_four_digits:
                                 description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -15523,7 +15527,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Identificación extendida de la cuenta bancaria.
+                                description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                 type: object
                               last_four_digits:
                                 description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -16403,7 +16407,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Identificación extendida de la cuenta bancaria.
+                                description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                 type: object
                               last_four_digits:
                                 description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -17572,7 +17576,7 @@ paths:
                             type: string
                             example: 8712yh2uihiu1123sxas
                           identification:
-                            description: Identificación extendida de la cuenta bancaria.
+                            description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                             type: object
                           last_four_digits:
                             description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -18973,7 +18977,7 @@ paths:
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 identification:
-                                  description: Identificación extendida de la cuenta bancaria.
+                                  description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                   type: object
                                 last_four_digits:
                                   description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -21567,7 +21571,7 @@ paths:
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 identification:
-                                  description: Identificación extendida de la cuenta bancaria.
+                                  description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                   type: object
                                 last_four_digits:
                                   description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -22381,7 +22385,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Identificación extendida de la cuenta bancaria.
+                                description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                 type: object
                               last_four_digits:
                                 description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -23154,7 +23158,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Identificación extendida de la cuenta bancaria.
+                                description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                 type: object
                               last_four_digits:
                                 description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -23980,7 +23984,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Identificación extendida de la cuenta bancaria.
+                                description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                 type: object
                               last_four_digits:
                                 description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -24685,7 +24689,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Identificación extendida de la cuenta bancaria.
+                                description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                 type: object
                               last_four_digits:
                                 description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -25354,7 +25358,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Identificación extendida de la cuenta bancaria.
+                                description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                 type: object
                               last_four_digits:
                                 description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -26029,7 +26033,7 @@ paths:
                                 type: string
                                 example: 8712yh2uihiu1123sxas
                               identification:
-                                description: Identificación extendida de la cuenta bancaria.
+                                description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                 type: object
                               last_four_digits:
                                 description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -26721,7 +26725,7 @@ paths:
                                   type: string
                                   example: 8712yh2uihiu1123sxas
                                 identification:
-                                  description: Identificación extendida de la cuenta bancaria.
+                                  description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                                   type: object
                                 last_four_digits:
                                   description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -28646,7 +28650,7 @@ components:
           type: string
           example: 8712yh2uihiu1123sxas
         identification:
-          description: Identificación extendida de la cuenta bancaria.
+          description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
           type: object
         last_four_digits:
           description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -28896,7 +28900,7 @@ components:
               type: string
               example: 8712yh2uihiu1123sxas
             identification:
-              description: Identificación extendida de la cuenta bancaria.
+              description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
               type: object
             last_four_digits:
               description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -30215,7 +30219,7 @@ components:
                   type: string
                   example: 8712yh2uihiu1123sxas
                 identification:
-                  description: Identificación extendida de la cuenta bancaria.
+                  description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                   type: object
                 last_four_digits:
                   description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -30917,7 +30921,7 @@ components:
                   type: string
                   example: 8712yh2uihiu1123sxas
                 identification:
-                  description: Identificación extendida de la cuenta bancaria.
+                  description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                   type: object
                 last_four_digits:
                   description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -31786,7 +31790,7 @@ components:
                   type: string
                   example: 8712yh2uihiu1123sxas
                 identification:
-                  description: Identificación extendida de la cuenta bancaria.
+                  description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                   type: object
                 last_four_digits:
                   description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -33123,7 +33127,7 @@ components:
                   type: string
                   example: 8712yh2uihiu1123sxas
                 identification:
-                  description: Identificación extendida de la cuenta bancaria.
+                  description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                   type: object
                 last_four_digits:
                   description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -33726,7 +33730,7 @@ components:
                   type: string
                   example: 8712yh2uihiu1123sxas
                 identification:
-                  description: Identificación extendida de la cuenta bancaria.
+                  description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                   type: object
                 last_four_digits:
                   description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -34164,7 +34168,7 @@ components:
               type: string
               example: 8712yh2uihiu1123sxas
             identification:
-              description: Identificación extendida de la cuenta bancaria.
+              description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
               type: object
             last_four_digits:
               description: Últimos cuatro dígitos de la cuenta bancaria.
@@ -34964,7 +34968,7 @@ components:
                   type: string
                   example: 8712yh2uihiu1123sxas
                 identification:
-                  description: Identificación extendida de la cuenta bancaria.
+                  description: 'Identificación extendida de la cuenta bancaria. Contiene los propietarios o co propietarios de la cuenta. Para activar esta funcionalidad, contacte a Soporte.'
                   type: object
                 last_four_digits:
                   description: Últimos cuatro dígitos de la cuenta bancaria.
