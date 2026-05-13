@@ -20809,6 +20809,17 @@
         "description": "Por defecto, las suscripciones más nuevas serán las primeras en la lista.",
         "parameters": [
           {
+            "name": "description",
+            "in": "query",
+            "description": "Filtra las suscripciones cuya `description` contenga el texto dado (coincidencia parcial e insensible a mayúsculas).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "example": "Netflix"
+          },
+          {
             "name": "created_at",
             "in": "query",
             "description": "Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.",

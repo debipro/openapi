@@ -20809,6 +20809,17 @@
         "description": "By default newest subscriptions will be first on the list.",
         "parameters": [
           {
+            "name": "description",
+            "in": "query",
+            "description": "Filter subscriptions whose `description` contains the given text (case-insensitive partial match).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "example": "Netflix"
+          },
+          {
             "name": "created_at",
             "in": "query",
             "description": "A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.",

@@ -715,6 +715,7 @@
         "tags": [
           "Clientes"
         ],
+        "x-codegen-request-body-name": "body",
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
@@ -740,8 +741,7 @@
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/customers\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"name\\\":\\\"Jorgelina Castro\\\",\\\"email\\\":\\\"mail@example.com\\\",\\\"gateway_identifier\\\":\\\"383473\\\",\\\"identification_type\\\":\\\"DNI\\\",\\\"identification_number\\\":\\\"15.555.324\\\",\\\"mobile_number\\\":\\\"+5491123456789\\\",\\\"default_payment_method_id\\\":\\\"PMVdYaYwkqOw\\\",\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
-        ],
-        "x-codegen-request-body-name": "body"
+        ]
       }
     },
     "/v1/customers/{id}": {
@@ -1264,6 +1264,7 @@
         "tags": [
           "Clientes"
         ],
+        "x-codegen-request-body-name": "body",
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
@@ -1289,8 +1290,7 @@
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/customers/CS9PL8eeo8aB\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Put.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"name\\\":\\\"Jorgelina Castro\\\",\\\"email\\\":\\\"mail@example.com\\\",\\\"gateway_identifier\\\":\\\"383473\\\",\\\"identification_type\\\":\\\"DNI\\\",\\\"identification_number\\\":\\\"15.555.324\\\",\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
-        ],
-        "x-codegen-request-body-name": "body"
+        ]
       }
     },
     "/v1/customers/{id}/actions/archive": {
@@ -4997,6 +4997,7 @@
         "tags": [
           "Importaciones"
         ],
+        "x-codegen-request-body-name": "body",
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
@@ -5022,8 +5023,7 @@
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/imports\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"customers\\\",\\\"filename\\\":\\\"a.csv\\\",\\\"original_filename\\\":\\\"a.csv\\\",\\\"auto\\\":true,\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
-        ],
-        "x-codegen-request-body-name": "body"
+        ]
       }
     },
     "/v1/imports/{id}": {
@@ -9051,6 +9051,7 @@
         "tags": [
           "Adhesiones"
         ],
+        "x-codegen-request-body-name": "body",
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
@@ -9076,8 +9077,7 @@
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/mandates\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"customer_id\\\":\\\"CS3oDRqz9wzB\\\",\\\"payment_method_id\\\":\\\"PMBja4YZ2GDR\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
-        ],
-        "x-codegen-request-body-name": "body"
+        ]
       }
     },
     "/v1/mandates/{id}": {
@@ -15621,6 +15621,7 @@
         "tags": [
           "Pagos"
         ],
+        "x-codegen-request-body-name": "body",
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
@@ -15646,8 +15647,7 @@
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payments\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"amount\\\":100,\\\"description\\\":\\\"Unique payment\\\",\\\"gateway_identifier\\\":\\\"001234\\\",\\\"customer_id\\\":\\\"CSr7Dg3LkDP2\\\",\\\"payment_method_id\\\":\\\"PMBja4YZ2GDR\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
-        ],
-        "x-codegen-request-body-name": "body"
+        ]
       }
     },
     "/v1/payments/{id}": {
@@ -17642,6 +17642,7 @@
         "tags": [
           "Pagos"
         ],
+        "x-codegen-request-body-name": "body",
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
@@ -17667,8 +17668,7 @@
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payments/PYdOz9bgVReV\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Put.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"description\\\":\\\"New payment title\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
-        ],
-        "x-codegen-request-body-name": "body"
+        ]
       }
     },
     "/v1/payments/{id}/actions/cancel": {
@@ -21017,6 +21017,7 @@
         "tags": [
           "Devoluciones"
         ],
+        "x-codegen-request-body-name": "body",
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
@@ -21042,8 +21043,7 @@
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/refunds\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"payment_id\\\":\\\"PYgaZlLaPMZO.\\\",\\\"amount\\\":12.5,\\\"reason\\\":\\\"requested_by_customer\\\",\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
-        ],
-        "x-codegen-request-body-name": "body"
+        ]
       }
     },
     "/v1/refunds/{id}": {
@@ -21849,6 +21849,7 @@
         "tags": [
           "Sesiones"
         ],
+        "x-codegen-request-body-name": "body",
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
@@ -21874,8 +21875,7 @@
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/sessions\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"kind\\\":\\\"payment\\\",\\\"success_url\\\":\\\"http://example.com/success\\\",\\\"amount\\\":\\\"200.50\\\",\\\"description\\\":\\\"Summer school\\\",\\\"payment_method_types\\\":[\\\"card\\\",\\\"cbu\\\",\\\"cvu\\\"],\\\"payment_method_options\\\":{\\\"card\\\":{\\\"disallow\\\":{\\\"funding\\\":[\\\"prepaid\\\"],\\\"network\\\":[\\\"amex\\\"]}}}}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
-        ],
-        "x-codegen-request-body-name": "body"
+        ]
       }
     },
     "/v1/sessions/{id}": {
@@ -22238,6 +22238,17 @@
         "summary": "Obtener todas las suscripciones",
         "description": "Por defecto, las suscripciones más nuevas serán las primeras en la lista.",
         "parameters": [
+          {
+            "name": "description",
+            "in": "query",
+            "description": "Filtra las suscripciones cuya `description` contenga el texto dado (coincidencia parcial e insensible a mayúsculas).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "example": "Netflix"
+          },
           {
             "name": "created_at",
             "in": "query",
@@ -23103,27 +23114,27 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request GET \\\n  --url 'https://api.debi.pro/v1/subscriptions?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \\\n  --header 'Authorization: Bearer sk_live_...'"
+            "source": "curl --request GET \\\n  --url 'https://api.debi.pro/v1/subscriptions?description=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \\\n  --header 'Authorization: Bearer sk_live_...'"
           },
           {
             "lang": "Node + Request",
-            "source": "const request = require('request');\n\nconst options = {\n  method: 'GET',\n  url: 'https://api.debi.pro/v1/subscriptions',\n  qs: {\n    created_at: 'SOME_OBJECT_VALUE',\n    ending_before: 'SOME_STRING_VALUE',\n    limit: 'SOME_INTEGER_VALUE',\n    starting_after: 'SOME_STRING_VALUE'\n  },\n  headers: {Authorization: 'Bearer sk_live_...'}\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'GET',\n  url: 'https://api.debi.pro/v1/subscriptions',\n  qs: {\n    description: 'SOME_STRING_VALUE',\n    created_at: 'SOME_OBJECT_VALUE',\n    ending_before: 'SOME_STRING_VALUE',\n    limit: 'SOME_INTEGER_VALUE',\n    starting_after: 'SOME_STRING_VALUE'\n  },\n  headers: {Authorization: 'Bearer sk_live_...'}\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
           },
           {
             "lang": "Php + Http1",
-            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/subscriptions');\n$request->setMethod(HTTP_METH_GET);\n\n$request->setQueryData([\n  'created_at' => 'SOME_OBJECT_VALUE',\n  'ending_before' => 'SOME_STRING_VALUE',\n  'limit' => 'SOME_INTEGER_VALUE',\n  'starting_after' => 'SOME_STRING_VALUE'\n]);\n\n$request->setHeaders([\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/subscriptions');\n$request->setMethod(HTTP_METH_GET);\n\n$request->setQueryData([\n  'description' => 'SOME_STRING_VALUE',\n  'created_at' => 'SOME_OBJECT_VALUE',\n  'ending_before' => 'SOME_STRING_VALUE',\n  'limit' => 'SOME_INTEGER_VALUE',\n  'starting_after' => 'SOME_STRING_VALUE'\n]);\n\n$request->setHeaders([\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
           },
           {
             "lang": "Python + Requests",
-            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/subscriptions\"\n\nquerystring = {\"created_at\":\"SOME_OBJECT_VALUE\",\"ending_before\":\"SOME_STRING_VALUE\",\"limit\":\"SOME_INTEGER_VALUE\",\"starting_after\":\"SOME_STRING_VALUE\"}\n\nheaders = {\"Authorization\": \"Bearer sk_live_...\"}\n\nresponse = requests.request(\"GET\", url, headers=headers, params=querystring)\n\nprint(response.text)"
+            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/subscriptions\"\n\nquerystring = {\"description\":\"SOME_STRING_VALUE\",\"created_at\":\"SOME_OBJECT_VALUE\",\"ending_before\":\"SOME_STRING_VALUE\",\"limit\":\"SOME_INTEGER_VALUE\",\"starting_after\":\"SOME_STRING_VALUE\"}\n\nheaders = {\"Authorization\": \"Bearer sk_live_...\"}\n\nresponse = requests.request(\"GET\", url, headers=headers, params=querystring)\n\nprint(response.text)"
           },
           {
             "lang": "Java + Unirest",
-            "source": "HttpResponse<String> response = Unirest.get(\"https://api.debi.pro/v1/subscriptions?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .asString();"
+            "source": "HttpResponse<String> response = Unirest.get(\"https://api.debi.pro/v1/subscriptions?description=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .asString();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/subscriptions?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/subscriptions?description=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
           }
         ]
       },
@@ -29691,6 +29702,7 @@
         "tags": [
           "Webhooks"
         ],
+        "x-codegen-request-body-name": "body",
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
@@ -29716,8 +29728,7 @@
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/webhooks\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"enabled_events\\\":[\\\"*\\\"],\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"},\\\"url\\\":\\\"string\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
-        ],
-        "x-codegen-request-body-name": "body"
+        ]
       }
     },
     "/v1/webhooks/{id}": {
@@ -30057,6 +30068,7 @@
         "tags": [
           "Webhooks"
         ],
+        "x-codegen-request-body-name": "body",
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
@@ -30082,8 +30094,7 @@
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Put.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"url\\\":\\\"http://somesite.com\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
-        ],
-        "x-codegen-request-body-name": "body"
+        ]
       },
       "delete": {
         "operationId": "WebhooksDeleteWebhook",
