@@ -125,37 +125,7 @@ info:
     The response of a list API method represents a single page in a reverse chronological stream of objects. If you do not specify `starting_after` or `ending_before`, you will receive the first page of this stream, containing the newest objects. You can specify `starting_after` equal to the object ID value of an item to retrieve the page of older objects occurring immediately after the named object in the reverse chronological stream. Similarly, you can specify `ending_before` to receive a page of newer objects occurring immediately before the named object in the stream. Objects in a page always appear in reverse chronological order. Only one of `starting_after` or `ending_before` may be used.
     # Request IDs
 
-    Each API request has an associated request identifier. You can find this value in the response headers under `X-Request-Id` (and `Request-Id` for backwards compatibility). You can also find request identifiers in the URLs of individual request logs in your [Dashboard](https://debi.pro/dashboard/logs).
-
-    ## Sending your own request ID
-
-    For end-to-end tracing across your system and ours, you can send your own request ID in the `X-Request-Id` header. We will preserve it and echo it back in the response, and use it in our internal logs so you can correlate by ID when contacting support.
-
-    If you do not send a value, we generate one for you.
-
-    ### Format rules
-
-    When you send your own value it must:
-
-    - Be at most **200 characters** long.
-    - Use only **alphanumeric** characters, `.`, `_`, or `-`.
-
-    Values that do not match these rules (empty, too long, or with forbidden characters) are ignored and replaced by a generated ID. Requests are not rejected because of the request ID.
-
-    ### Example
-
-    ```bash
-    curl -X POST https://api.debi.pro/v1/customers \
-      -H "Authorization: Bearer sk_test_..." \
-      -H "X-Request-Id: req_my-trace-123" \
-      -d 'name=John+Doe'
-    ```
-
-    The response will include:
-
-    ```
-    X-Request-Id: req_my-trace-123
-    ```
+    Each API request has an associated request identifier. You can find this value in the response headers, under `Request-Id`. You can also find request identifiers in the URLs of individual request logs in your [Dashboard](https://debi.pro/dashboard/logs).
     # Conventions
 
     ### Notational Conventions
