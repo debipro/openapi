@@ -30,6 +30,2334 @@
     }
   ],
   "paths": {
+    "/v1/billing_portal/configurations": {
+      "get": {
+        "operationId": "BillingPortalConfigurationsList",
+        "summary": "List all Billing Portal Configurations",
+        "description": "Returns a list of Billing Portal Configurations for the account. By default, all configurations\nare returned, newest first. Use the `active` and `is_default` filters to narrow the result.\n",
+        "parameters": [
+          {
+            "name": "active",
+            "in": "query",
+            "description": "When `true`, only active configurations are returned.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "is_default",
+            "in": "query",
+            "description": "When `true`, only the default configuration of the account is returned.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "created_at",
+            "in": "query",
+            "description": "A filter on the list, based on the object `created_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "gt": {
+                  "description": "Minimum value to filter by (exclusive)",
+                  "type": "integer"
+                },
+                "gte": {
+                  "description": "Minimum value to filter by (inclusive)",
+                  "type": "integer"
+                },
+                "lt": {
+                  "description": "Maximum value to filter by (exclusive)",
+                  "type": "integer"
+                },
+                "lte": {
+                  "description": "Maximum value to filter by (inclusive)",
+                  "type": "integer"
+                }
+              },
+              "title": "range_query_specs"
+            },
+            "explode": true,
+            "style": "deepObject"
+          },
+          {
+            "name": "ending_before",
+            "in": "query",
+            "description": "A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 20
+          },
+          {
+            "name": "starting_after",
+            "in": "query",
+            "description": "A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "title": "Billing Portal Configuration",
+                        "description": "A Billing Portal Configuration describes the functionality and appearance of a billing portal session.\nYou can have multiple configurations and pick the one to use when creating a Billing Portal Session.",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "Unique identifier for the Billing Portal Configuration.",
+                            "type": "string",
+                            "example": "BPCqXz3a8YbE",
+                            "readOnly": true
+                          },
+                          "object": {
+                            "type": "string",
+                            "enum": [
+                              "billing_portal.configuration"
+                            ]
+                          },
+                          "active": {
+                            "description": "Whether the configuration is active and can be used to create sessions.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "is_default": {
+                            "description": "Whether this is the default configuration for the account. The first configuration created becomes the default automatically.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "business_profile": {
+                            "description": "The business information shown to the customer in the portal.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "headline": {
+                                "description": "A short headline displayed at the top of the portal.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "example": "Manage your subscription"
+                              },
+                              "privacy_policy_url": {
+                                "description": "URL to your privacy policy.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "example": "https://example.com/privacy"
+                              },
+                              "terms_of_service_url": {
+                                "description": "URL to your terms of service.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "example": "https://example.com/terms"
+                              }
+                            }
+                          },
+                          "features": {
+                            "description": "The features enabled in the portal for the customer.",
+                            "type": "object",
+                            "properties": {
+                              "customer_update": {
+                                "description": "Allow the customer to update their personal information.",
+                                "type": "object",
+                                "properties": {
+                                  "enabled": {
+                                    "type": "boolean",
+                                    "example": false
+                                  }
+                                }
+                              },
+                              "invoice_history": {
+                                "description": "Allow the customer to view their payment history.",
+                                "type": "object",
+                                "properties": {
+                                  "enabled": {
+                                    "type": "boolean",
+                                    "example": true
+                                  }
+                                }
+                              },
+                              "payment_method_update": {
+                                "description": "Allow the customer to add, remove and choose default payment methods.",
+                                "type": "object",
+                                "properties": {
+                                  "enabled": {
+                                    "type": "boolean",
+                                    "example": true
+                                  }
+                                }
+                              },
+                              "subscription_cancel": {
+                                "description": "Allow the customer to cancel their subscriptions.",
+                                "type": "object",
+                                "properties": {
+                                  "enabled": {
+                                    "type": "boolean",
+                                    "example": true
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "login_page": {
+                            "description": "Configuration of the login page that allows customers to access the portal with their email.",
+                            "type": "object",
+                            "properties": {
+                              "enabled": {
+                                "description": "Whether the standalone login page is enabled.",
+                                "type": "boolean",
+                                "example": true
+                              },
+                              "url": {
+                                "description": "Public URL of the login page when enabled.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "example": "https://billing.debi.pro/login/acme",
+                                "readOnly": true
+                              }
+                            }
+                          },
+                          "default_return_url": {
+                            "description": "Default URL the customer is redirected to after they are done managing their billing. Can\nbe overridden on a per-session basis when creating a Billing Portal Session.\n",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "example": "https://example.com/account"
+                          },
+                          "payment_method_types": {
+                            "description": "Subset of payment method types the customer can use inside the portal. If `null` all\nconfigured payment methods of the account will be available.\n",
+                            "allOf": [
+                              {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "card",
+                                    "cbu",
+                                    "cvu",
+                                    "sepa_debit",
+                                    "transfer"
+                                  ]
+                                },
+                                "description": "Array of payment method types to allow. If not specified, all available payment methods will be allowed.\n",
+                                "example": [
+                                  "card",
+                                  "cbu",
+                                  "cvu"
+                                ]
+                              }
+                            ]
+                          },
+                          "payment_method_options": {
+                            "description": "Fine-grained configuration for each payment method type (e.g. allowed card networks).",
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "description": "Configuration options for specific payment method types, such as disallowing certain card networks or funding types.\n",
+                                "properties": {
+                                  "card": {
+                                    "type": "object",
+                                    "properties": {
+                                      "disallow": {
+                                        "type": "object",
+                                        "properties": {
+                                          "funding": {
+                                            "description": "Funding types to disallow",
+                                            "type": "array",
+                                            "items": {
+                                              "type": "string",
+                                              "enum": [
+                                                "credit",
+                                                "debit",
+                                                "prepaid",
+                                                "unknown"
+                                              ]
+                                            },
+                                            "example": [
+                                              "prepaid"
+                                            ]
+                                          },
+                                          "network": {
+                                            "description": "Card networks to disallow",
+                                            "type": "array",
+                                            "items": {
+                                              "type": "string",
+                                              "enum": [
+                                                "amex",
+                                                "diners",
+                                                "discover",
+                                                "favacard",
+                                                "jcb",
+                                                "mastercard",
+                                                "naranja",
+                                                "unknown",
+                                                "visa"
+                                              ]
+                                            },
+                                            "example": [
+                                              "amex"
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "example": {
+                                  "card": {
+                                    "disallow": {
+                                      "funding": [
+                                        "prepaid"
+                                      ],
+                                      "network": [
+                                        "amex"
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "supported_payment_methods": {
+                            "description": "Computed payment methods that are actually available given the account's gateways\nand the restrictions defined in `payment_method_types` and `payment_method_options`.\n",
+                            "type": "object",
+                            "example": {
+                              "card": {
+                                "networks": [
+                                  "diners",
+                                  "jcb",
+                                  "mastercard",
+                                  "visa"
+                                ],
+                                "required_fields": []
+                              },
+                              "cbu": true
+                            },
+                            "readOnly": true
+                          },
+                          "metadata": {
+                            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "example": {
+                              "some": "metadata"
+                            },
+                            "additionalProperties": {
+                              "maxLength": 500,
+                              "type": [
+                                "string",
+                                "null",
+                                "number",
+                                "boolean"
+                              ]
+                            },
+                            "properties": {}
+                          },
+                          "livemode": {
+                            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "created_at": {
+                            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "updated_at": {
+                            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "object",
+                          "active",
+                          "features",
+                          "login_page",
+                          "livemode",
+                          "created_at",
+                          "updated_at"
+                        ]
+                      }
+                    },
+                    "links": {
+                      "description": "Pagination links",
+                      "type": "object",
+                      "properties": {
+                        "first": {
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "https://api.debi.pro/v1/customers"
+                        },
+                        "last": {
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "https://api.debi.pro/v1/customers"
+                        },
+                        "next": {
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "https://api.debi.pro/v1/customers"
+                        },
+                        "prev": {
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "https://api.debi.pro/v1/customers"
+                        }
+                      },
+                      "title": "Response Meta"
+                    },
+                    "meta": {
+                      "description": "Pagination metadata",
+                      "type": "object",
+                      "properties": {
+                        "per_page": {
+                          "type": "number",
+                          "example": 25
+                        },
+                        "total": {
+                          "type": "number",
+                          "example": 2500
+                        },
+                        "path": {
+                          "type": "string",
+                          "example": "https://api.debi.pro/v1/customers"
+                        },
+                        "next_cursor": {
+                          "description": "Pagination Cursor.",
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        "prev_cursor": {
+                          "description": "Pagination Cursor.",
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        }
+                      },
+                      "title": "Response Meta"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "BPCqXz3a8YbE",
+                      "object": "billing_portal.configuration",
+                      "active": true,
+                      "is_default": true,
+                      "business_profile": {
+                        "headline": "Manage your subscription",
+                        "privacy_policy_url": null,
+                        "terms_of_service_url": null
+                      },
+                      "features": {
+                        "customer_update": {
+                          "enabled": false
+                        },
+                        "invoice_history": {
+                          "enabled": true
+                        },
+                        "payment_method_update": {
+                          "enabled": true
+                        },
+                        "subscription_cancel": {
+                          "enabled": true
+                        }
+                      },
+                      "login_page": {
+                        "enabled": true,
+                        "url": "https://billing.debi.pro/login/acme"
+                      },
+                      "default_return_url": "https://example.com/account",
+                      "payment_method_types": [
+                        "card"
+                      ],
+                      "payment_method_options": {
+                        "card": {
+                          "disallow": {
+                            "funding": [],
+                            "network": [
+                              "amex"
+                            ]
+                          }
+                        }
+                      },
+                      "supported_payment_methods": {
+                        "card": {
+                          "networks": [
+                            "diners",
+                            "jcb",
+                            "mastercard",
+                            "visa"
+                          ],
+                          "required_fields": []
+                        }
+                      },
+                      "metadata": {
+                        "plan": "pro"
+                      },
+                      "livemode": false,
+                      "created_at": "2024-02-11T23:17:54-03:00",
+                      "updated_at": "2024-02-11T23:17:54-03:00"
+                    }
+                  ],
+                  "links": {
+                    "first": null,
+                    "last": null,
+                    "next": null,
+                    "prev": null
+                  },
+                  "meta": {
+                    "total": 1,
+                    "per_page": 25,
+                    "path": "https://api.debi.pro/v1/billing_portal/configurations"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Unauthorized response",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  },
+                  "title": "Unauthorized"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The billing portal feature is not enabled for the account. Contact Debi support to\nenable it.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Not Found response",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Record not found"
+                    }
+                  },
+                  "title": "Not Found"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Billing Portal Configurations"
+        ]
+      },
+      "post": {
+        "operationId": "BillingPortalConfigurationsCreate",
+        "summary": "Create a Billing Portal Configuration",
+        "description": "Creates a new Billing Portal Configuration. The first configuration created on the account\nautomatically becomes the default configuration used when a Billing Portal Session is created\nwithout an explicit `billing_portal_configuration_id`.\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "encoding": {
+                "metadata": {
+                  "explode": true,
+                  "style": "deepObject"
+                }
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "features": {
+                    "description": "Toggle each feature available in the portal. All four flags are required.\n",
+                    "type": "object",
+                    "properties": {
+                      "customer_update": {
+                        "description": "Allow the customer to update their personal information.",
+                        "type": "boolean"
+                      },
+                      "invoice_history": {
+                        "description": "Allow the customer to view their payment history.",
+                        "type": "boolean"
+                      },
+                      "payment_method_update": {
+                        "description": "Allow the customer to manage their payment methods.",
+                        "type": "boolean"
+                      },
+                      "subscription_cancel": {
+                        "description": "Allow the customer to cancel their subscriptions.",
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "customer_update",
+                      "invoice_history",
+                      "payment_method_update",
+                      "subscription_cancel"
+                    ]
+                  },
+                  "login_page": {
+                    "description": "Configuration of the standalone login page.",
+                    "type": "object",
+                    "properties": {
+                      "enabled": {
+                        "description": "Enables the public login page for the configuration.",
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "enabled"
+                    ]
+                  },
+                  "business_profile": {
+                    "description": "Business information shown to the customer in the portal.",
+                    "type": "object",
+                    "properties": {
+                      "headline": {
+                        "description": "A short headline displayed at the top of the portal.",
+                        "type": "string"
+                      },
+                      "privacy_policy_url": {
+                        "description": "URL to your privacy policy.",
+                        "type": "string"
+                      },
+                      "terms_of_service_url": {
+                        "description": "URL to your terms of service.",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "default_return_url": {
+                    "description": "Default URL the customer is redirected to after they are done managing their\nbilling.\n",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "payment_method_types": {
+                    "description": "Array of payment method types to allow. If not specified, all available payment methods will be allowed.\n",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "card",
+                        "cbu",
+                        "cvu",
+                        "sepa_debit",
+                        "transfer"
+                      ]
+                    },
+                    "example": [
+                      "card",
+                      "cbu",
+                      "cvu"
+                    ]
+                  },
+                  "payment_method_options": {
+                    "description": "Configuration options for specific payment method types, such as disallowing certain card networks or funding types.\n",
+                    "type": "object",
+                    "example": {
+                      "card": {
+                        "disallow": {
+                          "funding": [
+                            "prepaid"
+                          ],
+                          "network": [
+                            "amex"
+                          ]
+                        }
+                      }
+                    },
+                    "properties": {
+                      "card": {
+                        "type": "object",
+                        "properties": {
+                          "disallow": {
+                            "type": "object",
+                            "properties": {
+                              "funding": {
+                                "description": "Funding types to disallow",
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid",
+                                    "unknown"
+                                  ]
+                                },
+                                "example": [
+                                  "prepaid"
+                                ]
+                              },
+                              "network": {
+                                "description": "Card networks to disallow",
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "amex",
+                                    "diners",
+                                    "discover",
+                                    "favacard",
+                                    "jcb",
+                                    "mastercard",
+                                    "naranja",
+                                    "unknown",
+                                    "visa"
+                                  ]
+                                },
+                                "example": [
+                                  "amex"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "metadata": {
+                    "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "example": {
+                      "some": "metadata"
+                    },
+                    "additionalProperties": {
+                      "maxLength": 500,
+                      "type": [
+                        "string",
+                        "null",
+                        "number",
+                        "boolean"
+                      ]
+                    },
+                    "properties": {}
+                  }
+                },
+                "required": [
+                  "features",
+                  "login_page"
+                ]
+              },
+              "example": {
+                "features": {
+                  "customer_update": false,
+                  "invoice_history": true,
+                  "payment_method_update": true,
+                  "subscription_cancel": true
+                },
+                "login_page": {
+                  "enabled": true
+                },
+                "business_profile": {
+                  "headline": "Manage your subscription"
+                },
+                "default_return_url": "https://example.com/account",
+                "payment_method_types": [
+                  "card",
+                  "cbu"
+                ],
+                "payment_method_options": {
+                  "card": {
+                    "disallow": {
+                      "funding": [],
+                      "network": [
+                        "amex"
+                      ]
+                    }
+                  }
+                },
+                "metadata": {
+                  "plan": "pro"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "description": "A Billing Portal Configuration describes the functionality and appearance of a billing portal session.\nYou can have multiple configurations and pick the one to use when creating a Billing Portal Session.",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "Unique identifier for the Billing Portal Configuration.",
+                          "type": "string",
+                          "example": "BPCqXz3a8YbE",
+                          "readOnly": true
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "billing_portal.configuration"
+                          ]
+                        },
+                        "active": {
+                          "description": "Whether the configuration is active and can be used to create sessions.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "is_default": {
+                          "description": "Whether this is the default configuration for the account. The first configuration created becomes the default automatically.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "business_profile": {
+                          "description": "The business information shown to the customer in the portal.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "headline": {
+                              "description": "A short headline displayed at the top of the portal.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "Manage your subscription"
+                            },
+                            "privacy_policy_url": {
+                              "description": "URL to your privacy policy.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://example.com/privacy"
+                            },
+                            "terms_of_service_url": {
+                              "description": "URL to your terms of service.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://example.com/terms"
+                            }
+                          }
+                        },
+                        "features": {
+                          "description": "The features enabled in the portal for the customer.",
+                          "type": "object",
+                          "properties": {
+                            "customer_update": {
+                              "description": "Allow the customer to update their personal information.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": false
+                                }
+                              }
+                            },
+                            "invoice_history": {
+                              "description": "Allow the customer to view their payment history.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            },
+                            "payment_method_update": {
+                              "description": "Allow the customer to add, remove and choose default payment methods.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            },
+                            "subscription_cancel": {
+                              "description": "Allow the customer to cancel their subscriptions.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "login_page": {
+                          "description": "Configuration of the login page that allows customers to access the portal with their email.",
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "description": "Whether the standalone login page is enabled.",
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "url": {
+                              "description": "Public URL of the login page when enabled.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://billing.debi.pro/login/acme",
+                              "readOnly": true
+                            }
+                          }
+                        },
+                        "default_return_url": {
+                          "description": "Default URL the customer is redirected to after they are done managing their billing. Can\nbe overridden on a per-session basis when creating a Billing Portal Session.\n",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "example": "https://example.com/account"
+                        },
+                        "payment_method_types": {
+                          "description": "Subset of payment method types the customer can use inside the portal. If `null` all\nconfigured payment methods of the account will be available.\n",
+                          "allOf": [
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "card",
+                                  "cbu",
+                                  "cvu",
+                                  "sepa_debit",
+                                  "transfer"
+                                ]
+                              },
+                              "description": "Array of payment method types to allow. If not specified, all available payment methods will be allowed.\n",
+                              "example": [
+                                "card",
+                                "cbu",
+                                "cvu"
+                              ]
+                            }
+                          ]
+                        },
+                        "payment_method_options": {
+                          "description": "Fine-grained configuration for each payment method type (e.g. allowed card networks).",
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "description": "Configuration options for specific payment method types, such as disallowing certain card networks or funding types.\n",
+                              "properties": {
+                                "card": {
+                                  "type": "object",
+                                  "properties": {
+                                    "disallow": {
+                                      "type": "object",
+                                      "properties": {
+                                        "funding": {
+                                          "description": "Funding types to disallow",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "enum": [
+                                              "credit",
+                                              "debit",
+                                              "prepaid",
+                                              "unknown"
+                                            ]
+                                          },
+                                          "example": [
+                                            "prepaid"
+                                          ]
+                                        },
+                                        "network": {
+                                          "description": "Card networks to disallow",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "enum": [
+                                              "amex",
+                                              "diners",
+                                              "discover",
+                                              "favacard",
+                                              "jcb",
+                                              "mastercard",
+                                              "naranja",
+                                              "unknown",
+                                              "visa"
+                                            ]
+                                          },
+                                          "example": [
+                                            "amex"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "example": {
+                                "card": {
+                                  "disallow": {
+                                    "funding": [
+                                      "prepaid"
+                                    ],
+                                    "network": [
+                                      "amex"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "supported_payment_methods": {
+                          "description": "Computed payment methods that are actually available given the account's gateways\nand the restrictions defined in `payment_method_types` and `payment_method_options`.\n",
+                          "type": "object",
+                          "example": {
+                            "card": {
+                              "networks": [
+                                "diners",
+                                "jcb",
+                                "mastercard",
+                                "visa"
+                              ],
+                              "required_fields": []
+                            },
+                            "cbu": true
+                          },
+                          "readOnly": true
+                        },
+                        "metadata": {
+                          "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "additionalProperties": {
+                            "maxLength": 500,
+                            "type": [
+                              "string",
+                              "null",
+                              "number",
+                              "boolean"
+                            ]
+                          },
+                          "properties": {}
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "created_at": {
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "updated_at": {
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "object",
+                        "active",
+                        "features",
+                        "login_page",
+                        "livemode",
+                        "created_at",
+                        "updated_at"
+                      ],
+                      "title": "Billing Portal Configuration"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Unauthorized response",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  },
+                  "title": "Unauthorized"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Billing portal feature is not enabled for the account.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Not Found response",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Record not found"
+                    }
+                  },
+                  "title": "Not Found"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "example": {
+                  "errors": {
+                    "features.customer_update": [
+                      "El campo es obligatorio."
+                    ],
+                    "features.invoice_history": [
+                      "El campo es obligatorio."
+                    ],
+                    "features.payment_method_update": [
+                      "El campo es obligatorio."
+                    ],
+                    "features.subscription_cancel": [
+                      "El campo es obligatorio."
+                    ]
+                  },
+                  "message": "The given data was invalid."
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Billing Portal Configurations"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/v1/billing_portal/configurations/{id}": {
+      "get": {
+        "operationId": "BillingPortalConfigurationsRetrieve",
+        "summary": "Retrieve a Billing Portal Configuration",
+        "description": "Retrieves the Billing Portal Configuration with the given ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "[Billing Portal Configuration ID](#tag/Billing-Portal-Configurations).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "BPCqXz3a8YbE"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "description": "A Billing Portal Configuration describes the functionality and appearance of a billing portal session.\nYou can have multiple configurations and pick the one to use when creating a Billing Portal Session.",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "Unique identifier for the Billing Portal Configuration.",
+                          "type": "string",
+                          "example": "BPCqXz3a8YbE",
+                          "readOnly": true
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "billing_portal.configuration"
+                          ]
+                        },
+                        "active": {
+                          "description": "Whether the configuration is active and can be used to create sessions.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "is_default": {
+                          "description": "Whether this is the default configuration for the account. The first configuration created becomes the default automatically.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "business_profile": {
+                          "description": "The business information shown to the customer in the portal.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "headline": {
+                              "description": "A short headline displayed at the top of the portal.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "Manage your subscription"
+                            },
+                            "privacy_policy_url": {
+                              "description": "URL to your privacy policy.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://example.com/privacy"
+                            },
+                            "terms_of_service_url": {
+                              "description": "URL to your terms of service.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://example.com/terms"
+                            }
+                          }
+                        },
+                        "features": {
+                          "description": "The features enabled in the portal for the customer.",
+                          "type": "object",
+                          "properties": {
+                            "customer_update": {
+                              "description": "Allow the customer to update their personal information.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": false
+                                }
+                              }
+                            },
+                            "invoice_history": {
+                              "description": "Allow the customer to view their payment history.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            },
+                            "payment_method_update": {
+                              "description": "Allow the customer to add, remove and choose default payment methods.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            },
+                            "subscription_cancel": {
+                              "description": "Allow the customer to cancel their subscriptions.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "login_page": {
+                          "description": "Configuration of the login page that allows customers to access the portal with their email.",
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "description": "Whether the standalone login page is enabled.",
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "url": {
+                              "description": "Public URL of the login page when enabled.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://billing.debi.pro/login/acme",
+                              "readOnly": true
+                            }
+                          }
+                        },
+                        "default_return_url": {
+                          "description": "Default URL the customer is redirected to after they are done managing their billing. Can\nbe overridden on a per-session basis when creating a Billing Portal Session.\n",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "example": "https://example.com/account"
+                        },
+                        "payment_method_types": {
+                          "description": "Subset of payment method types the customer can use inside the portal. If `null` all\nconfigured payment methods of the account will be available.\n",
+                          "allOf": [
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "card",
+                                  "cbu",
+                                  "cvu",
+                                  "sepa_debit",
+                                  "transfer"
+                                ]
+                              },
+                              "description": "Array of payment method types to allow. If not specified, all available payment methods will be allowed.\n",
+                              "example": [
+                                "card",
+                                "cbu",
+                                "cvu"
+                              ]
+                            }
+                          ]
+                        },
+                        "payment_method_options": {
+                          "description": "Fine-grained configuration for each payment method type (e.g. allowed card networks).",
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "description": "Configuration options for specific payment method types, such as disallowing certain card networks or funding types.\n",
+                              "properties": {
+                                "card": {
+                                  "type": "object",
+                                  "properties": {
+                                    "disallow": {
+                                      "type": "object",
+                                      "properties": {
+                                        "funding": {
+                                          "description": "Funding types to disallow",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "enum": [
+                                              "credit",
+                                              "debit",
+                                              "prepaid",
+                                              "unknown"
+                                            ]
+                                          },
+                                          "example": [
+                                            "prepaid"
+                                          ]
+                                        },
+                                        "network": {
+                                          "description": "Card networks to disallow",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "enum": [
+                                              "amex",
+                                              "diners",
+                                              "discover",
+                                              "favacard",
+                                              "jcb",
+                                              "mastercard",
+                                              "naranja",
+                                              "unknown",
+                                              "visa"
+                                            ]
+                                          },
+                                          "example": [
+                                            "amex"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "example": {
+                                "card": {
+                                  "disallow": {
+                                    "funding": [
+                                      "prepaid"
+                                    ],
+                                    "network": [
+                                      "amex"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "supported_payment_methods": {
+                          "description": "Computed payment methods that are actually available given the account's gateways\nand the restrictions defined in `payment_method_types` and `payment_method_options`.\n",
+                          "type": "object",
+                          "example": {
+                            "card": {
+                              "networks": [
+                                "diners",
+                                "jcb",
+                                "mastercard",
+                                "visa"
+                              ],
+                              "required_fields": []
+                            },
+                            "cbu": true
+                          },
+                          "readOnly": true
+                        },
+                        "metadata": {
+                          "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "additionalProperties": {
+                            "maxLength": 500,
+                            "type": [
+                              "string",
+                              "null",
+                              "number",
+                              "boolean"
+                            ]
+                          },
+                          "properties": {}
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "created_at": {
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "updated_at": {
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "object",
+                        "active",
+                        "features",
+                        "login_page",
+                        "livemode",
+                        "created_at",
+                        "updated_at"
+                      ],
+                      "title": "Billing Portal Configuration"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Unauthorized response",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  },
+                  "title": "Unauthorized"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Not Found response",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Record not found"
+                    }
+                  },
+                  "title": "Not Found"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Billing Portal Configurations"
+        ]
+      },
+      "put": {
+        "operationId": "BillingPortalConfigurationsUpdate",
+        "summary": "Update a Billing Portal Configuration",
+        "description": "Updates an existing Billing Portal Configuration. The request body has the same shape as the\ncreate request: `features` and `login_page.enabled` are always required, even when you only\nwant to change other fields.\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "[Billing Portal Configuration ID](#tag/Billing-Portal-Configurations).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "BPCqXz3a8YbE"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "encoding": {
+                "metadata": {
+                  "explode": true,
+                  "style": "deepObject"
+                }
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "features": {
+                    "type": "object",
+                    "properties": {
+                      "customer_update": {
+                        "type": "boolean"
+                      },
+                      "invoice_history": {
+                        "type": "boolean"
+                      },
+                      "payment_method_update": {
+                        "type": "boolean"
+                      },
+                      "subscription_cancel": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "customer_update",
+                      "invoice_history",
+                      "payment_method_update",
+                      "subscription_cancel"
+                    ]
+                  },
+                  "login_page": {
+                    "type": "object",
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "enabled"
+                    ]
+                  },
+                  "business_profile": {
+                    "type": "object",
+                    "properties": {
+                      "headline": {
+                        "type": "string"
+                      },
+                      "privacy_policy_url": {
+                        "type": "string"
+                      },
+                      "terms_of_service_url": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "default_return_url": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "payment_method_types": {
+                    "description": "Array of payment method types to allow. If not specified, all available payment methods will be allowed.\n",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "card",
+                        "cbu",
+                        "cvu",
+                        "sepa_debit",
+                        "transfer"
+                      ]
+                    },
+                    "example": [
+                      "card",
+                      "cbu",
+                      "cvu"
+                    ]
+                  },
+                  "payment_method_options": {
+                    "description": "Configuration options for specific payment method types, such as disallowing certain card networks or funding types.\n",
+                    "type": "object",
+                    "example": {
+                      "card": {
+                        "disallow": {
+                          "funding": [
+                            "prepaid"
+                          ],
+                          "network": [
+                            "amex"
+                          ]
+                        }
+                      }
+                    },
+                    "properties": {
+                      "card": {
+                        "type": "object",
+                        "properties": {
+                          "disallow": {
+                            "type": "object",
+                            "properties": {
+                              "funding": {
+                                "description": "Funding types to disallow",
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid",
+                                    "unknown"
+                                  ]
+                                },
+                                "example": [
+                                  "prepaid"
+                                ]
+                              },
+                              "network": {
+                                "description": "Card networks to disallow",
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "amex",
+                                    "diners",
+                                    "discover",
+                                    "favacard",
+                                    "jcb",
+                                    "mastercard",
+                                    "naranja",
+                                    "unknown",
+                                    "visa"
+                                  ]
+                                },
+                                "example": [
+                                  "amex"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "metadata": {
+                    "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "example": {
+                      "some": "metadata"
+                    },
+                    "additionalProperties": {
+                      "maxLength": 500,
+                      "type": [
+                        "string",
+                        "null",
+                        "number",
+                        "boolean"
+                      ]
+                    },
+                    "properties": {}
+                  }
+                },
+                "required": [
+                  "features",
+                  "login_page"
+                ]
+              },
+              "example": {
+                "features": {
+                  "customer_update": true,
+                  "invoice_history": true,
+                  "payment_method_update": true,
+                  "subscription_cancel": false
+                },
+                "login_page": {
+                  "enabled": true
+                },
+                "business_profile": {
+                  "headline": "Manage your subscription"
+                },
+                "payment_method_types": [
+                  "card"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "description": "A Billing Portal Configuration describes the functionality and appearance of a billing portal session.\nYou can have multiple configurations and pick the one to use when creating a Billing Portal Session.",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "Unique identifier for the Billing Portal Configuration.",
+                          "type": "string",
+                          "example": "BPCqXz3a8YbE",
+                          "readOnly": true
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "billing_portal.configuration"
+                          ]
+                        },
+                        "active": {
+                          "description": "Whether the configuration is active and can be used to create sessions.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "is_default": {
+                          "description": "Whether this is the default configuration for the account. The first configuration created becomes the default automatically.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "business_profile": {
+                          "description": "The business information shown to the customer in the portal.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "headline": {
+                              "description": "A short headline displayed at the top of the portal.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "Manage your subscription"
+                            },
+                            "privacy_policy_url": {
+                              "description": "URL to your privacy policy.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://example.com/privacy"
+                            },
+                            "terms_of_service_url": {
+                              "description": "URL to your terms of service.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://example.com/terms"
+                            }
+                          }
+                        },
+                        "features": {
+                          "description": "The features enabled in the portal for the customer.",
+                          "type": "object",
+                          "properties": {
+                            "customer_update": {
+                              "description": "Allow the customer to update their personal information.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": false
+                                }
+                              }
+                            },
+                            "invoice_history": {
+                              "description": "Allow the customer to view their payment history.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            },
+                            "payment_method_update": {
+                              "description": "Allow the customer to add, remove and choose default payment methods.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            },
+                            "subscription_cancel": {
+                              "description": "Allow the customer to cancel their subscriptions.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "login_page": {
+                          "description": "Configuration of the login page that allows customers to access the portal with their email.",
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "description": "Whether the standalone login page is enabled.",
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "url": {
+                              "description": "Public URL of the login page when enabled.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://billing.debi.pro/login/acme",
+                              "readOnly": true
+                            }
+                          }
+                        },
+                        "default_return_url": {
+                          "description": "Default URL the customer is redirected to after they are done managing their billing. Can\nbe overridden on a per-session basis when creating a Billing Portal Session.\n",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "example": "https://example.com/account"
+                        },
+                        "payment_method_types": {
+                          "description": "Subset of payment method types the customer can use inside the portal. If `null` all\nconfigured payment methods of the account will be available.\n",
+                          "allOf": [
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "card",
+                                  "cbu",
+                                  "cvu",
+                                  "sepa_debit",
+                                  "transfer"
+                                ]
+                              },
+                              "description": "Array of payment method types to allow. If not specified, all available payment methods will be allowed.\n",
+                              "example": [
+                                "card",
+                                "cbu",
+                                "cvu"
+                              ]
+                            }
+                          ]
+                        },
+                        "payment_method_options": {
+                          "description": "Fine-grained configuration for each payment method type (e.g. allowed card networks).",
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "description": "Configuration options for specific payment method types, such as disallowing certain card networks or funding types.\n",
+                              "properties": {
+                                "card": {
+                                  "type": "object",
+                                  "properties": {
+                                    "disallow": {
+                                      "type": "object",
+                                      "properties": {
+                                        "funding": {
+                                          "description": "Funding types to disallow",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "enum": [
+                                              "credit",
+                                              "debit",
+                                              "prepaid",
+                                              "unknown"
+                                            ]
+                                          },
+                                          "example": [
+                                            "prepaid"
+                                          ]
+                                        },
+                                        "network": {
+                                          "description": "Card networks to disallow",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "enum": [
+                                              "amex",
+                                              "diners",
+                                              "discover",
+                                              "favacard",
+                                              "jcb",
+                                              "mastercard",
+                                              "naranja",
+                                              "unknown",
+                                              "visa"
+                                            ]
+                                          },
+                                          "example": [
+                                            "amex"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "example": {
+                                "card": {
+                                  "disallow": {
+                                    "funding": [
+                                      "prepaid"
+                                    ],
+                                    "network": [
+                                      "amex"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "supported_payment_methods": {
+                          "description": "Computed payment methods that are actually available given the account's gateways\nand the restrictions defined in `payment_method_types` and `payment_method_options`.\n",
+                          "type": "object",
+                          "example": {
+                            "card": {
+                              "networks": [
+                                "diners",
+                                "jcb",
+                                "mastercard",
+                                "visa"
+                              ],
+                              "required_fields": []
+                            },
+                            "cbu": true
+                          },
+                          "readOnly": true
+                        },
+                        "metadata": {
+                          "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "additionalProperties": {
+                            "maxLength": 500,
+                            "type": [
+                              "string",
+                              "null",
+                              "number",
+                              "boolean"
+                            ]
+                          },
+                          "properties": {}
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "created_at": {
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "updated_at": {
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "object",
+                        "active",
+                        "features",
+                        "login_page",
+                        "livemode",
+                        "created_at",
+                        "updated_at"
+                      ],
+                      "title": "Billing Portal Configuration"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Unauthorized response",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  },
+                  "title": "Unauthorized"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Not Found response",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Record not found"
+                    }
+                  },
+                  "title": "Not Found"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "example": {
+                  "errors": {
+                    "payment_method_types": [
+                      "El valor seleccionado para payment_method_types es inválido."
+                    ]
+                  },
+                  "message": "The given data was invalid."
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Billing Portal Configurations"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
+    "/v1/billing_portal/sessions": {
+      "post": {
+        "operationId": "BillingPortalSessionsCreate",
+        "summary": "Create a Billing Portal Session",
+        "description": "Creates a Billing Portal Session for a specific customer. The returned `url` is the URL that\nyou should redirect your customer to so they can manage their billing details. If you don't\nspecify a `billing_portal_configuration_id`, the account's default configuration is used.\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customer_id": {
+                    "description": "[Customer ID](#tag/Customers) the portal session belongs to.\n",
+                    "type": "string",
+                    "example": "CS3Z25Agp708"
+                  },
+                  "billing_portal_configuration_id": {
+                    "description": "[Billing Portal Configuration ID](#tag/Billing-Portal-Configurations) to use for\nthis session. Defaults to the account's default configuration when omitted.\n",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "example": "BPCqXz3a8YbE"
+                  },
+                  "return_url": {
+                    "description": "URL the customer is redirected to after they finish managing their billing.\nOverrides the configuration's `default_return_url` for this session.\n",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "uri",
+                    "example": "https://example.com/account"
+                  }
+                },
+                "required": [
+                  "customer_id"
+                ]
+              },
+              "example": {
+                "customer_id": "CS3Z25Agp708",
+                "billing_portal_configuration_id": "BPCqXz3a8YbE",
+                "return_url": "https://example.com/account"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "description": "A Billing Portal Session is a hosted portal page that lets your customers manage their\nbilling details (payment methods, subscriptions, payment history, ...) without leaving your\nbrand. Create a session for a specific customer and redirect them to the returned `url`.",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "Unique identifier for the Billing Portal Session.",
+                          "type": "string",
+                          "example": "BPS5Z25Agp708",
+                          "readOnly": true
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "billing_portal.session"
+                          ]
+                        },
+                        "customer_id": {
+                          "description": "The [Customer ID](#tag/Customers) the portal session belongs to.\n",
+                          "type": "string",
+                          "example": "CS3Z25Agp708"
+                        },
+                        "billing_portal_configuration_id": {
+                          "description": "The [Billing Portal Configuration](#tag/Billing-Portal-Configurations) used by the session.\nIf not provided when creating the session, the account's default configuration is used.\n",
+                          "type": "string",
+                          "example": "BPCqXz3a8YbE"
+                        },
+                        "url": {
+                          "description": "The URL of the hosted billing portal page. Redirect your customer to this URL to let them\nmanage their billing.\n",
+                          "type": "string",
+                          "example": "https://billing.debi.pro/p/session/BPS5Z25Agp708",
+                          "readOnly": true
+                        },
+                        "return_url": {
+                          "description": "The URL the customer is redirected to after they are done managing their billing. Falls\nback to `default_return_url` from the configuration when not provided.\n",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "example": "https://example.com/account"
+                        },
+                        "livemode": {
+                          "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "created_at": {
+                          "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "updated_at": {
+                          "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "object",
+                        "customer_id",
+                        "billing_portal_configuration_id",
+                        "url",
+                        "livemode",
+                        "created_at",
+                        "updated_at"
+                      ],
+                      "title": "Billing Portal Session"
+                    }
+                  }
+                },
+                "example": {
+                  "data": {
+                    "id": "BPS5Z25Agp708",
+                    "object": "billing_portal.session",
+                    "customer_id": "CS3Z25Agp708",
+                    "billing_portal_configuration_id": "BPCqXz3a8YbE",
+                    "url": "https://billing.debi.pro/p/session/BPS5Z25Agp708",
+                    "return_url": "https://example.com/account",
+                    "livemode": false,
+                    "created_at": "2024-02-11T23:17:54-03:00",
+                    "updated_at": "2024-02-11T23:17:54-03:00"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Unauthorized response",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  },
+                  "title": "Unauthorized"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Billing portal feature is not enabled for the account.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Not Found response",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Record not found"
+                    }
+                  },
+                  "title": "Not Found"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "example": {
+                  "errors": {
+                    "customer_id": [
+                      "El campo es obligatorio."
+                    ]
+                  },
+                  "message": "The given data was invalid."
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Billing Portal Sessions"
+        ],
+        "x-codegen-request-body-name": "body"
+      }
+    },
     "/v1/customers": {
       "get": {
         "operationId": "CustomersGetCustomers",
@@ -28485,26 +30813,89 @@
         },
         "title": "Not Found"
       },
-      "name": {
-        "description": "The customer's full name or business name.",
-        "type": [
-          "null",
-          "string"
-        ],
-        "example": "Jorgelina Castro"
+      "payment_method_types": {
+        "description": "Array of payment method types to allow. If not specified, all available payment methods will be allowed.\n",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "card",
+            "cbu",
+            "cvu",
+            "sepa_debit",
+            "transfer"
+          ]
+        },
+        "example": [
+          "card",
+          "cbu",
+          "cvu"
+        ]
       },
-      "email": {
-        "description": "The customer's email address.",
-        "type": [
-          "null",
-          "string"
-        ],
-        "example": "mail@example.com"
-      },
-      "livemode": {
-        "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
-        "type": "boolean",
-        "example": true
+      "payment_method_options": {
+        "description": "Configuration options for specific payment method types, such as disallowing certain card networks or funding types.\n",
+        "type": "object",
+        "properties": {
+          "card": {
+            "type": "object",
+            "properties": {
+              "disallow": {
+                "type": "object",
+                "properties": {
+                  "funding": {
+                    "description": "Funding types to disallow",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "credit",
+                        "debit",
+                        "prepaid",
+                        "unknown"
+                      ]
+                    },
+                    "example": [
+                      "prepaid"
+                    ]
+                  },
+                  "network": {
+                    "description": "Card networks to disallow",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "amex",
+                        "diners",
+                        "discover",
+                        "favacard",
+                        "jcb",
+                        "mastercard",
+                        "naranja",
+                        "unknown",
+                        "visa"
+                      ]
+                    },
+                    "example": [
+                      "amex"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "card": {
+            "disallow": {
+              "funding": [
+                "prepaid"
+              ],
+              "network": [
+                "amex"
+              ]
+            }
+          }
+        }
       },
       "metadata": {
         "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
@@ -28525,6 +30916,471 @@
             "boolean"
           ]
         }
+      },
+      "livemode": {
+        "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+        "type": "boolean",
+        "example": true
+      },
+      "created_at": {
+        "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+        "type": "string",
+        "format": "date-time",
+        "example": "2022-02-11T23:19:22-03:00"
+      },
+      "updated_at": {
+        "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+        "type": "string",
+        "format": "date-time",
+        "example": "2022-02-11T23:19:22-03:00"
+      },
+      "BillingPortalConfiguration": {
+        "description": "A Billing Portal Configuration describes the functionality and appearance of a billing portal session.\nYou can have multiple configurations and pick the one to use when creating a Billing Portal Session.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the Billing Portal Configuration.",
+            "type": "string",
+            "example": "BPCqXz3a8YbE",
+            "readOnly": true
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "billing_portal.configuration"
+            ]
+          },
+          "active": {
+            "description": "Whether the configuration is active and can be used to create sessions.",
+            "type": "boolean",
+            "example": true
+          },
+          "is_default": {
+            "description": "Whether this is the default configuration for the account. The first configuration created becomes the default automatically.",
+            "type": "boolean",
+            "example": true
+          },
+          "business_profile": {
+            "description": "The business information shown to the customer in the portal.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "headline": {
+                "description": "A short headline displayed at the top of the portal.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Manage your subscription"
+              },
+              "privacy_policy_url": {
+                "description": "URL to your privacy policy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "https://example.com/privacy"
+              },
+              "terms_of_service_url": {
+                "description": "URL to your terms of service.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "https://example.com/terms"
+              }
+            }
+          },
+          "features": {
+            "description": "The features enabled in the portal for the customer.",
+            "type": "object",
+            "properties": {
+              "customer_update": {
+                "description": "Allow the customer to update their personal information.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": false
+                  }
+                }
+              },
+              "invoice_history": {
+                "description": "Allow the customer to view their payment history.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              },
+              "payment_method_update": {
+                "description": "Allow the customer to add, remove and choose default payment methods.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              },
+              "subscription_cancel": {
+                "description": "Allow the customer to cancel their subscriptions.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              }
+            }
+          },
+          "login_page": {
+            "description": "Configuration of the login page that allows customers to access the portal with their email.",
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "description": "Whether the standalone login page is enabled.",
+                "type": "boolean",
+                "example": true
+              },
+              "url": {
+                "description": "Public URL of the login page when enabled.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "https://billing.debi.pro/login/acme",
+                "readOnly": true
+              }
+            }
+          },
+          "default_return_url": {
+            "description": "Default URL the customer is redirected to after they are done managing their billing. Can\nbe overridden on a per-session basis when creating a Billing Portal Session.\n",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "https://example.com/account"
+          },
+          "payment_method_types": {
+            "description": "Subset of payment method types the customer can use inside the portal. If `null` all\nconfigured payment methods of the account will be available.\n",
+            "allOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "card",
+                    "cbu",
+                    "cvu",
+                    "sepa_debit",
+                    "transfer"
+                  ]
+                },
+                "description": "Array of payment method types to allow. If not specified, all available payment methods will be allowed.\n",
+                "example": [
+                  "card",
+                  "cbu",
+                  "cvu"
+                ]
+              }
+            ]
+          },
+          "payment_method_options": {
+            "description": "Fine-grained configuration for each payment method type (e.g. allowed card networks).",
+            "allOf": [
+              {
+                "type": "object",
+                "description": "Configuration options for specific payment method types, such as disallowing certain card networks or funding types.\n",
+                "properties": {
+                  "card": {
+                    "type": "object",
+                    "properties": {
+                      "disallow": {
+                        "type": "object",
+                        "properties": {
+                          "funding": {
+                            "description": "Funding types to disallow",
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "credit",
+                                "debit",
+                                "prepaid",
+                                "unknown"
+                              ]
+                            },
+                            "example": [
+                              "prepaid"
+                            ]
+                          },
+                          "network": {
+                            "description": "Card networks to disallow",
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "amex",
+                                "diners",
+                                "discover",
+                                "favacard",
+                                "jcb",
+                                "mastercard",
+                                "naranja",
+                                "unknown",
+                                "visa"
+                              ]
+                            },
+                            "example": [
+                              "amex"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "card": {
+                    "disallow": {
+                      "funding": [
+                        "prepaid"
+                      ],
+                      "network": [
+                        "amex"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "supported_payment_methods": {
+            "description": "Computed payment methods that are actually available given the account's gateways\nand the restrictions defined in `payment_method_types` and `payment_method_options`.\n",
+            "type": "object",
+            "example": {
+              "card": {
+                "networks": [
+                  "diners",
+                  "jcb",
+                  "mastercard",
+                  "visa"
+                ],
+                "required_fields": []
+              },
+              "cbu": true
+            },
+            "readOnly": true
+          },
+          "metadata": {
+            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
+            "type": [
+              "object",
+              "null"
+            ],
+            "example": {
+              "some": "metadata"
+            },
+            "additionalProperties": {
+              "maxLength": 500,
+              "type": [
+                "string",
+                "null",
+                "number",
+                "boolean"
+              ]
+            },
+            "properties": {}
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean",
+            "example": true
+          },
+          "created_at": {
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          },
+          "updated_at": {
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          }
+        },
+        "required": [
+          "id",
+          "object",
+          "active",
+          "features",
+          "login_page",
+          "livemode",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "Billing Portal Configuration"
+      },
+      "Links": {
+        "description": "Pagination links",
+        "type": "object",
+        "properties": {
+          "first": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": "https://api.debi.pro/v1/customers"
+          },
+          "last": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": "https://api.debi.pro/v1/customers"
+          },
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": "https://api.debi.pro/v1/customers"
+          },
+          "prev": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": "https://api.debi.pro/v1/customers"
+          }
+        },
+        "title": "Response Meta"
+      },
+      "Meta": {
+        "description": "Pagination metadata",
+        "type": "object",
+        "properties": {
+          "per_page": {
+            "type": "number",
+            "example": 25
+          },
+          "total": {
+            "type": "number",
+            "example": 2500
+          },
+          "path": {
+            "type": "string",
+            "example": "https://api.debi.pro/v1/customers"
+          },
+          "next_cursor": {
+            "description": "Pagination Cursor.",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "prev_cursor": {
+            "description": "Pagination Cursor.",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "title": "Response Meta"
+      },
+      "BillingPortalSession": {
+        "description": "A Billing Portal Session is a hosted portal page that lets your customers manage their\nbilling details (payment methods, subscriptions, payment history, ...) without leaving your\nbrand. Create a session for a specific customer and redirect them to the returned `url`.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the Billing Portal Session.",
+            "type": "string",
+            "example": "BPS5Z25Agp708",
+            "readOnly": true
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "billing_portal.session"
+            ]
+          },
+          "customer_id": {
+            "description": "The [Customer ID](#tag/Customers) the portal session belongs to.\n",
+            "type": "string",
+            "example": "CS3Z25Agp708"
+          },
+          "billing_portal_configuration_id": {
+            "description": "The [Billing Portal Configuration](#tag/Billing-Portal-Configurations) used by the session.\nIf not provided when creating the session, the account's default configuration is used.\n",
+            "type": "string",
+            "example": "BPCqXz3a8YbE"
+          },
+          "url": {
+            "description": "The URL of the hosted billing portal page. Redirect your customer to this URL to let them\nmanage their billing.\n",
+            "type": "string",
+            "example": "https://billing.debi.pro/p/session/BPS5Z25Agp708",
+            "readOnly": true
+          },
+          "return_url": {
+            "description": "The URL the customer is redirected to after they are done managing their billing. Falls\nback to `default_return_url` from the configuration when not provided.\n",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "https://example.com/account"
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean",
+            "example": true
+          },
+          "created_at": {
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          },
+          "updated_at": {
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          }
+        },
+        "required": [
+          "id",
+          "object",
+          "customer_id",
+          "billing_portal_configuration_id",
+          "url",
+          "livemode",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "Billing Portal Session"
+      },
+      "name": {
+        "description": "The customer's full name or business name.",
+        "type": [
+          "null",
+          "string"
+        ],
+        "example": "Jorgelina Castro"
+      },
+      "email": {
+        "description": "The customer's email address.",
+        "type": [
+          "null",
+          "string"
+        ],
+        "example": "mail@example.com"
       },
       "mobile_number": {
         "description": "The customer's mobile phone number.",
@@ -28565,18 +31421,6 @@
           "string"
         ],
         "example": "DNI"
-      },
-      "created_at": {
-        "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
-        "type": "string",
-        "format": "date-time",
-        "example": "2022-02-11T23:19:22-03:00"
-      },
-      "updated_at": {
-        "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
-        "type": "string",
-        "format": "date-time",
-        "example": "2022-02-11T23:19:22-03:00"
       },
       "deleted_at": {
         "description": "Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
@@ -28715,74 +31559,6 @@
           "updated_at"
         ],
         "title": "Customer"
-      },
-      "Links": {
-        "description": "Pagination links",
-        "type": "object",
-        "properties": {
-          "first": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": "https://api.debi.pro/v1/customers"
-          },
-          "last": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": "https://api.debi.pro/v1/customers"
-          },
-          "next": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": "https://api.debi.pro/v1/customers"
-          },
-          "prev": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": "https://api.debi.pro/v1/customers"
-          }
-        },
-        "title": "Response Meta"
-      },
-      "Meta": {
-        "description": "Pagination metadata",
-        "type": "object",
-        "properties": {
-          "per_page": {
-            "type": "number",
-            "example": 25
-          },
-          "total": {
-            "type": "number",
-            "example": 2500
-          },
-          "path": {
-            "type": "string",
-            "example": "https://api.debi.pro/v1/customers"
-          },
-          "next_cursor": {
-            "description": "Pagination Cursor.",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "prev_cursor": {
-            "description": "Pagination Cursor.",
-            "type": [
-              "null",
-              "string"
-            ]
-          }
-        },
-        "title": "Response Meta"
       },
       "id": {
         "description": "Unique identifier for the object.",
@@ -30204,90 +32980,6 @@
         "description": "Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.\nThis mode prevents inconclusive responses (such as payments with status `submitted`) by using only gateways that can process payments instantly, ensuring a fast and conclusive outcome.\nIt is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.\n",
         "type": "boolean",
         "example": true
-      },
-      "payment_method_types": {
-        "description": "Array of payment method types to allow. If not specified, all available payment methods will be allowed.\n",
-        "type": "array",
-        "items": {
-          "type": "string",
-          "enum": [
-            "card",
-            "cbu",
-            "cvu",
-            "sepa_debit",
-            "transfer"
-          ]
-        },
-        "example": [
-          "card",
-          "cbu",
-          "cvu"
-        ]
-      },
-      "payment_method_options": {
-        "description": "Configuration options for specific payment method types, such as disallowing certain card networks or funding types.\n",
-        "type": "object",
-        "properties": {
-          "card": {
-            "type": "object",
-            "properties": {
-              "disallow": {
-                "type": "object",
-                "properties": {
-                  "funding": {
-                    "description": "Funding types to disallow",
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "enum": [
-                        "credit",
-                        "debit",
-                        "prepaid",
-                        "unknown"
-                      ]
-                    },
-                    "example": [
-                      "prepaid"
-                    ]
-                  },
-                  "network": {
-                    "description": "Card networks to disallow",
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "enum": [
-                        "amex",
-                        "diners",
-                        "discover",
-                        "favacard",
-                        "jcb",
-                        "mastercard",
-                        "naranja",
-                        "unknown",
-                        "visa"
-                      ]
-                    },
-                    "example": [
-                      "amex"
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        },
-        "example": {
-          "card": {
-            "disallow": {
-              "funding": [
-                "prepaid"
-              ],
-              "network": [
-                "amex"
-              ]
-            }
-          }
-        }
       },
       "Link": {
         "description": "This object represents a public link of your organization.",
@@ -33253,6 +35945,370 @@
             }
           }
         ]
+      },
+      "billing_portal_configuration": {
+        "description": "A Billing Portal Configuration describes the functionality and appearance of a billing portal session.\nYou can have multiple configurations and pick the one to use when creating a Billing Portal Session.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the Billing Portal Configuration.",
+            "type": "string",
+            "example": "BPCqXz3a8YbE",
+            "readOnly": true
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "billing_portal.configuration"
+            ]
+          },
+          "active": {
+            "description": "Whether the configuration is active and can be used to create sessions.",
+            "type": "boolean",
+            "example": true
+          },
+          "is_default": {
+            "description": "Whether this is the default configuration for the account. The first configuration created becomes the default automatically.",
+            "type": "boolean",
+            "example": true
+          },
+          "business_profile": {
+            "description": "The business information shown to the customer in the portal.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "headline": {
+                "description": "A short headline displayed at the top of the portal.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Manage your subscription"
+              },
+              "privacy_policy_url": {
+                "description": "URL to your privacy policy.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "https://example.com/privacy"
+              },
+              "terms_of_service_url": {
+                "description": "URL to your terms of service.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "https://example.com/terms"
+              }
+            }
+          },
+          "features": {
+            "description": "The features enabled in the portal for the customer.",
+            "type": "object",
+            "properties": {
+              "customer_update": {
+                "description": "Allow the customer to update their personal information.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": false
+                  }
+                }
+              },
+              "invoice_history": {
+                "description": "Allow the customer to view their payment history.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              },
+              "payment_method_update": {
+                "description": "Allow the customer to add, remove and choose default payment methods.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              },
+              "subscription_cancel": {
+                "description": "Allow the customer to cancel their subscriptions.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              }
+            }
+          },
+          "login_page": {
+            "description": "Configuration of the login page that allows customers to access the portal with their email.",
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "description": "Whether the standalone login page is enabled.",
+                "type": "boolean",
+                "example": true
+              },
+              "url": {
+                "description": "Public URL of the login page when enabled.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "https://billing.debi.pro/login/acme",
+                "readOnly": true
+              }
+            }
+          },
+          "default_return_url": {
+            "description": "Default URL the customer is redirected to after they are done managing their billing. Can\nbe overridden on a per-session basis when creating a Billing Portal Session.\n",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "https://example.com/account"
+          },
+          "payment_method_types": {
+            "description": "Subset of payment method types the customer can use inside the portal. If `null` all\nconfigured payment methods of the account will be available.\n",
+            "allOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "card",
+                    "cbu",
+                    "cvu",
+                    "sepa_debit",
+                    "transfer"
+                  ]
+                },
+                "description": "Array of payment method types to allow. If not specified, all available payment methods will be allowed.\n",
+                "example": [
+                  "card",
+                  "cbu",
+                  "cvu"
+                ]
+              }
+            ]
+          },
+          "payment_method_options": {
+            "description": "Fine-grained configuration for each payment method type (e.g. allowed card networks).",
+            "allOf": [
+              {
+                "type": "object",
+                "description": "Configuration options for specific payment method types, such as disallowing certain card networks or funding types.\n",
+                "properties": {
+                  "card": {
+                    "type": "object",
+                    "properties": {
+                      "disallow": {
+                        "type": "object",
+                        "properties": {
+                          "funding": {
+                            "description": "Funding types to disallow",
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "credit",
+                                "debit",
+                                "prepaid",
+                                "unknown"
+                              ]
+                            },
+                            "example": [
+                              "prepaid"
+                            ]
+                          },
+                          "network": {
+                            "description": "Card networks to disallow",
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "amex",
+                                "diners",
+                                "discover",
+                                "favacard",
+                                "jcb",
+                                "mastercard",
+                                "naranja",
+                                "unknown",
+                                "visa"
+                              ]
+                            },
+                            "example": [
+                              "amex"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "card": {
+                    "disallow": {
+                      "funding": [
+                        "prepaid"
+                      ],
+                      "network": [
+                        "amex"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "supported_payment_methods": {
+            "description": "Computed payment methods that are actually available given the account's gateways\nand the restrictions defined in `payment_method_types` and `payment_method_options`.\n",
+            "type": "object",
+            "example": {
+              "card": {
+                "networks": [
+                  "diners",
+                  "jcb",
+                  "mastercard",
+                  "visa"
+                ],
+                "required_fields": []
+              },
+              "cbu": true
+            },
+            "readOnly": true
+          },
+          "metadata": {
+            "description": "Set of [key-value pairs](#section/Metadata) that you can attach\nto an object. This can be useful for storing additional\ninformation about the object in a structured format.\nAll keys can be unset by posting `null` value to `metadata`.\n",
+            "type": [
+              "object",
+              "null"
+            ],
+            "example": {
+              "some": "metadata"
+            },
+            "additionalProperties": {
+              "maxLength": 500,
+              "type": [
+                "string",
+                "null",
+                "number",
+                "boolean"
+              ]
+            },
+            "properties": {}
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean",
+            "example": true
+          },
+          "created_at": {
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          },
+          "updated_at": {
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          }
+        },
+        "required": [
+          "id",
+          "object",
+          "active",
+          "features",
+          "login_page",
+          "livemode",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "Billing Portal Configuration"
+      },
+      "billing_portal_session": {
+        "description": "A Billing Portal Session is a hosted portal page that lets your customers manage their\nbilling details (payment methods, subscriptions, payment history, ...) without leaving your\nbrand. Create a session for a specific customer and redirect them to the returned `url`.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the Billing Portal Session.",
+            "type": "string",
+            "example": "BPS5Z25Agp708",
+            "readOnly": true
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "billing_portal.session"
+            ]
+          },
+          "customer_id": {
+            "description": "The [Customer ID](#tag/Customers) the portal session belongs to.\n",
+            "type": "string",
+            "example": "CS3Z25Agp708"
+          },
+          "billing_portal_configuration_id": {
+            "description": "The [Billing Portal Configuration](#tag/Billing-Portal-Configurations) used by the session.\nIf not provided when creating the session, the account's default configuration is used.\n",
+            "type": "string",
+            "example": "BPCqXz3a8YbE"
+          },
+          "url": {
+            "description": "The URL of the hosted billing portal page. Redirect your customer to this URL to let them\nmanage their billing.\n",
+            "type": "string",
+            "example": "https://billing.debi.pro/p/session/BPS5Z25Agp708",
+            "readOnly": true
+          },
+          "return_url": {
+            "description": "The URL the customer is redirected to after they are done managing their billing. Falls\nback to `default_return_url` from the configuration when not provided.\n",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "https://example.com/account"
+          },
+          "livemode": {
+            "description": "Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.",
+            "type": "boolean",
+            "example": true
+          },
+          "created_at": {
+            "description": "Time at which the object was created. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          },
+          "updated_at": {
+            "description": "Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          }
+        },
+        "required": [
+          "id",
+          "object",
+          "customer_id",
+          "billing_portal_configuration_id",
+          "url",
+          "livemode",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "Billing Portal Session"
       },
       "customer": {
         "description": "This object represents a customer of your organization.",
@@ -37315,6 +40371,85 @@
       }
     },
     "examples": {
+      "billing_portal_configuration": {
+        "summary": "Sample Billing Portal Configuration",
+        "value": {
+          "id": "BPCqXz3a8YbE",
+          "object": "billing_portal.configuration",
+          "active": true,
+          "is_default": true,
+          "business_profile": {
+            "headline": "Manage your subscription",
+            "privacy_policy_url": "https://example.com/privacy",
+            "terms_of_service_url": "https://example.com/terms"
+          },
+          "features": {
+            "customer_update": {
+              "enabled": false
+            },
+            "invoice_history": {
+              "enabled": true
+            },
+            "payment_method_update": {
+              "enabled": true
+            },
+            "subscription_cancel": {
+              "enabled": true
+            }
+          },
+          "login_page": {
+            "enabled": true,
+            "url": "https://billing.debi.pro/login/acme"
+          },
+          "default_return_url": "https://example.com/account",
+          "payment_method_types": [
+            "card",
+            "cbu"
+          ],
+          "payment_method_options": {
+            "card": {
+              "disallow": {
+                "funding": [],
+                "network": [
+                  "amex"
+                ]
+              }
+            }
+          },
+          "supported_payment_methods": {
+            "card": {
+              "networks": [
+                "diners",
+                "jcb",
+                "mastercard",
+                "visa"
+              ],
+              "required_fields": []
+            },
+            "cbu": true
+          },
+          "metadata": {
+            "plan": "pro"
+          },
+          "livemode": false,
+          "created_at": "2024-02-11T23:17:54-03:00",
+          "updated_at": "2024-02-11T23:17:54-03:00"
+        }
+      },
+      "billing_portal_session": {
+        "summary": "Sample Billing Portal Session",
+        "value": {
+          "id": "BPS5Z25Agp708",
+          "object": "billing_portal.session",
+          "customer_id": "CS3Z25Agp708",
+          "billing_portal_configuration_id": "BPCqXz3a8YbE",
+          "url": "https://billing.debi.pro/p/session/BPS5Z25Agp708",
+          "return_url": "https://example.com/account",
+          "livemode": false,
+          "created_at": "2024-02-11T23:17:54-03:00",
+          "updated_at": "2024-02-11T23:17:54-03:00"
+        }
+      },
       "customer": {
         "summary": "Sample Customer",
         "value": {
@@ -37833,6 +40968,14 @@
     }
   },
   "tags": [
+    {
+      "name": "Billing Portal Configurations",
+      "description": "A Billing Portal Configuration describes the functionality and appearance of a billing portal\nsession. You can have multiple configurations and pick which one to use when creating a\nBilling Portal Session. The first configuration created on the account is set as the default\nautomatically.\n\nThe billing portal feature must be enabled on your account. Contact Debi support if you get\na `404` response on these endpoints.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/billing_portal_configuration\" exampleRef=\"#/components/examples/billing_portal_configuration\" showReadOnly={true} showWriteOnly={true} />\n"
+    },
+    {
+      "name": "Billing Portal Sessions",
+      "description": "A Billing Portal Session is the hosted page your customers use to manage their billing\ndetails (payment methods, subscriptions, payment history). To start the flow, create a\nsession for a specific customer and redirect them to the returned `url`.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/billing_portal_session\" exampleRef=\"#/components/examples/billing_portal_session\" showReadOnly={true} showWriteOnly={true} />\n"
+    },
     {
       "name": "Customers",
       "description": "This object represents a customer of your organization. It lets you create subscriptions and track payments that belong to the same customer.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/customer\" exampleRef=\"#/components/examples/customer\" showReadOnly={true} showWriteOnly={true} />\n"

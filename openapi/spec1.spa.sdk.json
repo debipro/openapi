@@ -30,6 +30,2464 @@
     }
   ],
   "paths": {
+    "/v1/billing_portal/configurations": {
+      "get": {
+        "operationId": "BillingPortalConfigurationsList",
+        "summary": "Obtener todas las Configuraciones del Portal de Facturación",
+        "description": "Devuelve una lista de Configuraciones del Portal de Facturación de la cuenta. Por defecto se\ndevuelven todas las configuraciones, las más recientes primero. Usá los filtros `active` e\n`is_default` para acotar el resultado.\n",
+        "parameters": [
+          {
+            "name": "active",
+            "in": "query",
+            "description": "Cuando es `true`, solo se devuelven configuraciones activas.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "is_default",
+            "in": "query",
+            "description": "Cuando es `true`, solo se devuelve la configuración por defecto de la cuenta.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "created_at",
+            "in": "query",
+            "description": "Un filtro en la lista, basado en el campo `created_at` del objeto. El valor puede ser un Unix Timestamp, o puede ser un diccionario con varias opciones de consulta diferentes.",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "gt": {
+                  "description": "Mínimo valor para filtrar (exclusivo)",
+                  "type": "integer"
+                },
+                "gte": {
+                  "description": "Mínimo valor para filtrar (inclusivo)",
+                  "type": "integer"
+                },
+                "lt": {
+                  "description": "Máximo valor para filtrar (exclusivo)",
+                  "type": "integer"
+                },
+                "lte": {
+                  "description": "Máximo valor para filtrar (inclusivo)",
+                  "type": "integer"
+                }
+              },
+              "title": "range_query_specs"
+            },
+            "explode": true,
+            "style": "deepObject"
+          },
+          {
+            "name": "ending_before",
+            "in": "query",
+            "description": "Un cursor para utilizar en la paginación. `ending_before` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, comenzando con `obj_ID`, la próxima llamda puede incluir `ending_before=obj_ID` para obtener la página previa.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 20
+          },
+          {
+            "name": "starting_after",
+            "in": "query",
+            "description": "Un cursor para utilizar en la paginación. `starting_after` es un ID que define tu lugar en la lista. Por ejemplo, si en el primer request recibes 100 objetos, terminando con `obj_ID`, la próxima llamda puede incluir `starting_after=obj_ID` para obtener la página siguiente.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "title": "Configuración del Portal de Facturación",
+                        "description": "Una Configuración del Portal de Facturación describe la funcionalidad y la apariencia de una sesión\ndel portal. Puedes tener múltiples configuraciones y elegir la que vas a utilizar al crear una\nSesión del Portal de Facturación.",
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "description": "Identificador único de la Configuración del Portal de Facturación.",
+                            "type": "string",
+                            "example": "BPCqXz3a8YbE",
+                            "readOnly": true
+                          },
+                          "object": {
+                            "type": "string",
+                            "enum": [
+                              "billing_portal.configuration"
+                            ]
+                          },
+                          "active": {
+                            "description": "Indica si la configuración está activa y puede usarse para crear sesiones.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "is_default": {
+                            "description": "Indica si esta es la configuración por defecto de la cuenta. La primera configuración creada se convierte automáticamente en la predeterminada.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "business_profile": {
+                            "description": "La información del negocio que se le muestra al cliente en el portal.",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "properties": {
+                              "headline": {
+                                "description": "Un título corto que se muestra en la parte superior del portal.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "example": "Manage your subscription"
+                              },
+                              "privacy_policy_url": {
+                                "description": "URL de tu política de privacidad.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "example": "https://example.com/privacy"
+                              },
+                              "terms_of_service_url": {
+                                "description": "URL de tus términos y condiciones.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "example": "https://example.com/terms"
+                              }
+                            }
+                          },
+                          "features": {
+                            "description": "Las funcionalidades habilitadas en el portal para el cliente.",
+                            "type": "object",
+                            "properties": {
+                              "customer_update": {
+                                "description": "Permite que el cliente actualice sus datos personales.",
+                                "type": "object",
+                                "properties": {
+                                  "enabled": {
+                                    "type": "boolean",
+                                    "example": false
+                                  }
+                                }
+                              },
+                              "invoice_history": {
+                                "description": "Permite que el cliente vea su historial de pagos.",
+                                "type": "object",
+                                "properties": {
+                                  "enabled": {
+                                    "type": "boolean",
+                                    "example": true
+                                  }
+                                }
+                              },
+                              "payment_method_update": {
+                                "description": "Permite que el cliente agregue, elimine y elija el método de pago por defecto.",
+                                "type": "object",
+                                "properties": {
+                                  "enabled": {
+                                    "type": "boolean",
+                                    "example": true
+                                  }
+                                }
+                              },
+                              "subscription_cancel": {
+                                "description": "Permite que el cliente cancele sus suscripciones.",
+                                "type": "object",
+                                "properties": {
+                                  "enabled": {
+                                    "type": "boolean",
+                                    "example": true
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "login_page": {
+                            "description": "Configuración de la página de inicio de sesión que permite a los clientes acceder al portal con su email.",
+                            "type": "object",
+                            "properties": {
+                              "enabled": {
+                                "description": "Indica si la página de inicio de sesión independiente está habilitada.",
+                                "type": "boolean",
+                                "example": true
+                              },
+                              "url": {
+                                "description": "URL pública de la página de inicio de sesión cuando está habilitada.",
+                                "type": [
+                                  "string",
+                                  "null"
+                                ],
+                                "example": "https://billing.debi.pro/login/acme",
+                                "readOnly": true
+                              }
+                            }
+                          },
+                          "default_return_url": {
+                            "description": "URL por defecto a la que se redirige al cliente cuando termina de administrar su facturación.\nPuede sobrescribirse a nivel de sesión al crear una Sesión del Portal de Facturación.\n",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "example": "https://example.com/account"
+                          },
+                          "payment_method_types": {
+                            "description": "Subconjunto de tipos de métodos de pago que el cliente puede usar dentro del portal. Si es\n`null` estarán disponibles todos los métodos de pago configurados en la cuenta.\n",
+                            "allOf": [
+                              {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "card",
+                                    "cbu",
+                                    "cvu",
+                                    "sepa_debit",
+                                    "transfer"
+                                  ]
+                                },
+                                "description": "Array de tipos de métodos de pago permitidos. Si no se especifica, se permitirán todos los métodos de pago disponibles.\n",
+                                "example": [
+                                  "card",
+                                  "cbu",
+                                  "cvu"
+                                ]
+                              }
+                            ]
+                          },
+                          "payment_method_options": {
+                            "description": "Configuración detallada para cada tipo de método de pago (por ejemplo, redes de tarjetas permitidas).",
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "description": "Opciones de configuración para tipos específicos de métodos de pago, como no permitir ciertas redes de tarjetas o tipos de financiamiento.\n",
+                                "properties": {
+                                  "card": {
+                                    "type": "object",
+                                    "properties": {
+                                      "disallow": {
+                                        "type": "object",
+                                        "properties": {
+                                          "funding": {
+                                            "description": "Funding types to disallow",
+                                            "type": "array",
+                                            "items": {
+                                              "type": "string",
+                                              "enum": [
+                                                "credit",
+                                                "debit",
+                                                "prepaid",
+                                                "unknown"
+                                              ]
+                                            },
+                                            "example": [
+                                              "prepaid"
+                                            ]
+                                          },
+                                          "network": {
+                                            "description": "Card networks to disallow",
+                                            "type": "array",
+                                            "items": {
+                                              "type": "string",
+                                              "enum": [
+                                                "amex",
+                                                "diners",
+                                                "discover",
+                                                "favacard",
+                                                "jcb",
+                                                "mastercard",
+                                                "naranja",
+                                                "unknown",
+                                                "visa"
+                                              ]
+                                            },
+                                            "example": [
+                                              "amex"
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "example": {
+                                  "card": {
+                                    "disallow": {
+                                      "funding": [
+                                        "prepaid"
+                                      ],
+                                      "network": [
+                                        "amex"
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "supported_payment_methods": {
+                            "description": "Métodos de pago realmente disponibles según los gateways configurados en la cuenta y las\nrestricciones definidas en `payment_method_types` y `payment_method_options`.\n",
+                            "type": "object",
+                            "example": {
+                              "card": {
+                                "networks": [
+                                  "diners",
+                                  "jcb",
+                                  "mastercard",
+                                  "visa"
+                                ],
+                                "required_fields": []
+                              },
+                              "cbu": true
+                            },
+                            "readOnly": true
+                          },
+                          "metadata": {
+                            "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                            "type": [
+                              "object",
+                              "null"
+                            ],
+                            "example": {
+                              "some": "metadata"
+                            },
+                            "additionalProperties": {
+                              "maxLength": 500,
+                              "type": [
+                                "string",
+                                "null",
+                                "number",
+                                "boolean"
+                              ]
+                            },
+                            "properties": {}
+                          },
+                          "livemode": {
+                            "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "created_at": {
+                            "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          },
+                          "updated_at": {
+                            "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-02-11T23:19:22-03:00"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "object",
+                          "active",
+                          "features",
+                          "login_page",
+                          "livemode",
+                          "created_at",
+                          "updated_at"
+                        ]
+                      }
+                    },
+                    "links": {
+                      "description": "Links de paginación",
+                      "type": "object",
+                      "properties": {
+                        "first": {
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "https://api.debi.pro/v1/customers"
+                        },
+                        "last": {
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "https://api.debi.pro/v1/customers"
+                        },
+                        "next": {
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "https://api.debi.pro/v1/customers"
+                        },
+                        "prev": {
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "https://api.debi.pro/v1/customers"
+                        }
+                      },
+                      "title": "Metadata de Respuesta"
+                    },
+                    "meta": {
+                      "description": "Metadata de paginación",
+                      "type": "object",
+                      "properties": {
+                        "per_page": {
+                          "type": "number",
+                          "example": 25
+                        },
+                        "total": {
+                          "type": "number",
+                          "example": 2500
+                        },
+                        "path": {
+                          "type": "string",
+                          "example": "https://api.debi.pro/v1/customers"
+                        },
+                        "next_cursor": {
+                          "description": "Cursor de Paginación.",
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        "prev_cursor": {
+                          "description": "Cursor de Paginación.",
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        }
+                      },
+                      "title": "Response Meta"
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "BPCqXz3a8YbE",
+                      "object": "billing_portal.configuration",
+                      "active": true,
+                      "is_default": true,
+                      "business_profile": {
+                        "headline": "Manage your subscription",
+                        "privacy_policy_url": null,
+                        "terms_of_service_url": null
+                      },
+                      "features": {
+                        "customer_update": {
+                          "enabled": false
+                        },
+                        "invoice_history": {
+                          "enabled": true
+                        },
+                        "payment_method_update": {
+                          "enabled": true
+                        },
+                        "subscription_cancel": {
+                          "enabled": true
+                        }
+                      },
+                      "login_page": {
+                        "enabled": true,
+                        "url": "https://billing.debi.pro/login/acme"
+                      },
+                      "default_return_url": "https://example.com/account",
+                      "payment_method_types": [
+                        "card"
+                      ],
+                      "payment_method_options": {
+                        "card": {
+                          "disallow": {
+                            "funding": [],
+                            "network": [
+                              "amex"
+                            ]
+                          }
+                        }
+                      },
+                      "supported_payment_methods": {
+                        "card": {
+                          "networks": [
+                            "diners",
+                            "jcb",
+                            "mastercard",
+                            "visa"
+                          ],
+                          "required_fields": []
+                        }
+                      },
+                      "metadata": {
+                        "plan": "pro"
+                      },
+                      "livemode": false,
+                      "created_at": "2024-02-11T23:17:54-03:00",
+                      "updated_at": "2024-02-11T23:17:54-03:00"
+                    }
+                  ],
+                  "links": {
+                    "first": null,
+                    "last": null,
+                    "next": null,
+                    "prev": null
+                  },
+                  "meta": {
+                    "total": 1,
+                    "per_page": 25,
+                    "path": "https://api.debi.pro/v1/billing_portal/configurations"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "No autorizado",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  },
+                  "title": "No autorizado"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "La funcionalidad del portal de facturación no está habilitada en la cuenta. Contactá al\nsoporte de Debi para habilitarla.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Recurso no encontrado",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Record not found"
+                    }
+                  },
+                  "title": "Not Found"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Configuraciones del Portal de Facturación"
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "Shell + Curl",
+            "source": "curl --request GET \\\n  --url 'https://api.debi.pro/v1/billing_portal/configurations?active=SOME_BOOLEAN_VALUE&is_default=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE' \\\n  --header 'Authorization: Bearer sk_live_...'"
+          },
+          {
+            "lang": "Node + Request",
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'GET',\n  url: 'https://api.debi.pro/v1/billing_portal/configurations',\n  qs: {\n    active: 'SOME_BOOLEAN_VALUE',\n    is_default: 'SOME_BOOLEAN_VALUE',\n    created_at: 'SOME_OBJECT_VALUE',\n    ending_before: 'SOME_STRING_VALUE',\n    limit: 'SOME_INTEGER_VALUE',\n    starting_after: 'SOME_STRING_VALUE'\n  },\n  headers: {Authorization: 'Bearer sk_live_...'}\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+          },
+          {
+            "lang": "Php + Http1",
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/billing_portal/configurations');\n$request->setMethod(HTTP_METH_GET);\n\n$request->setQueryData([\n  'active' => 'SOME_BOOLEAN_VALUE',\n  'is_default' => 'SOME_BOOLEAN_VALUE',\n  'created_at' => 'SOME_OBJECT_VALUE',\n  'ending_before' => 'SOME_STRING_VALUE',\n  'limit' => 'SOME_INTEGER_VALUE',\n  'starting_after' => 'SOME_STRING_VALUE'\n]);\n\n$request->setHeaders([\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+          },
+          {
+            "lang": "Python + Requests",
+            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/billing_portal/configurations\"\n\nquerystring = {\"active\":\"SOME_BOOLEAN_VALUE\",\"is_default\":\"SOME_BOOLEAN_VALUE\",\"created_at\":\"SOME_OBJECT_VALUE\",\"ending_before\":\"SOME_STRING_VALUE\",\"limit\":\"SOME_INTEGER_VALUE\",\"starting_after\":\"SOME_STRING_VALUE\"}\n\nheaders = {\"Authorization\": \"Bearer sk_live_...\"}\n\nresponse = requests.request(\"GET\", url, headers=headers, params=querystring)\n\nprint(response.text)"
+          },
+          {
+            "lang": "Java + Unirest",
+            "source": "HttpResponse<String> response = Unirest.get(\"https://api.debi.pro/v1/billing_portal/configurations?active=SOME_BOOLEAN_VALUE&is_default=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .asString();"
+          },
+          {
+            "lang": "Ruby + Native",
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/billing_portal/configurations?active=SOME_BOOLEAN_VALUE&is_default=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          }
+        ]
+      },
+      "post": {
+        "operationId": "BillingPortalConfigurationsCreate",
+        "summary": "Crear una Configuración del Portal de Facturación",
+        "description": "Crea una nueva Configuración del Portal de Facturación. La primera configuración creada en la\ncuenta se convierte automáticamente en la configuración por defecto que se usa cuando se crea\nuna Sesión del Portal sin especificar `billing_portal_configuration_id`.\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "encoding": {
+                "metadata": {
+                  "explode": true,
+                  "style": "deepObject"
+                }
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "features": {
+                    "description": "Activa o desactiva cada funcionalidad disponible en el portal. Los cuatro campos\nson obligatorios.\n",
+                    "type": "object",
+                    "properties": {
+                      "customer_update": {
+                        "description": "Permite que el cliente actualice sus datos personales.",
+                        "type": "boolean"
+                      },
+                      "invoice_history": {
+                        "description": "Permite que el cliente vea su historial de pagos.",
+                        "type": "boolean"
+                      },
+                      "payment_method_update": {
+                        "description": "Permite que el cliente administre sus métodos de pago.",
+                        "type": "boolean"
+                      },
+                      "subscription_cancel": {
+                        "description": "Permite que el cliente cancele sus suscripciones.",
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "customer_update",
+                      "invoice_history",
+                      "payment_method_update",
+                      "subscription_cancel"
+                    ]
+                  },
+                  "login_page": {
+                    "description": "Configuración de la página de inicio de sesión independiente.",
+                    "type": "object",
+                    "properties": {
+                      "enabled": {
+                        "description": "Habilita la página pública de inicio de sesión de la configuración.",
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "enabled"
+                    ]
+                  },
+                  "business_profile": {
+                    "description": "Información del negocio que se le muestra al cliente en el portal.",
+                    "type": "object",
+                    "properties": {
+                      "headline": {
+                        "description": "Un título corto que se muestra en la parte superior del portal.",
+                        "type": "string"
+                      },
+                      "privacy_policy_url": {
+                        "description": "URL de tu política de privacidad.",
+                        "type": "string"
+                      },
+                      "terms_of_service_url": {
+                        "description": "URL de tus términos y condiciones.",
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "default_return_url": {
+                    "description": "URL por defecto a la que se redirige al cliente cuando termina de administrar su\nfacturación.\n",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "payment_method_types": {
+                    "description": "Array de tipos de métodos de pago permitidos. Si no se especifica, se permitirán todos los métodos de pago disponibles.\n",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "card",
+                        "cbu",
+                        "cvu",
+                        "sepa_debit",
+                        "transfer"
+                      ]
+                    },
+                    "example": [
+                      "card",
+                      "cbu",
+                      "cvu"
+                    ]
+                  },
+                  "payment_method_options": {
+                    "description": "Opciones de configuración para tipos específicos de métodos de pago, como no permitir ciertas redes de tarjetas o tipos de financiamiento.\n",
+                    "type": "object",
+                    "example": {
+                      "card": {
+                        "disallow": {
+                          "funding": [
+                            "prepaid"
+                          ],
+                          "network": [
+                            "amex"
+                          ]
+                        }
+                      }
+                    },
+                    "properties": {
+                      "card": {
+                        "type": "object",
+                        "properties": {
+                          "disallow": {
+                            "type": "object",
+                            "properties": {
+                              "funding": {
+                                "description": "Funding types to disallow",
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid",
+                                    "unknown"
+                                  ]
+                                },
+                                "example": [
+                                  "prepaid"
+                                ]
+                              },
+                              "network": {
+                                "description": "Card networks to disallow",
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "amex",
+                                    "diners",
+                                    "discover",
+                                    "favacard",
+                                    "jcb",
+                                    "mastercard",
+                                    "naranja",
+                                    "unknown",
+                                    "visa"
+                                  ]
+                                },
+                                "example": [
+                                  "amex"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "metadata": {
+                    "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "example": {
+                      "some": "metadata"
+                    },
+                    "additionalProperties": {
+                      "maxLength": 500,
+                      "type": [
+                        "string",
+                        "null",
+                        "number",
+                        "boolean"
+                      ]
+                    },
+                    "properties": {}
+                  }
+                },
+                "required": [
+                  "features",
+                  "login_page"
+                ]
+              },
+              "example": {
+                "features": {
+                  "customer_update": false,
+                  "invoice_history": true,
+                  "payment_method_update": true,
+                  "subscription_cancel": true
+                },
+                "login_page": {
+                  "enabled": true
+                },
+                "business_profile": {
+                  "headline": "Manage your subscription"
+                },
+                "default_return_url": "https://example.com/account",
+                "payment_method_types": [
+                  "card",
+                  "cbu"
+                ],
+                "payment_method_options": {
+                  "card": {
+                    "disallow": {
+                      "funding": [],
+                      "network": [
+                        "amex"
+                      ]
+                    }
+                  }
+                },
+                "metadata": {
+                  "plan": "pro"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "description": "Una Configuración del Portal de Facturación describe la funcionalidad y la apariencia de una sesión\ndel portal. Puedes tener múltiples configuraciones y elegir la que vas a utilizar al crear una\nSesión del Portal de Facturación.",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "Identificador único de la Configuración del Portal de Facturación.",
+                          "type": "string",
+                          "example": "BPCqXz3a8YbE",
+                          "readOnly": true
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "billing_portal.configuration"
+                          ]
+                        },
+                        "active": {
+                          "description": "Indica si la configuración está activa y puede usarse para crear sesiones.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "is_default": {
+                          "description": "Indica si esta es la configuración por defecto de la cuenta. La primera configuración creada se convierte automáticamente en la predeterminada.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "business_profile": {
+                          "description": "La información del negocio que se le muestra al cliente en el portal.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "headline": {
+                              "description": "Un título corto que se muestra en la parte superior del portal.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "Manage your subscription"
+                            },
+                            "privacy_policy_url": {
+                              "description": "URL de tu política de privacidad.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://example.com/privacy"
+                            },
+                            "terms_of_service_url": {
+                              "description": "URL de tus términos y condiciones.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://example.com/terms"
+                            }
+                          }
+                        },
+                        "features": {
+                          "description": "Las funcionalidades habilitadas en el portal para el cliente.",
+                          "type": "object",
+                          "properties": {
+                            "customer_update": {
+                              "description": "Permite que el cliente actualice sus datos personales.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": false
+                                }
+                              }
+                            },
+                            "invoice_history": {
+                              "description": "Permite que el cliente vea su historial de pagos.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            },
+                            "payment_method_update": {
+                              "description": "Permite que el cliente agregue, elimine y elija el método de pago por defecto.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            },
+                            "subscription_cancel": {
+                              "description": "Permite que el cliente cancele sus suscripciones.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "login_page": {
+                          "description": "Configuración de la página de inicio de sesión que permite a los clientes acceder al portal con su email.",
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "description": "Indica si la página de inicio de sesión independiente está habilitada.",
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "url": {
+                              "description": "URL pública de la página de inicio de sesión cuando está habilitada.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://billing.debi.pro/login/acme",
+                              "readOnly": true
+                            }
+                          }
+                        },
+                        "default_return_url": {
+                          "description": "URL por defecto a la que se redirige al cliente cuando termina de administrar su facturación.\nPuede sobrescribirse a nivel de sesión al crear una Sesión del Portal de Facturación.\n",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "example": "https://example.com/account"
+                        },
+                        "payment_method_types": {
+                          "description": "Subconjunto de tipos de métodos de pago que el cliente puede usar dentro del portal. Si es\n`null` estarán disponibles todos los métodos de pago configurados en la cuenta.\n",
+                          "allOf": [
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "card",
+                                  "cbu",
+                                  "cvu",
+                                  "sepa_debit",
+                                  "transfer"
+                                ]
+                              },
+                              "description": "Array de tipos de métodos de pago permitidos. Si no se especifica, se permitirán todos los métodos de pago disponibles.\n",
+                              "example": [
+                                "card",
+                                "cbu",
+                                "cvu"
+                              ]
+                            }
+                          ]
+                        },
+                        "payment_method_options": {
+                          "description": "Configuración detallada para cada tipo de método de pago (por ejemplo, redes de tarjetas permitidas).",
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "description": "Opciones de configuración para tipos específicos de métodos de pago, como no permitir ciertas redes de tarjetas o tipos de financiamiento.\n",
+                              "properties": {
+                                "card": {
+                                  "type": "object",
+                                  "properties": {
+                                    "disallow": {
+                                      "type": "object",
+                                      "properties": {
+                                        "funding": {
+                                          "description": "Funding types to disallow",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "enum": [
+                                              "credit",
+                                              "debit",
+                                              "prepaid",
+                                              "unknown"
+                                            ]
+                                          },
+                                          "example": [
+                                            "prepaid"
+                                          ]
+                                        },
+                                        "network": {
+                                          "description": "Card networks to disallow",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "enum": [
+                                              "amex",
+                                              "diners",
+                                              "discover",
+                                              "favacard",
+                                              "jcb",
+                                              "mastercard",
+                                              "naranja",
+                                              "unknown",
+                                              "visa"
+                                            ]
+                                          },
+                                          "example": [
+                                            "amex"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "example": {
+                                "card": {
+                                  "disallow": {
+                                    "funding": [
+                                      "prepaid"
+                                    ],
+                                    "network": [
+                                      "amex"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "supported_payment_methods": {
+                          "description": "Métodos de pago realmente disponibles según los gateways configurados en la cuenta y las\nrestricciones definidas en `payment_method_types` y `payment_method_options`.\n",
+                          "type": "object",
+                          "example": {
+                            "card": {
+                              "networks": [
+                                "diners",
+                                "jcb",
+                                "mastercard",
+                                "visa"
+                              ],
+                              "required_fields": []
+                            },
+                            "cbu": true
+                          },
+                          "readOnly": true
+                        },
+                        "metadata": {
+                          "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "additionalProperties": {
+                            "maxLength": 500,
+                            "type": [
+                              "string",
+                              "null",
+                              "number",
+                              "boolean"
+                            ]
+                          },
+                          "properties": {}
+                        },
+                        "livemode": {
+                          "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "created_at": {
+                          "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "updated_at": {
+                          "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "object",
+                        "active",
+                        "features",
+                        "login_page",
+                        "livemode",
+                        "created_at",
+                        "updated_at"
+                      ],
+                      "title": "Configuración del Portal de Facturación"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "No autorizado",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  },
+                  "title": "No autorizado"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "La funcionalidad del portal de facturación no está habilitada en la cuenta.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Recurso no encontrado",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Record not found"
+                    }
+                  },
+                  "title": "Not Found"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Datos inválidos",
+            "content": {
+              "application/json": {
+                "example": {
+                  "errors": {
+                    "features.customer_update": [
+                      "El campo es obligatorio."
+                    ],
+                    "features.invoice_history": [
+                      "El campo es obligatorio."
+                    ],
+                    "features.payment_method_update": [
+                      "El campo es obligatorio."
+                    ],
+                    "features.subscription_cancel": [
+                      "El campo es obligatorio."
+                    ]
+                  },
+                  "message": "The given data was invalid."
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Configuraciones del Portal de Facturación"
+        ],
+        "x-codegen-request-body-name": "body",
+        "x-codeSamples": [
+          {
+            "lang": "Shell + Curl",
+            "source": "curl --request POST \\\n  --url https://api.debi.pro/v1/billing_portal/configurations \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"features\":{\"customer_update\":true,\"invoice_history\":true,\"payment_method_update\":true,\"subscription_cancel\":true},\"login_page\":{\"enabled\":true},\"business_profile\":{\"headline\":\"string\",\"privacy_policy_url\":\"string\",\"terms_of_service_url\":\"string\"},\"default_return_url\":\"string\",\"payment_method_types\":[\"card\",\"cbu\",\"cvu\"],\"payment_method_options\":{\"card\":{\"disallow\":{\"funding\":[\"prepaid\"],\"network\":[\"amex\"]}}},\"metadata\":{\"some\":\"metadata\"}}'"
+          },
+          {
+            "lang": "Node + Request",
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.debi.pro/v1/billing_portal/configurations',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    features: {\n      customer_update: true,\n      invoice_history: true,\n      payment_method_update: true,\n      subscription_cancel: true\n    },\n    login_page: {enabled: true},\n    business_profile: {\n      headline: 'string',\n      privacy_policy_url: 'string',\n      terms_of_service_url: 'string'\n    },\n    default_return_url: 'string',\n    payment_method_types: ['card', 'cbu', 'cvu'],\n    payment_method_options: {card: {disallow: {funding: ['prepaid'], network: ['amex']}}},\n    metadata: {some: 'metadata'}\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+          },
+          {
+            "lang": "Php + Http1",
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/billing_portal/configurations');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"features\":{\"customer_update\":true,\"invoice_history\":true,\"payment_method_update\":true,\"subscription_cancel\":true},\"login_page\":{\"enabled\":true},\"business_profile\":{\"headline\":\"string\",\"privacy_policy_url\":\"string\",\"terms_of_service_url\":\"string\"},\"default_return_url\":\"string\",\"payment_method_types\":[\"card\",\"cbu\",\"cvu\"],\"payment_method_options\":{\"card\":{\"disallow\":{\"funding\":[\"prepaid\"],\"network\":[\"amex\"]}}},\"metadata\":{\"some\":\"metadata\"}}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+          },
+          {
+            "lang": "Python + Requests",
+            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/billing_portal/configurations\"\n\npayload = {\n    \"features\": {\n        \"customer_update\": True,\n        \"invoice_history\": True,\n        \"payment_method_update\": True,\n        \"subscription_cancel\": True\n    },\n    \"login_page\": {\"enabled\": True},\n    \"business_profile\": {\n        \"headline\": \"string\",\n        \"privacy_policy_url\": \"string\",\n        \"terms_of_service_url\": \"string\"\n    },\n    \"default_return_url\": \"string\",\n    \"payment_method_types\": [\"card\", \"cbu\", \"cvu\"],\n    \"payment_method_options\": {\"card\": {\"disallow\": {\n                \"funding\": [\"prepaid\"],\n                \"network\": [\"amex\"]\n            }}},\n    \"metadata\": {\"some\": \"metadata\"}\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
+          },
+          {
+            "lang": "Java + Unirest",
+            "source": "HttpResponse<String> response = Unirest.post(\"https://api.debi.pro/v1/billing_portal/configurations\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"features\\\":{\\\"customer_update\\\":true,\\\"invoice_history\\\":true,\\\"payment_method_update\\\":true,\\\"subscription_cancel\\\":true},\\\"login_page\\\":{\\\"enabled\\\":true},\\\"business_profile\\\":{\\\"headline\\\":\\\"string\\\",\\\"privacy_policy_url\\\":\\\"string\\\",\\\"terms_of_service_url\\\":\\\"string\\\"},\\\"default_return_url\\\":\\\"string\\\",\\\"payment_method_types\\\":[\\\"card\\\",\\\"cbu\\\",\\\"cvu\\\"],\\\"payment_method_options\\\":{\\\"card\\\":{\\\"disallow\\\":{\\\"funding\\\":[\\\"prepaid\\\"],\\\"network\\\":[\\\"amex\\\"]}}},\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\")\n  .asString();"
+          },
+          {
+            "lang": "Ruby + Native",
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/billing_portal/configurations\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"features\\\":{\\\"customer_update\\\":true,\\\"invoice_history\\\":true,\\\"payment_method_update\\\":true,\\\"subscription_cancel\\\":true},\\\"login_page\\\":{\\\"enabled\\\":true},\\\"business_profile\\\":{\\\"headline\\\":\\\"string\\\",\\\"privacy_policy_url\\\":\\\"string\\\",\\\"terms_of_service_url\\\":\\\"string\\\"},\\\"default_return_url\\\":\\\"string\\\",\\\"payment_method_types\\\":[\\\"card\\\",\\\"cbu\\\",\\\"cvu\\\"],\\\"payment_method_options\\\":{\\\"card\\\":{\\\"disallow\\\":{\\\"funding\\\":[\\\"prepaid\\\"],\\\"network\\\":[\\\"amex\\\"]}}},\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          }
+        ]
+      }
+    },
+    "/v1/billing_portal/configurations/{id}": {
+      "get": {
+        "operationId": "BillingPortalConfigurationsRetrieve",
+        "summary": "Obtener una Configuración del Portal de Facturación",
+        "description": "Obtiene la Configuración del Portal de Facturación con el ID indicado.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "[ID de la Configuración del Portal de Facturación](#tag/Billing-Portal-Configurations).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "BPCqXz3a8YbE"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "description": "Una Configuración del Portal de Facturación describe la funcionalidad y la apariencia de una sesión\ndel portal. Puedes tener múltiples configuraciones y elegir la que vas a utilizar al crear una\nSesión del Portal de Facturación.",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "Identificador único de la Configuración del Portal de Facturación.",
+                          "type": "string",
+                          "example": "BPCqXz3a8YbE",
+                          "readOnly": true
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "billing_portal.configuration"
+                          ]
+                        },
+                        "active": {
+                          "description": "Indica si la configuración está activa y puede usarse para crear sesiones.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "is_default": {
+                          "description": "Indica si esta es la configuración por defecto de la cuenta. La primera configuración creada se convierte automáticamente en la predeterminada.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "business_profile": {
+                          "description": "La información del negocio que se le muestra al cliente en el portal.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "headline": {
+                              "description": "Un título corto que se muestra en la parte superior del portal.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "Manage your subscription"
+                            },
+                            "privacy_policy_url": {
+                              "description": "URL de tu política de privacidad.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://example.com/privacy"
+                            },
+                            "terms_of_service_url": {
+                              "description": "URL de tus términos y condiciones.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://example.com/terms"
+                            }
+                          }
+                        },
+                        "features": {
+                          "description": "Las funcionalidades habilitadas en el portal para el cliente.",
+                          "type": "object",
+                          "properties": {
+                            "customer_update": {
+                              "description": "Permite que el cliente actualice sus datos personales.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": false
+                                }
+                              }
+                            },
+                            "invoice_history": {
+                              "description": "Permite que el cliente vea su historial de pagos.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            },
+                            "payment_method_update": {
+                              "description": "Permite que el cliente agregue, elimine y elija el método de pago por defecto.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            },
+                            "subscription_cancel": {
+                              "description": "Permite que el cliente cancele sus suscripciones.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "login_page": {
+                          "description": "Configuración de la página de inicio de sesión que permite a los clientes acceder al portal con su email.",
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "description": "Indica si la página de inicio de sesión independiente está habilitada.",
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "url": {
+                              "description": "URL pública de la página de inicio de sesión cuando está habilitada.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://billing.debi.pro/login/acme",
+                              "readOnly": true
+                            }
+                          }
+                        },
+                        "default_return_url": {
+                          "description": "URL por defecto a la que se redirige al cliente cuando termina de administrar su facturación.\nPuede sobrescribirse a nivel de sesión al crear una Sesión del Portal de Facturación.\n",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "example": "https://example.com/account"
+                        },
+                        "payment_method_types": {
+                          "description": "Subconjunto de tipos de métodos de pago que el cliente puede usar dentro del portal. Si es\n`null` estarán disponibles todos los métodos de pago configurados en la cuenta.\n",
+                          "allOf": [
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "card",
+                                  "cbu",
+                                  "cvu",
+                                  "sepa_debit",
+                                  "transfer"
+                                ]
+                              },
+                              "description": "Array de tipos de métodos de pago permitidos. Si no se especifica, se permitirán todos los métodos de pago disponibles.\n",
+                              "example": [
+                                "card",
+                                "cbu",
+                                "cvu"
+                              ]
+                            }
+                          ]
+                        },
+                        "payment_method_options": {
+                          "description": "Configuración detallada para cada tipo de método de pago (por ejemplo, redes de tarjetas permitidas).",
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "description": "Opciones de configuración para tipos específicos de métodos de pago, como no permitir ciertas redes de tarjetas o tipos de financiamiento.\n",
+                              "properties": {
+                                "card": {
+                                  "type": "object",
+                                  "properties": {
+                                    "disallow": {
+                                      "type": "object",
+                                      "properties": {
+                                        "funding": {
+                                          "description": "Funding types to disallow",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "enum": [
+                                              "credit",
+                                              "debit",
+                                              "prepaid",
+                                              "unknown"
+                                            ]
+                                          },
+                                          "example": [
+                                            "prepaid"
+                                          ]
+                                        },
+                                        "network": {
+                                          "description": "Card networks to disallow",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "enum": [
+                                              "amex",
+                                              "diners",
+                                              "discover",
+                                              "favacard",
+                                              "jcb",
+                                              "mastercard",
+                                              "naranja",
+                                              "unknown",
+                                              "visa"
+                                            ]
+                                          },
+                                          "example": [
+                                            "amex"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "example": {
+                                "card": {
+                                  "disallow": {
+                                    "funding": [
+                                      "prepaid"
+                                    ],
+                                    "network": [
+                                      "amex"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "supported_payment_methods": {
+                          "description": "Métodos de pago realmente disponibles según los gateways configurados en la cuenta y las\nrestricciones definidas en `payment_method_types` y `payment_method_options`.\n",
+                          "type": "object",
+                          "example": {
+                            "card": {
+                              "networks": [
+                                "diners",
+                                "jcb",
+                                "mastercard",
+                                "visa"
+                              ],
+                              "required_fields": []
+                            },
+                            "cbu": true
+                          },
+                          "readOnly": true
+                        },
+                        "metadata": {
+                          "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "additionalProperties": {
+                            "maxLength": 500,
+                            "type": [
+                              "string",
+                              "null",
+                              "number",
+                              "boolean"
+                            ]
+                          },
+                          "properties": {}
+                        },
+                        "livemode": {
+                          "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "created_at": {
+                          "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "updated_at": {
+                          "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "object",
+                        "active",
+                        "features",
+                        "login_page",
+                        "livemode",
+                        "created_at",
+                        "updated_at"
+                      ],
+                      "title": "Configuración del Portal de Facturación"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "No autorizado",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  },
+                  "title": "No autorizado"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Recurso no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Recurso no encontrado",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Record not found"
+                    }
+                  },
+                  "title": "Not Found"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Configuraciones del Portal de Facturación"
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "Shell + Curl",
+            "source": "curl --request GET \\\n  --url https://api.debi.pro/v1/billing_portal/configurations/BPCqXz3a8YbE \\\n  --header 'Authorization: Bearer sk_live_...'"
+          },
+          {
+            "lang": "Node + Request",
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'GET',\n  url: 'https://api.debi.pro/v1/billing_portal/configurations/BPCqXz3a8YbE',\n  headers: {Authorization: 'Bearer sk_live_...'}\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+          },
+          {
+            "lang": "Php + Http1",
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/billing_portal/configurations/BPCqXz3a8YbE');\n$request->setMethod(HTTP_METH_GET);\n\n$request->setHeaders([\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+          },
+          {
+            "lang": "Python + Requests",
+            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/billing_portal/configurations/BPCqXz3a8YbE\"\n\nheaders = {\"Authorization\": \"Bearer sk_live_...\"}\n\nresponse = requests.request(\"GET\", url, headers=headers)\n\nprint(response.text)"
+          },
+          {
+            "lang": "Java + Unirest",
+            "source": "HttpResponse<String> response = Unirest.get(\"https://api.debi.pro/v1/billing_portal/configurations/BPCqXz3a8YbE\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .asString();"
+          },
+          {
+            "lang": "Ruby + Native",
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/billing_portal/configurations/BPCqXz3a8YbE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          }
+        ]
+      },
+      "put": {
+        "operationId": "BillingPortalConfigurationsUpdate",
+        "summary": "Actualizar una Configuración del Portal de Facturación",
+        "description": "Actualiza una Configuración del Portal de Facturación existente. El cuerpo del request tiene\nla misma forma que el de creación: `features` y `login_page.enabled` siempre son obligatorios,\nincluso cuando solo querés modificar otros campos.\n",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "[ID de la Configuración del Portal de Facturación](#tag/Billing-Portal-Configurations).\n",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "BPCqXz3a8YbE"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "encoding": {
+                "metadata": {
+                  "explode": true,
+                  "style": "deepObject"
+                }
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "features": {
+                    "type": "object",
+                    "properties": {
+                      "customer_update": {
+                        "type": "boolean"
+                      },
+                      "invoice_history": {
+                        "type": "boolean"
+                      },
+                      "payment_method_update": {
+                        "type": "boolean"
+                      },
+                      "subscription_cancel": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "customer_update",
+                      "invoice_history",
+                      "payment_method_update",
+                      "subscription_cancel"
+                    ]
+                  },
+                  "login_page": {
+                    "type": "object",
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "enabled"
+                    ]
+                  },
+                  "business_profile": {
+                    "type": "object",
+                    "properties": {
+                      "headline": {
+                        "type": "string"
+                      },
+                      "privacy_policy_url": {
+                        "type": "string"
+                      },
+                      "terms_of_service_url": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "default_return_url": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "payment_method_types": {
+                    "description": "Array de tipos de métodos de pago permitidos. Si no se especifica, se permitirán todos los métodos de pago disponibles.\n",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "card",
+                        "cbu",
+                        "cvu",
+                        "sepa_debit",
+                        "transfer"
+                      ]
+                    },
+                    "example": [
+                      "card",
+                      "cbu",
+                      "cvu"
+                    ]
+                  },
+                  "payment_method_options": {
+                    "description": "Opciones de configuración para tipos específicos de métodos de pago, como no permitir ciertas redes de tarjetas o tipos de financiamiento.\n",
+                    "type": "object",
+                    "example": {
+                      "card": {
+                        "disallow": {
+                          "funding": [
+                            "prepaid"
+                          ],
+                          "network": [
+                            "amex"
+                          ]
+                        }
+                      }
+                    },
+                    "properties": {
+                      "card": {
+                        "type": "object",
+                        "properties": {
+                          "disallow": {
+                            "type": "object",
+                            "properties": {
+                              "funding": {
+                                "description": "Funding types to disallow",
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "credit",
+                                    "debit",
+                                    "prepaid",
+                                    "unknown"
+                                  ]
+                                },
+                                "example": [
+                                  "prepaid"
+                                ]
+                              },
+                              "network": {
+                                "description": "Card networks to disallow",
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "amex",
+                                    "diners",
+                                    "discover",
+                                    "favacard",
+                                    "jcb",
+                                    "mastercard",
+                                    "naranja",
+                                    "unknown",
+                                    "visa"
+                                  ]
+                                },
+                                "example": [
+                                  "amex"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "metadata": {
+                    "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "example": {
+                      "some": "metadata"
+                    },
+                    "additionalProperties": {
+                      "maxLength": 500,
+                      "type": [
+                        "string",
+                        "null",
+                        "number",
+                        "boolean"
+                      ]
+                    },
+                    "properties": {}
+                  }
+                },
+                "required": [
+                  "features",
+                  "login_page"
+                ]
+              },
+              "example": {
+                "features": {
+                  "customer_update": true,
+                  "invoice_history": true,
+                  "payment_method_update": true,
+                  "subscription_cancel": false
+                },
+                "login_page": {
+                  "enabled": true
+                },
+                "business_profile": {
+                  "headline": "Manage your subscription"
+                },
+                "payment_method_types": [
+                  "card"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "description": "Una Configuración del Portal de Facturación describe la funcionalidad y la apariencia de una sesión\ndel portal. Puedes tener múltiples configuraciones y elegir la que vas a utilizar al crear una\nSesión del Portal de Facturación.",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "Identificador único de la Configuración del Portal de Facturación.",
+                          "type": "string",
+                          "example": "BPCqXz3a8YbE",
+                          "readOnly": true
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "billing_portal.configuration"
+                          ]
+                        },
+                        "active": {
+                          "description": "Indica si la configuración está activa y puede usarse para crear sesiones.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "is_default": {
+                          "description": "Indica si esta es la configuración por defecto de la cuenta. La primera configuración creada se convierte automáticamente en la predeterminada.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "business_profile": {
+                          "description": "La información del negocio que se le muestra al cliente en el portal.",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "headline": {
+                              "description": "Un título corto que se muestra en la parte superior del portal.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "Manage your subscription"
+                            },
+                            "privacy_policy_url": {
+                              "description": "URL de tu política de privacidad.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://example.com/privacy"
+                            },
+                            "terms_of_service_url": {
+                              "description": "URL de tus términos y condiciones.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://example.com/terms"
+                            }
+                          }
+                        },
+                        "features": {
+                          "description": "Las funcionalidades habilitadas en el portal para el cliente.",
+                          "type": "object",
+                          "properties": {
+                            "customer_update": {
+                              "description": "Permite que el cliente actualice sus datos personales.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": false
+                                }
+                              }
+                            },
+                            "invoice_history": {
+                              "description": "Permite que el cliente vea su historial de pagos.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            },
+                            "payment_method_update": {
+                              "description": "Permite que el cliente agregue, elimine y elija el método de pago por defecto.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            },
+                            "subscription_cancel": {
+                              "description": "Permite que el cliente cancele sus suscripciones.",
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "example": true
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "login_page": {
+                          "description": "Configuración de la página de inicio de sesión que permite a los clientes acceder al portal con su email.",
+                          "type": "object",
+                          "properties": {
+                            "enabled": {
+                              "description": "Indica si la página de inicio de sesión independiente está habilitada.",
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "url": {
+                              "description": "URL pública de la página de inicio de sesión cuando está habilitada.",
+                              "type": [
+                                "string",
+                                "null"
+                              ],
+                              "example": "https://billing.debi.pro/login/acme",
+                              "readOnly": true
+                            }
+                          }
+                        },
+                        "default_return_url": {
+                          "description": "URL por defecto a la que se redirige al cliente cuando termina de administrar su facturación.\nPuede sobrescribirse a nivel de sesión al crear una Sesión del Portal de Facturación.\n",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "example": "https://example.com/account"
+                        },
+                        "payment_method_types": {
+                          "description": "Subconjunto de tipos de métodos de pago que el cliente puede usar dentro del portal. Si es\n`null` estarán disponibles todos los métodos de pago configurados en la cuenta.\n",
+                          "allOf": [
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "card",
+                                  "cbu",
+                                  "cvu",
+                                  "sepa_debit",
+                                  "transfer"
+                                ]
+                              },
+                              "description": "Array de tipos de métodos de pago permitidos. Si no se especifica, se permitirán todos los métodos de pago disponibles.\n",
+                              "example": [
+                                "card",
+                                "cbu",
+                                "cvu"
+                              ]
+                            }
+                          ]
+                        },
+                        "payment_method_options": {
+                          "description": "Configuración detallada para cada tipo de método de pago (por ejemplo, redes de tarjetas permitidas).",
+                          "allOf": [
+                            {
+                              "type": "object",
+                              "description": "Opciones de configuración para tipos específicos de métodos de pago, como no permitir ciertas redes de tarjetas o tipos de financiamiento.\n",
+                              "properties": {
+                                "card": {
+                                  "type": "object",
+                                  "properties": {
+                                    "disallow": {
+                                      "type": "object",
+                                      "properties": {
+                                        "funding": {
+                                          "description": "Funding types to disallow",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "enum": [
+                                              "credit",
+                                              "debit",
+                                              "prepaid",
+                                              "unknown"
+                                            ]
+                                          },
+                                          "example": [
+                                            "prepaid"
+                                          ]
+                                        },
+                                        "network": {
+                                          "description": "Card networks to disallow",
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string",
+                                            "enum": [
+                                              "amex",
+                                              "diners",
+                                              "discover",
+                                              "favacard",
+                                              "jcb",
+                                              "mastercard",
+                                              "naranja",
+                                              "unknown",
+                                              "visa"
+                                            ]
+                                          },
+                                          "example": [
+                                            "amex"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "example": {
+                                "card": {
+                                  "disallow": {
+                                    "funding": [
+                                      "prepaid"
+                                    ],
+                                    "network": [
+                                      "amex"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        "supported_payment_methods": {
+                          "description": "Métodos de pago realmente disponibles según los gateways configurados en la cuenta y las\nrestricciones definidas en `payment_method_types` y `payment_method_options`.\n",
+                          "type": "object",
+                          "example": {
+                            "card": {
+                              "networks": [
+                                "diners",
+                                "jcb",
+                                "mastercard",
+                                "visa"
+                              ],
+                              "required_fields": []
+                            },
+                            "cbu": true
+                          },
+                          "readOnly": true
+                        },
+                        "metadata": {
+                          "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "example": {
+                            "some": "metadata"
+                          },
+                          "additionalProperties": {
+                            "maxLength": 500,
+                            "type": [
+                              "string",
+                              "null",
+                              "number",
+                              "boolean"
+                            ]
+                          },
+                          "properties": {}
+                        },
+                        "livemode": {
+                          "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "created_at": {
+                          "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "updated_at": {
+                          "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "object",
+                        "active",
+                        "features",
+                        "login_page",
+                        "livemode",
+                        "created_at",
+                        "updated_at"
+                      ],
+                      "title": "Configuración del Portal de Facturación"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "No autorizado",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  },
+                  "title": "No autorizado"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Recurso no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Recurso no encontrado",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Record not found"
+                    }
+                  },
+                  "title": "Not Found"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Datos inválidos",
+            "content": {
+              "application/json": {
+                "example": {
+                  "errors": {
+                    "payment_method_types": [
+                      "El valor seleccionado para payment_method_types es inválido."
+                    ]
+                  },
+                  "message": "The given data was invalid."
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Configuraciones del Portal de Facturación"
+        ],
+        "x-codegen-request-body-name": "body",
+        "x-codeSamples": [
+          {
+            "lang": "Shell + Curl",
+            "source": "curl --request PUT \\\n  --url https://api.debi.pro/v1/billing_portal/configurations/BPCqXz3a8YbE \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"features\":{\"customer_update\":true,\"invoice_history\":true,\"payment_method_update\":true,\"subscription_cancel\":true},\"login_page\":{\"enabled\":true},\"business_profile\":{\"headline\":\"string\",\"privacy_policy_url\":\"string\",\"terms_of_service_url\":\"string\"},\"default_return_url\":\"string\",\"payment_method_types\":[\"card\",\"cbu\",\"cvu\"],\"payment_method_options\":{\"card\":{\"disallow\":{\"funding\":[\"prepaid\"],\"network\":[\"amex\"]}}},\"metadata\":{\"some\":\"metadata\"}}'"
+          },
+          {
+            "lang": "Node + Request",
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'PUT',\n  url: 'https://api.debi.pro/v1/billing_portal/configurations/BPCqXz3a8YbE',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    features: {\n      customer_update: true,\n      invoice_history: true,\n      payment_method_update: true,\n      subscription_cancel: true\n    },\n    login_page: {enabled: true},\n    business_profile: {\n      headline: 'string',\n      privacy_policy_url: 'string',\n      terms_of_service_url: 'string'\n    },\n    default_return_url: 'string',\n    payment_method_types: ['card', 'cbu', 'cvu'],\n    payment_method_options: {card: {disallow: {funding: ['prepaid'], network: ['amex']}}},\n    metadata: {some: 'metadata'}\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+          },
+          {
+            "lang": "Php + Http1",
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/billing_portal/configurations/BPCqXz3a8YbE');\n$request->setMethod(HTTP_METH_PUT);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"features\":{\"customer_update\":true,\"invoice_history\":true,\"payment_method_update\":true,\"subscription_cancel\":true},\"login_page\":{\"enabled\":true},\"business_profile\":{\"headline\":\"string\",\"privacy_policy_url\":\"string\",\"terms_of_service_url\":\"string\"},\"default_return_url\":\"string\",\"payment_method_types\":[\"card\",\"cbu\",\"cvu\"],\"payment_method_options\":{\"card\":{\"disallow\":{\"funding\":[\"prepaid\"],\"network\":[\"amex\"]}}},\"metadata\":{\"some\":\"metadata\"}}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+          },
+          {
+            "lang": "Python + Requests",
+            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/billing_portal/configurations/BPCqXz3a8YbE\"\n\npayload = {\n    \"features\": {\n        \"customer_update\": True,\n        \"invoice_history\": True,\n        \"payment_method_update\": True,\n        \"subscription_cancel\": True\n    },\n    \"login_page\": {\"enabled\": True},\n    \"business_profile\": {\n        \"headline\": \"string\",\n        \"privacy_policy_url\": \"string\",\n        \"terms_of_service_url\": \"string\"\n    },\n    \"default_return_url\": \"string\",\n    \"payment_method_types\": [\"card\", \"cbu\", \"cvu\"],\n    \"payment_method_options\": {\"card\": {\"disallow\": {\n                \"funding\": [\"prepaid\"],\n                \"network\": [\"amex\"]\n            }}},\n    \"metadata\": {\"some\": \"metadata\"}\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"PUT\", url, json=payload, headers=headers)\n\nprint(response.text)"
+          },
+          {
+            "lang": "Java + Unirest",
+            "source": "HttpResponse<String> response = Unirest.put(\"https://api.debi.pro/v1/billing_portal/configurations/BPCqXz3a8YbE\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"features\\\":{\\\"customer_update\\\":true,\\\"invoice_history\\\":true,\\\"payment_method_update\\\":true,\\\"subscription_cancel\\\":true},\\\"login_page\\\":{\\\"enabled\\\":true},\\\"business_profile\\\":{\\\"headline\\\":\\\"string\\\",\\\"privacy_policy_url\\\":\\\"string\\\",\\\"terms_of_service_url\\\":\\\"string\\\"},\\\"default_return_url\\\":\\\"string\\\",\\\"payment_method_types\\\":[\\\"card\\\",\\\"cbu\\\",\\\"cvu\\\"],\\\"payment_method_options\\\":{\\\"card\\\":{\\\"disallow\\\":{\\\"funding\\\":[\\\"prepaid\\\"],\\\"network\\\":[\\\"amex\\\"]}}},\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\")\n  .asString();"
+          },
+          {
+            "lang": "Ruby + Native",
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/billing_portal/configurations/BPCqXz3a8YbE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Put.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"features\\\":{\\\"customer_update\\\":true,\\\"invoice_history\\\":true,\\\"payment_method_update\\\":true,\\\"subscription_cancel\\\":true},\\\"login_page\\\":{\\\"enabled\\\":true},\\\"business_profile\\\":{\\\"headline\\\":\\\"string\\\",\\\"privacy_policy_url\\\":\\\"string\\\",\\\"terms_of_service_url\\\":\\\"string\\\"},\\\"default_return_url\\\":\\\"string\\\",\\\"payment_method_types\\\":[\\\"card\\\",\\\"cbu\\\",\\\"cvu\\\"],\\\"payment_method_options\\\":{\\\"card\\\":{\\\"disallow\\\":{\\\"funding\\\":[\\\"prepaid\\\"],\\\"network\\\":[\\\"amex\\\"]}}},\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          }
+        ]
+      }
+    },
+    "/v1/billing_portal/sessions": {
+      "post": {
+        "operationId": "BillingPortalSessionsCreate",
+        "summary": "Crear una Sesión del Portal de Facturación",
+        "description": "Crea una Sesión del Portal de Facturación para un cliente específico. La `url` devuelta es\nla URL a la que tenés que redirigir a tu cliente para que pueda administrar sus datos de\nfacturación. Si no especificás `billing_portal_configuration_id`, se usa la configuración\npor defecto de la cuenta.\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customer_id": {
+                    "description": "[ID del Cliente](#tag/Clientes) al que pertenece la sesión del portal.\n",
+                    "type": "string",
+                    "example": "CS3Z25Agp708"
+                  },
+                  "billing_portal_configuration_id": {
+                    "description": "[ID de la Configuración del Portal de Facturación](#tag/Billing-Portal-Configurations)\nque se va a usar para esta sesión. Si se omite, se usa la configuración por defecto\nde la cuenta.\n",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "example": "BPCqXz3a8YbE"
+                  },
+                  "return_url": {
+                    "description": "URL a la que se redirige al cliente cuando termina de administrar su facturación.\nSobrescribe el `default_return_url` de la configuración para esta sesión.\n",
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "uri",
+                    "example": "https://example.com/account"
+                  }
+                },
+                "required": [
+                  "customer_id"
+                ]
+              },
+              "example": {
+                "customer_id": "CS3Z25Agp708",
+                "billing_portal_configuration_id": "BPCqXz3a8YbE",
+                "return_url": "https://example.com/account"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Creado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "description": "Una Sesión del Portal de Facturación es una página alojada que permite a tus clientes\nadministrar sus datos de facturación (métodos de pago, suscripciones, historial de pagos, ...)\nsin salir de tu marca. Crea una sesión para un cliente específico y redirígelo a la `url`\ndevuelta.",
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "description": "Identificador único de la Sesión del Portal de Facturación.",
+                          "type": "string",
+                          "example": "BPS5Z25Agp708",
+                          "readOnly": true
+                        },
+                        "object": {
+                          "type": "string",
+                          "enum": [
+                            "billing_portal.session"
+                          ]
+                        },
+                        "customer_id": {
+                          "description": "El [ID del Cliente](#tag/Clientes) al que pertenece la sesión del portal.\n",
+                          "type": "string",
+                          "example": "CS3Z25Agp708"
+                        },
+                        "billing_portal_configuration_id": {
+                          "description": "La [Configuración del Portal de Facturación](#tag/Billing-Portal-Configurations) utilizada\npor la sesión. Si no se proporciona al crear la sesión, se usa la configuración por defecto\nde la cuenta.\n",
+                          "type": "string",
+                          "example": "BPCqXz3a8YbE"
+                        },
+                        "url": {
+                          "description": "URL de la página alojada del portal de facturación. Redirige a tu cliente a esta URL para\nque pueda administrar su facturación.\n",
+                          "type": "string",
+                          "example": "https://billing.debi.pro/p/session/BPS5Z25Agp708",
+                          "readOnly": true
+                        },
+                        "return_url": {
+                          "description": "URL a la que se redirige al cliente cuando termina de administrar su facturación. Si no se\nproporciona, se utiliza `default_return_url` de la configuración.\n",
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "example": "https://example.com/account"
+                        },
+                        "livemode": {
+                          "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "created_at": {
+                          "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        },
+                        "updated_at": {
+                          "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-02-11T23:19:22-03:00"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "object",
+                        "customer_id",
+                        "billing_portal_configuration_id",
+                        "url",
+                        "livemode",
+                        "created_at",
+                        "updated_at"
+                      ],
+                      "title": "Sesión del Portal de Facturación"
+                    }
+                  }
+                },
+                "example": {
+                  "data": {
+                    "id": "BPS5Z25Agp708",
+                    "object": "billing_portal.session",
+                    "customer_id": "CS3Z25Agp708",
+                    "billing_portal_configuration_id": "BPCqXz3a8YbE",
+                    "url": "https://billing.debi.pro/p/session/BPS5Z25Agp708",
+                    "return_url": "https://example.com/account",
+                    "livemode": false,
+                    "created_at": "2024-02-11T23:17:54-03:00",
+                    "updated_at": "2024-02-11T23:17:54-03:00"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "No autorizado",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  },
+                  "title": "No autorizado"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "La funcionalidad del portal de facturación no está habilitada en la cuenta.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Recurso no encontrado",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Record not found"
+                    }
+                  },
+                  "title": "Not Found"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Datos inválidos",
+            "content": {
+              "application/json": {
+                "example": {
+                  "errors": {
+                    "customer_id": [
+                      "El campo es obligatorio."
+                    ]
+                  },
+                  "message": "The given data was invalid."
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Sesiones del Portal de Facturación"
+        ],
+        "x-codegen-request-body-name": "body",
+        "x-codeSamples": [
+          {
+            "lang": "Shell + Curl",
+            "source": "curl --request POST \\\n  --url https://api.debi.pro/v1/billing_portal/sessions \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"customer_id\":\"CS3Z25Agp708\",\"billing_portal_configuration_id\":\"BPCqXz3a8YbE\",\"return_url\":\"https://example.com/account\"}'"
+          },
+          {
+            "lang": "Node + Request",
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.debi.pro/v1/billing_portal/sessions',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    customer_id: 'CS3Z25Agp708',\n    billing_portal_configuration_id: 'BPCqXz3a8YbE',\n    return_url: 'https://example.com/account'\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+          },
+          {
+            "lang": "Php + Http1",
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/billing_portal/sessions');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"customer_id\":\"CS3Z25Agp708\",\"billing_portal_configuration_id\":\"BPCqXz3a8YbE\",\"return_url\":\"https://example.com/account\"}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+          },
+          {
+            "lang": "Python + Requests",
+            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/billing_portal/sessions\"\n\npayload = {\n    \"customer_id\": \"CS3Z25Agp708\",\n    \"billing_portal_configuration_id\": \"BPCqXz3a8YbE\",\n    \"return_url\": \"https://example.com/account\"\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
+          },
+          {
+            "lang": "Java + Unirest",
+            "source": "HttpResponse<String> response = Unirest.post(\"https://api.debi.pro/v1/billing_portal/sessions\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"customer_id\\\":\\\"CS3Z25Agp708\\\",\\\"billing_portal_configuration_id\\\":\\\"BPCqXz3a8YbE\\\",\\\"return_url\\\":\\\"https://example.com/account\\\"}\")\n  .asString();"
+          },
+          {
+            "lang": "Ruby + Native",
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/billing_portal/sessions\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"customer_id\\\":\\\"CS3Z25Agp708\\\",\\\"billing_portal_configuration_id\\\":\\\"BPCqXz3a8YbE\\\",\\\"return_url\\\":\\\"https://example.com/account\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          }
+        ]
+      }
+    },
     "/v1/customers": {
       "get": {
         "operationId": "CustomersGetCustomers",
@@ -30253,26 +32711,89 @@
         },
         "title": "Not Found"
       },
-      "name": {
-        "description": "El nombre completo del cliente.",
-        "type": [
-          "null",
-          "string"
-        ],
-        "example": "Jorgelina Castro"
+      "payment_method_types": {
+        "description": "Array de tipos de métodos de pago permitidos. Si no se especifica, se permitirán todos los métodos de pago disponibles.\n",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "card",
+            "cbu",
+            "cvu",
+            "sepa_debit",
+            "transfer"
+          ]
+        },
+        "example": [
+          "card",
+          "cbu",
+          "cvu"
+        ]
       },
-      "email": {
-        "description": "El email del cliente.",
-        "type": [
-          "null",
-          "string"
-        ],
-        "example": "mail@example.com"
-      },
-      "livemode": {
-        "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
-        "type": "boolean",
-        "example": true
+      "payment_method_options": {
+        "description": "Opciones de configuración para tipos específicos de métodos de pago, como no permitir ciertas redes de tarjetas o tipos de financiamiento.\n",
+        "type": "object",
+        "properties": {
+          "card": {
+            "type": "object",
+            "properties": {
+              "disallow": {
+                "type": "object",
+                "properties": {
+                  "funding": {
+                    "description": "Funding types to disallow",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "credit",
+                        "debit",
+                        "prepaid",
+                        "unknown"
+                      ]
+                    },
+                    "example": [
+                      "prepaid"
+                    ]
+                  },
+                  "network": {
+                    "description": "Card networks to disallow",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "amex",
+                        "diners",
+                        "discover",
+                        "favacard",
+                        "jcb",
+                        "mastercard",
+                        "naranja",
+                        "unknown",
+                        "visa"
+                      ]
+                    },
+                    "example": [
+                      "amex"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "card": {
+            "disallow": {
+              "funding": [
+                "prepaid"
+              ],
+              "network": [
+                "amex"
+              ]
+            }
+          }
+        }
       },
       "metadata": {
         "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
@@ -30293,6 +32814,471 @@
             "boolean"
           ]
         }
+      },
+      "livemode": {
+        "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+        "type": "boolean",
+        "example": true
+      },
+      "created_at": {
+        "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+        "type": "string",
+        "format": "date-time",
+        "example": "2022-02-11T23:19:22-03:00"
+      },
+      "updated_at": {
+        "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+        "type": "string",
+        "format": "date-time",
+        "example": "2022-02-11T23:19:22-03:00"
+      },
+      "BillingPortalConfiguration": {
+        "description": "Una Configuración del Portal de Facturación describe la funcionalidad y la apariencia de una sesión\ndel portal. Puedes tener múltiples configuraciones y elegir la que vas a utilizar al crear una\nSesión del Portal de Facturación.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Identificador único de la Configuración del Portal de Facturación.",
+            "type": "string",
+            "example": "BPCqXz3a8YbE",
+            "readOnly": true
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "billing_portal.configuration"
+            ]
+          },
+          "active": {
+            "description": "Indica si la configuración está activa y puede usarse para crear sesiones.",
+            "type": "boolean",
+            "example": true
+          },
+          "is_default": {
+            "description": "Indica si esta es la configuración por defecto de la cuenta. La primera configuración creada se convierte automáticamente en la predeterminada.",
+            "type": "boolean",
+            "example": true
+          },
+          "business_profile": {
+            "description": "La información del negocio que se le muestra al cliente en el portal.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "headline": {
+                "description": "Un título corto que se muestra en la parte superior del portal.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Manage your subscription"
+              },
+              "privacy_policy_url": {
+                "description": "URL de tu política de privacidad.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "https://example.com/privacy"
+              },
+              "terms_of_service_url": {
+                "description": "URL de tus términos y condiciones.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "https://example.com/terms"
+              }
+            }
+          },
+          "features": {
+            "description": "Las funcionalidades habilitadas en el portal para el cliente.",
+            "type": "object",
+            "properties": {
+              "customer_update": {
+                "description": "Permite que el cliente actualice sus datos personales.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": false
+                  }
+                }
+              },
+              "invoice_history": {
+                "description": "Permite que el cliente vea su historial de pagos.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              },
+              "payment_method_update": {
+                "description": "Permite que el cliente agregue, elimine y elija el método de pago por defecto.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              },
+              "subscription_cancel": {
+                "description": "Permite que el cliente cancele sus suscripciones.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              }
+            }
+          },
+          "login_page": {
+            "description": "Configuración de la página de inicio de sesión que permite a los clientes acceder al portal con su email.",
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "description": "Indica si la página de inicio de sesión independiente está habilitada.",
+                "type": "boolean",
+                "example": true
+              },
+              "url": {
+                "description": "URL pública de la página de inicio de sesión cuando está habilitada.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "https://billing.debi.pro/login/acme",
+                "readOnly": true
+              }
+            }
+          },
+          "default_return_url": {
+            "description": "URL por defecto a la que se redirige al cliente cuando termina de administrar su facturación.\nPuede sobrescribirse a nivel de sesión al crear una Sesión del Portal de Facturación.\n",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "https://example.com/account"
+          },
+          "payment_method_types": {
+            "description": "Subconjunto de tipos de métodos de pago que el cliente puede usar dentro del portal. Si es\n`null` estarán disponibles todos los métodos de pago configurados en la cuenta.\n",
+            "allOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "card",
+                    "cbu",
+                    "cvu",
+                    "sepa_debit",
+                    "transfer"
+                  ]
+                },
+                "description": "Array de tipos de métodos de pago permitidos. Si no se especifica, se permitirán todos los métodos de pago disponibles.\n",
+                "example": [
+                  "card",
+                  "cbu",
+                  "cvu"
+                ]
+              }
+            ]
+          },
+          "payment_method_options": {
+            "description": "Configuración detallada para cada tipo de método de pago (por ejemplo, redes de tarjetas permitidas).",
+            "allOf": [
+              {
+                "type": "object",
+                "description": "Opciones de configuración para tipos específicos de métodos de pago, como no permitir ciertas redes de tarjetas o tipos de financiamiento.\n",
+                "properties": {
+                  "card": {
+                    "type": "object",
+                    "properties": {
+                      "disallow": {
+                        "type": "object",
+                        "properties": {
+                          "funding": {
+                            "description": "Funding types to disallow",
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "credit",
+                                "debit",
+                                "prepaid",
+                                "unknown"
+                              ]
+                            },
+                            "example": [
+                              "prepaid"
+                            ]
+                          },
+                          "network": {
+                            "description": "Card networks to disallow",
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "amex",
+                                "diners",
+                                "discover",
+                                "favacard",
+                                "jcb",
+                                "mastercard",
+                                "naranja",
+                                "unknown",
+                                "visa"
+                              ]
+                            },
+                            "example": [
+                              "amex"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "card": {
+                    "disallow": {
+                      "funding": [
+                        "prepaid"
+                      ],
+                      "network": [
+                        "amex"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "supported_payment_methods": {
+            "description": "Métodos de pago realmente disponibles según los gateways configurados en la cuenta y las\nrestricciones definidas en `payment_method_types` y `payment_method_options`.\n",
+            "type": "object",
+            "example": {
+              "card": {
+                "networks": [
+                  "diners",
+                  "jcb",
+                  "mastercard",
+                  "visa"
+                ],
+                "required_fields": []
+              },
+              "cbu": true
+            },
+            "readOnly": true
+          },
+          "metadata": {
+            "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+            "type": [
+              "object",
+              "null"
+            ],
+            "example": {
+              "some": "metadata"
+            },
+            "additionalProperties": {
+              "maxLength": 500,
+              "type": [
+                "string",
+                "null",
+                "number",
+                "boolean"
+              ]
+            },
+            "properties": {}
+          },
+          "livemode": {
+            "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+            "type": "boolean",
+            "example": true
+          },
+          "created_at": {
+            "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          },
+          "updated_at": {
+            "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          }
+        },
+        "required": [
+          "id",
+          "object",
+          "active",
+          "features",
+          "login_page",
+          "livemode",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "Configuración del Portal de Facturación"
+      },
+      "Links": {
+        "description": "Links de paginación",
+        "type": "object",
+        "properties": {
+          "first": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": "https://api.debi.pro/v1/customers"
+          },
+          "last": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": "https://api.debi.pro/v1/customers"
+          },
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": "https://api.debi.pro/v1/customers"
+          },
+          "prev": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": "https://api.debi.pro/v1/customers"
+          }
+        },
+        "title": "Metadata de Respuesta"
+      },
+      "Meta": {
+        "description": "Metadata de paginación",
+        "type": "object",
+        "properties": {
+          "per_page": {
+            "type": "number",
+            "example": 25
+          },
+          "total": {
+            "type": "number",
+            "example": 2500
+          },
+          "path": {
+            "type": "string",
+            "example": "https://api.debi.pro/v1/customers"
+          },
+          "next_cursor": {
+            "description": "Cursor de Paginación.",
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "prev_cursor": {
+            "description": "Cursor de Paginación.",
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "title": "Response Meta"
+      },
+      "BillingPortalSession": {
+        "description": "Una Sesión del Portal de Facturación es una página alojada que permite a tus clientes\nadministrar sus datos de facturación (métodos de pago, suscripciones, historial de pagos, ...)\nsin salir de tu marca. Crea una sesión para un cliente específico y redirígelo a la `url`\ndevuelta.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Identificador único de la Sesión del Portal de Facturación.",
+            "type": "string",
+            "example": "BPS5Z25Agp708",
+            "readOnly": true
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "billing_portal.session"
+            ]
+          },
+          "customer_id": {
+            "description": "El [ID del Cliente](#tag/Clientes) al que pertenece la sesión del portal.\n",
+            "type": "string",
+            "example": "CS3Z25Agp708"
+          },
+          "billing_portal_configuration_id": {
+            "description": "La [Configuración del Portal de Facturación](#tag/Billing-Portal-Configurations) utilizada\npor la sesión. Si no se proporciona al crear la sesión, se usa la configuración por defecto\nde la cuenta.\n",
+            "type": "string",
+            "example": "BPCqXz3a8YbE"
+          },
+          "url": {
+            "description": "URL de la página alojada del portal de facturación. Redirige a tu cliente a esta URL para\nque pueda administrar su facturación.\n",
+            "type": "string",
+            "example": "https://billing.debi.pro/p/session/BPS5Z25Agp708",
+            "readOnly": true
+          },
+          "return_url": {
+            "description": "URL a la que se redirige al cliente cuando termina de administrar su facturación. Si no se\nproporciona, se utiliza `default_return_url` de la configuración.\n",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "https://example.com/account"
+          },
+          "livemode": {
+            "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+            "type": "boolean",
+            "example": true
+          },
+          "created_at": {
+            "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          },
+          "updated_at": {
+            "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          }
+        },
+        "required": [
+          "id",
+          "object",
+          "customer_id",
+          "billing_portal_configuration_id",
+          "url",
+          "livemode",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "Sesión del Portal de Facturación"
+      },
+      "name": {
+        "description": "El nombre completo del cliente.",
+        "type": [
+          "null",
+          "string"
+        ],
+        "example": "Jorgelina Castro"
+      },
+      "email": {
+        "description": "El email del cliente.",
+        "type": [
+          "null",
+          "string"
+        ],
+        "example": "mail@example.com"
       },
       "mobile_number": {
         "description": "El número de teléfono móvil del cliente.",
@@ -30333,18 +33319,6 @@
           "string"
         ],
         "example": "DNI"
-      },
-      "created_at": {
-        "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
-        "type": "string",
-        "format": "date-time",
-        "example": "2022-02-11T23:19:22-03:00"
-      },
-      "updated_at": {
-        "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
-        "type": "string",
-        "format": "date-time",
-        "example": "2022-02-11T23:19:22-03:00"
       },
       "deleted_at": {
         "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
@@ -30483,74 +33457,6 @@
           "updated_at"
         ],
         "title": "Cliente"
-      },
-      "Links": {
-        "description": "Links de paginación",
-        "type": "object",
-        "properties": {
-          "first": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": "https://api.debi.pro/v1/customers"
-          },
-          "last": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": "https://api.debi.pro/v1/customers"
-          },
-          "next": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": "https://api.debi.pro/v1/customers"
-          },
-          "prev": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": "https://api.debi.pro/v1/customers"
-          }
-        },
-        "title": "Metadata de Respuesta"
-      },
-      "Meta": {
-        "description": "Metadata de paginación",
-        "type": "object",
-        "properties": {
-          "per_page": {
-            "type": "number",
-            "example": 25
-          },
-          "total": {
-            "type": "number",
-            "example": 2500
-          },
-          "path": {
-            "type": "string",
-            "example": "https://api.debi.pro/v1/customers"
-          },
-          "next_cursor": {
-            "description": "Cursor de Paginación.",
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "prev_cursor": {
-            "description": "Cursor de Paginación.",
-            "type": [
-              "null",
-              "string"
-            ]
-          }
-        },
-        "title": "Response Meta"
       },
       "id": {
         "description": "Identificador único del objeto.",
@@ -31972,90 +34878,6 @@
         "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
         "type": "boolean",
         "example": true
-      },
-      "payment_method_types": {
-        "description": "Array de tipos de métodos de pago permitidos. Si no se especifica, se permitirán todos los métodos de pago disponibles.\n",
-        "type": "array",
-        "items": {
-          "type": "string",
-          "enum": [
-            "card",
-            "cbu",
-            "cvu",
-            "sepa_debit",
-            "transfer"
-          ]
-        },
-        "example": [
-          "card",
-          "cbu",
-          "cvu"
-        ]
-      },
-      "payment_method_options": {
-        "description": "Opciones de configuración para tipos específicos de métodos de pago, como no permitir ciertas redes de tarjetas o tipos de financiamiento.\n",
-        "type": "object",
-        "properties": {
-          "card": {
-            "type": "object",
-            "properties": {
-              "disallow": {
-                "type": "object",
-                "properties": {
-                  "funding": {
-                    "description": "Funding types to disallow",
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "enum": [
-                        "credit",
-                        "debit",
-                        "prepaid",
-                        "unknown"
-                      ]
-                    },
-                    "example": [
-                      "prepaid"
-                    ]
-                  },
-                  "network": {
-                    "description": "Card networks to disallow",
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "enum": [
-                        "amex",
-                        "diners",
-                        "discover",
-                        "favacard",
-                        "jcb",
-                        "mastercard",
-                        "naranja",
-                        "unknown",
-                        "visa"
-                      ]
-                    },
-                    "example": [
-                      "amex"
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        },
-        "example": {
-          "card": {
-            "disallow": {
-              "funding": [
-                "prepaid"
-              ],
-              "network": [
-                "amex"
-              ]
-            }
-          }
-        }
       },
       "Link": {
         "description": "Este objeto representa un Link de su organización.",
@@ -35021,6 +37843,370 @@
             }
           }
         ]
+      },
+      "billing_portal_configuration": {
+        "description": "Una Configuración del Portal de Facturación describe la funcionalidad y la apariencia de una sesión\ndel portal. Puedes tener múltiples configuraciones y elegir la que vas a utilizar al crear una\nSesión del Portal de Facturación.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Identificador único de la Configuración del Portal de Facturación.",
+            "type": "string",
+            "example": "BPCqXz3a8YbE",
+            "readOnly": true
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "billing_portal.configuration"
+            ]
+          },
+          "active": {
+            "description": "Indica si la configuración está activa y puede usarse para crear sesiones.",
+            "type": "boolean",
+            "example": true
+          },
+          "is_default": {
+            "description": "Indica si esta es la configuración por defecto de la cuenta. La primera configuración creada se convierte automáticamente en la predeterminada.",
+            "type": "boolean",
+            "example": true
+          },
+          "business_profile": {
+            "description": "La información del negocio que se le muestra al cliente en el portal.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "headline": {
+                "description": "Un título corto que se muestra en la parte superior del portal.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Manage your subscription"
+              },
+              "privacy_policy_url": {
+                "description": "URL de tu política de privacidad.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "https://example.com/privacy"
+              },
+              "terms_of_service_url": {
+                "description": "URL de tus términos y condiciones.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "https://example.com/terms"
+              }
+            }
+          },
+          "features": {
+            "description": "Las funcionalidades habilitadas en el portal para el cliente.",
+            "type": "object",
+            "properties": {
+              "customer_update": {
+                "description": "Permite que el cliente actualice sus datos personales.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": false
+                  }
+                }
+              },
+              "invoice_history": {
+                "description": "Permite que el cliente vea su historial de pagos.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              },
+              "payment_method_update": {
+                "description": "Permite que el cliente agregue, elimine y elija el método de pago por defecto.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              },
+              "subscription_cancel": {
+                "description": "Permite que el cliente cancele sus suscripciones.",
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              }
+            }
+          },
+          "login_page": {
+            "description": "Configuración de la página de inicio de sesión que permite a los clientes acceder al portal con su email.",
+            "type": "object",
+            "properties": {
+              "enabled": {
+                "description": "Indica si la página de inicio de sesión independiente está habilitada.",
+                "type": "boolean",
+                "example": true
+              },
+              "url": {
+                "description": "URL pública de la página de inicio de sesión cuando está habilitada.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "https://billing.debi.pro/login/acme",
+                "readOnly": true
+              }
+            }
+          },
+          "default_return_url": {
+            "description": "URL por defecto a la que se redirige al cliente cuando termina de administrar su facturación.\nPuede sobrescribirse a nivel de sesión al crear una Sesión del Portal de Facturación.\n",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "https://example.com/account"
+          },
+          "payment_method_types": {
+            "description": "Subconjunto de tipos de métodos de pago que el cliente puede usar dentro del portal. Si es\n`null` estarán disponibles todos los métodos de pago configurados en la cuenta.\n",
+            "allOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "card",
+                    "cbu",
+                    "cvu",
+                    "sepa_debit",
+                    "transfer"
+                  ]
+                },
+                "description": "Array de tipos de métodos de pago permitidos. Si no se especifica, se permitirán todos los métodos de pago disponibles.\n",
+                "example": [
+                  "card",
+                  "cbu",
+                  "cvu"
+                ]
+              }
+            ]
+          },
+          "payment_method_options": {
+            "description": "Configuración detallada para cada tipo de método de pago (por ejemplo, redes de tarjetas permitidas).",
+            "allOf": [
+              {
+                "type": "object",
+                "description": "Opciones de configuración para tipos específicos de métodos de pago, como no permitir ciertas redes de tarjetas o tipos de financiamiento.\n",
+                "properties": {
+                  "card": {
+                    "type": "object",
+                    "properties": {
+                      "disallow": {
+                        "type": "object",
+                        "properties": {
+                          "funding": {
+                            "description": "Funding types to disallow",
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "credit",
+                                "debit",
+                                "prepaid",
+                                "unknown"
+                              ]
+                            },
+                            "example": [
+                              "prepaid"
+                            ]
+                          },
+                          "network": {
+                            "description": "Card networks to disallow",
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "amex",
+                                "diners",
+                                "discover",
+                                "favacard",
+                                "jcb",
+                                "mastercard",
+                                "naranja",
+                                "unknown",
+                                "visa"
+                              ]
+                            },
+                            "example": [
+                              "amex"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "card": {
+                    "disallow": {
+                      "funding": [
+                        "prepaid"
+                      ],
+                      "network": [
+                        "amex"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "supported_payment_methods": {
+            "description": "Métodos de pago realmente disponibles según los gateways configurados en la cuenta y las\nrestricciones definidas en `payment_method_types` y `payment_method_options`.\n",
+            "type": "object",
+            "example": {
+              "card": {
+                "networks": [
+                  "diners",
+                  "jcb",
+                  "mastercard",
+                  "visa"
+                ],
+                "required_fields": []
+              },
+              "cbu": true
+            },
+            "readOnly": true
+          },
+          "metadata": {
+            "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
+            "type": [
+              "object",
+              "null"
+            ],
+            "example": {
+              "some": "metadata"
+            },
+            "additionalProperties": {
+              "maxLength": 500,
+              "type": [
+                "string",
+                "null",
+                "number",
+                "boolean"
+              ]
+            },
+            "properties": {}
+          },
+          "livemode": {
+            "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+            "type": "boolean",
+            "example": true
+          },
+          "created_at": {
+            "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          },
+          "updated_at": {
+            "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          }
+        },
+        "required": [
+          "id",
+          "object",
+          "active",
+          "features",
+          "login_page",
+          "livemode",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "Configuración del Portal de Facturación"
+      },
+      "billing_portal_session": {
+        "description": "Una Sesión del Portal de Facturación es una página alojada que permite a tus clientes\nadministrar sus datos de facturación (métodos de pago, suscripciones, historial de pagos, ...)\nsin salir de tu marca. Crea una sesión para un cliente específico y redirígelo a la `url`\ndevuelta.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Identificador único de la Sesión del Portal de Facturación.",
+            "type": "string",
+            "example": "BPS5Z25Agp708",
+            "readOnly": true
+          },
+          "object": {
+            "type": "string",
+            "enum": [
+              "billing_portal.session"
+            ]
+          },
+          "customer_id": {
+            "description": "El [ID del Cliente](#tag/Clientes) al que pertenece la sesión del portal.\n",
+            "type": "string",
+            "example": "CS3Z25Agp708"
+          },
+          "billing_portal_configuration_id": {
+            "description": "La [Configuración del Portal de Facturación](#tag/Billing-Portal-Configurations) utilizada\npor la sesión. Si no se proporciona al crear la sesión, se usa la configuración por defecto\nde la cuenta.\n",
+            "type": "string",
+            "example": "BPCqXz3a8YbE"
+          },
+          "url": {
+            "description": "URL de la página alojada del portal de facturación. Redirige a tu cliente a esta URL para\nque pueda administrar su facturación.\n",
+            "type": "string",
+            "example": "https://billing.debi.pro/p/session/BPS5Z25Agp708",
+            "readOnly": true
+          },
+          "return_url": {
+            "description": "URL a la que se redirige al cliente cuando termina de administrar su facturación. Si no se\nproporciona, se utiliza `default_return_url` de la configuración.\n",
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "https://example.com/account"
+          },
+          "livemode": {
+            "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
+            "type": "boolean",
+            "example": true
+          },
+          "created_at": {
+            "description": "Hora en la que se creó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          },
+          "updated_at": {
+            "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
+            "type": "string",
+            "format": "date-time",
+            "example": "2022-02-11T23:19:22-03:00"
+          }
+        },
+        "required": [
+          "id",
+          "object",
+          "customer_id",
+          "billing_portal_configuration_id",
+          "url",
+          "livemode",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "Sesión del Portal de Facturación"
       },
       "customer": {
         "description": "Este objeto representa a un cliente de su organización.",
@@ -39083,6 +42269,85 @@
       }
     },
     "examples": {
+      "billing_portal_configuration": {
+        "summary": "Ejemplo de Configuración del Portal de Facturación",
+        "value": {
+          "id": "BPCqXz3a8YbE",
+          "object": "billing_portal.configuration",
+          "active": true,
+          "is_default": true,
+          "business_profile": {
+            "headline": "Manage your subscription",
+            "privacy_policy_url": "https://example.com/privacy",
+            "terms_of_service_url": "https://example.com/terms"
+          },
+          "features": {
+            "customer_update": {
+              "enabled": false
+            },
+            "invoice_history": {
+              "enabled": true
+            },
+            "payment_method_update": {
+              "enabled": true
+            },
+            "subscription_cancel": {
+              "enabled": true
+            }
+          },
+          "login_page": {
+            "enabled": true,
+            "url": "https://billing.debi.pro/login/acme"
+          },
+          "default_return_url": "https://example.com/account",
+          "payment_method_types": [
+            "card",
+            "cbu"
+          ],
+          "payment_method_options": {
+            "card": {
+              "disallow": {
+                "funding": [],
+                "network": [
+                  "amex"
+                ]
+              }
+            }
+          },
+          "supported_payment_methods": {
+            "card": {
+              "networks": [
+                "diners",
+                "jcb",
+                "mastercard",
+                "visa"
+              ],
+              "required_fields": []
+            },
+            "cbu": true
+          },
+          "metadata": {
+            "plan": "pro"
+          },
+          "livemode": false,
+          "created_at": "2024-02-11T23:17:54-03:00",
+          "updated_at": "2024-02-11T23:17:54-03:00"
+        }
+      },
+      "billing_portal_session": {
+        "summary": "Ejemplo de Sesión del Portal de Facturación",
+        "value": {
+          "id": "BPS5Z25Agp708",
+          "object": "billing_portal.session",
+          "customer_id": "CS3Z25Agp708",
+          "billing_portal_configuration_id": "BPCqXz3a8YbE",
+          "url": "https://billing.debi.pro/p/session/BPS5Z25Agp708",
+          "return_url": "https://example.com/account",
+          "livemode": false,
+          "created_at": "2024-02-11T23:17:54-03:00",
+          "updated_at": "2024-02-11T23:17:54-03:00"
+        }
+      },
       "customer": {
         "summary": "Ejemplo de Cliente",
         "value": {
@@ -39601,6 +42866,14 @@
     }
   },
   "tags": [
+    {
+      "name": "Configuraciones del Portal de Facturación",
+      "description": "Una Configuración del Portal de Facturación describe la funcionalidad y la apariencia de\nuna sesión del portal. Podés tener múltiples configuraciones y elegir cuál se usa al crear\nuna Sesión del Portal de Facturación. La primera configuración creada en la cuenta se\nestablece automáticamente como predeterminada.\n\nLa funcionalidad del portal de facturación debe estar habilitada en tu cuenta. Si recibís\nun `404` en estos endpoints, contactá al soporte de Debi.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/billing_portal_configuration\" exampleRef=\"#/components/examples/billing_portal_configuration\" showReadOnly={true} showWriteOnly={true} />\n"
+    },
+    {
+      "name": "Sesiones del Portal de Facturación",
+      "description": "Una Sesión del Portal de Facturación es la página alojada que usan tus clientes para\nadministrar sus datos de facturación (métodos de pago, suscripciones, historial de pagos).\nPara iniciar el flujo, creá una sesión para un cliente específico y redirigilo a la `url`\ndevuelta.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/billing_portal_session\" exampleRef=\"#/components/examples/billing_portal_session\" showReadOnly={true} showWriteOnly={true} />\n"
+    },
     {
       "name": "Clientes",
       "description": "Este objeto representa a un cliente de su organización. Le permite crear suscripciones y realizar un seguimiento de los pagos que pertenecen al mismo cliente.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/customer\" exampleRef=\"#/components/examples/customer\" showReadOnly={true} showWriteOnly={true} />\n"
