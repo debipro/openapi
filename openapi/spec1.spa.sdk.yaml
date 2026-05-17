@@ -38749,20 +38749,20 @@ components:
       description: |
         Autenticación usando la [clave secreta](#section/Autenticacion). Debes enviar [la clave secreta](#section/Autenticacion) en el header `Authorization` (usando el esquema [Bearer](https://tools.ietf.org/html/rfc6750#section-2.1)).
 tags:
-  - name: Configuraciones del Portal de Facturación
+  - name: Configuraciones del Portal de Clientes
     description: |
-      Una Configuración del Portal de Facturación describe la funcionalidad y la apariencia de
+      Una Configuración del Portal de Clientes describe la funcionalidad y la apariencia de
       una sesión del portal. Podés tener múltiples configuraciones y elegir cuál se usa al crear
-      una Sesión del Portal de Facturación. La primera configuración creada en la cuenta se
+      una Sesión del Portal de Clientes. La primera configuración creada en la cuenta se
       establece automáticamente como predeterminada.
 
-      La funcionalidad del portal de facturación debe estar habilitada en tu cuenta. Si recibís
+      La funcionalidad del Portal de Clientes debe estar habilitada en tu cuenta. Si recibís
       un `404` en estos endpoints, contactá al soporte de Debi.
 
       <SchemaDefinition schemaRef="#/components/schemas/billing_portal_configuration" exampleRef="#/components/examples/billing_portal_configuration" showReadOnly={true} showWriteOnly={true} />
-  - name: Sesiones del Portal de Facturación
+  - name: Sesiones del Portal de Clientes
     description: |
-      Una Sesión del Portal de Facturación es la página alojada que usan tus clientes para
+      Una Sesión del Portal de Clientes es la página alojada que usan tus clientes para
       administrar sus datos de facturación (métodos de pago, suscripciones, historial de pagos).
       Para iniciar el flujo, creá una sesión para un cliente específico y redirigilo a la `url`
       devuelta.

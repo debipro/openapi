@@ -42867,12 +42867,12 @@
   },
   "tags": [
     {
-      "name": "Configuraciones del Portal de Facturación",
-      "description": "Una Configuración del Portal de Facturación describe la funcionalidad y la apariencia de\nuna sesión del portal. Podés tener múltiples configuraciones y elegir cuál se usa al crear\nuna Sesión del Portal de Facturación. La primera configuración creada en la cuenta se\nestablece automáticamente como predeterminada.\n\nLa funcionalidad del portal de facturación debe estar habilitada en tu cuenta. Si recibís\nun `404` en estos endpoints, contactá al soporte de Debi.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/billing_portal_configuration\" exampleRef=\"#/components/examples/billing_portal_configuration\" showReadOnly={true} showWriteOnly={true} />\n"
+      "name": "Configuraciones del Portal de Clientes",
+      "description": "Una Configuración del Portal de Clientes describe la funcionalidad y la apariencia de\nuna sesión del portal. Podés tener múltiples configuraciones y elegir cuál se usa al crear\nuna Sesión del Portal de Clientes. La primera configuración creada en la cuenta se\nestablece automáticamente como predeterminada.\n\nLa funcionalidad del Portal de Clientes debe estar habilitada en tu cuenta. Si recibís\nun `404` en estos endpoints, contactá al soporte de Debi.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/billing_portal_configuration\" exampleRef=\"#/components/examples/billing_portal_configuration\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
-      "name": "Sesiones del Portal de Facturación",
-      "description": "Una Sesión del Portal de Facturación es la página alojada que usan tus clientes para\nadministrar sus datos de facturación (métodos de pago, suscripciones, historial de pagos).\nPara iniciar el flujo, creá una sesión para un cliente específico y redirigilo a la `url`\ndevuelta.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/billing_portal_session\" exampleRef=\"#/components/examples/billing_portal_session\" showReadOnly={true} showWriteOnly={true} />\n"
+      "name": "Sesiones del Portal de Clientes",
+      "description": "Una Sesión del Portal de Clientes es la página alojada que usan tus clientes para\nadministrar sus datos de facturación (métodos de pago, suscripciones, historial de pagos).\nPara iniciar el flujo, creá una sesión para un cliente específico y redirigilo a la `url`\ndevuelta.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/billing_portal_session\" exampleRef=\"#/components/examples/billing_portal_session\" showReadOnly={true} showWriteOnly={true} />\n"
     },
     {
       "name": "Clientes",
