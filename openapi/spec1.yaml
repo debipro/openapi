@@ -16,7 +16,7 @@ info:
 
     ### Content types
 
-    Debi API supports only `JSON` content types. Make sure to include the following header on your requests.
+    The Debi API supports only `JSON` content types. Make sure to include the following header on your requests.
 
     #### Content-Type Header
 
