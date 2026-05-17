@@ -308,7 +308,7 @@ info:
 
     ### Testing the webhooks in local environments
 
-    You can easy create test webhooks using https://webhook.site/ With that you will be able to see what we are sending to our API consumers.
+    You can easily create test webhooks using https://webhook.site/ With that you will be able to see what we are sending to our API consumers.
 
     Also, to start integrating the webhooks, your code will need to be accessible from the internet so Debi can reach it with HTTP requests. If you’re working locally, the easiest way to do this is with [ngrok](https://ngrok.com/).
 
