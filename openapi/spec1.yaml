@@ -63,7 +63,7 @@ info:
 
     #### Error response
 
-    This API returns both, machine-readable error codes and human-readable error messages when there's an error.
+    This API returns both machine-readable error codes and human-readable error messages when there's an error.
 
     ##### Example
 
