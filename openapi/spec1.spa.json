@@ -15649,14 +15649,6 @@
                             },
                             "title": "Método de pago"
                           },
-                          "gateway_identifier": {
-                            "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-                            "type": [
-                              "null",
-                              "string"
-                            ],
-                            "example": null
-                          },
                           "binary_mode": {
                             "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
                             "type": "boolean",
@@ -15967,10 +15959,6 @@
                     "description": "La cantidad máxima de veces que se puede volver a intentar el pago automáticamente. Si es nulo, se aplicará el valor por defecto para el usuario.",
                     "type": "integer"
                   },
-                  "gateway_identifier": {
-                    "description": "Identificador de Gateway para su pago. Este valor se utiliza para identificar el pago en el gateway. Algunas veces los gateways muestran este valor como un descriptor en extractos bancarios. Si no envías este parámetro, el gateway generará un identificador aleatorio. Este valor no se puede actualizar una vez creado el pago.",
-                    "type": "string"
-                  },
                   "binary_mode": {
                     "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
                     "type": "boolean",
@@ -16000,7 +15988,6 @@
                 "example": {
                   "amount": 100,
                   "description": "Unique payment",
-                  "gateway_identifier": "001234",
                   "customer_id": "CSr7Dg3LkDP2",
                   "payment_method_id": "PMBja4YZ2GDR"
                 },
@@ -16731,14 +16718,6 @@
                             }
                           },
                           "title": "Método de pago"
-                        },
-                        "gateway_identifier": {
-                          "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-                          "type": [
-                            "null",
-                            "string"
-                          ],
-                          "example": null
                         },
                         "binary_mode": {
                           "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
@@ -17673,14 +17652,6 @@
                             }
                           },
                           "title": "Método de pago"
-                        },
-                        "gateway_identifier": {
-                          "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-                          "type": [
-                            "null",
-                            "string"
-                          ],
-                          "example": null
                         },
                         "binary_mode": {
                           "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
@@ -18696,14 +18667,6 @@
                             }
                           },
                           "title": "Método de pago"
-                        },
-                        "gateway_identifier": {
-                          "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-                          "type": [
-                            "null",
-                            "string"
-                          ],
-                          "example": null
                         },
                         "binary_mode": {
                           "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
@@ -19801,14 +19764,6 @@
                       },
                       "title": "Método de pago"
                     },
-                    "gateway_identifier": {
-                      "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-                      "type": [
-                        "null",
-                        "string"
-                      ],
-                      "example": null
-                    },
                     "binary_mode": {
                       "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
                       "type": "boolean",
@@ -20049,7 +20004,6 @@
                         "type": "card",
                         "updated_at": "2022-02-01T23:13:04-03:00"
                       },
-                      "gateway_identifier": null,
                       "metadata": null,
                       "refunds": []
                     }
@@ -21186,14 +21140,6 @@
                             },
                             "title": "Método de pago"
                           },
-                          "gateway_identifier": {
-                            "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-                            "type": [
-                              "null",
-                              "string"
-                            ],
-                            "example": null
-                          },
                           "binary_mode": {
                             "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
                             "type": "boolean",
@@ -21506,7 +21452,6 @@
                         "type": "card",
                         "updated_at": "2022-02-01T23:13:04-03:00"
                       },
-                      "gateway_identifier": null,
                       "metadata": null,
                       "refunds": []
                     }
@@ -22284,14 +22229,6 @@
                     "description": "Solo para suscripciones, el número del día de la semana, del 0 (domingo) al 6 (sábado). Úselo solo si necesita que la suscripción comience en una fecha específica. En la mayoría de los casos este debe ser nulo, por lo que Debi utilizará la fecha del momento en que el usuario completa el checkout.",
                     "type": "integer"
                   },
-                  "payment_gateway_identifier": {
-                    "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-                    "type": [
-                      "null",
-                      "string"
-                    ],
-                    "example": null
-                  },
                   "binary_mode": {
                     "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
                     "type": "boolean",
@@ -22635,14 +22572,6 @@
                           "type": "boolean",
                           "example": true
                         },
-                        "payment_gateway_identifier": {
-                          "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-                          "type": [
-                            "null",
-                            "string"
-                          ],
-                          "example": null
-                        },
                         "public_uri": {
                           "description": "La URL de la sesión de Checkout. Redirige a tus usuario a esta URL para completar el checkout.",
                           "type": "string",
@@ -22968,14 +22897,6 @@
                           "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
                           "type": "boolean",
                           "example": true
-                        },
-                        "payment_gateway_identifier": {
-                          "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-                          "type": [
-                            "null",
-                            "string"
-                          ],
-                          "example": null
                         },
                         "public_uri": {
                           "description": "La URL de la sesión de Checkout. Redirige a tus usuario a esta URL para completar el checkout.",
@@ -34692,14 +34613,6 @@
             },
             "title": "Método de pago"
           },
-          "gateway_identifier": {
-            "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": null
-          },
           "binary_mode": {
             "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
             "type": "boolean",
@@ -35016,14 +34929,6 @@
             "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
             "type": "boolean",
             "example": true
-          },
-          "payment_gateway_identifier": {
-            "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": null
           },
           "public_uri": {
             "description": "La URL de la sesión de Checkout. Redirige a tus usuario a esta URL para completar el checkout.",
@@ -38565,14 +38470,6 @@
             },
             "title": "Método de pago"
           },
-          "gateway_identifier": {
-            "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": null
-          },
           "binary_mode": {
             "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
             "type": "boolean",
@@ -39358,14 +39255,6 @@
             "description": "Fuerza el procesamiento instantáneo de pagos, proporcionando un estado inmediato de `approved` o `rejected` dentro de la respuesta de la solicitud. Esta configuración evita respuestas inconclusivas (como pagos con estado `submitted`) usando solo gateways que pueden procesar pagos instantáneamente, garantizando un resultado rápido y concluyente.\nEs particularmente útil cuando se procesan pagos en un flujo de checkout que requiere una respuesta sincrónica, permitiendo al cliente recibir instantáneamente el resultado de la transacción. También considere que este modo deshabilita los reintentos automáticos para pagos fallidos, pero este comportamiento puede ser gestionado también definiendo la cantidad máxima de veces que se puede volver a intentar el pago automáticamente estableciendo el parámetro `auto_retries_max_attempts`.\n",
             "type": "boolean",
             "example": true
-          },
-          "payment_gateway_identifier": {
-            "description": "El número personalizado que envía al Gateway. En la mayoría de los casos este valor es nulo.",
-            "type": [
-              "null",
-              "string"
-            ],
-            "example": null
           },
           "public_uri": {
             "description": "La URL de la sesión de Checkout. Redirige a tus usuario a esta URL para completar el checkout.",
@@ -40771,7 +40660,6 @@
             "type": "card",
             "updated_at": "2022-02-01T23:13:04-03:00"
           },
-          "gateway_identifier": null,
           "metadata": null,
           "refunds": []
         }

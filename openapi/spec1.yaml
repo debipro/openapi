@@ -12076,12 +12076,6 @@ paths:
                               format: date-time
                               example: 2022-02-11T23:19:22-03:00
                           title: Payment Method
-                        gateway_identifier:
-                          description: The custom number you send to the gateway network. In most cases this value is null.
-                          type:
-                            - 'null'
-                            - string
-                          example: null
                         binary_mode:
                           description: |
                             Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.
@@ -12324,9 +12318,6 @@ paths:
                 auto_retries_max_attempts:
                   description: The maximum amount of times the payment could be retried automatically. If null, will apply the default value for the user.
                   type: integer
-                gateway_identifier:
-                  description: Gateway identifier for your payment. This value is used to identify the payment in the gateway. Sometimes gateways show this value as a descriptor in bank statements. If you don't send this parameter, the gateway will generate a random identifier. This value is not updatable once the payment is created.
-                  type: string
                 binary_mode:
                   description: |
                     Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.
@@ -12356,7 +12347,6 @@ paths:
               example:
                 amount: 100
                 description: Unique payment
-                gateway_identifier: '001234'
                 customer_id: CSr7Dg3LkDP2
                 payment_method_id: PMBja4YZ2GDR
               required:
@@ -12926,12 +12916,6 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Payment Method
-                      gateway_identifier:
-                        description: The custom number you send to the gateway network. In most cases this value is null.
-                        type:
-                          - 'null'
-                          - string
-                        example: null
                       binary_mode:
                         description: |
                           Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.
@@ -13664,12 +13648,6 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Payment Method
-                      gateway_identifier:
-                        description: The custom number you send to the gateway network. In most cases this value is null.
-                        type:
-                          - 'null'
-                          - string
-                        example: null
                       binary_mode:
                         description: |
                           Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.
@@ -14464,12 +14442,6 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Payment Method
-                      gateway_identifier:
-                        description: The custom number you send to the gateway network. In most cases this value is null.
-                        type:
-                          - 'null'
-                          - string
-                        example: null
                       binary_mode:
                         description: |
                           Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.
@@ -15316,12 +15288,6 @@ paths:
                         format: date-time
                         example: 2022-02-11T23:19:22-03:00
                     title: Payment Method
-                  gateway_identifier:
-                    description: The custom number you send to the gateway network. In most cases this value is null.
-                    type:
-                      - 'null'
-                      - string
-                    example: null
                   binary_mode:
                     description: |
                       Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.
@@ -15528,7 +15494,6 @@ paths:
                       object: payment_method
                       type: card
                       updated_at: 2022-02-01T23:13:04-03:00
-                    gateway_identifier: null
                     metadata: null
                     refunds: []
         '404':
@@ -16397,12 +16362,6 @@ paths:
                               format: date-time
                               example: 2022-02-11T23:19:22-03:00
                           title: Payment Method
-                        gateway_identifier:
-                          description: The custom number you send to the gateway network. In most cases this value is null.
-                          type:
-                            - 'null'
-                            - string
-                          example: null
                         binary_mode:
                           description: |
                             Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.
@@ -16657,7 +16616,6 @@ paths:
                       object: payment_method
                       type: card
                       updated_at: 2022-02-01T23:13:04-03:00
-                    gateway_identifier: null
                     metadata: null
                     refunds: []
                 links:
@@ -17253,12 +17211,6 @@ paths:
                   description: |
                     Only for subscriptions, the day of week number, from 0 (Sunday) to 6 (Saturday). Use only if you need the subscription to start in a specyfic date. In most cases this should be null, therefore Debi will use the date of the moment when the user completes the checkout.
                   type: integer
-                payment_gateway_identifier:
-                  description: The custom number you send to the gateway network. In most cases this value is null.
-                  type:
-                    - 'null'
-                    - string
-                  example: null
                 binary_mode:
                   description: |
                     Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.
@@ -17535,12 +17487,6 @@ paths:
                           It is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.
                         type: boolean
                         example: true
-                      payment_gateway_identifier:
-                        description: The custom number you send to the gateway network. In most cases this value is null.
-                        type:
-                          - 'null'
-                          - string
-                        example: null
                       public_uri:
                         description: The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout.
                         type: string
@@ -17789,12 +17735,6 @@ paths:
                           It is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.
                         type: boolean
                         example: true
-                      payment_gateway_identifier:
-                        description: The custom number you send to the gateway network. In most cases this value is null.
-                        type:
-                          - 'null'
-                          - string
-                        example: null
                       public_uri:
                         description: The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout.
                         type: string
@@ -26921,12 +26861,6 @@ components:
               format: date-time
               example: 2022-02-11T23:19:22-03:00
           title: Payment Method
-        gateway_identifier:
-          description: The custom number you send to the gateway network. In most cases this value is null.
-          type:
-            - 'null'
-            - string
-          example: null
         binary_mode:
           description: |
             Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.
@@ -27191,12 +27125,6 @@ components:
             It is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.
           type: boolean
           example: true
-        payment_gateway_identifier:
-          description: The custom number you send to the gateway network. In most cases this value is null.
-          type:
-            - 'null'
-            - string
-          example: null
         public_uri:
           description: The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout.
           type: string
@@ -29984,12 +29912,6 @@ components:
               format: date-time
               example: 2022-02-11T23:19:22-03:00
           title: Payment Method
-        gateway_identifier:
-          description: The custom number you send to the gateway network. In most cases this value is null.
-          type:
-            - 'null'
-            - string
-          example: null
         binary_mode:
           description: |
             Binary mode forces instantaneous payment processing, returning an immediate and definitive status — either approved or rejected — within the same request response.
@@ -30620,12 +30542,6 @@ components:
             It is particularly useful when processing payments in a checkout flow that requires a synchronous response, allowing the customer to receive instant feedback on the transaction result. Also consider that this mode disables automatic retries for rejected payments, but this behavior can be managed also defining the maximum amount of times the payment could be retried automatically by setting the `auto_retries_max_attempts` parameter.
           type: boolean
           example: true
-        payment_gateway_identifier:
-          description: The custom number you send to the gateway network. In most cases this value is null.
-          type:
-            - 'null'
-            - string
-          example: null
         public_uri:
           description: The URL to the Checkout Session. Redirect customers to this URL to take them to Checkout.
           type: string
@@ -31751,7 +31667,6 @@ components:
           object: payment_method
           type: card
           updated_at: 2022-02-01T23:13:04-03:00
-        gateway_identifier: null
         metadata: null
         refunds: []
     payment_method:
