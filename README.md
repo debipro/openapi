@@ -1,13 +1,13 @@
-# TuCuota's OpenAPI Specification
+# Debi's OpenAPI Specification
 
-This repository contains [OpenAPI specifications][openapi] for TuCuota's API.
+This repository contains [OpenAPI specifications][openapi] for Debi's API.
 
 [Changelog](https://github.com/tucuota/openapi/releases/)
 
 
 Files can be found in the `openapi/` directory:
 
-* `spec1.{json,yaml}:` OpenAPI 3.0 spec matching the public TuCuota API.
+* `spec1.{json,yaml}:` OpenAPI 3.1.0 spec matching the public Debi's API.
 * `fixtures1.{json,yaml}`: Test fixtures for resources in spec3. See below for more information.
 
 ## Vendor Extensions
