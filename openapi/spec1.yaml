@@ -17205,7 +17205,7 @@ paths:
                   type: integer
                 day_of_month:
                   description: |
-                    Only for subscriptions, the day of month, from 1 to 28. Use only if you need the subscription to start in a specyfic date. In most cases this should be null, therefore Debi will use the date of the moment when the user completes the checkout.
+                    Only for subscriptions, the day of month, from 1 to 31, or -1 for the last day of the month. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month. Use only if you need the subscription to start in a specyfic date. In most cases this should be null, therefore Debi will use the date of the moment when the user completes the checkout.
                   type: integer
                 day_of_week:
                   description: |
@@ -17443,7 +17443,7 @@ paths:
                         description: Only for subscriptions. Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.
                         type: number
                       day_of_month:
-                        description: Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.
+                        description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if interval_unit is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
                         type: number
                       day_of_week:
                         description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -17691,7 +17691,7 @@ paths:
                         description: Only for subscriptions. Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.
                         type: number
                       day_of_month:
-                        description: Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.
+                        description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if interval_unit is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
                         type: number
                       day_of_week:
                         description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -17975,7 +17975,7 @@ paths:
                           type: number
                           example: 1
                         day_of_month:
-                          description: Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.
+                          description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
                           type: number
                         day_of_week:
                           description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -18570,7 +18570,7 @@ paths:
                   description: Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.
                   type: number
                 day_of_month:
-                  description: Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.
+                  description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
                   type: number
                 day_of_week:
                   description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -18695,7 +18695,7 @@ paths:
                         type: number
                         example: 1
                       day_of_month:
-                        description: Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.
+                        description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
                         type: number
                       day_of_week:
                         description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -19354,7 +19354,7 @@ paths:
                         type: number
                         example: 1
                       day_of_month:
-                        description: Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.
+                        description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
                         type: number
                       day_of_week:
                         description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -19920,7 +19920,7 @@ paths:
                   description: Number of interval_units between customer charge dates. Must be greater than to 1. If interval_unit is weekly and interval is 2, then the customer will be charged every two weeks. Defaults to 1. Example 1
                   type: number
                 day_of_month:
-                  description: Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.
+                  description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if interval_unit is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
                   type: number
                 day_of_week:
                   description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -20100,7 +20100,7 @@ paths:
                         type: number
                         example: 1
                       day_of_month:
-                        description: Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.
+                        description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
                         type: number
                       day_of_week:
                         description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -20691,7 +20691,7 @@ paths:
                         type: number
                         example: 1
                       day_of_month:
-                        description: Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.
+                        description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
                         type: number
                       day_of_week:
                         description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -21280,7 +21280,7 @@ paths:
                         type: number
                         example: 1
                       day_of_month:
-                        description: Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.
+                        description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
                         type: number
                       day_of_week:
                         description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -21875,7 +21875,7 @@ paths:
                         type: number
                         example: 1
                       day_of_month:
-                        description: Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.
+                        description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
                         type: number
                       day_of_week:
                         description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -22487,7 +22487,7 @@ paths:
                           type: number
                           example: 1
                         day_of_month:
-                          description: Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.
+                          description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
                           type: number
                         day_of_week:
                           description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -27081,7 +27081,7 @@ components:
           description: Only for subscriptions. Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.
           type: number
         day_of_month:
-          description: Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.
+          description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if interval_unit is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
           type: number
         day_of_week:
           description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -27275,7 +27275,7 @@ components:
           type: number
           example: 1
         day_of_month:
-          description: Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.
+          description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
           type: number
         day_of_week:
           description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -30498,7 +30498,7 @@ components:
           description: Only for subscriptions. Number of `interval_units` between customer charge dates. Must be greater than to 1. If `interval_units` is `weekly` and interval is 2, then the customer will be charged every two weeks. Defaults to 1.
           type: number
         day_of_month:
-          description: Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.
+          description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if interval_unit is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
           type: number
         day_of_week:
           description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.
@@ -30692,7 +30692,7 @@ components:
           type: number
           example: 1
         day_of_month:
-          description: Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.
+          description: Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.
           type: number
         day_of_week:
           description: Day of week number, from 0 (Sunday) to 6 (Saturday). This field is required if `interval_unit` is set to `weekly`.

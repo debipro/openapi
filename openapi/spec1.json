@@ -22222,7 +22222,7 @@
                     "type": "integer"
                   },
                   "day_of_month": {
-                    "description": "Only for subscriptions, the day of month, from 1 to 28. Use only if you need the subscription to start in a specyfic date. In most cases this should be null, therefore Debi will use the date of the moment when the user completes the checkout.\n",
+                    "description": "Only for subscriptions, the day of month, from 1 to 31, or -1 for the last day of the month. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month. Use only if you need the subscription to start in a specyfic date. In most cases this should be null, therefore Debi will use the date of the moment when the user completes the checkout.\n",
                     "type": "integer"
                   },
                   "day_of_week": {
@@ -22519,7 +22519,7 @@
                           "type": "number"
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+                          "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if interval_unit is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -22845,7 +22845,7 @@
                           "type": "number"
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+                          "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if interval_unit is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -23222,7 +23222,7 @@
                             "example": 1
                           },
                           "day_of_month": {
-                            "description": "Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.",
+                            "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
                             "type": "number"
                           },
                           "day_of_week": {
@@ -23984,7 +23984,7 @@
                     "type": "number"
                   },
                   "day_of_month": {
-                    "description": "Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.",
+                    "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
                     "type": "number"
                   },
                   "day_of_week": {
@@ -24136,7 +24136,7 @@
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.",
+                          "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -24974,7 +24974,7 @@
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.",
+                          "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -25702,7 +25702,7 @@
                     "type": "number"
                   },
                   "day_of_month": {
-                    "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+                    "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if interval_unit is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
                     "type": "number"
                   },
                   "day_of_week": {
@@ -25916,7 +25916,7 @@
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.",
+                          "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -26676,7 +26676,7 @@
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.",
+                          "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -27435,7 +27435,7 @@
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.",
+                          "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -28199,7 +28199,7 @@
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.",
+                          "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -28988,7 +28988,7 @@
                             "example": 1
                           },
                           "day_of_month": {
-                            "description": "Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.",
+                            "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
                             "type": "number"
                           },
                           "day_of_week": {
@@ -34877,7 +34877,7 @@
             "type": "number"
           },
           "day_of_month": {
-            "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+            "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if interval_unit is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
             "type": "number"
           },
           "day_of_week": {
@@ -35122,7 +35122,7 @@
             "example": 1
           },
           "day_of_month": {
-            "description": "Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.",
+            "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
             "type": "number"
           },
           "day_of_week": {
@@ -39203,7 +39203,7 @@
             "type": "number"
           },
           "day_of_month": {
-            "description": "Day of month, from 1 to 28. This field is required if interval_unit is set to monthly. Defaults to 1.",
+            "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if interval_unit is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
             "type": "number"
           },
           "day_of_week": {
@@ -39448,7 +39448,7 @@
             "example": 1
           },
           "day_of_month": {
-            "description": "Day of month, from 1 to 28. This field is required if `interval_unit` is set to monthly. Defaults to 1.",
+            "description": "Day of month, from 1 to 31, or -1 for the last day of the month. This field is required if `interval_unit` is set to monthly. Defaults to 1. If the chosen day doesn't exist in a given month (e.g. 30 or 31 in February), the payment is charged on the last day of that month.",
             "type": "number"
           },
           "day_of_week": {

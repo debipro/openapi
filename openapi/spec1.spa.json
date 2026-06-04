@@ -22222,7 +22222,7 @@
                     "type": "integer"
                   },
                   "day_of_month": {
-                    "description": "Solo para suscripciones, el día del mes, del 1 al 28. Úselo solo si necesita que la suscripción comience en una fecha específica. En la mayoría de los casos este debe ser nulo, por lo que Debi utilizará la fecha del momento en que el usuario completa el checkout.",
+                    "description": "Solo para suscripciones, el día del mes, del 1 al 31, o -1 para el último día del mes. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes. Úselo solo si necesita que la suscripción comience en una fecha específica. En la mayoría de los casos este debe ser nulo, por lo que Debi utilizará la fecha del momento en que el usuario completa el checkout.",
                     "type": "integer"
                   },
                   "day_of_week": {
@@ -22519,7 +22519,7 @@
                           "type": "number"
                         },
                         "day_of_month": {
-                          "description": "Sólo para suscripciones. Día del mes, del 1 al 28. Este campo es requerido si `interval_unit` es `monthly`. El default es 1.",
+                          "description": "Sólo para suscripciones. Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es requerido si `interval_unit` es `monthly`. El default es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -22845,7 +22845,7 @@
                           "type": "number"
                         },
                         "day_of_month": {
-                          "description": "Sólo para suscripciones. Día del mes, del 1 al 28. Este campo es requerido si `interval_unit` es `monthly`. El default es 1.",
+                          "description": "Sólo para suscripciones. Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es requerido si `interval_unit` es `monthly`. El default es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -23222,7 +23222,7 @@
                             "example": 1
                           },
                           "day_of_month": {
-                            "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
+                            "description": "Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
                             "type": "number"
                           },
                           "day_of_week": {
@@ -23984,7 +23984,7 @@
                     "type": "number"
                   },
                   "day_of_month": {
-                    "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
+                    "description": "Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
                     "type": "number"
                   },
                   "day_of_week": {
@@ -24136,7 +24136,7 @@
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
+                          "description": "Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -24974,7 +24974,7 @@
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
+                          "description": "Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -25702,7 +25702,7 @@
                     "type": "number"
                   },
                   "day_of_month": {
-                    "description": "Sólo para suscripciones. Día del mes, del 1 al 28. Este campo es requerido si `interval_unit` es `monthly`. El default es 1.",
+                    "description": "Sólo para suscripciones. Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es requerido si `interval_unit` es `monthly`. El default es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
                     "type": "number"
                   },
                   "day_of_week": {
@@ -25916,7 +25916,7 @@
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
+                          "description": "Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -26676,7 +26676,7 @@
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
+                          "description": "Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -27435,7 +27435,7 @@
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
+                          "description": "Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -28199,7 +28199,7 @@
                           "example": 1
                         },
                         "day_of_month": {
-                          "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
+                          "description": "Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
                           "type": "number"
                         },
                         "day_of_week": {
@@ -28988,7 +28988,7 @@
                             "example": 1
                           },
                           "day_of_month": {
-                            "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
+                            "description": "Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
                             "type": "number"
                           },
                           "day_of_week": {
@@ -34877,7 +34877,7 @@
             "type": "number"
           },
           "day_of_month": {
-            "description": "Sólo para suscripciones. Día del mes, del 1 al 28. Este campo es requerido si `interval_unit` es `monthly`. El default es 1.",
+            "description": "Sólo para suscripciones. Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es requerido si `interval_unit` es `monthly`. El default es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
             "type": "number"
           },
           "day_of_week": {
@@ -35122,7 +35122,7 @@
             "example": 1
           },
           "day_of_month": {
-            "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
+            "description": "Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
             "type": "number"
           },
           "day_of_week": {
@@ -39203,7 +39203,7 @@
             "type": "number"
           },
           "day_of_month": {
-            "description": "Sólo para suscripciones. Día del mes, del 1 al 28. Este campo es requerido si `interval_unit` es `monthly`. El default es 1.",
+            "description": "Sólo para suscripciones. Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es requerido si `interval_unit` es `monthly`. El default es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
             "type": "number"
           },
           "day_of_week": {
@@ -39448,7 +39448,7 @@
             "example": 1
           },
           "day_of_month": {
-            "description": "Día del mes, del 1 al 28. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1.",
+            "description": "Día del mes, del 1 al 31, o -1 para el último día del mes. Este campo es obligatorio si `interval_unit` se establece en mensual. El valor predeterminado es 1. Si el día elegido no existe en un mes determinado (por ejemplo, 30 o 31 en febrero), el cobro se realiza el último día de ese mes.",
             "type": "number"
           },
           "day_of_week": {
