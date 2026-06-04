@@ -3146,7 +3146,7 @@ paths:
           in: query
           description: |
             Un cursor para la paginación en varias páginas de resultados. No incluya este parámetro en la primera llamada. Utilice el valor de `next_page` devuelto en una respuesta anterior para solicitar resultados posteriores.
-          required: true
+          required: false
           schema:
             type: string
           example: john doe
@@ -9024,7 +9024,7 @@ paths:
           in: query
           description: |
             Un cursor para la paginación en varias páginas de resultados. No incluya este parámetro en la primera llamada. Utilice el valor de `next_page` devuelto en una respuesta anterior para solicitar resultados posteriores.
-          required: true
+          required: false
           schema:
             type: string
           example: john doe
@@ -11057,7 +11057,7 @@ paths:
           in: query
           description: |
             Un cursor para la paginación en varias páginas de resultados. No incluya este parámetro en la primera llamada. Utilice el valor de `next_page` devuelto en una respuesta anterior para solicitar resultados posteriores.
-          required: true
+          required: false
           schema:
             type: string
           example: john doe
@@ -15938,7 +15938,7 @@ paths:
           in: query
           description: |
             Un cursor para la paginación en varias páginas de resultados. No incluya este parámetro en la primera llamada. Utilice el valor de `next_page` devuelto en una respuesta anterior para solicitar resultados posteriores.
-          required: true
+          required: false
           schema:
             type: string
           example: john doe
@@ -22606,7 +22606,7 @@ paths:
           in: query
           description: |
             Un cursor para la paginación en varias páginas de resultados. No incluya este parámetro en la primera llamada. Utilice el valor de `next_page` devuelto en una respuesta anterior para solicitar resultados posteriores.
-          required: true
+          required: false
           schema:
             type: string
           example: john doe
