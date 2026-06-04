@@ -5486,9 +5486,12 @@
                       "type": "string"
                     },
                     "errors": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
                       }
                     }
                   },
@@ -5578,9 +5581,12 @@
                       "type": "string"
                     },
                     "errors": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
                       }
                     }
                   },
@@ -6136,9 +6142,12 @@
                       "type": "string"
                     },
                     "errors": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
                       }
                     }
                   },
@@ -7490,9 +7499,32 @@
                           "extra_fields": {
                             "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                             "type": [
-                              "object",
+                              "array",
                               "null"
                             ],
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "label": {
+                                  "type": "string"
+                                },
+                                "required": {
+                                  "type": "boolean"
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "additionalProperties": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
                             "example": [
                               {
                                 "name": "source",
@@ -7512,9 +7544,32 @@
                           "extra_fields_customer": {
                             "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                             "type": [
-                              "object",
+                              "array",
                               "null"
                             ],
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "type": "string"
+                                },
+                                "label": {
+                                  "type": "string"
+                                },
+                                "required": {
+                                  "type": "boolean"
+                                },
+                                "options": {
+                                  "type": "object",
+                                  "additionalProperties": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
                             "example": [
                               {
                                 "name": "identification_type",
@@ -7950,9 +8005,32 @@
                   "extra_fields": {
                     "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                     "type": [
-                      "object",
+                      "array",
                       "null"
                     ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "required": {
+                          "type": "boolean"
+                        },
+                        "options": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
                     "example": [
                       {
                         "name": "source",
@@ -7972,9 +8050,32 @@
                   "extra_fields_customer": {
                     "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                     "type": [
-                      "object",
+                      "array",
                       "null"
                     ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "required": {
+                          "type": "boolean"
+                        },
+                        "options": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
                     "example": [
                       {
                         "name": "identification_type",
@@ -8224,9 +8325,32 @@
                         "extra_fields": {
                           "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                           "type": [
-                            "object",
+                            "array",
                             "null"
                           ],
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "required": {
+                                "type": "boolean"
+                              },
+                              "options": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
                           "example": [
                             {
                               "name": "source",
@@ -8246,9 +8370,32 @@
                         "extra_fields_customer": {
                           "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                           "type": [
-                            "object",
+                            "array",
                             "null"
                           ],
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "required": {
+                                "type": "boolean"
+                              },
+                              "options": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
                           "example": [
                             {
                               "name": "identification_type",
@@ -8575,9 +8722,32 @@
                         "extra_fields": {
                           "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                           "type": [
-                            "object",
+                            "array",
                             "null"
                           ],
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "required": {
+                                "type": "boolean"
+                              },
+                              "options": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
                           "example": [
                             {
                               "name": "source",
@@ -8597,9 +8767,32 @@
                         "extra_fields_customer": {
                           "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                           "type": [
-                            "object",
+                            "array",
                             "null"
                           ],
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "required": {
+                                "type": "boolean"
+                              },
+                              "options": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
                           "example": [
                             {
                               "name": "identification_type",
@@ -8994,9 +9187,32 @@
                   "extra_fields": {
                     "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                     "type": [
-                      "object",
+                      "array",
                       "null"
                     ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "required": {
+                          "type": "boolean"
+                        },
+                        "options": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
                     "example": [
                       {
                         "name": "source",
@@ -9016,9 +9232,32 @@
                   "extra_fields_customer": {
                     "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                     "type": [
-                      "object",
+                      "array",
                       "null"
                     ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "required": {
+                          "type": "boolean"
+                        },
+                        "options": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
                     "example": [
                       {
                         "name": "identification_type",
@@ -9250,9 +9489,32 @@
                         "extra_fields": {
                           "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                           "type": [
-                            "object",
+                            "array",
                             "null"
                           ],
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "required": {
+                                "type": "boolean"
+                              },
+                              "options": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
                           "example": [
                             {
                               "name": "source",
@@ -9272,9 +9534,32 @@
                         "extra_fields_customer": {
                           "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                           "type": [
-                            "object",
+                            "array",
                             "null"
                           ],
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "required": {
+                                "type": "boolean"
+                              },
+                              "options": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
                           "example": [
                             {
                               "name": "identification_type",
@@ -9559,9 +9844,12 @@
                       "type": "string"
                     },
                     "errors": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
                       }
                     }
                   },
@@ -9762,9 +10050,12 @@
                       "type": "string"
                     },
                     "errors": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
                       }
                     }
                   },
@@ -14768,9 +15059,12 @@
                       "type": "string"
                     },
                     "errors": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
                       }
                     }
                   },
@@ -20042,9 +20336,12 @@
                       "type": "string"
                     },
                     "errors": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
                       }
                     }
                   },
@@ -20355,9 +20652,12 @@
                       "type": "string"
                     },
                     "errors": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
                       }
                     }
                   },
@@ -22257,9 +22557,32 @@
                   "extra_fields": {
                     "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                     "type": [
-                      "object",
+                      "array",
                       "null"
                     ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "required": {
+                          "type": "boolean"
+                        },
+                        "options": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
                     "example": [
                       {
                         "name": "source",
@@ -22279,9 +22602,32 @@
                   "extra_fields_customer": {
                     "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
                     "type": [
-                      "object",
+                      "array",
                       "null"
                     ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "required": {
+                          "type": "boolean"
+                        },
+                        "options": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
                     "example": [
                       {
                         "name": "identification_type",
@@ -32513,9 +32859,12 @@
             "type": "string"
           },
           "errors": {
-            "type": "array",
-            "items": {
-              "type": "string"
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
           }
         },
@@ -32852,9 +33201,32 @@
       "extra_fields": {
         "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
         "type": [
-          "object",
+          "array",
           "null"
         ],
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "required": {
+              "type": "boolean"
+            },
+            "options": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
         "example": [
           {
             "name": "source",
@@ -32874,9 +33246,32 @@
       "extra_fields_customer": {
         "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
         "type": [
-          "object",
+          "array",
           "null"
         ],
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "required": {
+              "type": "boolean"
+            },
+            "options": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
         "example": [
           {
             "name": "identification_type",
@@ -32944,9 +33339,32 @@
           "extra_fields": {
             "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
             "type": [
-              "object",
+              "array",
               "null"
             ],
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "options": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
             "example": [
               {
                 "name": "source",
@@ -32966,9 +33384,32 @@
           "extra_fields_customer": {
             "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
             "type": [
-              "object",
+              "array",
               "null"
             ],
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "options": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
             "example": [
               {
                 "name": "identification_type",
@@ -36916,9 +37357,32 @@
           "extra_fields": {
             "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
             "type": [
-              "object",
+              "array",
               "null"
             ],
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "options": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
             "example": [
               {
                 "name": "source",
@@ -36938,9 +37402,32 @@
           "extra_fields_customer": {
             "description": "Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.\n",
             "type": [
-              "object",
+              "array",
               "null"
             ],
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "required": {
+                  "type": "boolean"
+                },
+                "options": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
             "example": [
               {
                 "name": "identification_type",

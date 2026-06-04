@@ -4508,9 +4508,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -4569,9 +4571,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -4983,9 +4987,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -6007,8 +6013,23 @@ paths:
                           description: |
                             Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                           type:
-                            - object
+                            - array
                             - 'null'
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                              label:
+                                type: string
+                              required:
+                                type: boolean
+                              options:
+                                type: object
+                                additionalProperties:
+                                  type: string
                           example:
                             - name: source
                               type: select
@@ -6022,8 +6043,23 @@ paths:
                           description: |
                             Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                           type:
-                            - object
+                            - array
                             - 'null'
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                              label:
+                                type: string
+                              required:
+                                type: boolean
+                              options:
+                                type: object
+                                additionalProperties:
+                                  type: string
                           example:
                             - name: identification_type
                               type: select
@@ -6362,8 +6398,23 @@ paths:
                   description: |
                     Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                   type:
-                    - object
+                    - array
                     - 'null'
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      label:
+                        type: string
+                      required:
+                        type: boolean
+                      options:
+                        type: object
+                        additionalProperties:
+                          type: string
                   example:
                     - name: source
                       type: select
@@ -6377,8 +6428,23 @@ paths:
                   description: |
                     Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                   type:
-                    - object
+                    - array
                     - 'null'
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      label:
+                        type: string
+                      required:
+                        type: boolean
+                      options:
+                        type: object
+                        additionalProperties:
+                          type: string
                   example:
                     - name: identification_type
                       type: select
@@ -6568,8 +6634,23 @@ paths:
                         description: |
                           Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                         type:
-                          - object
+                          - array
                           - 'null'
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            label:
+                              type: string
+                            required:
+                              type: boolean
+                            options:
+                              type: object
+                              additionalProperties:
+                                type: string
                         example:
                           - name: source
                             type: select
@@ -6583,8 +6664,23 @@ paths:
                         description: |
                           Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                         type:
-                          - object
+                          - array
                           - 'null'
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            label:
+                              type: string
+                            required:
+                              type: boolean
+                            options:
+                              type: object
+                              additionalProperties:
+                                type: string
                         example:
                           - name: identification_type
                             type: select
@@ -6836,8 +6932,23 @@ paths:
                         description: |
                           Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                         type:
-                          - object
+                          - array
                           - 'null'
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            label:
+                              type: string
+                            required:
+                              type: boolean
+                            options:
+                              type: object
+                              additionalProperties:
+                                type: string
                         example:
                           - name: source
                             type: select
@@ -6851,8 +6962,23 @@ paths:
                         description: |
                           Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                         type:
-                          - object
+                          - array
                           - 'null'
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            label:
+                              type: string
+                            required:
+                              type: boolean
+                            options:
+                              type: object
+                              additionalProperties:
+                                type: string
                         example:
                           - name: identification_type
                             type: select
@@ -7161,8 +7287,23 @@ paths:
                   description: |
                     Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                   type:
-                    - object
+                    - array
                     - 'null'
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      label:
+                        type: string
+                      required:
+                        type: boolean
+                      options:
+                        type: object
+                        additionalProperties:
+                          type: string
                   example:
                     - name: source
                       type: select
@@ -7176,8 +7317,23 @@ paths:
                   description: |
                     Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                   type:
-                    - object
+                    - array
                     - 'null'
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      label:
+                        type: string
+                      required:
+                        type: boolean
+                      options:
+                        type: object
+                        additionalProperties:
+                          type: string
                   example:
                     - name: identification_type
                       type: select
@@ -7355,8 +7511,23 @@ paths:
                         description: |
                           Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                         type:
-                          - object
+                          - array
                           - 'null'
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            label:
+                              type: string
+                            required:
+                              type: boolean
+                            options:
+                              type: object
+                              additionalProperties:
+                                type: string
                         example:
                           - name: source
                             type: select
@@ -7370,8 +7541,23 @@ paths:
                         description: |
                           Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                         type:
-                          - object
+                          - array
                           - 'null'
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            label:
+                              type: string
+                            required:
+                              type: boolean
+                            options:
+                              type: object
+                              additionalProperties:
+                                type: string
                         example:
                           - name: identification_type
                             type: select
@@ -7585,9 +7771,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -7720,9 +7908,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -11511,9 +11701,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -15666,9 +15858,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -15902,9 +16096,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -17395,8 +17591,23 @@ paths:
                   description: |
                     Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                   type:
-                    - object
+                    - array
                     - 'null'
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      label:
+                        type: string
+                      required:
+                        type: boolean
+                      options:
+                        type: object
+                        additionalProperties:
+                          type: string
                   example:
                     - name: source
                       type: select
@@ -17410,8 +17621,23 @@ paths:
                   description: |
                     Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
                   type:
-                    - object
+                    - array
                     - 'null'
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      label:
+                        type: string
+                      required:
+                        type: boolean
+                      options:
+                        type: object
+                        additionalProperties:
+                          type: string
                   example:
                     - name: identification_type
                       type: select
@@ -25454,9 +25680,11 @@ components:
         message:
           type: string
         errors:
-          type: array
-          items:
-            type: string
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
       example:
         errors:
           email:
@@ -25733,8 +25961,23 @@ components:
       description: |
         Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
       type:
-        - object
+        - array
         - 'null'
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          type:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          options:
+            type: object
+            additionalProperties:
+              type: string
       example:
         - name: source
           type: select
@@ -25748,8 +25991,23 @@ components:
       description: |
         Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
       type:
-        - object
+        - array
         - 'null'
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          type:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          options:
+            type: object
+            additionalProperties:
+              type: string
       example:
         - name: identification_type
           type: select
@@ -25808,8 +26066,23 @@ components:
           description: |
             Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
           type:
-            - object
+            - array
             - 'null'
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              label:
+                type: string
+              required:
+                type: boolean
+              options:
+                type: object
+                additionalProperties:
+                  type: string
           example:
             - name: source
               type: select
@@ -25823,8 +26096,23 @@ components:
           description: |
             Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
           type:
-            - object
+            - array
             - 'null'
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              label:
+                type: string
+              required:
+                type: boolean
+              options:
+                type: object
+                additionalProperties:
+                  type: string
           example:
             - name: identification_type
               type: select
@@ -29009,8 +29297,23 @@ components:
           description: |
             Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del objeto que la Sesión está generando, ya sea un [Pago](#tag/Payments), [Suscripción](#tag/Subscriptions) o [Adhesión](#tag/Mandates). Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
           type:
-            - object
+            - array
             - 'null'
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              label:
+                type: string
+              required:
+                type: boolean
+              options:
+                type: object
+                additionalProperties:
+                  type: string
           example:
             - name: source
               type: select
@@ -29024,8 +29327,23 @@ components:
           description: |
             Una colección de campos diseñados para almacenarse como [metadatos](#section/Metadata) del [Cliente](#tag/Customers) que la Sesión está generando. Esta funcionalidad te permite solicitar información adicional al usuario durante el proceso de pago, brindando una manera de almacenar detalles complementarios sobre el objeto en un formato bien organizado.
           type:
-            - object
+            - array
             - 'null'
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              label:
+                type: string
+              required:
+                type: boolean
+              options:
+                type: object
+                additionalProperties:
+                  type: string
           example:
             - name: identification_type
               type: select

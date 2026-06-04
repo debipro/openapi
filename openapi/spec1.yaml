@@ -4463,9 +4463,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -4524,9 +4526,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -4934,9 +4938,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -5936,8 +5942,23 @@ paths:
                           description: |
                             A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                           type:
-                            - object
+                            - array
                             - 'null'
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                              label:
+                                type: string
+                              required:
+                                type: boolean
+                              options:
+                                type: object
+                                additionalProperties:
+                                  type: string
                           example:
                             - name: source
                               type: select
@@ -5951,8 +5972,23 @@ paths:
                           description: |
                             A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                           type:
-                            - object
+                            - array
                             - 'null'
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                              label:
+                                type: string
+                              required:
+                                type: boolean
+                              options:
+                                type: object
+                                additionalProperties:
+                                  type: string
                           example:
                             - name: identification_type
                               type: select
@@ -6290,8 +6326,23 @@ paths:
                   description: |
                     A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                   type:
-                    - object
+                    - array
                     - 'null'
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      label:
+                        type: string
+                      required:
+                        type: boolean
+                      options:
+                        type: object
+                        additionalProperties:
+                          type: string
                   example:
                     - name: source
                       type: select
@@ -6305,8 +6356,23 @@ paths:
                   description: |
                     A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                   type:
-                    - object
+                    - array
                     - 'null'
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      label:
+                        type: string
+                      required:
+                        type: boolean
+                      options:
+                        type: object
+                        additionalProperties:
+                          type: string
                   example:
                     - name: identification_type
                       type: select
@@ -6496,8 +6562,23 @@ paths:
                         description: |
                           A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                         type:
-                          - object
+                          - array
                           - 'null'
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            label:
+                              type: string
+                            required:
+                              type: boolean
+                            options:
+                              type: object
+                              additionalProperties:
+                                type: string
                         example:
                           - name: source
                             type: select
@@ -6511,8 +6592,23 @@ paths:
                         description: |
                           A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                         type:
-                          - object
+                          - array
                           - 'null'
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            label:
+                              type: string
+                            required:
+                              type: boolean
+                            options:
+                              type: object
+                              additionalProperties:
+                                type: string
                         example:
                           - name: identification_type
                             type: select
@@ -6762,8 +6858,23 @@ paths:
                         description: |
                           A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                         type:
-                          - object
+                          - array
                           - 'null'
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            label:
+                              type: string
+                            required:
+                              type: boolean
+                            options:
+                              type: object
+                              additionalProperties:
+                                type: string
                         example:
                           - name: source
                             type: select
@@ -6777,8 +6888,23 @@ paths:
                         description: |
                           A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                         type:
-                          - object
+                          - array
                           - 'null'
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            label:
+                              type: string
+                            required:
+                              type: boolean
+                            options:
+                              type: object
+                              additionalProperties:
+                                type: string
                         example:
                           - name: identification_type
                             type: select
@@ -7086,8 +7212,23 @@ paths:
                   description: |
                     A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                   type:
-                    - object
+                    - array
                     - 'null'
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      label:
+                        type: string
+                      required:
+                        type: boolean
+                      options:
+                        type: object
+                        additionalProperties:
+                          type: string
                   example:
                     - name: source
                       type: select
@@ -7101,8 +7242,23 @@ paths:
                   description: |
                     A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                   type:
-                    - object
+                    - array
                     - 'null'
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      label:
+                        type: string
+                      required:
+                        type: boolean
+                      options:
+                        type: object
+                        additionalProperties:
+                          type: string
                   example:
                     - name: identification_type
                       type: select
@@ -7280,8 +7436,23 @@ paths:
                         description: |
                           A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                         type:
-                          - object
+                          - array
                           - 'null'
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            label:
+                              type: string
+                            required:
+                              type: boolean
+                            options:
+                              type: object
+                              additionalProperties:
+                                type: string
                         example:
                           - name: source
                             type: select
@@ -7295,8 +7466,23 @@ paths:
                         description: |
                           A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                         type:
-                          - object
+                          - array
                           - 'null'
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            type:
+                              type: string
+                            label:
+                              type: string
+                            required:
+                              type: boolean
+                            options:
+                              type: object
+                              additionalProperties:
+                                type: string
                         example:
                           - name: identification_type
                             type: select
@@ -7508,9 +7694,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -7643,9 +7831,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -11403,9 +11593,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -15519,9 +15711,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -15755,9 +15949,11 @@ paths:
                   message:
                     type: string
                   errors:
-                    type: array
-                    items:
-                      type: string
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
                 example:
                   errors:
                     email:
@@ -17241,8 +17437,23 @@ paths:
                   description: |
                     A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                   type:
-                    - object
+                    - array
                     - 'null'
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      label:
+                        type: string
+                      required:
+                        type: boolean
+                      options:
+                        type: object
+                        additionalProperties:
+                          type: string
                   example:
                     - name: source
                       type: select
@@ -17256,8 +17467,23 @@ paths:
                   description: |
                     A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
                   type:
-                    - object
+                    - array
                     - 'null'
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      type:
+                        type: string
+                      label:
+                        type: string
+                      required:
+                        type: boolean
+                      options:
+                        type: object
+                        additionalProperties:
+                          type: string
                   example:
                     - name: identification_type
                       type: select
@@ -25217,9 +25443,11 @@ components:
         message:
           type: string
         errors:
-          type: array
-          items:
-            type: string
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
       example:
         errors:
           email:
@@ -25482,8 +25710,23 @@ components:
       description: |
         A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
       type:
-        - object
+        - array
         - 'null'
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          type:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          options:
+            type: object
+            additionalProperties:
+              type: string
       example:
         - name: source
           type: select
@@ -25497,8 +25740,23 @@ components:
       description: |
         A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
       type:
-        - object
+        - array
         - 'null'
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          type:
+            type: string
+          label:
+            type: string
+          required:
+            type: boolean
+          options:
+            type: object
+            additionalProperties:
+              type: string
       example:
         - name: identification_type
           type: select
@@ -25558,8 +25816,23 @@ components:
           description: |
             A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
           type:
-            - object
+            - array
             - 'null'
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              label:
+                type: string
+              required:
+                type: boolean
+              options:
+                type: object
+                additionalProperties:
+                  type: string
           example:
             - name: source
               type: select
@@ -25573,8 +25846,23 @@ components:
           description: |
             A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
           type:
-            - object
+            - array
             - 'null'
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              label:
+                type: string
+              required:
+                type: boolean
+              options:
+                type: object
+                additionalProperties:
+                  type: string
           example:
             - name: identification_type
               type: select
@@ -28706,8 +28994,23 @@ components:
           description: |
             A collection of fields designed to be stored as [the metadata](#section/Metadata) of the object that the Session is generating  whether it's a [Payment](#tag/Payments), [Subscription](#tag/Subscriptions), or [Mandate](#tag/Mandates). This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
           type:
-            - object
+            - array
             - 'null'
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              label:
+                type: string
+              required:
+                type: boolean
+              options:
+                type: object
+                additionalProperties:
+                  type: string
           example:
             - name: source
               type: select
@@ -28721,8 +29024,23 @@ components:
           description: |
             A collection of fields designed to be stored as [the metadata](#section/Metadata) of the [Customer](#tag/Customers) that the Session is generating. This functionality enables you to request extra information from the user during the checkout process, providing a means to store supplementary details about the object in a well-organized format.
           type:
-            - object
+            - array
             - 'null'
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              label:
+                type: string
+              required:
+                type: boolean
+              options:
+                type: object
+                additionalProperties:
+                  type: string
           example:
             - name: identification_type
               type: select
