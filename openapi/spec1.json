@@ -15011,21 +15011,31 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "customer": {
+                  "customer_id": {
                     "description": "The customer ID to attach the payment method to",
                     "type": "string",
                     "example": "CSbJrDMEDaW9"
+                  },
+                  "set_default": {
+                    "description": "Whether to set this payment method as the customer's default",
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "prefer": {
+                    "description": "Whether to add this payment method to the customer's preferred payment methods",
+                    "type": "boolean",
+                    "example": false
                   }
                 },
                 "required": [
-                  "customer"
+                  "customer_id"
                 ]
               }
             }
           }
         },
         "responses": {
-          "204": {
+          "200": {
             "description": "Payment method attached successfully",
             "content": {}
           },
@@ -15105,7 +15115,7 @@
           }
         ],
         "responses": {
-          "204": {
+          "200": {
             "description": "Payment method detached successfully",
             "content": {}
           },

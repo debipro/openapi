@@ -16077,21 +16077,31 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "customer": {
+                  "customer_id": {
                     "description": "The customer ID to attach the payment method to",
                     "type": "string",
                     "example": "CSbJrDMEDaW9"
+                  },
+                  "set_default": {
+                    "description": "Whether to set this payment method as the customer's default",
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "prefer": {
+                    "description": "Whether to add this payment method to the customer's preferred payment methods",
+                    "type": "boolean",
+                    "example": false
                   }
                 },
                 "required": [
-                  "customer"
+                  "customer_id"
                 ]
               }
             }
           }
         },
         "responses": {
-          "204": {
+          "200": {
             "description": "Payment method attached successfully",
             "content": {}
           },
@@ -16154,27 +16164,27 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"customer\":\"CSbJrDMEDaW9\"}'"
+            "source": "curl --request POST \\\n  --url https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"customer_id\":\"CSbJrDMEDaW9\",\"set_default\":false,\"prefer\":false}'"
           },
           {
             "lang": "Node + Request",
-            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {customer: 'CSbJrDMEDaW9'},\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {customer_id: 'CSbJrDMEDaW9', set_default: false, prefer: false},\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
           },
           {
             "lang": "Php + Http1",
-            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"customer\":\"CSbJrDMEDaW9\"}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"customer_id\":\"CSbJrDMEDaW9\",\"set_default\":false,\"prefer\":false}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
           },
           {
             "lang": "Python + Requests",
-            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach\"\n\npayload = {\"customer\": \"CSbJrDMEDaW9\"}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
+            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach\"\n\npayload = {\n    \"customer_id\": \"CSbJrDMEDaW9\",\n    \"set_default\": False,\n    \"prefer\": False\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
           },
           {
             "lang": "Java + Unirest",
-            "source": "HttpResponse<String> response = Unirest.post(\"https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"customer\\\":\\\"CSbJrDMEDaW9\\\"}\")\n  .asString();"
+            "source": "HttpResponse<String> response = Unirest.post(\"https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"customer_id\\\":\\\"CSbJrDMEDaW9\\\",\\\"set_default\\\":false,\\\"prefer\\\":false}\")\n  .asString();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"customer\\\":\\\"CSbJrDMEDaW9\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"customer_id\\\":\\\"CSbJrDMEDaW9\\\",\\\"set_default\\\":false,\\\"prefer\\\":false}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
         ]
       }
@@ -16197,7 +16207,7 @@
           }
         ],
         "responses": {
-          "204": {
+          "200": {
             "description": "Payment method detached successfully",
             "content": {}
           },

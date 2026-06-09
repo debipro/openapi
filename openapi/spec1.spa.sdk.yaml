@@ -15485,14 +15485,22 @@ paths:
             schema:
               type: object
               properties:
-                customer:
+                customer_id:
                   description: El ID del cliente al que adjuntar el método de pago
                   type: string
                   example: CSbJrDMEDaW9
+                set_default:
+                  description: Si se debe establecer este método de pago como predeterminado del cliente
+                  type: boolean
+                  example: false
+                prefer:
+                  description: Si se debe agregar este método de pago a los métodos de pago preferidos del cliente
+                  type: boolean
+                  example: false
               required:
-                - customer
+                - customer_id
       responses:
-        '204':
+        '200':
           description: Método de pago adjuntado exitosamente
           content: {}
         '404':
@@ -15538,7 +15546,7 @@ paths:
               --url https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
-              --data '{"customer":"CSbJrDMEDaW9"}'
+              --data '{"customer_id":"CSbJrDMEDaW9","set_default":false,"prefer":false}'
         - lang: Node + Request
           source: |
             const request = require('request');
@@ -15550,7 +15558,7 @@ paths:
                 'content-type': 'application/json',
                 Authorization: 'Bearer sk_live_...'
               },
-              body: {customer: 'CSbJrDMEDaW9'},
+              body: {customer_id: 'CSbJrDMEDaW9', set_default: false, prefer: false},
               json: true
             };
 
@@ -15572,7 +15580,7 @@ paths:
               'Authorization' => 'Bearer sk_live_...'
             ]);
 
-            $request->setBody('{"customer":"CSbJrDMEDaW9"}');
+            $request->setBody('{"customer_id":"CSbJrDMEDaW9","set_default":false,"prefer":false}');
 
             try {
               $response = $request->send();
@@ -15587,7 +15595,11 @@ paths:
 
             url = "https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach"
 
-            payload = {"customer": "CSbJrDMEDaW9"}
+            payload = {
+                "customer_id": "CSbJrDMEDaW9",
+                "set_default": False,
+                "prefer": False
+            }
             headers = {
                 "content-type": "application/json",
                 "Authorization": "Bearer sk_live_..."
@@ -15601,7 +15613,7 @@ paths:
             HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
-              .body("{\"customer\":\"CSbJrDMEDaW9\"}")
+              .body("{\"customer_id\":\"CSbJrDMEDaW9\",\"set_default\":false,\"prefer\":false}")
               .asString();
         - lang: Ruby + Native
           source: |-
@@ -15618,7 +15630,7 @@ paths:
             request = Net::HTTP::Post.new(url)
             request["content-type"] = 'application/json'
             request["Authorization"] = 'Bearer sk_live_...'
-            request.body = "{\"customer\":\"CSbJrDMEDaW9\"}"
+            request.body = "{\"customer_id\":\"CSbJrDMEDaW9\",\"set_default\":false,\"prefer\":false}"
 
             response = http.request(request)
             puts response.read_body
@@ -15637,7 +15649,7 @@ paths:
             type: string
             example: PMrLnDA9D6oQ
       responses:
-        '204':
+        '200':
           description: Método de pago desasociado exitosamente
           content: {}
         '404':

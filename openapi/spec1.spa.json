@@ -15011,21 +15011,31 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "customer": {
+                  "customer_id": {
                     "description": "El ID del cliente al que adjuntar el método de pago",
                     "type": "string",
                     "example": "CSbJrDMEDaW9"
+                  },
+                  "set_default": {
+                    "description": "Si se debe establecer este método de pago como predeterminado del cliente",
+                    "type": "boolean",
+                    "example": false
+                  },
+                  "prefer": {
+                    "description": "Si se debe agregar este método de pago a los métodos de pago preferidos del cliente",
+                    "type": "boolean",
+                    "example": false
                   }
                 },
                 "required": [
-                  "customer"
+                  "customer_id"
                 ]
               }
             }
           }
         },
         "responses": {
-          "204": {
+          "200": {
             "description": "Método de pago adjuntado exitosamente",
             "content": {}
           },
@@ -15105,7 +15115,7 @@
           }
         ],
         "responses": {
-          "204": {
+          "200": {
             "description": "Método de pago desasociado exitosamente",
             "content": {}
           },
