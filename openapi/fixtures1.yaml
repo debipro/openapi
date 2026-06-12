@@ -107,7 +107,6 @@ resources:
     brands: []
     button_text:
     created_at: '2022-02-02T02:06:22.00-03:00'
-    deleted_at:
     enabled: true
     extra_fields: []
     extra_fields_customer: []
@@ -308,7 +307,6 @@ resources:
     customer_name:
     day_of_month:
     day_of_week:
-    deleted_at:
     description: mucho
     editable_amount: false
     editable_count: false

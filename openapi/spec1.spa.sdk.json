@@ -8252,15 +8252,6 @@
                             "format": "date-time",
                             "example": "2022-02-11T23:19:22-03:00"
                           },
-                          "deleted_at": {
-                            "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
-                            "type": [
-                              "null",
-                              "string"
-                            ],
-                            "format": "date-time",
-                            "example": "2022-02-11T23:19:22-03:00"
-                          },
                           "object": {
                             "type": "string",
                             "enum": [
@@ -9104,15 +9095,6 @@
                           "format": "date-time",
                           "example": "2022-02-11T23:19:22-03:00"
                         },
-                        "deleted_at": {
-                          "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
-                          "type": [
-                            "null",
-                            "string"
-                          ],
-                          "format": "date-time",
-                          "example": "2022-02-11T23:19:22-03:00"
-                        },
                         "object": {
                           "type": "string",
                           "enum": [
@@ -9524,15 +9506,6 @@
                         "updated_at": {
                           "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
                           "type": "string",
-                          "format": "date-time",
-                          "example": "2022-02-11T23:19:22-03:00"
-                        },
-                        "deleted_at": {
-                          "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
-                          "type": [
-                            "null",
-                            "string"
-                          ],
                           "format": "date-time",
                           "example": "2022-02-11T23:19:22-03:00"
                         },
@@ -10317,15 +10290,6 @@
                         "updated_at": {
                           "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
                           "type": "string",
-                          "format": "date-time",
-                          "example": "2022-02-11T23:19:22-03:00"
-                        },
-                        "deleted_at": {
-                          "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
-                          "type": [
-                            "null",
-                            "string"
-                          ],
                           "format": "date-time",
                           "example": "2022-02-11T23:19:22-03:00"
                         },
@@ -24417,15 +24381,6 @@
                           "format": "date-time",
                           "example": "2022-02-11T23:19:22-03:00"
                         },
-                        "deleted_at": {
-                          "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
-                          "type": [
-                            "null",
-                            "string"
-                          ],
-                          "format": "date-time",
-                          "example": "2022-02-11T23:19:22-03:00"
-                        },
                         "livemode": {
                           "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
                           "type": "boolean",
@@ -24766,15 +24721,6 @@
                         "completed_at": {
                           "description": "Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
                           "type": "string",
-                          "format": "date-time",
-                          "example": "2022-02-11T23:19:22-03:00"
-                        },
-                        "deleted_at": {
-                          "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
-                          "type": [
-                            "null",
-                            "string"
-                          ],
                           "format": "date-time",
                           "example": "2022-02-11T23:19:22-03:00"
                         },
@@ -35350,15 +35296,6 @@
             "format": "date-time",
             "example": "2022-02-11T23:19:22-03:00"
           },
-          "deleted_at": {
-            "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00"
-          },
           "object": {
             "type": "string",
             "enum": [
@@ -37257,15 +37194,6 @@
           "completed_at": {
             "description": "Hora en la que la sesión fue completada. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
             "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00"
-          },
-          "deleted_at": {
-            "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
-            "type": [
-              "null",
-              "string"
-            ],
             "format": "date-time",
             "example": "2022-02-11T23:19:22-03:00"
           },
@@ -39365,15 +39293,6 @@
           "updated_at": {
             "description": "Hora en la que se actualizó por última vez el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
             "type": "string",
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00"
-          },
-          "deleted_at": {
-            "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
-            "type": [
-              "null",
-              "string"
-            ],
             "format": "date-time",
             "example": "2022-02-11T23:19:22-03:00"
           },
@@ -41632,15 +41551,6 @@
             "format": "date-time",
             "example": "2022-02-11T23:19:22-03:00"
           },
-          "deleted_at": {
-            "description": "Hora en la que se eliminó el objeto. Formato: [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Ejemplo: `2015-10-21T08:29:31-03:00`.\n",
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time",
-            "example": "2022-02-11T23:19:22-03:00"
-          },
           "livemode": {
             "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
             "type": "boolean",
@@ -42874,7 +42784,6 @@
           "brands": [],
           "button_text": null,
           "created_at": "2022-02-02T02:06:22.00-03:00",
-          "deleted_at": null,
           "enabled": true,
           "extra_fields": [],
           "extra_fields_customer": [],
@@ -43116,7 +43025,6 @@
           "customer_name": null,
           "day_of_month": null,
           "day_of_week": null,
-          "deleted_at": null,
           "description": "mucho",
           "editable_amount": false,
           "editable_count": false,

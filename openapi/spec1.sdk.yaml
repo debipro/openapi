@@ -8255,13 +8255,6 @@ paths:
                           type: string
                           format: date-time
                           example: 2022-02-11T23:19:22-03:00
-                        deleted_at:
-                          description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
-                          type:
-                            - 'null'
-                            - string
-                          format: date-time
-                          example: 2022-02-11T23:19:22-03:00
                         object:
                           type: string
                           enum:
@@ -8965,13 +8958,6 @@ paths:
                         type: string
                         format: date-time
                         example: 2022-02-11T23:19:22-03:00
-                      deleted_at:
-                        description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
-                        type:
-                          - 'null'
-                          - string
-                        format: date-time
-                        example: 2022-02-11T23:19:22-03:00
                       object:
                         type: string
                         enum:
@@ -9459,13 +9445,6 @@ paths:
                       updated_at:
                         description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
                         type: string
-                        format: date-time
-                        example: 2022-02-11T23:19:22-03:00
-                      deleted_at:
-                        description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
-                        type:
-                          - 'null'
-                          - string
                         format: date-time
                         example: 2022-02-11T23:19:22-03:00
                       object:
@@ -10110,13 +10089,6 @@ paths:
                       updated_at:
                         description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
                         type: string
-                        format: date-time
-                        example: 2022-02-11T23:19:22-03:00
-                      deleted_at:
-                        description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
-                        type:
-                          - 'null'
-                          - string
                         format: date-time
                         example: 2022-02-11T23:19:22-03:00
                       object:
@@ -22921,13 +22893,6 @@ paths:
                         type: string
                         format: date-time
                         example: 2022-02-11T23:19:22-03:00
-                      deleted_at:
-                        description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
-                        type:
-                          - 'null'
-                          - string
-                        format: date-time
-                        example: 2022-02-11T23:19:22-03:00
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                         type: boolean
@@ -23275,13 +23240,6 @@ paths:
                       completed_at:
                         description: 'Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
                         type: string
-                        format: date-time
-                        example: 2022-02-11T23:19:22-03:00
-                      deleted_at:
-                        description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
-                        type:
-                          - 'null'
-                          - string
                         format: date-time
                         example: 2022-02-11T23:19:22-03:00
                       livemode:
@@ -32391,13 +32349,6 @@ components:
           type: string
           format: date-time
           example: 2022-02-11T23:19:22-03:00
-        deleted_at:
-          description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
-          type:
-            - 'null'
-            - string
-          format: date-time
-          example: 2022-02-11T23:19:22-03:00
         object:
           type: string
           enum:
@@ -33898,13 +33849,6 @@ components:
         completed_at:
           description: 'Time at which the sessions was completed. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
           type: string
-          format: date-time
-          example: 2022-02-11T23:19:22-03:00
-        deleted_at:
-          description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
-          type:
-            - 'null'
-            - string
           format: date-time
           example: 2022-02-11T23:19:22-03:00
         livemode:
@@ -35567,13 +35511,6 @@ components:
         updated_at:
           description: 'Time at which the object was last updated. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
           type: string
-          format: date-time
-          example: 2022-02-11T23:19:22-03:00
-        deleted_at:
-          description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
-          type:
-            - 'null'
-            - string
           format: date-time
           example: 2022-02-11T23:19:22-03:00
         object:
@@ -37347,13 +37284,6 @@ components:
           type: string
           format: date-time
           example: 2022-02-11T23:19:22-03:00
-        deleted_at:
-          description: 'Time at which the object was deleted. Formatting follows [RFC339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8). Example: `2015-10-21T08:29:31-03:00`.'
-          type:
-            - 'null'
-            - string
-          format: date-time
-          example: 2022-02-11T23:19:22-03:00
         livemode:
           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
           type: boolean
@@ -38331,7 +38261,6 @@ components:
         brands: []
         button_text: null
         created_at: 2022-02-02T02:06:22.00-03:00
-        deleted_at: null
         enabled: true
         extra_fields: []
         extra_fields_customer: []
@@ -38542,7 +38471,6 @@ components:
         customer_name: null
         day_of_month: null
         day_of_week: null
-        deleted_at: null
         description: mucho
         editable_amount: false
         editable_count: false
