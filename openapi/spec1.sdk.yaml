@@ -569,6 +569,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi account retrieve
   /v1/account/payment_methods:
     get:
       operationId: AccountGetAvailablePaymentMethods
@@ -3364,6 +3367,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi customers list
     post:
       operationId: CustomersCreateCustomer
       summary: Create a customer
@@ -3710,6 +3716,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi customers create --data @fixtures/request.json
   /v1/customers/{id}:
     get:
       operationId: CustomersGetCustomer
@@ -3933,6 +3942,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi customers retrieve CS9PL8eeo8aB
     put:
       operationId: CustomersUpdateCustomer
       summary: Update a customer
@@ -4269,6 +4281,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi customers update CS9PL8eeo8aB --data @fixtures/request.json
   /v1/customers/{id}/actions/archive:
     post:
       operationId: CustomersArchiveCustomer
@@ -4389,6 +4404,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi customers archive CS9PL8eeo8aB
   /v1/customers/{id}/actions/restore:
     post:
       operationId: CustomersRestoreCustomer
@@ -4509,6 +4527,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi customers restore CS9PL8eeo8aB
   /v1/customers/search:
     get:
       operationId: CustomersSearch
@@ -4826,6 +4847,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi customers search --data @fixtures/search.json
   /v1/customers/{id}/payment_methods:
     get:
       operationId: listCustomerPaymentMethods
@@ -5802,6 +5826,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi events list
   /v1/events/{id}:
     get:
       operationId: EventsGetEvent
@@ -6042,6 +6069,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi events retrieve EVaX3JagwR6x
   /v1/events/{id}/actions/resend:
     post:
       operationId: EventsResendEvent
@@ -6459,6 +6489,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi events resend EVaX3JagwR6x
   /v1/gateways:
     get:
       operationId: GetGateways
@@ -6875,6 +6908,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi gateways list
     post:
       operationId: GatewaysCreateGateway
       summary: Create a gateway
@@ -7260,6 +7296,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi gateways create --data @fixtures/request.json
   /v1/gateways/{id}:
     get:
       operationId: GatewaysGetGateway
@@ -7517,6 +7556,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi gateways retrieve GWBZqKYEK7Y2
     put:
       operationId: GatewaysUpdateGateway
       summary: Update a gateway
@@ -7844,6 +7886,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi gateways update GWBZqKYEK7Y2 --data @fixtures/request.json
   /v1/gateways/mercado-pago:
     post:
       operationId: GatewaysCreateMercadoPagoGateway
@@ -8276,6 +8321,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi gateways disable GWVwjAlbK4Z6
   /v1/gateways/{id}/actions/enable:
     post:
       operationId: enableGateway
@@ -8412,6 +8460,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi gateways enable GWVwjAlbK4Z6
   /v1/exports:
     get:
       operationId: listExports
@@ -8709,6 +8760,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi exports list
     post:
       operationId: createExport
       summary: Create an export
@@ -9009,6 +9063,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi exports create --data @fixtures/request.json
   /v1/exports/{id}:
     get:
       operationId: retrieveExport
@@ -9186,6 +9243,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi exports retrieve EXP123456789
   /v1/imports:
     get:
       operationId: GetImports
@@ -9583,6 +9643,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi imports list
     post:
       operationId: PostImport
       summary: Create a import
@@ -9923,6 +9986,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi imports create --data @fixtures/request.json
   /v1/imports/{id}:
     get:
       operationId: ImportsGetImport
@@ -10153,6 +10219,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi imports retrieve IMKd7zlGJAna
   /v1/imports/{id}/actions/cancel:
     post:
       operationId: ImportsCancelImport
@@ -10392,6 +10461,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi imports cancel IMKd7zlGJAna
   /v1/imports/{id}/actions/process:
     post:
       operationId: ImportsProcessImport
@@ -10631,6 +10703,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi imports process IMKd7zlGJAna
   /v1/imports/{id}/rows:
     get:
       operationId: ImportsListImportRows
@@ -11521,6 +11596,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi links list
     post:
       operationId: LinksCreateLink
       summary: Create a link
@@ -12371,6 +12449,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi links create --data @fixtures/request.json
   /v1/links/{id}:
     get:
       operationId: LinksGetLink
@@ -12832,6 +12913,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi links retrieve LKnJZX0DMv2Mzd4Qp6
     put:
       operationId: LinksUpdateLink
       summary: Update a link
@@ -13712,6 +13796,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi links update LKnJZX0DMv2Mzd4Qp6 --data @fixtures/request.json
     delete:
       operationId: LinksDeleteLink
       summary: Delete a link
@@ -13826,6 +13913,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi links delete LKnJZX0DMv2Mzd4Qp6
   /v1/links/{id}/actions/sendToCustomers:
     post:
       operationId: LinksSendToCustomers
@@ -14013,6 +14103,20 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi links send_to_customers LKnJZX0DMv2Mzd4Qp6 --customers CSgaZlLaPMZO --customers CSljikas98 --data @fixtures/request.json
+      x-debi-cli:
+        command:
+          - links
+          - send_to_customers
+        args:
+          - from: path.id
+            example: LKnJZX0DMv2Mzd4Qp6
+        flags:
+          - name: customers
+            from: requestBody.customers
+            style: repeat
   /v1/mandates:
     get:
       operationId: GetMandates
@@ -14791,6 +14895,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi mandates list
     post:
       operationId: MandatesPostMandate
       summary: Create a mandate
@@ -14971,6 +15078,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi mandates create --data @fixtures/request.json
   /v1/mandates/{id}:
     get:
       operationId: MandatesGetMandate
@@ -15636,6 +15746,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi mandates retrieve MA9aQOWen2kZe6qypB
   /v1/mandates/{id}/actions/revoke:
     post:
       operationId: MandatesRevokeMandate
@@ -15742,6 +15855,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi mandates revoke MA9aQOWen2kZe6qypB
   /v1/mandates/{id}/actions/restore:
     post:
       operationId: MandatesRestoreMandate
@@ -15848,6 +15964,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi mandates restore MA9aQOWen2kZe6qypB
   /v1/mandates/search:
     get:
       operationId: MandatesSearch
@@ -16637,6 +16756,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi mandates search --data @fixtures/search.json
   /v1/payment_methods:
     get:
       operationId: PaymentMethodsGetPaymentMethods
@@ -17265,6 +17387,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payment_methods list
     post:
       operationId: PaymentMethodsCreatePaymentMethod
       summary: Create a payment method (for validation,classification, identification or future use on payments)
@@ -18081,6 +18206,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payment_methods create --data @fixtures/request.json
   /v1/payment_methods/{id}:
     get:
       operationId: PaymentMethodsGetPaymentMethod
@@ -18627,6 +18755,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payment_methods retrieve PMVA0W8y1aQO
   /v1/payment_methods/search:
     get:
       operationId: PaymentMethodsSearch
@@ -19224,6 +19355,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payment_methods search --data @fixtures/search.json
   /v1/payment_methods/{id}/attach:
     post:
       operationId: attachPaymentMethodToCustomer
@@ -19394,6 +19528,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payment_methods attach PMrLnDA9D6oQ --data @fixtures/request.json
   /v1/payment_methods/{id}/detach:
     post:
       operationId: detachPaymentMethodFromCustomer
@@ -19499,6 +19636,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payment_methods detach PMrLnDA9D6oQ
   /v1/payment_methods/cc_bins:
     post:
       operationId: PaymentMethodsLookupCreditCardBin
@@ -20804,6 +20944,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payments list
     post:
       operationId: PaymentsCreatePayment
       summary: Create a payment
@@ -21808,6 +21951,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payments create --data @fixtures/request.json
   /v1/payments/{id}:
     get:
       operationId: PaymentsGetPayment
@@ -22725,6 +22871,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payments retrieve PYdOz9bgVReV
     put:
       operationId: PaymentsUpdatePayment
       summary: Update a payment
@@ -23698,6 +23847,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payments update PYdOz9bgVReV --data @fixtures/request.json
   /v1/payments/{id}/actions/cancel:
     post:
       operationId: PaymentsCancelPayment
@@ -23806,6 +23958,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payments cancel PYdOz9bgVReV
   /v1/payments/{id}/actions/retry:
     post:
       operationId: PaymentsRetryPayment
@@ -23916,6 +24071,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payments retry PYdOz9bgVReV
   /v1/payments/{id}/actions/stop_auto_retrying:
     post:
       operationId: PaymentsStopAutoRetryingPayment
@@ -24024,6 +24182,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payments stop_auto_retrying PYdOz9bgVReV
   /v1/payments/{id}/actions/confirm:
     post:
       operationId: confirmPayment
@@ -25022,6 +25183,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payments confirm PYA8EJ1DkDnY
   /v1/payments/{id}/transaction:
     get:
       operationId: getPaymentTransaction
@@ -26578,6 +26742,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi payments search --data @fixtures/search.json
   /v1/refunds:
     get:
       operationId: RefundsGetRefunds
@@ -26880,6 +27047,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi refunds list
     post:
       operationId: RefundsCreateRefund
       summary: Create a refund
@@ -27141,6 +27311,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi refunds create --data @fixtures/request.json
   /v1/refunds/{id}:
     get:
       operationId: RefundsGetRefund
@@ -27349,6 +27522,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi refunds retrieve RFgaZlLaPMZO
   /v1/sessions:
     post:
       operationId: SessionsCreateSession
@@ -28071,6 +28247,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi sessions create --data @fixtures/request.json
   /v1/sessions/{id}:
     get:
       operationId: SessionsGetSession
@@ -28476,6 +28655,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi sessions retrieve SSnO8b9w7B51VE0B5m
   /v1/subscriptions:
     get:
       operationId: SubscriptionsGetSubscriptions
@@ -29386,6 +29568,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi subscriptions list
     post:
       operationId: SubscriptionsCreateSubscription
       summary: Create a subscription
@@ -30330,6 +30515,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi subscriptions create --data @fixtures/request.json
   /v1/subscriptions/{id}:
     get:
       operationId: SubscriptionsGetSubscription
@@ -31088,6 +31276,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi subscriptions retrieve SBmX1MrZ77Mwq3
     put:
       operationId: SubscriptionsUpdateSubscription
       summary: Update a subscription
@@ -32011,6 +32202,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi subscriptions update SBmX1MrZ77Mwq3 --data @fixtures/request.json
   /v1/subscriptions/{id}/actions/pause:
     post:
       operationId: SubscriptionsPauseSubscription
@@ -32761,6 +32955,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi subscriptions pause SBmX1MrZ77Mwq3
   /v1/subscriptions/{id}/actions/resume:
     post:
       operationId: SubscriptionsResumeSubscription
@@ -33513,6 +33710,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi subscriptions resume SBmX1MrZ77Mwq3
   /v1/subscriptions/{id}/actions/cancel:
     post:
       operationId: SubscriptionsCancelSubscription
@@ -34269,6 +34469,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi subscriptions cancel SBmX1MrZ77Mwq3
   /v1/subscriptions/search:
     get:
       operationId: SubscriptionsSearch
@@ -35164,6 +35367,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi subscriptions search --data @fixtures/search.json
   /v1/webhooks:
     get:
       operationId: WebhooksGetWebhooks
@@ -35459,6 +35665,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi webhooks list
     post:
       operationId: WebhooksCreateWebhook
       summary: Create a webhook
@@ -35750,6 +35959,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi webhooks create --data @fixtures/request.json
   /v1/webhooks/{id}:
     get:
       operationId: WebhooksGetWebhook
@@ -35934,6 +36146,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi webhooks retrieve WHq4VzyAzDgB
     put:
       operationId: WebhooksUpdateWebhook
       summary: Update a webhook
@@ -36167,6 +36382,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi webhooks update WHq4VzyAzDgB --data @fixtures/request.json
     delete:
       operationId: WebhooksDeleteWebhook
       summary: Delete a webhook
@@ -36269,6 +36487,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi webhooks delete WHq4VzyAzDgB
   /v1/webhooks/{id}/messages:
     get:
       operationId: WebhooksGetWebhookMessages
@@ -36809,6 +37030,7 @@ paths:
           required: true
           schema:
             type: string
+          example: WMb3XqR7ZpKd
       responses:
         '200':
           description: OK
@@ -37135,7 +37357,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request POST \
-              --url https://api.debi.pro/v1/webhook_messages/%7Bid%7D/actions/resend \
+              --url https://api.debi.pro/v1/webhook_messages/WMb3XqR7ZpKd/actions/resend \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -37143,7 +37365,7 @@ paths:
 
             const options = {
               method: 'POST',
-              url: 'https://api.debi.pro/v1/webhook_messages/%7Bid%7D/actions/resend',
+              url: 'https://api.debi.pro/v1/webhook_messages/WMb3XqR7ZpKd/actions/resend',
               headers: {Authorization: 'Bearer sk_live_...'}
             };
 
@@ -37157,7 +37379,7 @@ paths:
             <?php
 
             $request = new HttpRequest();
-            $request->setUrl('https://api.debi.pro/v1/webhook_messages/%7Bid%7D/actions/resend');
+            $request->setUrl('https://api.debi.pro/v1/webhook_messages/WMb3XqR7ZpKd/actions/resend');
             $request->setMethod(HTTP_METH_POST);
 
             $request->setHeaders([
@@ -37175,7 +37397,7 @@ paths:
           source: |-
             import requests
 
-            url = "https://api.debi.pro/v1/webhook_messages/%7Bid%7D/actions/resend"
+            url = "https://api.debi.pro/v1/webhook_messages/WMb3XqR7ZpKd/actions/resend"
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -37184,7 +37406,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/webhook_messages/%7Bid%7D/actions/resend")
+            HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/webhook_messages/WMb3XqR7ZpKd/actions/resend")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -37193,7 +37415,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.debi.pro/v1/webhook_messages/%7Bid%7D/actions/resend")
+            url = URI("https://api.debi.pro/v1/webhook_messages/WMb3XqR7ZpKd/actions/resend")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -37204,6 +37426,9 @@ paths:
 
             response = http.request(request)
             puts response.read_body
+        - lang: Debi CLI
+          label: Debi CLI
+          source: debi webhook_messages resend WMb3XqR7ZpKd
 components:
   parameters:
     created_at:

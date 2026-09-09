@@ -1,0 +1,1238 @@
+{
+  "version": 1,
+  "binary": "debi",
+  "generatedFrom": "spec1.spa.sdk.json",
+  "commands": [
+    {
+      "operationId": "AccountGetAccount",
+      "httpMethod": "GET",
+      "httpPath": "/v1/account",
+      "commandPath": [
+        "account",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "account",
+        "retrieve"
+      ],
+      "sample": "debi account retrieve",
+      "summary": "Obtener la cuenta actual"
+    },
+    {
+      "operationId": "CustomersArchiveCustomer",
+      "httpMethod": "POST",
+      "httpPath": "/v1/customers/{id}/actions/archive",
+      "commandPath": [
+        "customers",
+        "archive"
+      ],
+      "argv": [
+        "debi",
+        "customers",
+        "archive",
+        "CS9PL8eeo8aB"
+      ],
+      "sample": "debi customers archive CS9PL8eeo8aB",
+      "summary": "Archivar un cliente"
+    },
+    {
+      "operationId": "CustomersCreateCustomer",
+      "httpMethod": "POST",
+      "httpPath": "/v1/customers",
+      "commandPath": [
+        "customers",
+        "create"
+      ],
+      "argv": [
+        "debi",
+        "customers",
+        "create",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi customers create --data @fixtures/request.json",
+      "summary": "Crear un cliente"
+    },
+    {
+      "operationId": "CustomersGetCustomers",
+      "httpMethod": "GET",
+      "httpPath": "/v1/customers",
+      "commandPath": [
+        "customers",
+        "list"
+      ],
+      "argv": [
+        "debi",
+        "customers",
+        "list"
+      ],
+      "sample": "debi customers list",
+      "summary": "Obtener todos los clientes"
+    },
+    {
+      "operationId": "CustomersRestoreCustomer",
+      "httpMethod": "POST",
+      "httpPath": "/v1/customers/{id}/actions/restore",
+      "commandPath": [
+        "customers",
+        "restore"
+      ],
+      "argv": [
+        "debi",
+        "customers",
+        "restore",
+        "CS9PL8eeo8aB"
+      ],
+      "sample": "debi customers restore CS9PL8eeo8aB",
+      "summary": "Restaurar un cliente"
+    },
+    {
+      "operationId": "CustomersGetCustomer",
+      "httpMethod": "GET",
+      "httpPath": "/v1/customers/{id}",
+      "commandPath": [
+        "customers",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "customers",
+        "retrieve",
+        "CS9PL8eeo8aB"
+      ],
+      "sample": "debi customers retrieve CS9PL8eeo8aB",
+      "summary": "Obtener un cliente"
+    },
+    {
+      "operationId": "CustomersSearch",
+      "httpMethod": "GET",
+      "httpPath": "/v1/customers/search",
+      "commandPath": [
+        "customers",
+        "search"
+      ],
+      "argv": [
+        "debi",
+        "customers",
+        "search",
+        "--data",
+        "@fixtures/search.json"
+      ],
+      "sample": "debi customers search --data @fixtures/search.json",
+      "summary": "Buscar clientes"
+    },
+    {
+      "operationId": "CustomersUpdateCustomer",
+      "httpMethod": "PUT",
+      "httpPath": "/v1/customers/{id}",
+      "commandPath": [
+        "customers",
+        "update"
+      ],
+      "argv": [
+        "debi",
+        "customers",
+        "update",
+        "CS9PL8eeo8aB",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi customers update CS9PL8eeo8aB --data @fixtures/request.json",
+      "summary": "Actualiza un cliente"
+    },
+    {
+      "operationId": "GetEvents",
+      "httpMethod": "GET",
+      "httpPath": "/v1/events",
+      "commandPath": [
+        "events",
+        "list"
+      ],
+      "argv": [
+        "debi",
+        "events",
+        "list"
+      ],
+      "sample": "debi events list",
+      "summary": "Obtener eventos"
+    },
+    {
+      "operationId": "EventsResendEvent",
+      "httpMethod": "POST",
+      "httpPath": "/v1/events/{id}/actions/resend",
+      "commandPath": [
+        "events",
+        "resend"
+      ],
+      "argv": [
+        "debi",
+        "events",
+        "resend",
+        "EVaX3JagwR6x"
+      ],
+      "sample": "debi events resend EVaX3JagwR6x",
+      "summary": "Reenviar un evento a webhooks"
+    },
+    {
+      "operationId": "EventsGetEvent",
+      "httpMethod": "GET",
+      "httpPath": "/v1/events/{id}",
+      "commandPath": [
+        "events",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "events",
+        "retrieve",
+        "EVaX3JagwR6x"
+      ],
+      "sample": "debi events retrieve EVaX3JagwR6x",
+      "summary": "Obtener un evento"
+    },
+    {
+      "operationId": "createExport",
+      "httpMethod": "POST",
+      "httpPath": "/v1/exports",
+      "commandPath": [
+        "exports",
+        "create"
+      ],
+      "argv": [
+        "debi",
+        "exports",
+        "create",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi exports create --data @fixtures/request.json",
+      "summary": "Crear una exportación"
+    },
+    {
+      "operationId": "listExports",
+      "httpMethod": "GET",
+      "httpPath": "/v1/exports",
+      "commandPath": [
+        "exports",
+        "list"
+      ],
+      "argv": [
+        "debi",
+        "exports",
+        "list"
+      ],
+      "sample": "debi exports list",
+      "summary": "Listar todas las exportaciones"
+    },
+    {
+      "operationId": "retrieveExport",
+      "httpMethod": "GET",
+      "httpPath": "/v1/exports/{id}",
+      "commandPath": [
+        "exports",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "exports",
+        "retrieve",
+        "EXP123456789"
+      ],
+      "sample": "debi exports retrieve EXP123456789",
+      "summary": "Recuperar una exportación"
+    },
+    {
+      "operationId": "GatewaysCreateGateway",
+      "httpMethod": "POST",
+      "httpPath": "/v1/gateways",
+      "commandPath": [
+        "gateways",
+        "create"
+      ],
+      "argv": [
+        "debi",
+        "gateways",
+        "create",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi gateways create --data @fixtures/request.json",
+      "summary": "Crear un gateway"
+    },
+    {
+      "operationId": "disableGateway",
+      "httpMethod": "POST",
+      "httpPath": "/v1/gateways/{id}/actions/disable",
+      "commandPath": [
+        "gateways",
+        "disable"
+      ],
+      "argv": [
+        "debi",
+        "gateways",
+        "disable",
+        "GWVwjAlbK4Z6"
+      ],
+      "sample": "debi gateways disable GWVwjAlbK4Z6",
+      "summary": "Deshabilitar un gateway"
+    },
+    {
+      "operationId": "enableGateway",
+      "httpMethod": "POST",
+      "httpPath": "/v1/gateways/{id}/actions/enable",
+      "commandPath": [
+        "gateways",
+        "enable"
+      ],
+      "argv": [
+        "debi",
+        "gateways",
+        "enable",
+        "GWVwjAlbK4Z6"
+      ],
+      "sample": "debi gateways enable GWVwjAlbK4Z6",
+      "summary": "Habilitar un gateway"
+    },
+    {
+      "operationId": "GetGateways",
+      "httpMethod": "GET",
+      "httpPath": "/v1/gateways",
+      "commandPath": [
+        "gateways",
+        "list"
+      ],
+      "argv": [
+        "debi",
+        "gateways",
+        "list"
+      ],
+      "sample": "debi gateways list",
+      "summary": "Listado de Gateways"
+    },
+    {
+      "operationId": "GatewaysGetGateway",
+      "httpMethod": "GET",
+      "httpPath": "/v1/gateways/{id}",
+      "commandPath": [
+        "gateways",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "gateways",
+        "retrieve",
+        "GWBZqKYEK7Y2"
+      ],
+      "sample": "debi gateways retrieve GWBZqKYEK7Y2",
+      "summary": "Obtener un gateway"
+    },
+    {
+      "operationId": "GatewaysUpdateGateway",
+      "httpMethod": "PUT",
+      "httpPath": "/v1/gateways/{id}",
+      "commandPath": [
+        "gateways",
+        "update"
+      ],
+      "argv": [
+        "debi",
+        "gateways",
+        "update",
+        "GWBZqKYEK7Y2",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi gateways update GWBZqKYEK7Y2 --data @fixtures/request.json",
+      "summary": "Actualizar un gateway"
+    },
+    {
+      "operationId": "ImportsCancelImport",
+      "httpMethod": "POST",
+      "httpPath": "/v1/imports/{id}/actions/cancel",
+      "commandPath": [
+        "imports",
+        "cancel"
+      ],
+      "argv": [
+        "debi",
+        "imports",
+        "cancel",
+        "IMKd7zlGJAna"
+      ],
+      "sample": "debi imports cancel IMKd7zlGJAna",
+      "summary": "Cancelar una importación"
+    },
+    {
+      "operationId": "PostImport",
+      "httpMethod": "POST",
+      "httpPath": "/v1/imports",
+      "commandPath": [
+        "imports",
+        "create"
+      ],
+      "argv": [
+        "debi",
+        "imports",
+        "create",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi imports create --data @fixtures/request.json",
+      "summary": "Crear una importación"
+    },
+    {
+      "operationId": "GetImports",
+      "httpMethod": "GET",
+      "httpPath": "/v1/imports",
+      "commandPath": [
+        "imports",
+        "list"
+      ],
+      "argv": [
+        "debi",
+        "imports",
+        "list"
+      ],
+      "sample": "debi imports list",
+      "summary": "Listado de Importaciones"
+    },
+    {
+      "operationId": "ImportsProcessImport",
+      "httpMethod": "POST",
+      "httpPath": "/v1/imports/{id}/actions/process",
+      "commandPath": [
+        "imports",
+        "process"
+      ],
+      "argv": [
+        "debi",
+        "imports",
+        "process",
+        "IMKd7zlGJAna"
+      ],
+      "sample": "debi imports process IMKd7zlGJAna",
+      "summary": "Procesar una importación"
+    },
+    {
+      "operationId": "ImportsGetImport",
+      "httpMethod": "GET",
+      "httpPath": "/v1/imports/{id}",
+      "commandPath": [
+        "imports",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "imports",
+        "retrieve",
+        "IMKd7zlGJAna"
+      ],
+      "sample": "debi imports retrieve IMKd7zlGJAna",
+      "summary": "Obtener una importación"
+    },
+    {
+      "operationId": "LinksCreateLink",
+      "httpMethod": "POST",
+      "httpPath": "/v1/links",
+      "commandPath": [
+        "links",
+        "create"
+      ],
+      "argv": [
+        "debi",
+        "links",
+        "create",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi links create --data @fixtures/request.json",
+      "summary": "Crear un link"
+    },
+    {
+      "operationId": "LinksDeleteLink",
+      "httpMethod": "DELETE",
+      "httpPath": "/v1/links/{id}",
+      "commandPath": [
+        "links",
+        "delete"
+      ],
+      "argv": [
+        "debi",
+        "links",
+        "delete",
+        "LKnJZX0DMv2Mzd4Qp6"
+      ],
+      "sample": "debi links delete LKnJZX0DMv2Mzd4Qp6",
+      "summary": "Eliminar un link"
+    },
+    {
+      "operationId": "LinksGetLinks",
+      "httpMethod": "GET",
+      "httpPath": "/v1/links",
+      "commandPath": [
+        "links",
+        "list"
+      ],
+      "argv": [
+        "debi",
+        "links",
+        "list"
+      ],
+      "sample": "debi links list",
+      "summary": "Listado de Links"
+    },
+    {
+      "operationId": "LinksGetLink",
+      "httpMethod": "GET",
+      "httpPath": "/v1/links/{id}",
+      "commandPath": [
+        "links",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "links",
+        "retrieve",
+        "LKnJZX0DMv2Mzd4Qp6"
+      ],
+      "sample": "debi links retrieve LKnJZX0DMv2Mzd4Qp6",
+      "summary": "Obtener un link"
+    },
+    {
+      "operationId": "LinksSendToCustomers",
+      "httpMethod": "POST",
+      "httpPath": "/v1/links/{id}/actions/sendToCustomers",
+      "commandPath": [
+        "links",
+        "send_to_customers"
+      ],
+      "argv": [
+        "debi",
+        "links",
+        "send_to_customers",
+        "LKnJZX0DMv2Mzd4Qp6",
+        "--customers",
+        "CSgaZlLaPMZO",
+        "--customers",
+        "CSljikas98",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi links send_to_customers LKnJZX0DMv2Mzd4Qp6 --customers CSgaZlLaPMZO --customers CSljikas98 --data @fixtures/request.json",
+      "summary": "Enviar enlace a clientes"
+    },
+    {
+      "operationId": "LinksUpdateLink",
+      "httpMethod": "PUT",
+      "httpPath": "/v1/links/{id}",
+      "commandPath": [
+        "links",
+        "update"
+      ],
+      "argv": [
+        "debi",
+        "links",
+        "update",
+        "LKnJZX0DMv2Mzd4Qp6",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi links update LKnJZX0DMv2Mzd4Qp6 --data @fixtures/request.json",
+      "summary": "Actualizar un link"
+    },
+    {
+      "operationId": "MandatesPostMandate",
+      "httpMethod": "POST",
+      "httpPath": "/v1/mandates",
+      "commandPath": [
+        "mandates",
+        "create"
+      ],
+      "argv": [
+        "debi",
+        "mandates",
+        "create",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi mandates create --data @fixtures/request.json",
+      "summary": "Crear una adhesión"
+    },
+    {
+      "operationId": "GetMandates",
+      "httpMethod": "GET",
+      "httpPath": "/v1/mandates",
+      "commandPath": [
+        "mandates",
+        "list"
+      ],
+      "argv": [
+        "debi",
+        "mandates",
+        "list"
+      ],
+      "sample": "debi mandates list",
+      "summary": "Obtener todos las adhesiones"
+    },
+    {
+      "operationId": "MandatesRestoreMandate",
+      "httpMethod": "POST",
+      "httpPath": "/v1/mandates/{id}/actions/restore",
+      "commandPath": [
+        "mandates",
+        "restore"
+      ],
+      "argv": [
+        "debi",
+        "mandates",
+        "restore",
+        "MA9aQOWen2kZe6qypB"
+      ],
+      "sample": "debi mandates restore MA9aQOWen2kZe6qypB",
+      "summary": "Restaurar la adhesión"
+    },
+    {
+      "operationId": "MandatesGetMandate",
+      "httpMethod": "GET",
+      "httpPath": "/v1/mandates/{id}",
+      "commandPath": [
+        "mandates",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "mandates",
+        "retrieve",
+        "MA9aQOWen2kZe6qypB"
+      ],
+      "sample": "debi mandates retrieve MA9aQOWen2kZe6qypB",
+      "summary": "Obtener una adhesión"
+    },
+    {
+      "operationId": "MandatesRevokeMandate",
+      "httpMethod": "POST",
+      "httpPath": "/v1/mandates/{id}/actions/revoke",
+      "commandPath": [
+        "mandates",
+        "revoke"
+      ],
+      "argv": [
+        "debi",
+        "mandates",
+        "revoke",
+        "MA9aQOWen2kZe6qypB"
+      ],
+      "sample": "debi mandates revoke MA9aQOWen2kZe6qypB",
+      "summary": "Revocar una adhesión"
+    },
+    {
+      "operationId": "MandatesSearch",
+      "httpMethod": "GET",
+      "httpPath": "/v1/mandates/search",
+      "commandPath": [
+        "mandates",
+        "search"
+      ],
+      "argv": [
+        "debi",
+        "mandates",
+        "search",
+        "--data",
+        "@fixtures/search.json"
+      ],
+      "sample": "debi mandates search --data @fixtures/search.json",
+      "summary": "Buscar adhesiones"
+    },
+    {
+      "operationId": "attachPaymentMethodToCustomer",
+      "httpMethod": "POST",
+      "httpPath": "/v1/payment_methods/{id}/attach",
+      "commandPath": [
+        "payment_methods",
+        "attach"
+      ],
+      "argv": [
+        "debi",
+        "payment_methods",
+        "attach",
+        "PMrLnDA9D6oQ",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi payment_methods attach PMrLnDA9D6oQ --data @fixtures/request.json",
+      "summary": "Adjuntar método de pago a cliente"
+    },
+    {
+      "operationId": "PaymentMethodsCreatePaymentMethod",
+      "httpMethod": "POST",
+      "httpPath": "/v1/payment_methods",
+      "commandPath": [
+        "payment_methods",
+        "create"
+      ],
+      "argv": [
+        "debi",
+        "payment_methods",
+        "create",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi payment_methods create --data @fixtures/request.json",
+      "summary": "Crear un método de pago para validación, clasificación, identificación o futuro uso en pagos."
+    },
+    {
+      "operationId": "detachPaymentMethodFromCustomer",
+      "httpMethod": "POST",
+      "httpPath": "/v1/payment_methods/{id}/detach",
+      "commandPath": [
+        "payment_methods",
+        "detach"
+      ],
+      "argv": [
+        "debi",
+        "payment_methods",
+        "detach",
+        "PMrLnDA9D6oQ"
+      ],
+      "sample": "debi payment_methods detach PMrLnDA9D6oQ",
+      "summary": "Desasociar método de pago de cliente"
+    },
+    {
+      "operationId": "PaymentMethodsGetPaymentMethods",
+      "httpMethod": "GET",
+      "httpPath": "/v1/payment_methods",
+      "commandPath": [
+        "payment_methods",
+        "list"
+      ],
+      "argv": [
+        "debi",
+        "payment_methods",
+        "list"
+      ],
+      "sample": "debi payment_methods list",
+      "summary": "Obtener todos los métodos de pago"
+    },
+    {
+      "operationId": "PaymentMethodsGetPaymentMethod",
+      "httpMethod": "GET",
+      "httpPath": "/v1/payment_methods/{id}",
+      "commandPath": [
+        "payment_methods",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "payment_methods",
+        "retrieve",
+        "PMVA0W8y1aQO"
+      ],
+      "sample": "debi payment_methods retrieve PMVA0W8y1aQO",
+      "summary": "Obtener un Método de Pago"
+    },
+    {
+      "operationId": "PaymentMethodsSearch",
+      "httpMethod": "GET",
+      "httpPath": "/v1/payment_methods/search",
+      "commandPath": [
+        "payment_methods",
+        "search"
+      ],
+      "argv": [
+        "debi",
+        "payment_methods",
+        "search",
+        "--data",
+        "@fixtures/search.json"
+      ],
+      "sample": "debi payment_methods search --data @fixtures/search.json",
+      "summary": "Buscar métodos de pago"
+    },
+    {
+      "operationId": "PaymentsCancelPayment",
+      "httpMethod": "POST",
+      "httpPath": "/v1/payments/{id}/actions/cancel",
+      "commandPath": [
+        "payments",
+        "cancel"
+      ],
+      "argv": [
+        "debi",
+        "payments",
+        "cancel",
+        "PYdOz9bgVReV"
+      ],
+      "sample": "debi payments cancel PYdOz9bgVReV",
+      "summary": "Cancelar pago"
+    },
+    {
+      "operationId": "confirmPayment",
+      "httpMethod": "POST",
+      "httpPath": "/v1/payments/{id}/actions/confirm",
+      "commandPath": [
+        "payments",
+        "confirm"
+      ],
+      "argv": [
+        "debi",
+        "payments",
+        "confirm",
+        "PYA8EJ1DkDnY"
+      ],
+      "sample": "debi payments confirm PYA8EJ1DkDnY",
+      "summary": "⚠️ BETA - Confirm a payment"
+    },
+    {
+      "operationId": "PaymentsCreatePayment",
+      "httpMethod": "POST",
+      "httpPath": "/v1/payments",
+      "commandPath": [
+        "payments",
+        "create"
+      ],
+      "argv": [
+        "debi",
+        "payments",
+        "create",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi payments create --data @fixtures/request.json",
+      "summary": "Crear un pago"
+    },
+    {
+      "operationId": "PaymentsGetPayments",
+      "httpMethod": "GET",
+      "httpPath": "/v1/payments",
+      "commandPath": [
+        "payments",
+        "list"
+      ],
+      "argv": [
+        "debi",
+        "payments",
+        "list"
+      ],
+      "sample": "debi payments list",
+      "summary": "Obtener pagos"
+    },
+    {
+      "operationId": "PaymentsGetPayment",
+      "httpMethod": "GET",
+      "httpPath": "/v1/payments/{id}",
+      "commandPath": [
+        "payments",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "payments",
+        "retrieve",
+        "PYdOz9bgVReV"
+      ],
+      "sample": "debi payments retrieve PYdOz9bgVReV",
+      "summary": "Obtener un pago"
+    },
+    {
+      "operationId": "PaymentsRetryPayment",
+      "httpMethod": "POST",
+      "httpPath": "/v1/payments/{id}/actions/retry",
+      "commandPath": [
+        "payments",
+        "retry"
+      ],
+      "argv": [
+        "debi",
+        "payments",
+        "retry",
+        "PYdOz9bgVReV"
+      ],
+      "sample": "debi payments retry PYdOz9bgVReV",
+      "summary": "Reintentar un pago"
+    },
+    {
+      "operationId": "PaymentsSearch",
+      "httpMethod": "GET",
+      "httpPath": "/v1/payments/search",
+      "commandPath": [
+        "payments",
+        "search"
+      ],
+      "argv": [
+        "debi",
+        "payments",
+        "search",
+        "--data",
+        "@fixtures/search.json"
+      ],
+      "sample": "debi payments search --data @fixtures/search.json",
+      "summary": "Buscar pagos"
+    },
+    {
+      "operationId": "PaymentsStopAutoRetryingPayment",
+      "httpMethod": "POST",
+      "httpPath": "/v1/payments/{id}/actions/stop_auto_retrying",
+      "commandPath": [
+        "payments",
+        "stop_auto_retrying"
+      ],
+      "argv": [
+        "debi",
+        "payments",
+        "stop_auto_retrying",
+        "PYdOz9bgVReV"
+      ],
+      "sample": "debi payments stop_auto_retrying PYdOz9bgVReV",
+      "summary": "Detener reintentos automáticos"
+    },
+    {
+      "operationId": "PaymentsUpdatePayment",
+      "httpMethod": "PUT",
+      "httpPath": "/v1/payments/{id}",
+      "commandPath": [
+        "payments",
+        "update"
+      ],
+      "argv": [
+        "debi",
+        "payments",
+        "update",
+        "PYdOz9bgVReV",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi payments update PYdOz9bgVReV --data @fixtures/request.json",
+      "summary": "Actualizar un pago"
+    },
+    {
+      "operationId": "RefundsCreateRefund",
+      "httpMethod": "POST",
+      "httpPath": "/v1/refunds",
+      "commandPath": [
+        "refunds",
+        "create"
+      ],
+      "argv": [
+        "debi",
+        "refunds",
+        "create",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi refunds create --data @fixtures/request.json",
+      "summary": "Crear una devolución"
+    },
+    {
+      "operationId": "RefundsGetRefunds",
+      "httpMethod": "GET",
+      "httpPath": "/v1/refunds",
+      "commandPath": [
+        "refunds",
+        "list"
+      ],
+      "argv": [
+        "debi",
+        "refunds",
+        "list"
+      ],
+      "sample": "debi refunds list",
+      "summary": "Mostrar todas las devoluciones"
+    },
+    {
+      "operationId": "RefundsGetRefund",
+      "httpMethod": "GET",
+      "httpPath": "/v1/refunds/{id}",
+      "commandPath": [
+        "refunds",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "refunds",
+        "retrieve",
+        "RFgaZlLaPMZO"
+      ],
+      "sample": "debi refunds retrieve RFgaZlLaPMZO",
+      "summary": "Retorna una devolución"
+    },
+    {
+      "operationId": "SessionsCreateSession",
+      "httpMethod": "POST",
+      "httpPath": "/v1/sessions",
+      "commandPath": [
+        "sessions",
+        "create"
+      ],
+      "argv": [
+        "debi",
+        "sessions",
+        "create",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi sessions create --data @fixtures/request.json",
+      "summary": "Crear una sesión"
+    },
+    {
+      "operationId": "SessionsGetSession",
+      "httpMethod": "GET",
+      "httpPath": "/v1/sessions/{id}",
+      "commandPath": [
+        "sessions",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "sessions",
+        "retrieve",
+        "SSnO8b9w7B51VE0B5m"
+      ],
+      "sample": "debi sessions retrieve SSnO8b9w7B51VE0B5m",
+      "summary": "Obtener una sesión"
+    },
+    {
+      "operationId": "SubscriptionsCancelSubscription",
+      "httpMethod": "POST",
+      "httpPath": "/v1/subscriptions/{id}/actions/cancel",
+      "commandPath": [
+        "subscriptions",
+        "cancel"
+      ],
+      "argv": [
+        "debi",
+        "subscriptions",
+        "cancel",
+        "SBmX1MrZ77Mwq3"
+      ],
+      "sample": "debi subscriptions cancel SBmX1MrZ77Mwq3",
+      "summary": "Cancelar una suscripción"
+    },
+    {
+      "operationId": "SubscriptionsCreateSubscription",
+      "httpMethod": "POST",
+      "httpPath": "/v1/subscriptions",
+      "commandPath": [
+        "subscriptions",
+        "create"
+      ],
+      "argv": [
+        "debi",
+        "subscriptions",
+        "create",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi subscriptions create --data @fixtures/request.json",
+      "summary": "Crear una suscripción"
+    },
+    {
+      "operationId": "SubscriptionsGetSubscriptions",
+      "httpMethod": "GET",
+      "httpPath": "/v1/subscriptions",
+      "commandPath": [
+        "subscriptions",
+        "list"
+      ],
+      "argv": [
+        "debi",
+        "subscriptions",
+        "list"
+      ],
+      "sample": "debi subscriptions list",
+      "summary": "Obtener todas las suscripciones"
+    },
+    {
+      "operationId": "SubscriptionsPauseSubscription",
+      "httpMethod": "POST",
+      "httpPath": "/v1/subscriptions/{id}/actions/pause",
+      "commandPath": [
+        "subscriptions",
+        "pause"
+      ],
+      "argv": [
+        "debi",
+        "subscriptions",
+        "pause",
+        "SBmX1MrZ77Mwq3"
+      ],
+      "sample": "debi subscriptions pause SBmX1MrZ77Mwq3",
+      "summary": "Pausar una suscripción"
+    },
+    {
+      "operationId": "SubscriptionsResumeSubscription",
+      "httpMethod": "POST",
+      "httpPath": "/v1/subscriptions/{id}/actions/resume",
+      "commandPath": [
+        "subscriptions",
+        "resume"
+      ],
+      "argv": [
+        "debi",
+        "subscriptions",
+        "resume",
+        "SBmX1MrZ77Mwq3"
+      ],
+      "sample": "debi subscriptions resume SBmX1MrZ77Mwq3",
+      "summary": "Reanudar una suscripción"
+    },
+    {
+      "operationId": "SubscriptionsGetSubscription",
+      "httpMethod": "GET",
+      "httpPath": "/v1/subscriptions/{id}",
+      "commandPath": [
+        "subscriptions",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "subscriptions",
+        "retrieve",
+        "SBmX1MrZ77Mwq3"
+      ],
+      "sample": "debi subscriptions retrieve SBmX1MrZ77Mwq3",
+      "summary": "Obtener una suscripción"
+    },
+    {
+      "operationId": "SubscriptionsSearch",
+      "httpMethod": "GET",
+      "httpPath": "/v1/subscriptions/search",
+      "commandPath": [
+        "subscriptions",
+        "search"
+      ],
+      "argv": [
+        "debi",
+        "subscriptions",
+        "search",
+        "--data",
+        "@fixtures/search.json"
+      ],
+      "sample": "debi subscriptions search --data @fixtures/search.json",
+      "summary": "Buscar suscripciones"
+    },
+    {
+      "operationId": "SubscriptionsUpdateSubscription",
+      "httpMethod": "PUT",
+      "httpPath": "/v1/subscriptions/{id}",
+      "commandPath": [
+        "subscriptions",
+        "update"
+      ],
+      "argv": [
+        "debi",
+        "subscriptions",
+        "update",
+        "SBmX1MrZ77Mwq3",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi subscriptions update SBmX1MrZ77Mwq3 --data @fixtures/request.json",
+      "summary": "Actualizar una suscripción"
+    },
+    {
+      "operationId": "WebhooksResendWebhookMessage",
+      "httpMethod": "POST",
+      "httpPath": "/v1/webhook_messages/{id}/actions/resend",
+      "commandPath": [
+        "webhook_messages",
+        "resend"
+      ],
+      "argv": [
+        "debi",
+        "webhook_messages",
+        "resend",
+        "WMb3XqR7ZpKd"
+      ],
+      "sample": "debi webhook_messages resend WMb3XqR7ZpKd",
+      "summary": "Reenviar un mensaje de webhook"
+    },
+    {
+      "operationId": "WebhooksCreateWebhook",
+      "httpMethod": "POST",
+      "httpPath": "/v1/webhooks",
+      "commandPath": [
+        "webhooks",
+        "create"
+      ],
+      "argv": [
+        "debi",
+        "webhooks",
+        "create",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi webhooks create --data @fixtures/request.json",
+      "summary": "Crear un webhook"
+    },
+    {
+      "operationId": "WebhooksDeleteWebhook",
+      "httpMethod": "DELETE",
+      "httpPath": "/v1/webhooks/{id}",
+      "commandPath": [
+        "webhooks",
+        "delete"
+      ],
+      "argv": [
+        "debi",
+        "webhooks",
+        "delete",
+        "WHq4VzyAzDgB"
+      ],
+      "sample": "debi webhooks delete WHq4VzyAzDgB",
+      "summary": "Borrar un webhook"
+    },
+    {
+      "operationId": "WebhooksGetWebhooks",
+      "httpMethod": "GET",
+      "httpPath": "/v1/webhooks",
+      "commandPath": [
+        "webhooks",
+        "list"
+      ],
+      "argv": [
+        "debi",
+        "webhooks",
+        "list"
+      ],
+      "sample": "debi webhooks list",
+      "summary": "Obtener todos los webhooks"
+    },
+    {
+      "operationId": "WebhooksGetWebhook",
+      "httpMethod": "GET",
+      "httpPath": "/v1/webhooks/{id}",
+      "commandPath": [
+        "webhooks",
+        "retrieve"
+      ],
+      "argv": [
+        "debi",
+        "webhooks",
+        "retrieve",
+        "WHq4VzyAzDgB"
+      ],
+      "sample": "debi webhooks retrieve WHq4VzyAzDgB",
+      "summary": "Obtener un webhook"
+    },
+    {
+      "operationId": "WebhooksUpdateWebhook",
+      "httpMethod": "PUT",
+      "httpPath": "/v1/webhooks/{id}",
+      "commandPath": [
+        "webhooks",
+        "update"
+      ],
+      "argv": [
+        "debi",
+        "webhooks",
+        "update",
+        "WHq4VzyAzDgB",
+        "--data",
+        "@fixtures/request.json"
+      ],
+      "sample": "debi webhooks update WHq4VzyAzDgB --data @fixtures/request.json",
+      "summary": "Actualizar un webhook"
+    }
+  ]
+}

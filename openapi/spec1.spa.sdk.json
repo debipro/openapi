@@ -245,6 +245,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/account\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi account retrieve"
           }
         ]
       }
@@ -3238,6 +3243,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/customers?all=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi customers list"
           }
         ]
       },
@@ -3574,6 +3584,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/customers\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"name\\\":\\\"Jorgelina Castro\\\",\\\"email\\\":\\\"mail@example.com\\\",\\\"gateway_identifier\\\":\\\"383473\\\",\\\"identification_type\\\":\\\"DNI\\\",\\\"identification_number\\\":\\\"15.555.324\\\",\\\"mobile_number\\\":\\\"+5491123456789\\\",\\\"default_payment_method_id\\\":\\\"PMVdYaYwkqOw\\\",\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi customers create --data @fixtures/request.json"
           }
         ]
       }
@@ -3800,6 +3815,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/customers/CS9PL8eeo8aB\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi customers retrieve CS9PL8eeo8aB"
           }
         ]
       },
@@ -4131,6 +4151,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/customers/CS9PL8eeo8aB\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Put.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"name\\\":\\\"Jorgelina Castro\\\",\\\"email\\\":\\\"mail@example.com\\\",\\\"gateway_identifier\\\":\\\"383473\\\",\\\"identification_type\\\":\\\"DNI\\\",\\\"identification_number\\\":\\\"15.555.324\\\",\\\"mobile_number\\\":\\\"+5491123456789\\\",\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi customers update CS9PL8eeo8aB --data @fixtures/request.json"
           }
         ]
       }
@@ -4227,6 +4252,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/archive\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi customers archive CS9PL8eeo8aB"
           }
         ]
       }
@@ -4323,6 +4353,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/customers/CS9PL8eeo8aB/actions/restore\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi customers restore CS9PL8eeo8aB"
           }
         ]
       }
@@ -4663,6 +4698,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/customers/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi customers search --data @fixtures/search.json"
           }
         ]
       }
@@ -5782,6 +5822,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/events?delivery_success=SOME_BOOLEAN_VALUE&related_object=SOME_STRING_VALUE&type=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi events list"
           }
         ]
       }
@@ -6022,6 +6067,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/events/EVaX3JagwR6x\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi events retrieve EVaX3JagwR6x"
           }
         ]
       }
@@ -6485,6 +6535,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/events/EVaX3JagwR6x/actions/resend\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi events resend EVaX3JagwR6x"
           }
         ]
       }
@@ -6949,6 +7004,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/gateways?all=SOME_BOOLEAN_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi gateways list"
           }
         ]
       },
@@ -7331,6 +7391,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/gateways\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"provider\\\":\\\"string\\\",\\\"number\\\":null,\\\"username\\\":null,\\\"password\\\":null,\\\"number_bank_retries\\\":null,\\\"code_length\\\":null,\\\"private_key\\\":\\\"string\\\",\\\"terminal_id\\\":\\\"string\\\",\\\"cuit\\\":\\\"string\\\",\\\"razon_social\\\":\\\"string\\\",\\\"login_method_type\\\":\\\"string\\\",\\\"login_method_number\\\":\\\"string\\\",\\\"origen_comercial\\\":\\\"string\\\",\\\"virtualpos_plans\\\":[{\\\"id\\\":\\\"string\\\",\\\"name\\\":null,\\\"currency\\\":null,\\\"type\\\":null,\\\"is_active\\\":null}]}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi gateways create --data @fixtures/request.json"
           }
         ]
       }
@@ -7604,6 +7669,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/gateways/GWBZqKYEK7Y2\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi gateways retrieve GWBZqKYEK7Y2"
           }
         ]
       },
@@ -7941,6 +8011,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/gateways/GWBZqKYEK7Y2\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Put.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"username\\\":\\\"string\\\",\\\"password\\\":\\\"string\\\",\\\"number_bank_retries\\\":null,\\\"code_length\\\":null}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi gateways update GWBZqKYEK7Y2 --data @fixtures/request.json"
           }
         ]
       }
@@ -8362,6 +8437,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/gateways/%7Bid%7D/actions/disable\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi gateways disable GWVwjAlbK4Z6"
           }
         ]
       }
@@ -8483,6 +8563,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/gateways/%7Bid%7D/actions/enable\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi gateways enable GWVwjAlbK4Z6"
           }
         ]
       }
@@ -8793,6 +8878,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi exports list"
           }
         ]
       },
@@ -9063,6 +9153,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/exports\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"payments_monthly\\\",\\\"format\\\":\\\"csv\\\",\\\"csv_delimiter\\\":\\\",\\\",\\\"columns\\\":[{\\\"key\\\":\\\"string\\\",\\\"label\\\":\\\"string\\\"}],\\\"display_timezone\\\":\\\"America/Argentina/Buenos_Aires\\\",\\\"headings\\\":true,\\\"filters\\\":{\\\"import_id\\\":\\\"string\\\"},\\\"begin_date\\\":\\\"2025-01-01\\\",\\\"end_date\\\":\\\"2025-01-31\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi exports create --data @fixtures/request.json"
           }
         ]
       }
@@ -9228,6 +9323,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/exports/%7Bid%7D\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi exports retrieve EXP123456789"
           }
         ]
       }
@@ -9659,6 +9759,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/imports?statuses=SOME_ARRAY_VALUE&search=SOME_STRING_VALUE&status=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi imports list"
           }
         ]
       },
@@ -9985,6 +10090,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/imports\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"customers\\\",\\\"filename\\\":\\\"a.csv\\\",\\\"original_filename\\\":\\\"a.csv\\\",\\\"data\\\":[{}],\\\"source_format\\\":\\\"auto\\\",\\\"auto\\\":true,\\\"smart_merge\\\":true,\\\"allow_failures\\\":true,\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi imports create --data @fixtures/request.json"
           }
         ]
       }
@@ -10222,6 +10332,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/imports/IMKd7zlGJAna\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi imports retrieve IMKd7zlGJAna"
           }
         ]
       }
@@ -10474,6 +10589,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/imports/IMKd7zlGJAna/actions/cancel\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi imports cancel IMKd7zlGJAna"
           }
         ]
       }
@@ -10726,6 +10846,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/imports/IMKd7zlGJAna/actions/process\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi imports process IMKd7zlGJAna"
           }
         ]
       }
@@ -11758,6 +11883,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/links?search=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi links list"
           }
         ]
       },
@@ -12662,6 +12792,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/links\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"title\\\":\\\"Monthly Subscription\\\",\\\"body\\\":\\\"Subscribe to our monthly service\\\",\\\"button_text\\\":\\\"Pay Now\\\",\\\"name_text\\\":\\\"Full Name\\\",\\\"success_url\\\":\\\"https://example.com/success\\\",\\\"kind\\\":\\\"payment\\\",\\\"enabled\\\":true,\\\"smart_merge\\\":false,\\\"binary_mode\\\":true,\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"},\\\"customer_metadata\\\":{\\\"some\\\":\\\"metadata\\\"},\\\"extra_fields\\\":[{\\\"name\\\":\\\"source\\\",\\\"type\\\":\\\"select\\\",\\\"label\\\":\\\"Cómo nos conociste?\\\",\\\"options\\\":{\\\"key_1\\\":\\\"Opción 1\\\",\\\"key_2\\\":\\\"Opción 2\\\"}},{\\\"name\\\":\\\"age\\\",\\\"label\\\":\\\"Edad\\\"}],\\\"extra_fields_customer\\\":[{\\\"name\\\":\\\"identification_type\\\",\\\"type\\\":\\\"select\\\",\\\"label\\\":\\\"Tipo de documento\\\",\\\"options\\\":{\\\"dni\\\":\\\"DNI\\\",\\\"cuit\\\":\\\"CUIT\\\",\\\"rut\\\":\\\"RUT\\\",\\\"cif\\\":\\\"CIF\\\",\\\"passport\\\":\\\"Pasaporte\\\"}},{\\\"name\\\":\\\"identification_number\\\",\\\"type\\\":\\\"text\\\",\\\"label\\\":\\\"Número de documento\\\"}],\\\"payment_method_types\\\":[\\\"card\\\",\\\"cbu\\\",\\\"cvu\\\"],\\\"payment_method_options\\\":{\\\"card\\\":{\\\"disallow\\\":{\\\"funding\\\":[\\\"prepaid\\\"],\\\"network\\\":[\\\"amex\\\"]}}},\\\"options\\\":[{\\\"description\\\":\\\"Standard Payment\\\",\\\"amount\\\":100,\\\"editable_amount\\\":false,\\\"installments\\\":1,\\\"max_installments\\\":12,\\\"interval_unit\\\":\\\"monthly\\\",\\\"interval\\\":1,\\\"count\\\":12,\\\"editable_count\\\":false}]}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi links create --data @fixtures/request.json"
           }
         ]
       }
@@ -13226,6 +13361,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/links/%7Bid%7D\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi links retrieve LKnJZX0DMv2Mzd4Qp6"
           }
         ]
       },
@@ -14176,6 +14316,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/links/%7Bid%7D\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Put.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"title\\\":\\\"Updated Monthly Subscription\\\",\\\"body\\\":\\\"Updated subscribe to our premium service\\\",\\\"button_text\\\":\\\"Subscribe Now\\\",\\\"name_text\\\":\\\"Your Full Name\\\",\\\"success_url\\\":\\\"https://example.com/updated-success\\\",\\\"kind\\\":\\\"subscription\\\",\\\"enabled\\\":false,\\\"smart_merge\\\":true,\\\"binary_mode\\\":true,\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"},\\\"customer_metadata\\\":{\\\"some\\\":\\\"metadata\\\"},\\\"extra_fields\\\":[{\\\"name\\\":\\\"source\\\",\\\"type\\\":\\\"select\\\",\\\"label\\\":\\\"Cómo nos conociste?\\\",\\\"options\\\":{\\\"key_1\\\":\\\"Opción 1\\\",\\\"key_2\\\":\\\"Opción 2\\\"}},{\\\"name\\\":\\\"age\\\",\\\"label\\\":\\\"Edad\\\"}],\\\"extra_fields_customer\\\":[{\\\"name\\\":\\\"identification_type\\\",\\\"type\\\":\\\"select\\\",\\\"label\\\":\\\"Tipo de documento\\\",\\\"options\\\":{\\\"dni\\\":\\\"DNI\\\",\\\"cuit\\\":\\\"CUIT\\\",\\\"rut\\\":\\\"RUT\\\",\\\"cif\\\":\\\"CIF\\\",\\\"passport\\\":\\\"Pasaporte\\\"}},{\\\"name\\\":\\\"identification_number\\\",\\\"type\\\":\\\"text\\\",\\\"label\\\":\\\"Número de documento\\\"}],\\\"payment_method_types\\\":[\\\"card\\\",\\\"cbu\\\",\\\"cvu\\\"],\\\"payment_method_options\\\":{\\\"card\\\":{\\\"disallow\\\":{\\\"funding\\\":[\\\"prepaid\\\"],\\\"network\\\":[\\\"amex\\\"]}}},\\\"options\\\":[{\\\"description\\\":\\\"Updated Standard Payment\\\",\\\"amount\\\":149.99,\\\"editable_amount\\\":true,\\\"installments\\\":3,\\\"max_installments\\\":24,\\\"interval_unit\\\":\\\"yearly\\\",\\\"interval\\\":1,\\\"count\\\":5,\\\"editable_count\\\":true}]}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi links update LKnJZX0DMv2Mzd4Qp6 --data @fixtures/request.json"
           }
         ]
       },
@@ -14263,6 +14408,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/links/%7Bid%7D\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Delete.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi links delete LKnJZX0DMv2Mzd4Qp6"
           }
         ]
       }
@@ -14434,8 +14584,32 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/links/%7Bid%7D/actions/sendToCustomers\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"customers\\\":[\\\"CSgaZlLaPMZO\\\",\\\"CSljikas98\\\",\\\"CSabcd1234\\\"]}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi links send_to_customers LKnJZX0DMv2Mzd4Qp6 --customers CSgaZlLaPMZO --customers CSljikas98 --data @fixtures/request.json"
           }
-        ]
+        ],
+        "x-debi-cli": {
+          "command": [
+            "links",
+            "send_to_customers"
+          ],
+          "args": [
+            {
+              "from": "path.id",
+              "example": "LKnJZX0DMv2Mzd4Qp6"
+            }
+          ],
+          "flags": [
+            {
+              "name": "customers",
+              "from": "requestBody.customers",
+              "style": "repeat"
+            }
+          ]
+        }
       }
     },
     "/v1/mandates": {
@@ -15375,6 +15549,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/mandates?all=SOME_BOOLEAN_VALUE&customer_id=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi mandates list"
           }
         ]
       },
@@ -15512,6 +15691,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/mandates\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"customer_id\\\":\\\"CS3oDRqz9wzB\\\",\\\"payment_method_id\\\":\\\"PMBja4YZ2GDR\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi mandates create --data @fixtures/request.json"
           }
         ]
       }
@@ -16324,6 +16508,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi mandates retrieve MA9aQOWen2kZe6qypB"
           }
         ]
       }
@@ -16399,6 +16588,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/revoke\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi mandates revoke MA9aQOWen2kZe6qypB"
           }
         ]
       }
@@ -16474,6 +16668,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/mandates/MA9aQOWen2kZe6qypB/actions/restore\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi mandates restore MA9aQOWen2kZe6qypB"
           }
         ]
       }
@@ -17433,6 +17632,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/mandates/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi mandates search --data @fixtures/search.json"
           }
         ]
       }
@@ -18193,6 +18397,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payment_methods?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&customer_id=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payment_methods list"
           }
         ]
       },
@@ -19157,6 +19366,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payment_methods\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"card\\\",\\\"card\\\":{\\\"number\\\":\\\"string\\\",\\\"expiration_year\\\":0,\\\"expiration_month\\\":0,\\\"security_code\\\":\\\"string\\\"},\\\"cbu\\\":{\\\"number\\\":\\\"string\\\",\\\"alias\\\":\\\"juanperez\\\",\\\"identification\\\":true},\\\"sepa_debit\\\":{\\\"iban\\\":\\\"string\\\"},\\\"cvu\\\":{},\\\"transfer\\\":{\\\"sender_name\\\":\\\"string\\\",\\\"sender_id\\\":\\\"string\\\"},\\\"strict\\\":true}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payment_methods create --data @fixtures/request.json"
           }
         ]
       }
@@ -19834,6 +20048,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payment_methods/PMVA0W8y1aQO\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payment_methods retrieve PMVA0W8y1aQO"
           }
         ]
       }
@@ -20558,6 +20777,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payment_methods/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payment_methods search --data @fixtures/search.json"
           }
         ]
       }
@@ -20694,6 +20918,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payment_methods/%7Bid%7D/attach\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"customer_id\\\":\\\"CSbJrDMEDaW9\\\",\\\"set_default\\\":false,\\\"prefer\\\":false}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payment_methods attach PMrLnDA9D6oQ --data @fixtures/request.json"
           }
         ]
       }
@@ -20766,6 +20995,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payment_methods/%7Bid%7D/detach\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payment_methods detach PMrLnDA9D6oQ"
           }
         ]
       }
@@ -22290,6 +22524,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payments?customer_id=SOME_STRING_VALUE&subscription_id=SOME_STRING_VALUE&gateway_id=SOME_STRING_VALUE&month=SOME_STRING_VALUE&status=SOME_STRING_VALUE&statuses=SOME_ARRAY_VALUE&has_many_submissions_count=SOME_BOOLEAN_VALUE&amount=SOME_OBJECT_VALUE&charge_date=SOME_OBJECT_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payments list"
           }
         ]
       },
@@ -23472,6 +23711,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payments\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"amount\\\":100,\\\"description\\\":\\\"Unique payment\\\",\\\"customer_id\\\":\\\"CSr7Dg3LkDP2\\\",\\\"payment_method_id\\\":\\\"PMBja4YZ2GDR\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payments create --data @fixtures/request.json"
           }
         ]
       }
@@ -24594,6 +24838,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payments/PYdOz9bgVReV\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payments retrieve PYdOz9bgVReV"
           }
         ]
       },
@@ -25759,6 +26008,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payments/PYdOz9bgVReV\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Put.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"description\\\":\\\"New payment title\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payments update PYdOz9bgVReV --data @fixtures/request.json"
           }
         ]
       }
@@ -25837,6 +26091,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/cancel\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payments cancel PYdOz9bgVReV"
           }
         ]
       }
@@ -25919,6 +26178,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/retry\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payments retry PYdOz9bgVReV"
           }
         ]
       }
@@ -25997,6 +26261,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payments/PYdOz9bgVReV/actions/stop_auto_retrying\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payments stop_auto_retrying PYdOz9bgVReV"
           }
         ]
       }
@@ -27204,6 +27473,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payments/%7Bid%7D/actions/confirm\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payments confirm PYA8EJ1DkDnY"
           }
         ]
       }
@@ -28918,6 +29192,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/payments/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi payments search --data @fixtures/search.json"
           }
         ]
       }
@@ -29229,6 +29508,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/refunds?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi refunds list"
           }
         ]
       },
@@ -29459,6 +29743,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/refunds\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"payment_id\\\":\\\"PYgaZlLaPMZO.\\\",\\\"amount\\\":12.5,\\\"reason\\\":\\\"requested_by_customer\\\",\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi refunds create --data @fixtures/request.json"
           }
         ]
       }
@@ -29663,6 +29952,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/refunds/RFgaZlLaPMZO\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi refunds retrieve RFgaZlLaPMZO"
           }
         ]
       }
@@ -30494,6 +30788,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/sessions\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"kind\\\":\\\"payment\\\",\\\"success_url\\\":\\\"http://example.com/success\\\",\\\"amount\\\":200.5,\\\"description\\\":\\\"Summer school\\\",\\\"payment_method_types\\\":[\\\"card\\\",\\\"cbu\\\",\\\"cvu\\\"],\\\"payment_method_options\\\":{\\\"card\\\":{\\\"disallow\\\":{\\\"funding\\\":[\\\"prepaid\\\"],\\\"network\\\":[\\\"amex\\\"]}}}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi sessions create --data @fixtures/request.json"
           }
         ]
       }
@@ -30970,6 +31269,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/sessions/SSnO8b9w7B51VE0B5m\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi sessions retrieve SSnO8b9w7B51VE0B5m"
           }
         ]
       }
@@ -32070,6 +32374,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/subscriptions?all=SOME_BOOLEAN_VALUE&customer_id=SOME_STRING_VALUE&statuses=SOME_ARRAY_VALUE&amount=SOME_OBJECT_VALUE&description=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi subscriptions list"
           }
         ]
       },
@@ -33161,6 +33470,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/subscriptions\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"amount\\\":100,\\\"description\\\":\\\"Some subscription description\\\",\\\"customer_id\\\":\\\"CS9PL8eeo8aB\\\",\\\"payment_method_id\\\":\\\"PMBja4YZ2GDR\\\",\\\"interval_unit\\\":\\\"monthly\\\",\\\"day_of_month\\\":1,\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi subscriptions create --data @fixtures/request.json"
           }
         ]
       }
@@ -34084,6 +34398,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi subscriptions retrieve SBmX1MrZ77Mwq3"
           }
         ]
       },
@@ -35159,6 +35478,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Put.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"amount\\\":100,\\\"description\\\":\\\"Some subscription description\\\",\\\"customer_id\\\":\\\"CS9PL8eeo8aB\\\",\\\"payment_method_id\\\":\\\"PMBja4YZ2GDR\\\",\\\"day_of_month\\\":1,\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi subscriptions update SBmX1MrZ77Mwq3 --data @fixtures/request.json"
           }
         ]
       }
@@ -36070,6 +36394,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/pause\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi subscriptions pause SBmX1MrZ77Mwq3"
           }
         ]
       }
@@ -36986,6 +37315,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/resume\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi subscriptions resume SBmX1MrZ77Mwq3"
           }
         ]
       }
@@ -37904,6 +38238,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/subscriptions/SBmX1MrZ77Mwq3/actions/cancel\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi subscriptions cancel SBmX1MrZ77Mwq3"
           }
         ]
       }
@@ -38986,6 +39325,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/subscriptions/search?q=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&page=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi subscriptions search --data @fixtures/search.json"
           }
         ]
       }
@@ -39287,6 +39631,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/webhooks?created_at=SOME_OBJECT_VALUE&ending_before=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi webhooks list"
           }
         ]
       },
@@ -39558,6 +39907,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/webhooks\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"enabled_events\\\":[\\\"*\\\"],\\\"metadata\\\":{\\\"some\\\":\\\"metadata\\\"},\\\"url\\\":\\\"string\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi webhooks create --data @fixtures/request.json"
           }
         ]
       }
@@ -39726,6 +40080,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi webhooks retrieve WHq4VzyAzDgB"
           }
         ]
       },
@@ -39937,6 +40296,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Put.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"url\\\":\\\"http://somesite.com\\\",\\\"enabled\\\":false}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi webhooks update WHq4VzyAzDgB --data @fixtures/request.json"
           }
         ]
       },
@@ -40006,6 +40370,11 @@
           {
             "lang": "Ruby + Native",
             "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/webhooks/WHq4VzyAzDgB\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Delete.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi webhooks delete WHq4VzyAzDgB"
           }
         ]
       }
@@ -40620,7 +40989,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "WMb3XqR7ZpKd"
           }
         ],
         "responses": {
@@ -41037,27 +41407,32 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://api.debi.pro/v1/webhook_messages/%7Bid%7D/actions/resend \\\n  --header 'Authorization: Bearer sk_live_...'"
+            "source": "curl --request POST \\\n  --url https://api.debi.pro/v1/webhook_messages/WMb3XqR7ZpKd/actions/resend \\\n  --header 'Authorization: Bearer sk_live_...'"
           },
           {
             "lang": "Node + Request",
-            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.debi.pro/v1/webhook_messages/%7Bid%7D/actions/resend',\n  headers: {Authorization: 'Bearer sk_live_...'}\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.debi.pro/v1/webhook_messages/WMb3XqR7ZpKd/actions/resend',\n  headers: {Authorization: 'Bearer sk_live_...'}\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
           },
           {
             "lang": "Php + Http1",
-            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/webhook_messages/%7Bid%7D/actions/resend');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/webhook_messages/WMb3XqR7ZpKd/actions/resend');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
           },
           {
             "lang": "Python + Requests",
-            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/webhook_messages/%7Bid%7D/actions/resend\"\n\nheaders = {\"Authorization\": \"Bearer sk_live_...\"}\n\nresponse = requests.request(\"POST\", url, headers=headers)\n\nprint(response.text)"
+            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/webhook_messages/WMb3XqR7ZpKd/actions/resend\"\n\nheaders = {\"Authorization\": \"Bearer sk_live_...\"}\n\nresponse = requests.request(\"POST\", url, headers=headers)\n\nprint(response.text)"
           },
           {
             "lang": "Java + Unirest",
-            "source": "HttpResponse<String> response = Unirest.post(\"https://api.debi.pro/v1/webhook_messages/%7Bid%7D/actions/resend\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .asString();"
+            "source": "HttpResponse<String> response = Unirest.post(\"https://api.debi.pro/v1/webhook_messages/WMb3XqR7ZpKd/actions/resend\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .asString();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/webhook_messages/%7Bid%7D/actions/resend\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/webhook_messages/WMb3XqR7ZpKd/actions/resend\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Debi CLI",
+            "label": "Debi CLI",
+            "source": "debi webhook_messages resend WMb3XqR7ZpKd"
           }
         ]
       }

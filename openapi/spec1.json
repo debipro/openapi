@@ -13395,7 +13395,26 @@
         },
         "tags": [
           "Links"
-        ]
+        ],
+        "x-debi-cli": {
+          "command": [
+            "links",
+            "send_to_customers"
+          ],
+          "args": [
+            {
+              "from": "path.id",
+              "example": "LKnJZX0DMv2Mzd4Qp6"
+            }
+          ],
+          "flags": [
+            {
+              "name": "customers",
+              "from": "requestBody.customers",
+              "style": "repeat"
+            }
+          ]
+        }
       }
     },
     "/v1/mandates": {
@@ -38436,7 +38455,8 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "WMb3XqR7ZpKd"
           }
         ],
         "responses": {
