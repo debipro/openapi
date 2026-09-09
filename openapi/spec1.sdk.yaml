@@ -14,6 +14,10 @@ info:
     - Live: https://api.debi.pro/
     - Sandbox: https://api.debi-test.pro/
 
+    ### Debi CLI
+
+    [`debi`](https://github.com/debipro/cli) is the official command-line interface for the Debi API. Use it to authenticate with a secret key, call endpoints from your terminal, and work with events while developing locally (including replaying webhooks to `localhost`). Install it and see full usage in the [debipro/cli](https://github.com/debipro/cli) repository.
+
     ### Content types
 
     The Debi API supports only `JSON` content types. Make sure to include the following header on your requests.
@@ -313,6 +317,20 @@ info:
     You can easily create test webhooks using https://webhook.site/. With that you will be able to see what we are sending to our API consumers.
 
     Also, to start integrating the webhooks, your code will need to be accessible from the internet so Debi can reach it with HTTP requests. If you’re working locally, the easiest way to do this is with [ngrok](https://ngrok.com/).
+
+    #### Debi CLI (local replay)
+
+    For local development without a public URL, use the [Debi CLI](https://github.com/debipro/cli) to receive and replay events on your machine:
+
+    ```bash
+    debi login
+    debi listen 4242
+    # in another terminal:
+    debi --test events list --limit 5
+    debi --test events replay EVxxxx --forward-to http://127.0.0.1:4242/
+    ```
+
+    `events replay` POSTs a stored event payload to a localhost endpoint only; it does not touch your registered webhook endpoints. Use `debi events resend` when you want Debi to re-deliver to those. You can also pass `--webhook-secret` to sign/verify payloads. See the [CLI README](https://github.com/debipro/cli) for `events tail`, `events trigger`, and more.
 
     ### Webhooks security
 

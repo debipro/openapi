@@ -14,6 +14,10 @@ info:
     - Producción: https://api.debi.pro/
     - Sandbox: https://api.debi-test.pro/
 
+    ### Debi CLI
+
+    [`debi`](https://github.com/debipro/cli) es la interfaz de línea de comandos oficial de la API de Debi. Sirve para autenticarte con una clave secreta, llamar endpoints desde la terminal y trabajar con eventos en desarrollo local (incluido reenviar webhooks a `localhost`). Instálalo y consulta el uso completo en el repositorio [debipro/cli](https://github.com/debipro/cli).
+
     ### Content type
 
     La API de Debi sólo soporta `JSON`. No te olvides de incluir el siguiente header en tus requests.
@@ -311,9 +315,23 @@ info:
 
     ### Prueba de los webhooks en entornos locales
 
-    You can easy create test webhooks using https://webhook.site/ With that you will be able to see what we are sending to our API consumers.
+    Puedes crear webhooks de prueba fácilmente con https://webhook.site/. Con eso verás lo que enviamos a los consumidores de la API.
 
-    Also, to start integrating the webhooks, your code will need to be accessible from the internet so Debi can reach it with HTTP requests. If you’re working locally, the easiest way to do this is with [ngrok](https://ngrok.com/).
+    Además, para integrar webhooks, tu código debe ser accesible desde internet para que Debi pueda alcanzarlo con requests HTTP. Si trabajás en local, la forma más simple es usar [ngrok](https://ngrok.com/).
+
+    #### Debi CLI (replay local)
+
+    Para desarrollo local sin una URL pública, usá la [Debi CLI](https://github.com/debipro/cli) para recibir y reenviar eventos en tu máquina:
+
+    ```bash
+    debi login
+    debi listen 4242
+    # en otra terminal:
+    debi --test events list --limit 5
+    debi --test events replay EVxxxx --forward-to http://127.0.0.1:4242/
+    ```
+
+    `events replay` hace POST del payload de un evento almacenado solo a un endpoint en localhost; no toca tus endpoints de webhook registrados. Usá `debi events resend` si querés que Debi los reenvíe a esos. También podés pasar `--webhook-secret` para firmar/verificar payloads. Ver el [README de la CLI](https://github.com/debipro/cli) para `events tail`, `events trigger` y más.
 
     ### Asegurando los Webhooks
 
