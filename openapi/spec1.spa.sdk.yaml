@@ -9,7 +9,7 @@ info:
 
     Debi (anteriormente TuCuota) tiene una API REST. Nuestra API tiene direcciones URL predecibles orientadas a los recursos, acepta solicitudes JSON, devuelve respuestas JSON y utiliza códigos de respuesta, autenticación y verbos HTTP estándar.
 
-    Las URLs de la API de Debi API son:
+    Las URLs base de la API de Debi son:
 
     - Producción: https://api.debi.pro/
     - Sandbox: https://api.debi-test.pro/
@@ -22,7 +22,7 @@ info:
 
     La API de Debi sólo soporta `JSON`. No te olvides de incluir el siguiente header en tus requests.
 
-    #### Content-Type Header
+    #### Header Content-Type
 
     ```
     Content-Type: "application/json"
@@ -42,7 +42,7 @@ info:
 
     Para autenticarse, debe utilizar la clave de API en un Header del request HTTP al realizar solicitudes en la API.
 
-    ### Example Authentication Header
+    ### Ejemplo de header de autenticación
 
     ```
     Authorization: Bearer sk_live_...
@@ -51,19 +51,19 @@ info:
     Todas las solicitudes de API deben realizarse a través de HTTPS. Las llamadas realizadas a través de HTTP fallarán. Las solicitudes de API sin autenticación también fallarán.
     # Errores
 
-    This API uses HTTP status codes to communicate with the API consumer.
+    Esta API utiliza códigos de estado HTTP para comunicarse con el consumidor de la API.
 
-    - `200 OK` - Response to a successful GET, PUT, PATCH or DELETE.
-    - `201 Created` - Response to a POST that results in a creation.
-    - `204 No Content` - Response to a successful request that won't be returning a body (like a DELETE request).
-    - `400 Bad Request` - Malformed request.
-    - `401 Unauthorized` - When no or invalid authentication details are provided.
-    - `403 Forbidden` - When authentication succeeded but authenticated user doesn't have access to the resource.
-    - `404 Not Found` - When a non-existent resource is requested.
-    - `405 Method Not Allowed` - Method not allowed.
-    - `406 Not Acceptable` - Could not satisfy the request Accept header.
-    - `415 Unsupported Media Type` - Unsupported media type in request.
-    - `422 Unprocessable Entity` - Form validation errors.
+    - `200 OK` - Respuesta a un GET, PUT, PATCH o DELETE exitoso.
+    - `201 Created` - Respuesta a un POST que resulta en una creación.
+    - `204 No Content` - Respuesta a una solicitud exitosa que no devolverá un cuerpo (como una solicitud DELETE).
+    - `400 Bad Request` - Solicitud malformada.
+    - `401 Unauthorized` - Cuando no se proporcionan detalles de autenticación o son inválidos.
+    - `403 Forbidden` - Cuando la autenticación tuvo éxito pero el usuario autenticado no tiene acceso al recurso.
+    - `404 Not Found` - Cuando se solicita un recurso inexistente.
+    - `405 Method Not Allowed` - Método no permitido.
+    - `406 Not Acceptable` - No se pudo satisfacer el header `Accept` de la solicitud.
+    - `415 Unsupported Media Type` - Tipo de medio no soportado en la solicitud.
+    - `422 Unprocessable Entity` - Errores de validación del formulario.
 
     #### Respuestas de Error
 
@@ -132,45 +132,46 @@ info:
     Cada request a la API tiene un identificador de request asociado. Puede encontrar este valor en el header `Request-Id`. También puede encontrar estos IDs en logs de requests en su [Panel](https://debi.pro/dashboard/logs).
     # Convenciones
 
-    ### Notational Conventions
+    ### Convenciones de notación
 
-    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119](https://www.ietf.org/rfc/rfc2119).
+    Las palabras clave "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY" y "OPTIONAL" en este documento deben interpretarse según se describe en [RFC2119](https://www.ietf.org/rfc/rfc2119).
 
-    ### HTTP Methods
+    ### Métodos HTTP
 
-    This API uses HTTP verbs (methods) as following:
+    Esta API utiliza los verbos (métodos) HTTP de la siguiente manera:
 
-    - `GET` - _Read_ - used to **read** (or retrieve) a representation of a resource,
-    - `POST` - _Create_ - used to **create** new resources. In particular, it's used to create subordinate resources.
-    - `PUT` - _Update/Replace_ - used for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. On successful request, replaces identified resource with the request body.
-    - `PATCH` - _Update/Modify_ - used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource.
-    - `DELETE` - _Delete_ - used to **delete** a resource identified by a URI.
+    - `GET` - _Read_ - se usa para **leer** (o recuperar) una representación de un recurso,
+    - `POST` - _Create_ - se usa para **crear** nuevos recursos. En particular, se usa para crear recursos subordinados.
+    - `PUT` - _Update/Replace_ - se usa para capacidades de **actualización**; al hacer PUT a una URI de recurso conocida, el cuerpo de la solicitud contiene la representación recién actualizada del recurso original. Ante una solicitud exitosa, reemplaza el recurso identificado con el cuerpo de la solicitud.
+    - `PATCH` - _Update/Modify_ - se usa para capacidades de **modificación**. La solicitud PATCH solo necesita contener los cambios del recurso, no el recurso completo.
+    - `DELETE` - _Delete_ - se usa para **eliminar** un recurso identificado por una URI.
 
-    ### Representation of Date and Time
+    ### Representación de fecha y hora
 
-    All exchange of date and time-related data MUST be done according to [RFC339 standard](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
+    Todo intercambio de datos relacionados con fecha y hora MUST realizarse según el [estándar RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.8).
 
-    ### Versioning
+    ### Versionado
 
-    This API uses `Api-Version` header to identify requested version. Every **minor** version SHOULD be backward compatible. However, **major** versions MAY introduce _breaking changes_.
+    Esta API usa el header `Api-Version` para identificar la versión solicitada. Toda versión **minor** SHOULD ser compatible hacia atrás. Sin embargo, las versiones **major** pueden introducir _breaking changes_.
 
     `Api-Version: `
 
-    This header SHOULD be present in every request. If not, API MUST use the newest available major release.
+    Este header debe estar presente en cada solicitud. De lo contrario, la API MUST usar el major release más reciente disponible.
 
-    If requested version is not available, API SHOULD try to fall back to the next available minor release.
+    Si la versión solicitada no está disponible, la API debe intentar recurrir al siguiente minor release disponible.
 
-    When backwards-incompatible changes are made to the API, a new, dated version is released. The current version of the API is `2026-09-03`.
+    Cuando se realizan cambios incompatibles hacia atrás en la API, se publica una nueva versión fechada. La versión actual de la API es `2026-09-03`.
 
-    ### Resource IDs
+    ### IDs de recursos
 
-    This API uses short non-sequential url-friendly unique ids. Every resource id MUST consists of 15 url-friendly characters: `A-Z`, `a-z`, `0-9`, `_` and `-`.
+    Esta API usa IDs únicos cortos, no secuenciales y amigables para URL. Cada ID de recurso MUST constar de 15 caracteres amigables para URL: `A-Z`, `a-z`, `0-9`, `_` y `-`.
 
-    **Resource ids are case-sensitive**. Storing them in a case-insensitive column or collation can cause sync problems.
+    **Los IDs de recursos distinguen mayúsculas y minúsculas**. Almacenarlos en una columna o collation que no distinga mayúsculas/minúsculas puede causar problemas de sincronización.
 
-    #### Example
+    #### Ejemplo
 
     `CS7lKJ425dbO35l`
+
     `RFaOVEbJWpOEpk`
     # Medios de pago de prueba
 
@@ -335,39 +336,39 @@ info:
 
     ### Asegurando los Webhooks
 
-    Debi signs the webhook events it sends to your endpoints by including a signature in each event’s Debi-Signature header. This allows you to verify that the events were sent by Debi, not by a third party.
+    Debi firma los eventos de webhook que envía a tus endpoints incluyendo una firma en el header `Debi-Signature` de cada evento. Esto te permite verificar que los eventos fueron enviados por Debi y no por un tercero.
 
-    Before you can verify signatures, you need to retrieve your endpoint’s secret _"Secreto webhook"_ from your webhooks in our [developers panel](https://debi.pro/dashboard/developers). Add or select the endpoint you want to obtain the secret for, then click the _"mostrar"_ button.
+    Antes de poder verificar firmas, necesitás obtener el secreto del endpoint _"Secreto webhook"_ desde tus webhooks en nuestro [panel de desarrolladores](https://debi.pro/dashboard/developers). Agregá o seleccioná el endpoint del que querés obtener el secreto y luego hacé clic en el botón _"mostrar"_.
 
-    Debi generates a unique secret key for each endpoint. If you use the same endpoint for both test and live API keys, note that the secret is different for each one. Additionally, if you use multiple endpoints, you must obtain a secret for each one you want to verify signatures on. After this setup, Debi starts to sign each webhook it sends to the endpoint.
+    Debi genera una clave secreta única para cada endpoint. Si usás el mismo endpoint para claves de API de test y de producción, tené en cuenta que el secreto es distinto para cada una. Además, si usás múltiples endpoints, debés obtener un secreto por cada uno en el que quieras verificar firmas. Luego de esta configuración, Debi comienza a firmar cada webhook que envía al endpoint.
 
-    #### Webhooks authenticity validation steps
+    #### Pasos para validar la autenticidad de los webhooks
 
-    Debi generates signatures using a hash-based message authentication code (HMAC) with SHA-256. To prevent downgrade attacks.
+    Debi genera firmas usando un código de autenticación de mensajes basado en hash (HMAC) con SHA-256. Para prevenir ataques de downgrade.
 
-    ##### Step 1: Extract the timestamp and signatures from the header
+    ##### Paso 1: Extraer el timestamp y las firmas del header
 
-    Split the header, using the , character as the separator, to get a list of elements. Then split each element, using the = character as the separator, to get a prefix and value pair.
+    Dividí el header usando el carácter `,` como separador para obtener una lista de elementos. Luego dividí cada elemento usando el carácter `=` como separador para obtener un par de prefijo y valor.
 
-    The value for the prefix t corresponds to the timestamp, and v1 corresponds to the signature (or signatures). You can discard all other elements.
+    El valor del prefijo `t` corresponde al timestamp, y `v1` corresponde a la firma (o firmas). Podés descartar todos los demás elementos.
 
-    ##### Step 2: Prepare the signed_payload string
+    ##### Paso 2: Preparar el string `signed_payload`
 
-    The signed_payload string is created by concatenating:
+    El string `signed_payload` se crea concatenando:
 
-    The timestamp (as a string)
-    The character .
-    The actual JSON payload (that is, the request body)
+    El timestamp (como string)
+    El carácter `.`
+    El payload JSON real (es decir, el cuerpo del request)
 
-    ##### Step 3: Determine the expected signature
+    ##### Paso 3: Determinar la firma esperada
 
-    Compute an HMAC with the SHA256 hash function. Use the endpoint’s signing secret as the key, and use the signed_payload string as the message.
+    Calculá un HMAC con la función hash SHA256. Usá el secreto de firma del endpoint como clave, y el string `signed_payload` como mensaje.
 
-    ##### Step 4: Compare the signatures
+    ##### Paso 4: Comparar las firmas
 
-    Compare the signature (or signatures) in the header to the expected signature. For an equality match, compute the difference between the current timestamp and the received timestamp, then decide if the difference is within your tolerance.
+    Compará la firma (o firmas) del header con la firma esperada. Para una coincidencia de igualdad, calculá la diferencia entre el timestamp actual y el timestamp recibido, y decidí si esa diferencia está dentro de tu tolerancia.
 
-    To protect against timing attacks, use a constant-time string comparison to compare the expected signature to each of the received signatures.
+    Para protegerte contra ataques de timing, usá una comparación de strings en tiempo constante para comparar la firma esperada con cada una de las firmas recibidas.
   termsOfService: https://debi.pro/terms
   contact:
     name: Debi Devs
