@@ -475,7 +475,18 @@ paths:
                                     - expiration
                                     - security_code
                           cbu:
-                            type: boolean
+                            description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                            oneOf:
+                              - type: boolean
+                              - type: object
+                                additionalProperties: false
+                                properties:
+                                  required_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                        - cuit
                           cvu:
                             type: boolean
                           sepa_debit:
@@ -628,7 +639,18 @@ paths:
                                 - expiration
                                 - security_code
                       cbu:
-                        type: boolean
+                        description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                        oneOf:
+                          - type: boolean
+                          - type: object
+                            additionalProperties: false
+                            properties:
+                              required_fields:
+                                type: array
+                                items:
+                                  type: string
+                                  enum:
+                                    - cuit
                       cvu:
                         type: boolean
                       sepa_debit:
@@ -5114,6 +5136,10 @@ paths:
                               type: string
                               enum:
                                 - AR
+                            cuit:
+                              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                              type: string
+                              example: '20312528046'
                             fingerprint:
                               description: Huella digital única para este número de cuenta bancaria de su cuenta.
                               type: string
@@ -6726,6 +6752,7 @@ paths:
                             - cbu-bind
                             - cbu-galicia
                             - cbu-patagonia
+                            - debin-bind
                             - favacard
                             - fiserv-argentina
                             - fiserv-mexico
@@ -6764,7 +6791,18 @@ paths:
                                       - expiration
                                       - security_code
                             cbu:
-                              type: boolean
+                              description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                              oneOf:
+                                - type: boolean
+                                - type: object
+                                  additionalProperties: false
+                                  properties:
+                                    required_fields:
+                                      type: array
+                                      items:
+                                        type: string
+                                        enum:
+                                          - cuit
                             cvu:
                               type: boolean
                             sepa_debit:
@@ -7164,6 +7202,7 @@ paths:
                           - cbu-bind
                           - cbu-galicia
                           - cbu-patagonia
+                          - debin-bind
                           - favacard
                           - fiserv-argentina
                           - fiserv-mexico
@@ -7202,7 +7241,18 @@ paths:
                                     - expiration
                                     - security_code
                           cbu:
-                            type: boolean
+                            description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                            oneOf:
+                              - type: boolean
+                              - type: object
+                                additionalProperties: false
+                                properties:
+                                  required_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                        - cuit
                           cvu:
                             type: boolean
                           sepa_debit:
@@ -7493,6 +7543,7 @@ paths:
                           - cbu-bind
                           - cbu-galicia
                           - cbu-patagonia
+                          - debin-bind
                           - favacard
                           - fiserv-argentina
                           - fiserv-mexico
@@ -7531,7 +7582,18 @@ paths:
                                     - expiration
                                     - security_code
                           cbu:
-                            type: boolean
+                            description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                            oneOf:
+                              - type: boolean
+                              - type: object
+                                additionalProperties: false
+                                properties:
+                                  required_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                        - cuit
                           cvu:
                             type: boolean
                           sepa_debit:
@@ -7776,6 +7838,7 @@ paths:
                           - cbu-bind
                           - cbu-galicia
                           - cbu-patagonia
+                          - debin-bind
                           - favacard
                           - fiserv-argentina
                           - fiserv-mexico
@@ -7814,7 +7877,18 @@ paths:
                                     - expiration
                                     - security_code
                           cbu:
-                            type: boolean
+                            description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                            oneOf:
+                              - type: boolean
+                              - type: object
+                                additionalProperties: false
+                                properties:
+                                  required_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                        - cuit
                           cvu:
                             type: boolean
                           sepa_debit:
@@ -8097,6 +8171,7 @@ paths:
                           - cbu-bind
                           - cbu-galicia
                           - cbu-patagonia
+                          - debin-bind
                           - favacard
                           - fiserv-argentina
                           - fiserv-mexico
@@ -8135,7 +8210,18 @@ paths:
                                     - expiration
                                     - security_code
                           cbu:
-                            type: boolean
+                            description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                            oneOf:
+                              - type: boolean
+                              - type: object
+                                additionalProperties: false
+                                properties:
+                                  required_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                        - cuit
                           cvu:
                             type: boolean
                           sepa_debit:
@@ -11489,7 +11575,18 @@ paths:
                                       - expiration
                                       - security_code
                             cbu:
-                              type: boolean
+                              description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                              oneOf:
+                                - type: boolean
+                                - type: object
+                                  additionalProperties: false
+                                  properties:
+                                    required_fields:
+                                      type: array
+                                      items:
+                                        type: string
+                                        enum:
+                                          - cuit
                             cvu:
                               type: boolean
                             sepa_debit:
@@ -12288,7 +12385,18 @@ paths:
                                     - expiration
                                     - security_code
                           cbu:
-                            type: boolean
+                            description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                            oneOf:
+                              - type: boolean
+                              - type: object
+                                additionalProperties: false
+                                properties:
+                                  required_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                        - cuit
                           cvu:
                             type: boolean
                           sepa_debit:
@@ -12868,7 +12976,18 @@ paths:
                                     - expiration
                                     - security_code
                           cbu:
-                            type: boolean
+                            description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                            oneOf:
+                              - type: boolean
+                              - type: object
+                                additionalProperties: false
+                                properties:
+                                  required_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                        - cuit
                           cvu:
                             type: boolean
                           sepa_debit:
@@ -13602,7 +13721,18 @@ paths:
                                     - expiration
                                     - security_code
                           cbu:
-                            type: boolean
+                            description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                            oneOf:
+                              - type: boolean
+                              - type: object
+                                additionalProperties: false
+                                properties:
+                                  required_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                        - cuit
                           cvu:
                             type: boolean
                           sepa_debit:
@@ -14636,6 +14766,10 @@ paths:
                                   type: string
                                   enum:
                                     - AR
+                                cuit:
+                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                  type: string
+                                  example: '20312528046'
                                 fingerprint:
                                   description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                   type: string
@@ -15587,6 +15721,10 @@ paths:
                                 type: string
                                 enum:
                                   - AR
+                              cuit:
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                type: string
+                                example: '20312528046'
                               fingerprint:
                                 description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                 type: string
@@ -16531,6 +16669,10 @@ paths:
                                   type: string
                                   enum:
                                     - AR
+                                cuit:
+                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                  type: string
+                                  example: '20312528046'
                                 fingerprint:
                                   description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                   type: string
@@ -17220,6 +17362,10 @@ paths:
                               type: string
                               enum:
                                 - AR
+                            cuit:
+                              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                              type: string
+                              example: '20312528046'
                             fingerprint:
                               description: Huella digital única para este número de cuenta bancaria de su cuenta.
                               type: string
@@ -17701,6 +17847,10 @@ paths:
                     number:
                       description: Número de cuenta bancaria llamado `CBU` en Argentina (22 dígitos). Si el parámetro `identification` es `true`, requiere enviar la `secret key` en el header de la solicitud, de lo contrario con la `public key` es suficiente (útil cuando se crean métodos de pago desde el navegador). `Requerido` si no envías un `alias` en el payload. Si envías el `alias` en el POST y el parámetro `identification` es `true`, no es necesario indicar el número de CBU, y como respuesta obtendremos el número de CBU correspondiente a ese `alias`.
                       type: string
+                    cuit:
+                      description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria, 11 dígitos sin separadores. `Requerido` cuando tu cuenta tiene un gateway que declara `cuit` dentro de `supported_payment_methods.cbu.required_fields`, como `debin-bind`. En los demás casos es opcional.
+                      type: string
+                      example: '20312528046'
                     alias:
                       description: Alias de la cuenta bancaria. Si envía el `alias` en el POST y el parámetro `identification` es `true`, devolverá el número de CBU correspondiente. Para activar esta funcionalidad, contacte a Soporte.
                       type: string
@@ -17844,6 +17994,13 @@ paths:
                   cbu:
                     number: '2859363672283668188432'
                     identification: true
+              cbu-cuit:
+                summary: CBU - Usando Número de Cuenta con CUIT
+                value:
+                  type: cbu
+                  cbu:
+                    number: '2859363672283668188432'
+                    cuit: '20312528046'
               sepa_debit:
                 summary: SEPA Débito - Cuenta IBAN
                 value:
@@ -18043,6 +18200,10 @@ paths:
                             type: string
                             enum:
                               - AR
+                          cuit:
+                            description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                            type: string
+                            example: '20312528046'
                           fingerprint:
                             description: Huella digital única para este número de cuenta bancaria de su cuenta.
                             type: string
@@ -18357,6 +18518,27 @@ paths:
                       object: payment_method
                       type: cbu
                       updated_at: 2022-11-05T20:43:29-03:00
+                cbu-cuit:
+                  summary: Cuenta Bancaria CBU con CUIT
+                  value:
+                    data:
+                      cbu:
+                        bank: Banco de la Nación Argentina
+                        country: AR
+                        cuit: '20312528046'
+                        fingerprint: jhA2lx68sNppN90k
+                        last_four_digits: '0013'
+                        providers:
+                          available:
+                            - debin-bind
+                          preferred: debin-bind
+                      created_at: 2026-09-22T20:43:29-03:00
+                      id: PMBKkz3wjEW9
+                      livemode: false
+                      metadata: null
+                      object: payment_method
+                      type: cbu
+                      updated_at: 2026-09-22T20:43:29-03:00
                 cbu-enhanced:
                   summary: Cuenta Bancaria CBU con Identificación Extendida
                   value:
@@ -18508,7 +18690,7 @@ paths:
               --url https://api.debi.pro/v1/payment_methods \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
-              --data '{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","alias":"juanperez","identification":true},"sepa_debit":{"iban":"string"},"cvu":{},"transfer":{"sender_name":"string","sender_id":"string"},"virtualpos":{"gateway_id":"GWM8DK6k59oG","token":{"subscription_id":"0ec2c19780","customer":"208084305","payment_method":{"brand":"VISA","last4CardDigit":"6623","bin":"405188","issuer":"Banco de Chile","issuer_name":"Extranjero","expiration_date":"12/27","card_on_file":"F"}}},"strict":true}'
+              --data '{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","cuit":"20312528046","alias":"juanperez","identification":true},"sepa_debit":{"iban":"string"},"cvu":{},"transfer":{"sender_name":"string","sender_id":"string"},"virtualpos":{"gateway_id":"GWM8DK6k59oG","token":{"subscription_id":"0ec2c19780","customer":"208084305","payment_method":{"brand":"VISA","last4CardDigit":"6623","bin":"405188","issuer":"Banco de Chile","issuer_name":"Extranjero","expiration_date":"12/27","card_on_file":"F"}}},"strict":true}'
         - lang: Node + Request
           source: |
             const request = require('request');
@@ -18528,7 +18710,12 @@ paths:
                   expiration_month: 0,
                   security_code: 'string'
                 },
-                cbu: {number: 'string', alias: 'juanperez', identification: true},
+                cbu: {
+                  number: 'string',
+                  cuit: '20312528046',
+                  alias: 'juanperez',
+                  identification: true
+                },
                 sepa_debit: {iban: 'string'},
                 cvu: {},
                 transfer: {sender_name: 'string', sender_id: 'string'},
@@ -18571,7 +18758,7 @@ paths:
               'Authorization' => 'Bearer sk_live_...'
             ]);
 
-            $request->setBody('{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","alias":"juanperez","identification":true},"sepa_debit":{"iban":"string"},"cvu":{},"transfer":{"sender_name":"string","sender_id":"string"},"virtualpos":{"gateway_id":"GWM8DK6k59oG","token":{"subscription_id":"0ec2c19780","customer":"208084305","payment_method":{"brand":"VISA","last4CardDigit":"6623","bin":"405188","issuer":"Banco de Chile","issuer_name":"Extranjero","expiration_date":"12/27","card_on_file":"F"}}},"strict":true}');
+            $request->setBody('{"type":"card","card":{"number":"string","expiration_year":0,"expiration_month":0,"security_code":"string"},"cbu":{"number":"string","cuit":"20312528046","alias":"juanperez","identification":true},"sepa_debit":{"iban":"string"},"cvu":{},"transfer":{"sender_name":"string","sender_id":"string"},"virtualpos":{"gateway_id":"GWM8DK6k59oG","token":{"subscription_id":"0ec2c19780","customer":"208084305","payment_method":{"brand":"VISA","last4CardDigit":"6623","bin":"405188","issuer":"Banco de Chile","issuer_name":"Extranjero","expiration_date":"12/27","card_on_file":"F"}}},"strict":true}');
 
             try {
               $response = $request->send();
@@ -18596,6 +18783,7 @@ paths:
                 },
                 "cbu": {
                     "number": "string",
+                    "cuit": "20312528046",
                     "alias": "juanperez",
                     "identification": True
                 },
@@ -18636,7 +18824,7 @@ paths:
             HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/payment_methods")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
-              .body("{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"juanperez\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"cvu\":{},\"transfer\":{\"sender_name\":\"string\",\"sender_id\":\"string\"},\"virtualpos\":{\"gateway_id\":\"GWM8DK6k59oG\",\"token\":{\"subscription_id\":\"0ec2c19780\",\"customer\":\"208084305\",\"payment_method\":{\"brand\":\"VISA\",\"last4CardDigit\":\"6623\",\"bin\":\"405188\",\"issuer\":\"Banco de Chile\",\"issuer_name\":\"Extranjero\",\"expiration_date\":\"12/27\",\"card_on_file\":\"F\"}}},\"strict\":true}")
+              .body("{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"cuit\":\"20312528046\",\"alias\":\"juanperez\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"cvu\":{},\"transfer\":{\"sender_name\":\"string\",\"sender_id\":\"string\"},\"virtualpos\":{\"gateway_id\":\"GWM8DK6k59oG\",\"token\":{\"subscription_id\":\"0ec2c19780\",\"customer\":\"208084305\",\"payment_method\":{\"brand\":\"VISA\",\"last4CardDigit\":\"6623\",\"bin\":\"405188\",\"issuer\":\"Banco de Chile\",\"issuer_name\":\"Extranjero\",\"expiration_date\":\"12/27\",\"card_on_file\":\"F\"}}},\"strict\":true}")
               .asString();
         - lang: Ruby + Native
           source: |-
@@ -18653,7 +18841,7 @@ paths:
             request = Net::HTTP::Post.new(url)
             request["content-type"] = 'application/json'
             request["Authorization"] = 'Bearer sk_live_...'
-            request.body = "{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"alias\":\"juanperez\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"cvu\":{},\"transfer\":{\"sender_name\":\"string\",\"sender_id\":\"string\"},\"virtualpos\":{\"gateway_id\":\"GWM8DK6k59oG\",\"token\":{\"subscription_id\":\"0ec2c19780\",\"customer\":\"208084305\",\"payment_method\":{\"brand\":\"VISA\",\"last4CardDigit\":\"6623\",\"bin\":\"405188\",\"issuer\":\"Banco de Chile\",\"issuer_name\":\"Extranjero\",\"expiration_date\":\"12/27\",\"card_on_file\":\"F\"}}},\"strict\":true}"
+            request.body = "{\"type\":\"card\",\"card\":{\"number\":\"string\",\"expiration_year\":0,\"expiration_month\":0,\"security_code\":\"string\"},\"cbu\":{\"number\":\"string\",\"cuit\":\"20312528046\",\"alias\":\"juanperez\",\"identification\":true},\"sepa_debit\":{\"iban\":\"string\"},\"cvu\":{},\"transfer\":{\"sender_name\":\"string\",\"sender_id\":\"string\"},\"virtualpos\":{\"gateway_id\":\"GWM8DK6k59oG\",\"token\":{\"subscription_id\":\"0ec2c19780\",\"customer\":\"208084305\",\"payment_method\":{\"brand\":\"VISA\",\"last4CardDigit\":\"6623\",\"bin\":\"405188\",\"issuer\":\"Banco de Chile\",\"issuer_name\":\"Extranjero\",\"expiration_date\":\"12/27\",\"card_on_file\":\"F\"}}},\"strict\":true}"
 
             response = http.request(request)
             puts response.read_body
@@ -18839,6 +19027,10 @@ paths:
                             type: string
                             enum:
                               - AR
+                          cuit:
+                            description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                            type: string
+                            example: '20312528046'
                           fingerprint:
                             description: Huella digital única para este número de cuenta bancaria de su cuenta.
                             type: string
@@ -19441,6 +19633,10 @@ paths:
                               type: string
                               enum:
                                 - AR
+                            cuit:
+                              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                              type: string
+                              example: '20312528046'
                             fingerprint:
                               description: Huella digital única para este número de cuenta bancaria de su cuenta.
                               type: string
@@ -20928,6 +21124,10 @@ paths:
                                   type: string
                                   enum:
                                     - AR
+                                cuit:
+                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                  type: string
+                                  example: '20312528046'
                                 fingerprint:
                                   description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                   type: string
@@ -22033,6 +22233,10 @@ paths:
                                 type: string
                                 enum:
                                   - AR
+                              cuit:
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                type: string
+                                example: '20312528046'
                               fingerprint:
                                 description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                 type: string
@@ -23007,6 +23211,10 @@ paths:
                                 type: string
                                 enum:
                                   - AR
+                              cuit:
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                type: string
+                                example: '20312528046'
                               fingerprint:
                                 description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                 type: string
@@ -24015,6 +24223,10 @@ paths:
                                 type: string
                                 enum:
                                   - AR
+                              cuit:
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                type: string
+                                example: '20312528046'
                               fingerprint:
                                 description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                 type: string
@@ -25320,6 +25532,10 @@ paths:
                             type: string
                             enum:
                               - AR
+                          cuit:
+                            description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                            type: string
+                            example: '20312528046'
                           fingerprint:
                             description: Huella digital única para este número de cuenta bancaria de su cuenta.
                             type: string
@@ -26872,6 +27088,10 @@ paths:
                                   type: string
                                   enum:
                                     - AR
+                                cuit:
+                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                  type: string
+                                  example: '20312528046'
                                 fingerprint:
                                   description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                   type: string
@@ -28839,7 +29059,18 @@ paths:
                                     - expiration
                                     - security_code
                           cbu:
-                            type: boolean
+                            description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                            oneOf:
+                              - type: boolean
+                              - type: object
+                                additionalProperties: false
+                                properties:
+                                  required_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                        - cuit
                           cvu:
                             type: boolean
                           sepa_debit:
@@ -29285,7 +29516,18 @@ paths:
                                     - expiration
                                     - security_code
                           cbu:
-                            type: boolean
+                            description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+                            oneOf:
+                              - type: boolean
+                              - type: object
+                                additionalProperties: false
+                                properties:
+                                  required_fields:
+                                    type: array
+                                    items:
+                                      type: string
+                                      enum:
+                                        - cuit
                           cvu:
                             type: boolean
                           sepa_debit:
@@ -29898,6 +30140,10 @@ paths:
                                   type: string
                                   enum:
                                     - AR
+                                cuit:
+                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                  type: string
+                                  example: '20312528046'
                                 fingerprint:
                                   description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                   type: string
@@ -30866,6 +31112,10 @@ paths:
                                 type: string
                                 enum:
                                   - AR
+                              cuit:
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                type: string
+                                example: '20312528046'
                               fingerprint:
                                 description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                 type: string
@@ -31767,6 +32017,10 @@ paths:
                                 type: string
                                 enum:
                                   - AR
+                              cuit:
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                type: string
+                                example: '20312528046'
                               fingerprint:
                                 description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                 type: string
@@ -32719,6 +32973,10 @@ paths:
                                 type: string
                                 enum:
                                   - AR
+                              cuit:
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                type: string
+                                example: '20312528046'
                               fingerprint:
                                 description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                 type: string
@@ -33550,6 +33808,10 @@ paths:
                                 type: string
                                 enum:
                                   - AR
+                              cuit:
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                type: string
+                                example: '20312528046'
                               fingerprint:
                                 description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                 type: string
@@ -34347,6 +34609,10 @@ paths:
                                 type: string
                                 enum:
                                   - AR
+                              cuit:
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                type: string
+                                example: '20312528046'
                               fingerprint:
                                 description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                 type: string
@@ -35150,6 +35416,10 @@ paths:
                                 type: string
                                 enum:
                                   - AR
+                              cuit:
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                type: string
+                                example: '20312528046'
                               fingerprint:
                                 description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                 type: string
@@ -35970,6 +36240,10 @@ paths:
                                   type: string
                                   enum:
                                     - AR
+                                cuit:
+                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                  type: string
+                                  example: '20312528046'
                                 fingerprint:
                                   description: Huella digital única para este número de cuenta bancaria de su cuenta.
                                   type: string
@@ -38655,7 +38929,18 @@ components:
                   - expiration
                   - security_code
         cbu:
-          type: boolean
+          description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+          oneOf:
+            - type: boolean
+            - type: object
+              additionalProperties: false
+              properties:
+                required_fields:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - cuit
         cvu:
           type: boolean
         sepa_debit:
@@ -38754,7 +39039,18 @@ components:
                       - expiration
                       - security_code
             cbu:
-              type: boolean
+              description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+              oneOf:
+                - type: boolean
+                - type: object
+                  additionalProperties: false
+                  properties:
+                    required_fields:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - cuit
             cvu:
               type: boolean
             sepa_debit:
@@ -39525,6 +39821,10 @@ components:
           type: string
           enum:
             - AR
+        cuit:
+          description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+          type: string
+          example: '20312528046'
         fingerprint:
           description: Huella digital única para este número de cuenta bancaria de su cuenta.
           type: string
@@ -39892,6 +40192,10 @@ components:
               type: string
               enum:
                 - AR
+            cuit:
+              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+              type: string
+              example: '20312528046'
             fingerprint:
               description: Huella digital única para este número de cuenta bancaria de su cuenta.
               type: string
@@ -40757,6 +41061,7 @@ components:
             - cbu-bind
             - cbu-galicia
             - cbu-patagonia
+            - debin-bind
             - favacard
             - fiserv-argentina
             - fiserv-mexico
@@ -40795,7 +41100,18 @@ components:
                       - expiration
                       - security_code
             cbu:
-              type: boolean
+              description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+              oneOf:
+                - type: boolean
+                - type: object
+                  additionalProperties: false
+                  properties:
+                    required_fields:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - cuit
             cvu:
               type: boolean
             sepa_debit:
@@ -41439,7 +41755,18 @@ components:
                       - expiration
                       - security_code
             cbu:
-              type: boolean
+              description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+              oneOf:
+                - type: boolean
+                - type: object
+                  additionalProperties: false
+                  properties:
+                    required_fields:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - cuit
             cvu:
               type: boolean
             sepa_debit:
@@ -41832,6 +42159,10 @@ components:
                   type: string
                   enum:
                     - AR
+                cuit:
+                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                  type: string
+                  example: '20312528046'
                 fingerprint:
                   description: Huella digital única para este número de cuenta bancaria de su cuenta.
                   type: string
@@ -42697,6 +43028,10 @@ components:
                   type: string
                   enum:
                     - AR
+                cuit:
+                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                  type: string
+                  example: '20312528046'
                 fingerprint:
                   description: Huella digital única para este número de cuenta bancaria de su cuenta.
                   type: string
@@ -43365,7 +43700,18 @@ components:
                       - expiration
                       - security_code
             cbu:
-              type: boolean
+              description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+              oneOf:
+                - type: boolean
+                - type: object
+                  additionalProperties: false
+                  properties:
+                    required_fields:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - cuit
             cvu:
               type: boolean
             sepa_debit:
@@ -43773,6 +44119,10 @@ components:
                   type: string
                   enum:
                     - AR
+                cuit:
+                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                  type: string
+                  example: '20312528046'
                 fingerprint:
                   description: Huella digital única para este número de cuenta bancaria de su cuenta.
                   type: string
@@ -44182,7 +44532,18 @@ components:
                       - expiration
                       - security_code
             cbu:
-              type: boolean
+              description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+              oneOf:
+                - type: boolean
+                - type: object
+                  additionalProperties: false
+                  properties:
+                    required_fields:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - cuit
             cvu:
               type: boolean
             sepa_debit:
@@ -44227,7 +44588,18 @@ components:
                   - expiration
                   - security_code
         cbu:
-          type: boolean
+          description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+          oneOf:
+            - type: boolean
+            - type: object
+              additionalProperties: false
+              properties:
+                required_fields:
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - cuit
         cvu:
           type: boolean
         sepa_debit:
@@ -44986,6 +45358,7 @@ components:
             - cbu-bind
             - cbu-galicia
             - cbu-patagonia
+            - debin-bind
             - favacard
             - fiserv-argentina
             - fiserv-mexico
@@ -45024,7 +45397,18 @@ components:
                       - expiration
                       - security_code
             cbu:
-              type: boolean
+              description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+              oneOf:
+                - type: boolean
+                - type: object
+                  additionalProperties: false
+                  properties:
+                    required_fields:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - cuit
             cvu:
               type: boolean
             sepa_debit:
@@ -45418,7 +45802,18 @@ components:
                       - expiration
                       - security_code
             cbu:
-              type: boolean
+              description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+              oneOf:
+                - type: boolean
+                - type: object
+                  additionalProperties: false
+                  properties:
+                    required_fields:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - cuit
             cvu:
               type: boolean
             sepa_debit:
@@ -45811,6 +46206,10 @@ components:
                   type: string
                   enum:
                     - AR
+                cuit:
+                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                  type: string
+                  example: '20312528046'
                 fingerprint:
                   description: Huella digital única para este número de cuenta bancaria de su cuenta.
                   type: string
@@ -46556,6 +46955,10 @@ components:
                   type: string
                   enum:
                     - AR
+                cuit:
+                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                  type: string
+                  example: '20312528046'
                 fingerprint:
                   description: Huella digital única para este número de cuenta bancaria de su cuenta.
                   type: string
@@ -47112,6 +47515,10 @@ components:
               type: string
               enum:
                 - AR
+            cuit:
+              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+              type: string
+              example: '20312528046'
             fingerprint:
               description: Huella digital única para este número de cuenta bancaria de su cuenta.
               type: string
@@ -47713,7 +48120,18 @@ components:
                       - expiration
                       - security_code
             cbu:
-              type: boolean
+              description: '`true` cuando los métodos de pago CBU se aceptan tal cual, o un objeto cuando se necesitan campos adicionales al crearlos.'
+              oneOf:
+                - type: boolean
+                - type: object
+                  additionalProperties: false
+                  properties:
+                    required_fields:
+                      type: array
+                      items:
+                        type: string
+                        enum:
+                          - cuit
             cvu:
               type: boolean
             sepa_debit:
@@ -48121,6 +48539,10 @@ components:
                   type: string
                   enum:
                     - AR
+                cuit:
+                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                  type: string
+                  example: '20312528046'
                 fingerprint:
                   description: Huella digital única para este número de cuenta bancaria de su cuenta.
                   type: string

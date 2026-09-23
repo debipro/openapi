@@ -151,7 +151,27 @@
                               }
                             },
                             "cbu": {
-                              "type": "boolean"
+                              "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                              "oneOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "required_fields": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "cuit"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
                             },
                             "cvu": {
                               "type": "boolean"
@@ -264,7 +284,27 @@
                           }
                         },
                         "cbu": {
-                          "type": "boolean"
+                          "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                          "oneOf": [
+                            {
+                              "type": "boolean"
+                            },
+                            {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "required_fields": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "enum": [
+                                      "cuit"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          ]
                         },
                         "cvu": {
                           "type": "boolean"
@@ -4572,6 +4612,11 @@
                                   "AR"
                                 ]
                               },
+                              "cuit": {
+                                "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                "type": "string",
+                                "example": "20312528046"
+                              },
                               "fingerprint": {
                                 "description": "Unique fingerprint for this bank account number of your account.",
                                 "type": "string",
@@ -6186,6 +6231,7 @@
                               "cbu-bind",
                               "cbu-galicia",
                               "cbu-patagonia",
+                              "debin-bind",
                               "favacard",
                               "fiserv-argentina",
                               "fiserv-mexico",
@@ -6233,7 +6279,27 @@
                                 }
                               },
                               "cbu": {
-                                "type": "boolean"
+                                "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                                "oneOf": [
+                                  {
+                                    "type": "boolean"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                      "required_fields": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "enum": [
+                                            "cuit"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
                               },
                               "cvu": {
                                 "type": "boolean"
@@ -6654,6 +6720,7 @@
                             "cbu-bind",
                             "cbu-galicia",
                             "cbu-patagonia",
+                            "debin-bind",
                             "favacard",
                             "fiserv-argentina",
                             "fiserv-mexico",
@@ -6701,7 +6768,27 @@
                               }
                             },
                             "cbu": {
-                              "type": "boolean"
+                              "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                              "oneOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "required_fields": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "cuit"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
                             },
                             "cvu": {
                               "type": "boolean"
@@ -6917,6 +7004,7 @@
                             "cbu-bind",
                             "cbu-galicia",
                             "cbu-patagonia",
+                            "debin-bind",
                             "favacard",
                             "fiserv-argentina",
                             "fiserv-mexico",
@@ -6964,7 +7052,27 @@
                               }
                             },
                             "cbu": {
-                              "type": "boolean"
+                              "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                              "oneOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "required_fields": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "cuit"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
                             },
                             "cvu": {
                               "type": "boolean"
@@ -7194,6 +7302,7 @@
                             "cbu-bind",
                             "cbu-galicia",
                             "cbu-patagonia",
+                            "debin-bind",
                             "favacard",
                             "fiserv-argentina",
                             "fiserv-mexico",
@@ -7241,7 +7350,27 @@
                               }
                             },
                             "cbu": {
-                              "type": "boolean"
+                              "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                              "oneOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "required_fields": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "cuit"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
                             },
                             "cvu": {
                               "type": "boolean"
@@ -7486,6 +7615,7 @@
                             "cbu-bind",
                             "cbu-galicia",
                             "cbu-patagonia",
+                            "debin-bind",
                             "favacard",
                             "fiserv-argentina",
                             "fiserv-mexico",
@@ -7533,7 +7663,27 @@
                               }
                             },
                             "cbu": {
-                              "type": "boolean"
+                              "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                              "oneOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "required_fields": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "cuit"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
                             },
                             "cvu": {
                               "type": "boolean"
@@ -10591,7 +10741,27 @@
                                 }
                               },
                               "cbu": {
-                                "type": "boolean"
+                                "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                                "oneOf": [
+                                  {
+                                    "type": "boolean"
+                                  },
+                                  {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                      "required_fields": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string",
+                                          "enum": [
+                                            "cuit"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
                               },
                               "cvu": {
                                 "type": "boolean"
@@ -11548,7 +11718,27 @@
                               }
                             },
                             "cbu": {
-                              "type": "boolean"
+                              "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                              "oneOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "required_fields": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "cuit"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
                             },
                             "cvu": {
                               "type": "boolean"
@@ -12068,7 +12258,27 @@
                               }
                             },
                             "cbu": {
-                              "type": "boolean"
+                              "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                              "oneOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "required_fields": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "cuit"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
                             },
                             "cvu": {
                               "type": "boolean"
@@ -12958,7 +13168,27 @@
                               }
                             },
                             "cbu": {
-                              "type": "boolean"
+                              "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                              "oneOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "required_fields": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "cuit"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
                             },
                             "cvu": {
                               "type": "boolean"
@@ -13879,6 +14109,11 @@
                                     "enum": [
                                       "AR"
                                     ]
+                                  },
+                                  "cuit": {
+                                    "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                    "type": "string",
+                                    "example": "20312528046"
                                   },
                                   "fingerprint": {
                                     "description": "Unique fingerprint for this bank account number of your account.",
@@ -14833,6 +15068,11 @@
                                     "AR"
                                   ]
                                 },
+                                "cuit": {
+                                  "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                  "type": "string",
+                                  "example": "20312528046"
+                                },
                                 "fingerprint": {
                                   "description": "Unique fingerprint for this bank account number of your account.",
                                   "type": "string",
@@ -15740,6 +15980,11 @@
                                       "AR"
                                     ]
                                   },
+                                  "cuit": {
+                                    "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                    "type": "string",
+                                    "example": "20312528046"
+                                  },
                                   "fingerprint": {
                                     "description": "Unique fingerprint for this bank account number of your account.",
                                     "type": "string",
@@ -16499,6 +16744,11 @@
                                   "AR"
                                 ]
                               },
+                              "cuit": {
+                                "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                "type": "string",
+                                "example": "20312528046"
+                              },
                               "fingerprint": {
                                 "description": "Unique fingerprint for this bank account number of your account.",
                                 "type": "string",
@@ -16994,6 +17244,11 @@
                         "description": "Bank account number called `CBU` in Argentina (22 digits). If `identification` is `true`, requires sending the `secret key` in the header of the request, otherwise with public key is enough (useful when creating payment methods from the browser). `Required` if you don't send an `alias` in the payload. If you send the `alias` in the POST and the identification is `true`, you don't need to indicate the `cbu` number, and as a response you will receive the `cbu` number corresponding to that `alias`.\n",
                         "type": "string"
                       },
+                      "cuit": {
+                        "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder, 11 digits without separators. `Required` when your account has a gateway that lists `cuit` under `supported_payment_methods.cbu.required_fields`, such as `debin-bind`. Optional otherwise.",
+                        "type": "string",
+                        "example": "20312528046"
+                      },
                       "alias": {
                         "description": "Requires sending the `secret key` in the header of the request. Bank account `alias` that you want to identify. If you send the `alias` in the POST and the parameter `identification` is `true`, it will return the corresponding `cbu`number. Available upon request, contact Support.",
                         "type": "string",
@@ -17164,6 +17419,16 @@
                     "cbu": {
                       "number": "2859363672283668188432",
                       "identification": true
+                    }
+                  }
+                },
+                "cbu-cuit": {
+                  "summary": "CBU - Using Account Number with CUIT",
+                  "value": {
+                    "type": "cbu",
+                    "cbu": {
+                      "number": "2859363672283668188432",
+                      "cuit": "20312528046"
                     }
                   }
                 },
@@ -17428,6 +17693,11 @@
                               "enum": [
                                 "AR"
                               ]
+                            },
+                            "cuit": {
+                              "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                              "type": "string",
+                              "example": "20312528046"
                             },
                             "fingerprint": {
                               "description": "Unique fingerprint for this bank account number of your account.",
@@ -17807,6 +18077,33 @@
                         "object": "payment_method",
                         "type": "cbu",
                         "updated_at": "2022-11-05T20:43:29-03:00"
+                      }
+                    }
+                  },
+                  "cbu-cuit": {
+                    "summary": "CBU Bank Account with CUIT",
+                    "value": {
+                      "data": {
+                        "cbu": {
+                          "bank": "Banco de la Nación Argentina",
+                          "country": "AR",
+                          "cuit": "20312528046",
+                          "fingerprint": "jhA2lx68sNppN90k",
+                          "last_four_digits": "0013",
+                          "providers": {
+                            "available": [
+                              "debin-bind"
+                            ],
+                            "preferred": "debin-bind"
+                          }
+                        },
+                        "created_at": "2026-09-22T20:43:29-03:00",
+                        "id": "PMBKkz3wjEW9",
+                        "livemode": false,
+                        "metadata": null,
+                        "object": "payment_method",
+                        "type": "cbu",
+                        "updated_at": "2026-09-22T20:43:29-03:00"
                       }
                     }
                   },
@@ -18246,6 +18543,11 @@
                               "enum": [
                                 "AR"
                               ]
+                            },
+                            "cuit": {
+                              "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                              "type": "string",
+                              "example": "20312528046"
                             },
                             "fingerprint": {
                               "description": "Unique fingerprint for this bank account number of your account.",
@@ -18920,6 +19222,11 @@
                                 "enum": [
                                   "AR"
                                 ]
+                              },
+                              "cuit": {
+                                "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                "type": "string",
+                                "example": "20312528046"
                               },
                               "fingerprint": {
                                 "description": "Unique fingerprint for this bank account number of your account.",
@@ -20412,6 +20719,11 @@
                                       "AR"
                                     ]
                                   },
+                                  "cuit": {
+                                    "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                    "type": "string",
+                                    "example": "20312528046"
+                                  },
                                   "fingerprint": {
                                     "description": "Unique fingerprint for this bank account number of your account.",
                                     "type": "string",
@@ -21645,6 +21957,11 @@
                                     "AR"
                                   ]
                                 },
+                                "cuit": {
+                                  "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                  "type": "string",
+                                  "example": "20312528046"
+                                },
                                 "fingerprint": {
                                   "description": "Unique fingerprint for this bank account number of your account.",
                                   "type": "string",
@@ -22718,6 +23035,11 @@
                                   "enum": [
                                     "AR"
                                   ]
+                                },
+                                "cuit": {
+                                  "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                  "type": "string",
+                                  "example": "20312528046"
                                 },
                                 "fingerprint": {
                                   "description": "Unique fingerprint for this bank account number of your account.",
@@ -23873,6 +24195,11 @@
                                   "enum": [
                                     "AR"
                                   ]
+                                },
+                                "cuit": {
+                                  "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                  "type": "string",
+                                  "example": "20312528046"
                                 },
                                 "fingerprint": {
                                   "description": "Unique fingerprint for this bank account number of your account.",
@@ -25108,6 +25435,11 @@
                               "enum": [
                                 "AR"
                               ]
+                            },
+                            "cuit": {
+                              "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                              "type": "string",
+                              "example": "20312528046"
                             },
                             "fingerprint": {
                               "description": "Unique fingerprint for this bank account number of your account.",
@@ -26664,6 +26996,11 @@
                                     "enum": [
                                       "AR"
                                     ]
+                                  },
+                                  "cuit": {
+                                    "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                    "type": "string",
+                                    "example": "20312528046"
                                   },
                                   "fingerprint": {
                                     "description": "Unique fingerprint for this bank account number of your account.",
@@ -28716,7 +29053,27 @@
                               }
                             },
                             "cbu": {
-                              "type": "boolean"
+                              "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                              "oneOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "required_fields": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "cuit"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
                             },
                             "cvu": {
                               "type": "boolean"
@@ -29172,7 +29529,27 @@
                               }
                             },
                             "cbu": {
-                              "type": "boolean"
+                              "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                              "oneOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "required_fields": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "cuit"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
                             },
                             "cvu": {
                               "type": "boolean"
@@ -29878,6 +30255,11 @@
                                     "enum": [
                                       "AR"
                                     ]
+                                  },
+                                  "cuit": {
+                                    "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                    "type": "string",
+                                    "example": "20312528046"
                                   },
                                   "fingerprint": {
                                     "description": "Unique fingerprint for this bank account number of your account.",
@@ -30947,6 +31329,11 @@
                                     "AR"
                                   ]
                                 },
+                                "cuit": {
+                                  "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                  "type": "string",
+                                  "example": "20312528046"
+                                },
                                 "fingerprint": {
                                   "description": "Unique fingerprint for this bank account number of your account.",
                                   "type": "string",
@@ -31918,6 +32305,11 @@
                                   "enum": [
                                     "AR"
                                   ]
+                                },
+                                "cuit": {
+                                  "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                  "type": "string",
+                                  "example": "20312528046"
                                 },
                                 "fingerprint": {
                                   "description": "Unique fingerprint for this bank account number of your account.",
@@ -32995,6 +33387,11 @@
                                     "AR"
                                   ]
                                 },
+                                "cuit": {
+                                  "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                  "type": "string",
+                                  "example": "20312528046"
+                                },
                                 "fingerprint": {
                                   "description": "Unique fingerprint for this bank account number of your account.",
                                   "type": "string",
@@ -33889,6 +34286,11 @@
                                     "AR"
                                   ]
                                 },
+                                "cuit": {
+                                  "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                  "type": "string",
+                                  "example": "20312528046"
+                                },
                                 "fingerprint": {
                                   "description": "Unique fingerprint for this bank account number of your account.",
                                   "type": "string",
@@ -34781,6 +35183,11 @@
                                   "enum": [
                                     "AR"
                                   ]
+                                },
+                                "cuit": {
+                                  "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                  "type": "string",
+                                  "example": "20312528046"
                                 },
                                 "fingerprint": {
                                   "description": "Unique fingerprint for this bank account number of your account.",
@@ -35679,6 +36086,11 @@
                                   "enum": [
                                     "AR"
                                   ]
+                                },
+                                "cuit": {
+                                  "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                  "type": "string",
+                                  "example": "20312528046"
                                 },
                                 "fingerprint": {
                                   "description": "Unique fingerprint for this bank account number of your account.",
@@ -36602,6 +37014,11 @@
                                     "enum": [
                                       "AR"
                                     ]
+                                  },
+                                  "cuit": {
+                                    "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                                    "type": "string",
+                                    "example": "20312528046"
                                   },
                                   "fingerprint": {
                                     "description": "Unique fingerprint for this bank account number of your account.",
@@ -39149,7 +39566,27 @@
             }
           },
           "cbu": {
-            "type": "boolean"
+            "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "required_fields": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "cuit"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
           },
           "cvu": {
             "type": "boolean"
@@ -39290,7 +39727,27 @@
                 }
               },
               "cbu": {
-                "type": "boolean"
+                "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "required_fields": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "cuit"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
               },
               "cvu": {
                 "type": "boolean"
@@ -40261,6 +40718,11 @@
               "AR"
             ]
           },
+          "cuit": {
+            "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+            "type": "string",
+            "example": "20312528046"
+          },
           "fingerprint": {
             "description": "Unique fingerprint for this bank account number of your account.",
             "type": "string",
@@ -40715,6 +41177,11 @@
                 "enum": [
                   "AR"
                 ]
+              },
+              "cuit": {
+                "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                "type": "string",
+                "example": "20312528046"
               },
               "fingerprint": {
                 "description": "Unique fingerprint for this bank account number of your account.",
@@ -41743,6 +42210,7 @@
               "cbu-bind",
               "cbu-galicia",
               "cbu-patagonia",
+              "debin-bind",
               "favacard",
               "fiserv-argentina",
               "fiserv-mexico",
@@ -41790,7 +42258,27 @@
                 }
               },
               "cbu": {
-                "type": "boolean"
+                "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "required_fields": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "cuit"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
               },
               "cvu": {
                 "type": "boolean"
@@ -42614,7 +43102,27 @@
                 }
               },
               "cbu": {
-                "type": "boolean"
+                "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "required_fields": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "cuit"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
               },
               "cvu": {
                 "type": "boolean"
@@ -43134,6 +43642,11 @@
                     "enum": [
                       "AR"
                     ]
+                  },
+                  "cuit": {
+                    "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                    "type": "string",
+                    "example": "20312528046"
                   },
                   "fingerprint": {
                     "description": "Unique fingerprint for this bank account number of your account.",
@@ -44194,6 +44707,11 @@
                       "AR"
                     ]
                   },
+                  "cuit": {
+                    "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                    "type": "string",
+                    "example": "20312528046"
+                  },
                   "fingerprint": {
                     "description": "Unique fingerprint for this bank account number of your account.",
                     "type": "string",
@@ -45019,7 +45537,27 @@
                 }
               },
               "cbu": {
-                "type": "boolean"
+                "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "required_fields": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "cuit"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
               },
               "cvu": {
                 "type": "boolean"
@@ -45536,6 +46074,11 @@
                       "AR"
                     ]
                   },
+                  "cuit": {
+                    "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                    "type": "string",
+                    "example": "20312528046"
+                  },
                   "fingerprint": {
                     "description": "Unique fingerprint for this bank account number of your account.",
                     "type": "string",
@@ -46046,7 +46589,27 @@
                 }
               },
               "cbu": {
-                "type": "boolean"
+                "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "required_fields": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "cuit"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
               },
               "cvu": {
                 "type": "boolean"
@@ -46113,7 +46676,27 @@
             }
           },
           "cbu": {
-            "type": "boolean"
+            "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "required_fields": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "cuit"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
           },
           "cvu": {
             "type": "boolean"
@@ -47043,6 +47626,7 @@
               "cbu-bind",
               "cbu-galicia",
               "cbu-patagonia",
+              "debin-bind",
               "favacard",
               "fiserv-argentina",
               "fiserv-mexico",
@@ -47090,7 +47674,27 @@
                 }
               },
               "cbu": {
-                "type": "boolean"
+                "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "required_fields": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "cuit"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
               },
               "cvu": {
                 "type": "boolean"
@@ -47595,7 +48199,27 @@
                 }
               },
               "cbu": {
-                "type": "boolean"
+                "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "required_fields": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "cuit"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
               },
               "cvu": {
                 "type": "boolean"
@@ -48115,6 +48739,11 @@
                     "enum": [
                       "AR"
                     ]
+                  },
+                  "cuit": {
+                    "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                    "type": "string",
+                    "example": "20312528046"
                   },
                   "fingerprint": {
                     "description": "Unique fingerprint for this bank account number of your account.",
@@ -49031,6 +49660,11 @@
                       "AR"
                     ]
                   },
+                  "cuit": {
+                    "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                    "type": "string",
+                    "example": "20312528046"
+                  },
                   "fingerprint": {
                     "description": "Unique fingerprint for this bank account number of your account.",
                     "type": "string",
@@ -49708,6 +50342,11 @@
                 "enum": [
                   "AR"
                 ]
+              },
+              "cuit": {
+                "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                "type": "string",
+                "example": "20312528046"
               },
               "fingerprint": {
                 "description": "Unique fingerprint for this bank account number of your account.",
@@ -50452,7 +51091,27 @@
                 }
               },
               "cbu": {
-                "type": "boolean"
+                "description": "`true` when CBU payment methods are accepted as-is, or an object when extra fields are needed on creation.",
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "required_fields": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "cuit"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                ]
               },
               "cvu": {
                 "type": "boolean"
@@ -50968,6 +51627,11 @@
                     "enum": [
                       "AR"
                     ]
+                  },
+                  "cuit": {
+                    "description": "Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.",
+                    "type": "string",
+                    "example": "20312528046"
                   },
                   "fingerprint": {
                     "description": "Unique fingerprint for this bank account number of your account.",
