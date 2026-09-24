@@ -166,7 +166,13 @@ info:
 
     This API uses short non-sequential url-friendly unique ids. Every resource id MUST consists of 15 url-friendly characters: `A-Z`, `a-z`, `0-9`, `_` and `-`.
 
-    Resource ids are case-sensitive. Storing them in a case-insensitive column or collation can cause sync problems.
+    Resource ids are **case-sensitive** and **opaque**: treat them as exact strings, never lowercase, uppercase, or otherwise normalize them, and do not derive meaning from them beyond the type prefix.
+
+    Because two distinct ids can differ only in letter case (for example `PYabc123456` and `PYAbc123456` are different resources), storing them in a case-insensitive column, index, or unique constraint can collapse distinct ids into one and cause duplicate-detection or sync problems. When you persist Debi ids, use case-sensitive storage:
+
+    - **MySQL / MariaDB:** use a binary collation, e.g. `VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin`.
+    - **PostgreSQL:** `text` / `varchar` are case-sensitive by default; no extra configuration is required.
+    - **Salesforce and other low-code platforms:** when using a Debi id as an External ID or unique field, enable the field's case-sensitive option — in Salesforce, check _"Treat 'ABC' and 'abc' as different values (case sensitive)"_.
 
     #### Example
 
@@ -3648,7 +3654,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                           type: string
                           example: PMyma6Ql8Wo9
                           readOnly: true
@@ -4622,7 +4628,7 @@ paths:
                       additionalProperties: false
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                           type: string
                           readOnly: true
                         object:
@@ -4771,7 +4777,7 @@ paths:
                           additionalProperties: false
                           properties:
                             id:
-                              description: Unique identifier for the object.
+                              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                               type: string
                               example: WHA8EJ1DkDnY
                               readOnly: true
@@ -4848,7 +4854,7 @@ paths:
                             additionalProperties: false
                             properties:
                               id:
-                                description: Unique identifier for the object.
+                                description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                                 type: string
                                 readOnly: true
                               object:
@@ -6383,7 +6389,7 @@ paths:
                       description: Export object
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                           type: string
                           readOnly: true
                         type:
@@ -6616,7 +6622,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                         type: string
                         readOnly: true
                       type:
@@ -6730,7 +6736,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                         type: string
                         readOnly: true
                       type:
@@ -8132,7 +8138,7 @@ paths:
                       additionalProperties: false
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                           type: string
                           readOnly: true
                         uuid:
@@ -8849,7 +8855,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                         type: string
                         readOnly: true
                       uuid:
@@ -9236,7 +9242,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                         type: string
                         readOnly: true
                       uuid:
@@ -9905,7 +9911,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                         type: string
                         readOnly: true
                       uuid:
@@ -10656,7 +10662,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Unique identifier for the object.
+                              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                               type: string
                               example: PMyma6Ql8Wo9
                               readOnly: true
@@ -11408,7 +11414,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -12117,7 +12123,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Unique identifier for the object.
+                              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                               type: string
                               example: PMyma6Ql8Wo9
                               readOnly: true
@@ -12717,7 +12723,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                           type: string
                           example: PMyma6Ql8Wo9
                           readOnly: true
@@ -13466,7 +13472,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                         type: string
                         example: PMyma6Ql8Wo9
                         readOnly: true
@@ -14123,7 +14129,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                         type: string
                         example: PMyma6Ql8Wo9
                         readOnly: true
@@ -14648,7 +14654,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                           type: string
                           example: PMyma6Ql8Wo9
                           readOnly: true
@@ -15779,7 +15785,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Unique identifier for the object.
+                              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                               type: string
                               example: PMyma6Ql8Wo9
                               readOnly: true
@@ -16769,7 +16775,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -17632,7 +17638,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -18557,7 +18563,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -19533,7 +19539,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                         type: string
                         example: PMyma6Ql8Wo9
                         readOnly: true
@@ -20765,7 +20771,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Unique identifier for the object.
+                              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                               type: string
                               example: PMyma6Ql8Wo9
                               readOnly: true
@@ -23266,7 +23272,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Unique identifier for the object.
+                              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                               type: string
                               example: PMyma6Ql8Wo9
                               readOnly: true
@@ -24128,7 +24134,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -24913,7 +24919,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -25783,7 +25789,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -26500,7 +26506,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -27215,7 +27221,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -27936,7 +27942,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -28674,7 +28680,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Unique identifier for the object.
+                              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                               type: string
                               example: PMyma6Ql8Wo9
                               readOnly: true
@@ -29331,7 +29337,7 @@ paths:
                       additionalProperties: false
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                           type: string
                           example: WHA8EJ1DkDnY
                           readOnly: true
@@ -29582,7 +29588,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                         type: string
                         example: WHA8EJ1DkDnY
                         readOnly: true
@@ -29705,7 +29711,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                         type: string
                         example: WHA8EJ1DkDnY
                         readOnly: true
@@ -29834,7 +29840,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                         type: string
                         example: WHA8EJ1DkDnY
                         readOnly: true
@@ -30024,7 +30030,7 @@ paths:
                       additionalProperties: false
                       properties:
                         id:
-                          description: Unique identifier for the object.
+                          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                           type: string
                           readOnly: true
                         object:
@@ -30173,7 +30179,7 @@ paths:
                           additionalProperties: false
                           properties:
                             id:
-                              description: Unique identifier for the object.
+                              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                               type: string
                               example: WHA8EJ1DkDnY
                               readOnly: true
@@ -30250,7 +30256,7 @@ paths:
                             additionalProperties: false
                             properties:
                               id:
-                                description: Unique identifier for the object.
+                                description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                                 type: string
                                 readOnly: true
                               object:
@@ -30406,7 +30412,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Unique identifier for the object.
+                        description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                         type: string
                         readOnly: true
                       object:
@@ -30555,7 +30561,7 @@ paths:
                         additionalProperties: false
                         properties:
                           id:
-                            description: Unique identifier for the object.
+                            description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                             type: string
                             example: WHA8EJ1DkDnY
                             readOnly: true
@@ -30632,7 +30638,7 @@ paths:
                           additionalProperties: false
                           properties:
                             id:
-                              description: Unique identifier for the object.
+                              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                               type: string
                               readOnly: true
                             object:
@@ -31546,7 +31552,7 @@ components:
         - updated_at
       title: Customer
     id:
-      description: Unique identifier for the object.
+      description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
       type: string
       readOnly: true
     Card:
@@ -31898,7 +31904,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
           type: string
           example: PMyma6Ql8Wo9
           readOnly: true
@@ -32438,7 +32444,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
           type: string
           example: WHA8EJ1DkDnY
           readOnly: true
@@ -32510,7 +32516,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
           type: string
           readOnly: true
         object:
@@ -32554,7 +32560,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
           type: string
           readOnly: true
         object:
@@ -32703,7 +32709,7 @@ components:
           additionalProperties: false
           properties:
             id:
-              description: Unique identifier for the object.
+              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
               type: string
               example: WHA8EJ1DkDnY
               readOnly: true
@@ -32780,7 +32786,7 @@ components:
             additionalProperties: false
             properties:
               id:
-                description: Unique identifier for the object.
+                description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                 type: string
                 readOnly: true
               object:
@@ -33007,7 +33013,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
           type: string
           readOnly: true
         type:
@@ -33343,7 +33349,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
           type: string
           readOnly: true
         uuid:
@@ -33826,7 +33832,7 @@ components:
           type: object
           properties:
             id:
-              description: Unique identifier for the object.
+              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
               type: string
               example: PMyma6Ql8Wo9
               readOnly: true
@@ -34680,7 +34686,7 @@ components:
           type: object
           properties:
             id:
-              description: Unique identifier for the object.
+              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
               type: string
               example: PMyma6Ql8Wo9
               readOnly: true
@@ -35760,7 +35766,7 @@ components:
           type: object
           properties:
             id:
-              description: Unique identifier for the object.
+              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
               type: string
               example: PMyma6Ql8Wo9
               readOnly: true
@@ -37002,7 +37008,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
           type: string
           readOnly: true
         type:
@@ -37332,7 +37338,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
           type: string
           readOnly: true
         uuid:
@@ -37815,7 +37821,7 @@ components:
           type: object
           properties:
             id:
-              description: Unique identifier for the object.
+              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
               type: string
               example: PMyma6Ql8Wo9
               readOnly: true
@@ -38551,7 +38557,7 @@ components:
           type: object
           properties:
             id:
-              description: Unique identifier for the object.
+              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
               type: string
               example: PMyma6Ql8Wo9
               readOnly: true
@@ -39105,7 +39111,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
           type: string
           example: PMyma6Ql8Wo9
           readOnly: true
@@ -40118,7 +40124,7 @@ components:
           type: object
           properties:
             id:
-              description: Unique identifier for the object.
+              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
               type: string
               example: PMyma6Ql8Wo9
               readOnly: true
@@ -40717,7 +40723,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
           type: string
           example: WHA8EJ1DkDnY
           readOnly: true
@@ -40789,7 +40795,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
           type: string
           readOnly: true
         object:
@@ -40833,7 +40839,7 @@ components:
       type: object
       properties:
         id:
-          description: Unique identifier for the object.
+          description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
           type: string
           readOnly: true
         object:
@@ -40982,7 +40988,7 @@ components:
           additionalProperties: false
           properties:
             id:
-              description: Unique identifier for the object.
+              description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
               type: string
               example: WHA8EJ1DkDnY
               readOnly: true
@@ -41059,7 +41065,7 @@ components:
             additionalProperties: false
             properties:
               id:
-                description: Unique identifier for the object.
+                description: 'Unique identifier for the object. Case-sensitive and opaque: store it exactly as returned (use a case-sensitive column and collation such as `utf8mb4_bin`) and never normalize its case.'
                 type: string
                 readOnly: true
               object:

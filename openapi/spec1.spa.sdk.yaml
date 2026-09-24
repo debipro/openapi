@@ -166,7 +166,13 @@ info:
 
     Esta API usa IDs únicos cortos, no secuenciales y amigables para URL. Cada ID de recurso MUST constar de 15 caracteres amigables para URL: `A-Z`, `a-z`, `0-9`, `_` y `-`.
 
-    **Los IDs de recursos distinguen mayúsculas y minúsculas**. Almacenarlos en una columna o collation que no distinga mayúsculas/minúsculas puede causar problemas de sincronización.
+    **Los IDs de recursos distinguen mayúsculas y minúsculas** y son **opacos**: trátalos como cadenas exactas, nunca los pases a minúsculas ni mayúsculas ni los normalices, y no deduzcas información de ellos más allá del prefijo de tipo.
+
+    Como dos IDs distintos pueden diferir solo en la capitalización (por ejemplo `PYabc123456` y `PYAbc123456` son recursos diferentes), almacenarlos en una columna, índice o restricción `unique` que no distinga mayúsculas/minúsculas puede fusionar IDs distintos en uno solo y provocar problemas de detección de duplicados o de sincronización. Cuando persistas IDs de Debi, usa almacenamiento sensible a mayúsculas/minúsculas:
+
+    - **MySQL / MariaDB:** usa una collation binaria, por ejemplo `VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin`.
+    - **PostgreSQL:** `text` / `varchar` distinguen mayúsculas/minúsculas por defecto; no requiere configuración adicional.
+    - **Salesforce y otras plataformas low-code:** cuando uses un ID de Debi como External ID o campo único, habilita la opción de sensibilidad a mayúsculas/minúsculas del campo — en Salesforce, marca _"Treat 'ABC' and 'abc' as different values (case sensitive)"_.
 
     #### Ejemplo
 
@@ -4982,7 +4988,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          description: Identificador único del objeto.
+                          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                           type: string
                           example: PMyma6Ql8Wo9
                           readOnly: true
@@ -6224,7 +6230,7 @@ paths:
                       additionalProperties: false
                       properties:
                         id:
-                          description: Identificador único del objeto.
+                          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                           type: string
                           readOnly: true
                         object:
@@ -6374,7 +6380,7 @@ paths:
                           additionalProperties: false
                           properties:
                             id:
-                              description: Identificador único del objeto.
+                              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                               type: string
                               example: WHA8EJ1DkDnY
                               readOnly: true
@@ -6453,7 +6459,7 @@ paths:
                             additionalProperties: false
                             properties:
                               id:
-                                description: Identificador único del objeto.
+                                description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                                 type: string
                                 readOnly: true
                               object:
@@ -8734,7 +8740,7 @@ paths:
                       description: Objeto de exportación
                       properties:
                         id:
-                          description: Identificador único del objeto.
+                          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                           type: string
                           readOnly: true
                         type:
@@ -9062,7 +9068,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Identificador único del objeto.
+                        description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                         type: string
                         readOnly: true
                       type:
@@ -9297,7 +9303,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Identificador único del objeto.
+                        description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                         type: string
                         readOnly: true
                       type:
@@ -11338,7 +11344,7 @@ paths:
                       additionalProperties: false
                       properties:
                         id:
-                          description: Identificador único del objeto.
+                          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                           type: string
                           readOnly: true
                         uuid:
@@ -12148,7 +12154,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Identificador único del objeto.
+                        description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                         type: string
                         readOnly: true
                       uuid:
@@ -12739,7 +12745,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Identificador único del objeto.
+                        description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                         type: string
                         readOnly: true
                       uuid:
@@ -13484,7 +13490,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Identificador único del objeto.
+                        description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                         type: string
                         readOnly: true
                       uuid:
@@ -14612,7 +14618,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Identificador único del objeto.
+                              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                               type: string
                               example: PMyma6Ql8Wo9
                               readOnly: true
@@ -15567,7 +15573,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Identificador único del objeto.
+                            description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -16515,7 +16521,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Identificador único del objeto.
+                              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                               type: string
                               example: PMyma6Ql8Wo9
                               readOnly: true
@@ -17208,7 +17214,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          description: Identificador único del objeto.
+                          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                           type: string
                           example: PMyma6Ql8Wo9
                           readOnly: true
@@ -18046,7 +18052,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Identificador único del objeto.
+                        description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                         type: string
                         example: PMyma6Ql8Wo9
                         readOnly: true
@@ -18873,7 +18879,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Identificador único del objeto.
+                        description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                         type: string
                         example: PMyma6Ql8Wo9
                         readOnly: true
@@ -19479,7 +19485,7 @@ paths:
                       type: object
                       properties:
                         id:
-                          description: Identificador único del objeto.
+                          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                           type: string
                           example: PMyma6Ql8Wo9
                           readOnly: true
@@ -20970,7 +20976,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Identificador único del objeto.
+                              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                               type: string
                               example: PMyma6Ql8Wo9
                               readOnly: true
@@ -22079,7 +22085,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Identificador único del objeto.
+                            description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -23057,7 +23063,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Identificador único del objeto.
+                            description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -24069,7 +24075,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Identificador único del objeto.
+                            description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -25378,7 +25384,7 @@ paths:
                     type: object
                     properties:
                       id:
-                        description: Identificador único del objeto.
+                        description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                         type: string
                         example: PMyma6Ql8Wo9
                         readOnly: true
@@ -26934,7 +26940,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Identificador único del objeto.
+                              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                               type: string
                               example: PMyma6Ql8Wo9
                               readOnly: true
@@ -29986,7 +29992,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Identificador único del objeto.
+                              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                               type: string
                               example: PMyma6Ql8Wo9
                               readOnly: true
@@ -30958,7 +30964,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Identificador único del objeto.
+                            description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -31863,7 +31869,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Identificador único del objeto.
+                            description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -32819,7 +32825,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Identificador único del objeto.
+                            description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -33654,7 +33660,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Identificador único del objeto.
+                            description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -34455,7 +34461,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Identificador único del objeto.
+                            description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -35262,7 +35268,7 @@ paths:
                         type: object
                         properties:
                           id:
-                            description: Identificador único del objeto.
+                            description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                             type: string
                             example: PMyma6Ql8Wo9
                             readOnly: true
@@ -36086,7 +36092,7 @@ paths:
                           type: object
                           properties:
                             id:
-                              description: Identificador único del objeto.
+                              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                               type: string
                               example: PMyma6Ql8Wo9
                               readOnly: true
@@ -36832,7 +36838,7 @@ paths:
                       additionalProperties: false
                       properties:
                         id:
-                          description: Identificador único del objeto.
+                          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                           type: string
                           example: WHA8EJ1DkDnY
                           readOnly: true
@@ -37175,7 +37181,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Identificador único del objeto.
+                        description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                         type: string
                         example: WHA8EJ1DkDnY
                         readOnly: true
@@ -37397,7 +37403,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Identificador único del objeto.
+                        description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                         type: string
                         example: WHA8EJ1DkDnY
                         readOnly: true
@@ -37603,7 +37609,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Identificador único del objeto.
+                        description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                         type: string
                         example: WHA8EJ1DkDnY
                         readOnly: true
@@ -37968,7 +37974,7 @@ paths:
                       additionalProperties: false
                       properties:
                         id:
-                          description: Identificador único del objeto.
+                          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                           type: string
                           readOnly: true
                         object:
@@ -38118,7 +38124,7 @@ paths:
                           additionalProperties: false
                           properties:
                             id:
-                              description: Identificador único del objeto.
+                              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                               type: string
                               example: WHA8EJ1DkDnY
                               readOnly: true
@@ -38197,7 +38203,7 @@ paths:
                             additionalProperties: false
                             properties:
                               id:
-                                description: Identificador único del objeto.
+                                description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                                 type: string
                                 readOnly: true
                               object:
@@ -38447,7 +38453,7 @@ paths:
                     additionalProperties: false
                     properties:
                       id:
-                        description: Identificador único del objeto.
+                        description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                         type: string
                         readOnly: true
                       object:
@@ -38597,7 +38603,7 @@ paths:
                         additionalProperties: false
                         properties:
                           id:
-                            description: Identificador único del objeto.
+                            description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                             type: string
                             example: WHA8EJ1DkDnY
                             readOnly: true
@@ -38676,7 +38682,7 @@ paths:
                           additionalProperties: false
                           properties:
                             id:
-                              description: Identificador único del objeto.
+                              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                               type: string
                               readOnly: true
                             object:
@@ -39683,7 +39689,7 @@ components:
         - updated_at
       title: Cliente
     id:
-      description: Identificador único del objeto.
+      description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
       type: string
       readOnly: true
     Card:
@@ -40038,7 +40044,7 @@ components:
       type: object
       properties:
         id:
-          description: Identificador único del objeto.
+          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
           type: string
           example: PMyma6Ql8Wo9
           readOnly: true
@@ -40585,7 +40591,7 @@ components:
       type: object
       properties:
         id:
-          description: Identificador único del objeto.
+          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
           type: string
           example: WHA8EJ1DkDnY
           readOnly: true
@@ -40659,7 +40665,7 @@ components:
       type: object
       properties:
         id:
-          description: Identificador único del objeto.
+          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
           type: string
           readOnly: true
         object:
@@ -40705,7 +40711,7 @@ components:
       type: object
       properties:
         id:
-          description: Identificador único del objeto.
+          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
           type: string
           readOnly: true
         object:
@@ -40855,7 +40861,7 @@ components:
           additionalProperties: false
           properties:
             id:
-              description: Identificador único del objeto.
+              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
               type: string
               example: WHA8EJ1DkDnY
               readOnly: true
@@ -40934,7 +40940,7 @@ components:
             additionalProperties: false
             properties:
               id:
-                description: Identificador único del objeto.
+                description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                 type: string
                 readOnly: true
               object:
@@ -41169,7 +41175,7 @@ components:
       type: object
       properties:
         id:
-          description: Identificador único del objeto.
+          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
           type: string
           readOnly: true
         type:
@@ -41518,7 +41524,7 @@ components:
       type: object
       properties:
         id:
-          description: Identificador único del objeto.
+          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
           type: string
           readOnly: true
         uuid:
@@ -42005,7 +42011,7 @@ components:
           type: object
           properties:
             id:
-              description: Identificador único del objeto.
+              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
               type: string
               example: PMyma6Ql8Wo9
               readOnly: true
@@ -42874,7 +42880,7 @@ components:
           type: object
           properties:
             id:
-              description: Identificador único del objeto.
+              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
               type: string
               example: PMyma6Ql8Wo9
               readOnly: true
@@ -43965,7 +43971,7 @@ components:
           type: object
           properties:
             id:
-              description: Identificador único del objeto.
+              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
               type: string
               example: PMyma6Ql8Wo9
               readOnly: true
@@ -45224,7 +45230,7 @@ components:
       type: object
       properties:
         id:
-          description: Identificador único del objeto.
+          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
           type: string
           readOnly: true
         type:
@@ -45565,7 +45571,7 @@ components:
       type: object
       properties:
         id:
-          description: Identificador único del objeto.
+          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
           type: string
           readOnly: true
         uuid:
@@ -46052,7 +46058,7 @@ components:
           type: object
           properties:
             id:
-              description: Identificador único del objeto.
+              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
               type: string
               example: PMyma6Ql8Wo9
               readOnly: true
@@ -46801,7 +46807,7 @@ components:
           type: object
           properties:
             id:
-              description: Identificador único del objeto.
+              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
               type: string
               example: PMyma6Ql8Wo9
               readOnly: true
@@ -47361,7 +47367,7 @@ components:
       type: object
       properties:
         id:
-          description: Identificador único del objeto.
+          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
           type: string
           example: PMyma6Ql8Wo9
           readOnly: true
@@ -48385,7 +48391,7 @@ components:
           type: object
           properties:
             id:
-              description: Identificador único del objeto.
+              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
               type: string
               example: PMyma6Ql8Wo9
               readOnly: true
@@ -48991,7 +48997,7 @@ components:
       type: object
       properties:
         id:
-          description: Identificador único del objeto.
+          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
           type: string
           example: WHA8EJ1DkDnY
           readOnly: true
@@ -49065,7 +49071,7 @@ components:
       type: object
       properties:
         id:
-          description: Identificador único del objeto.
+          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
           type: string
           readOnly: true
         object:
@@ -49111,7 +49117,7 @@ components:
       type: object
       properties:
         id:
-          description: Identificador único del objeto.
+          description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
           type: string
           readOnly: true
         object:
@@ -49261,7 +49267,7 @@ components:
           additionalProperties: false
           properties:
             id:
-              description: Identificador único del objeto.
+              description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
               type: string
               example: WHA8EJ1DkDnY
               readOnly: true
@@ -49340,7 +49346,7 @@ components:
             additionalProperties: false
             properties:
               id:
-                description: Identificador único del objeto.
+                description: 'Identificador único del objeto. Distingue mayúsculas/minúsculas y es opaco: almacénalo tal cual se devuelve (usa una columna y collation sensibles a mayúsculas/minúsculas como `utf8mb4_bin`) y nunca normalices su capitalización.'
                 type: string
                 readOnly: true
               object:
