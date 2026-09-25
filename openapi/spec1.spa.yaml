@@ -164,7 +164,7 @@ info:
 
     ### IDs de recursos
 
-    Esta API usa IDs únicos cortos, no secuenciales y amigables para URL. Cada ID de recurso MUST constar de 15 caracteres amigables para URL: `A-Z`, `a-z`, `0-9`, `_` y `-`.
+    Esta API usa IDs únicos cortos, no secuenciales y amigables para URL, formados por los caracteres `A-Z`, `a-z`, `0-9`, `_` y `-`. Los IDs varían en longitud, así que trátalos como opacos y no asumas un tamaño fijo.
 
     **Los IDs de recursos distinguen mayúsculas y minúsculas** y son **opacos**: trátalos como cadenas exactas, nunca los pases a minúsculas ni mayúsculas ni los normalices, y no deduzcas información de ellos más allá del prefijo de tipo.
 

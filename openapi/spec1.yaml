@@ -164,7 +164,7 @@ info:
 
     ### Resource IDs
 
-    This API uses short non-sequential url-friendly unique ids. Every resource id MUST consists of 15 url-friendly characters: `A-Z`, `a-z`, `0-9`, `_` and `-`.
+    This API uses short, non-sequential, url-friendly unique ids made up of the characters `A-Z`, `a-z`, `0-9`, `_` and `-`. Ids vary in length, so treat them as opaque and don't assume a fixed size.
 
     Resource ids are **case-sensitive** and **opaque**: treat them as exact strings, never lowercase, uppercase, or otherwise normalize them, and do not derive meaning from them beyond the type prefix.
 
