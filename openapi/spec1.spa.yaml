@@ -168,17 +168,51 @@ info:
 
     **Los IDs de recursos distinguen mayúsculas y minúsculas** y son **opacos**: trátalos como cadenas exactas, nunca los pases a minúsculas ni mayúsculas ni los normalices, y no deduzcas información de ellos más allá del prefijo de tipo.
 
+    #### Tipos de objetos y prefijos
+
+    Cada ID comienza con un prefijo de 2 letras que identifica el tipo de objeto al que hace referencia:
+
+    | Prefijo | Objeto                               |
+    | ------- | ------------------------------------ |
+    | `AC`    | Cuenta                               |
+    | `BC`    | Configuración del Portal de Clientes |
+    | `BS`    | Sesión del Portal de Clientes        |
+    | `CS`    | Cliente                              |
+    | `EV`    | Evento                               |
+    | `EX`    | Informe                              |
+    | `GW`    | Gateway                              |
+    | `IM`    | Importación                          |
+    | `IR`    | Fila de Importación                  |
+    | `LK`    | Link                                 |
+    | `MA`    | Adhesión                             |
+    | `PM`    | Método de Pago                       |
+    | `PY`    | Pago                                 |
+    | `RF`    | Devolución                           |
+    | `SB`    | Suscripción                          |
+    | `SS`    | Sesión                               |
+    | `WH`    | Webhook                              |
+    | `WD`    | Intento de Entrega de Webhook        |
+    | `WM`    | Mensaje de Webhook                   |
+
     Como dos IDs distintos pueden diferir solo en la capitalización (por ejemplo `PYabc123456` y `PYAbc123456` son recursos diferentes), almacenarlos en una columna, índice o restricción `unique` que no distinga mayúsculas/minúsculas puede fusionar IDs distintos en uno solo y provocar problemas de detección de duplicados o de sincronización. Cuando persistas IDs de Debi, usa almacenamiento sensible a mayúsculas/minúsculas:
 
     - **MySQL / MariaDB:** usa una collation binaria, por ejemplo `VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin`.
     - **PostgreSQL:** `text` / `varchar` distinguen mayúsculas/minúsculas por defecto; no requiere configuración adicional.
     - **Salesforce y otras plataformas low-code:** cuando uses un ID de Debi como External ID o campo único, habilita la opción de sensibilidad a mayúsculas/minúsculas del campo — en Salesforce, marca _"Treat 'ABC' and 'abc' as different values (case sensitive)"_.
 
-    #### Ejemplo
+    #### Ejemplo: por qué importan las mayúsculas
 
-    `CS7lKJ425dbO35l`
+    Imaginá dos pagos distintos cuyos IDs difieren solo en la capitalización de una sola letra:
 
-    `RFaOVEbJWpOEpk`
+    - `PYAbcD123ef` — un pago de **$100** del cliente A
+    - `PYabcD123ef` — un pago de **$250** del cliente B
+
+    Son dos recursos distintos. Si los guardás en un campo único **que no distingue mayúsculas/minúsculas** —por ejemplo un External Id de Salesforce sin la opción case-sensitive, o una columna MySQL con collation `..._ci`— la plataforma trata ambos IDs como el mismo valor. Cuando el segundo pago se sincroniza, o bien:
+
+    - se **rechaza como duplicado**, y el pago de $250 nunca llega a tu sistema; o
+    - **sobrescribe** el primer registro, y el pago de $100 del cliente A queda reemplazado por los datos del cliente B.
+
+    En ambos casos se pierde un pago real y tu conciliación deja de coincidir con Debi. Almacenar los IDs de forma sensible a mayúsculas/minúsculas (ver arriba) evita este problema.
     # Medios de pago de prueba
 
     En modo sandbox, las siguientes tarjetas de prueba y cuentas bancarias se pueden usar para crear pagos que producen respuestas específicas útiles para probar diferentes escenarios.

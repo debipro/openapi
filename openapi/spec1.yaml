@@ -168,15 +168,51 @@ info:
 
     Resource ids are **case-sensitive** and **opaque**: treat them as exact strings, never lowercase, uppercase, or otherwise normalize them, and do not derive meaning from them beyond the type prefix.
 
+    #### Object types and prefixes
+
+    Each id begins with a 2-letter prefix that identifies the type of object it refers to:
+
+    | Prefix | Object                       |
+    | ------ | ---------------------------- |
+    | `AC`   | Account                      |
+    | `BC`   | Billing Portal Configuration |
+    | `BS`   | Billing Portal Session       |
+    | `CS`   | Customer                     |
+    | `EV`   | Event                        |
+    | `EX`   | Export                       |
+    | `GW`   | Gateway                      |
+    | `IM`   | Import                       |
+    | `IR`   | Import Row                   |
+    | `LK`   | Link                         |
+    | `MA`   | Mandate                      |
+    | `PM`   | Payment Method               |
+    | `PY`   | Payment                      |
+    | `RF`   | Refund                       |
+    | `SB`   | Subscription                 |
+    | `SS`   | Session                      |
+    | `WH`   | Webhook                      |
+    | `WD`   | Webhook Delivery Attempt     |
+    | `WM`   | Webhook Message              |
+
     Because two distinct ids can differ only in letter case (for example `PYabc123456` and `PYAbc123456` are different resources), storing them in a case-insensitive column, index, or unique constraint can collapse distinct ids into one and cause duplicate-detection or sync problems. When you persist Debi ids, use case-sensitive storage:
 
     - **MySQL / MariaDB:** use a binary collation, e.g. `VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin`.
     - **PostgreSQL:** `text` / `varchar` are case-sensitive by default; no extra configuration is required.
     - **Salesforce and other low-code platforms:** when using a Debi id as an External ID or unique field, enable the field's case-sensitive option — in Salesforce, check _"Treat 'ABC' and 'abc' as different values (case sensitive)"_.
 
-    #### Example
+    #### Example: why case matters
 
-    `PY6b3Rr6nRMo`
+    Consider two different payments whose ids differ only in the case of a single letter:
+
+    - `PYAbcD123ef` — a payment of **$100** from customer A
+    - `PYabcD123ef` — a payment of **$250** from customer B
+
+    They are two distinct resources. If you store them in a **case-insensitive** unique field — for example a Salesforce External Id without the case-sensitive option, or a MySQL column on a `..._ci` collation — the platform treats both ids as the same value. When the second payment syncs, it either:
+
+    - is **rejected as a duplicate**, so the $250 payment silently never reaches your system; or
+    - **overwrites** the first record, so customer A's $100 payment is replaced by customer B's data.
+
+    Either way a real payment is lost and your reconciliation no longer matches Debi. Storing ids case-sensitively (see above) prevents this.
     # Testing payment methods and account numbers
 
     In sandbox mode the following test cards and bank accounts can be used to create payments that produce specific responses useful for testing different scenarios.
