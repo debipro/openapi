@@ -454,6 +454,11 @@ paths:
                         type:
                           - 'null'
                           - string
+                      email:
+                        type:
+                          - 'null'
+                          - string
+                        format: email
                       mobile_number:
                         type:
                           - 'null'
@@ -483,10 +488,17 @@ paths:
                           - 'null'
                           - string
                       suspend_submissions:
+                        description: |
+                          When `true`, Debi does not send payments to gateways for this account.
                         type: boolean
                       customer_portal:
                         description: Whether the billing portal is enabled on this account.
                         type: boolean
+                      allowed_iframe_domains:
+                        description: Allowed iframe origins (normalized `http`/`https` origins).
+                        type: array
+                        items:
+                          type: string
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                         type: boolean
@@ -567,6 +579,116 @@ paths:
                 title: Unauthorized
       tags:
         - Account
+    put:
+      operationId: AccountUpdateAccount
+      summary: Update the current account
+      description: |
+        Updates fields on the merchant account associated with the authenticated API key.
+        Set `suspend_submissions` to `true` to pause sending payments to gateways, or `false` to resume.
+        When the caller is an API key (not a dashboard user), `suspend_submissions_by` is left unset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              suspend_submissions: true
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Display name of the account / organization.
+                  type: string
+                  maxLength: 40
+                email:
+                  description: Billing / contact email for the account.
+                  type:
+                    - 'null'
+                    - string
+                  format: email
+                  maxLength: 255
+                tax_id:
+                  type:
+                    - 'null'
+                    - string
+                invoice_kind:
+                  type:
+                    - 'null'
+                    - string
+                province:
+                  type: string
+                locality:
+                  type: string
+                address:
+                  type: string
+                suspend_submissions:
+                  description: |
+                    When `true`, Debi does not send payments to gateways for this account.
+                    When `false`, payment processing resumes.
+                  type: boolean
+                preference_logo:
+                  type:
+                    - 'null'
+                    - string
+                preference_color1:
+                  type:
+                    - 'null'
+                    - string
+                preference_color2:
+                  type:
+                    - 'null'
+                    - string
+                allowed_iframe_domains:
+                  description: |
+                    Allowed iframe origins (full `http`/`https` origins). Stored normalized;
+                    send `null` or `[]` to clear.
+                  type:
+                    - 'null'
+                    - array
+                  items:
+                    type: string
+                    example: https://shop.example.com
+                  maxItems: 10
+              additionalProperties: false
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Unauthorized response
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Unauthorized
+                title: Unauthorized
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                description: Error de Validación
+                type: object
+                properties:
+                  message:
+                    type: string
+                  errors:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                example:
+                  errors:
+                    email:
+                      - El email es inválido.
+                  message: The given data was invalid.
+                title: Validation Error
+      tags:
+        - Account
+      x-codegen-request-body-name: body
   /v1/account/payment_methods:
     get:
       operationId: AccountGetAvailablePaymentMethods
@@ -30896,6 +31018,11 @@ components:
           type:
             - 'null'
             - string
+        email:
+          type:
+            - 'null'
+            - string
+          format: email
         mobile_number:
           type:
             - 'null'
@@ -30925,10 +31052,17 @@ components:
             - 'null'
             - string
         suspend_submissions:
+          description: |
+            When `true`, Debi does not send payments to gateways for this account.
           type: boolean
         customer_portal:
           description: Whether the billing portal is enabled on this account.
           type: boolean
+        allowed_iframe_domains:
+          description: Allowed iframe origins (normalized `http`/`https` origins).
+          type: array
+          items:
+            type: string
         livemode:
           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
           type: boolean
@@ -30993,6 +31127,24 @@ components:
           type: boolean
       additionalProperties: false
       title: Account
+    validation-error:
+      description: Error de Validación
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+      example:
+        errors:
+          email:
+            - El email es inválido.
+        message: The given data was invalid.
+      title: Validation Error
     payment_method_types:
       description: |
         Array of payment method types to allow. If not specified, all available payment methods will be allowed.
@@ -33026,24 +33178,6 @@ components:
           example: foo@bar.com
       additionalProperties: false
       title: Gateway
-    validation-error:
-      description: Error de Validación
-      type: object
-      properties:
-        message:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-      example:
-        errors:
-          email:
-            - El email es inválido.
-        message: The given data was invalid.
-      title: Validation Error
     Export:
       description: Export object
       type: object
@@ -36303,6 +36437,11 @@ components:
           type:
             - 'null'
             - string
+        email:
+          type:
+            - 'null'
+            - string
+          format: email
         mobile_number:
           type:
             - 'null'
@@ -36332,10 +36471,17 @@ components:
             - 'null'
             - string
         suspend_submissions:
+          description: |
+            When `true`, Debi does not send payments to gateways for this account.
           type: boolean
         customer_portal:
           description: Whether the billing portal is enabled on this account.
           type: boolean
+        allowed_iframe_domains:
+          description: Allowed iframe origins (normalized `http`/`https` origins).
+          type: array
+          items:
+            type: string
         livemode:
           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
           type: boolean

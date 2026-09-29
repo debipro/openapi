@@ -65,6 +65,13 @@
                             "string"
                           ]
                         },
+                        "email": {
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "format": "email"
+                        },
                         "mobile_number": {
                           "type": [
                             "null",
@@ -108,11 +115,19 @@
                           ]
                         },
                         "suspend_submissions": {
+                          "description": "Si es `true`, Debi no envía pagos a los medios de cobro de esta cuenta.\n",
                           "type": "boolean"
                         },
                         "customer_portal": {
                           "description": "Si el portal de clientes está habilitado en esta cuenta.",
                           "type": "boolean"
+                        },
+                        "allowed_iframe_domains": {
+                          "description": "Orígenes de iframe permitidos (orígenes `http`/`https` normalizados).",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
                         },
                         "livemode": {
                           "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -270,6 +285,183 @@
             "lang": "Debi CLI",
             "label": "Debi CLI",
             "source": "debi account retrieve"
+          }
+        ]
+      },
+      "put": {
+        "operationId": "AccountUpdateAccount",
+        "summary": "Actualizar la cuenta actual",
+        "description": "Actualiza campos de la cuenta de comercio asociada a la clave de API autenticada.\nEnviá `suspend_submissions` en `true` para pausar el envío de pagos a los medios de cobro, o `false` para reactivarlo.\nCuando el llamador es una clave de API (no un usuario del dashboard), `suspend_submissions_by` queda sin atribuir.\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "suspend_submissions": true
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "Nombre visible de la cuenta / organización.",
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "email": {
+                    "description": "Email de facturación / contacto de la cuenta.",
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "format": "email",
+                    "maxLength": 255
+                  },
+                  "tax_id": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "invoice_kind": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "province": {
+                    "type": "string"
+                  },
+                  "locality": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "suspend_submissions": {
+                    "description": "Si es `true`, Debi no envía pagos a los medios de cobro de esta cuenta.\nSi es `false`, se reactiva el procesamiento.\n",
+                    "type": "boolean"
+                  },
+                  "preference_logo": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "preference_color1": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "preference_color2": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "allowed_iframe_domains": {
+                    "description": "Orígenes de iframe permitidos (orígenes `http`/`https` completos). Se guardan normalizados;\nenviá `null` o `[]` para limpiarlos.\n",
+                    "type": [
+                      "null",
+                      "array"
+                    ],
+                    "items": {
+                      "type": "string",
+                      "example": "https://shop.example.com"
+                    },
+                    "maxItems": 10
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Sin contenido"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "No autorizado",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  },
+                  "title": "No autorizado"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Error de Validación",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "example": {
+                    "errors": {
+                      "email": [
+                        "El email es inválido."
+                      ]
+                    },
+                    "message": "The given data was invalid."
+                  },
+                  "title": "Error de Validación"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Cuenta"
+        ],
+        "x-codegen-request-body-name": "body",
+        "x-codeSamples": [
+          {
+            "lang": "Shell + Curl",
+            "source": "curl --request PUT \\\n  --url https://api.debi.pro/v1/account \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"name\":\"string\",\"email\":null,\"tax_id\":null,\"invoice_kind\":null,\"province\":\"string\",\"locality\":\"string\",\"address\":\"string\",\"suspend_submissions\":true,\"preference_logo\":null,\"preference_color1\":null,\"preference_color2\":null,\"allowed_iframe_domains\":null}'"
+          },
+          {
+            "lang": "Node + Request",
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'PUT',\n  url: 'https://api.debi.pro/v1/account',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    name: 'string',\n    email: null,\n    tax_id: null,\n    invoice_kind: null,\n    province: 'string',\n    locality: 'string',\n    address: 'string',\n    suspend_submissions: true,\n    preference_logo: null,\n    preference_color1: null,\n    preference_color2: null,\n    allowed_iframe_domains: null\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+          },
+          {
+            "lang": "Php + Http1",
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/account');\n$request->setMethod(HTTP_METH_PUT);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"name\":\"string\",\"email\":null,\"tax_id\":null,\"invoice_kind\":null,\"province\":\"string\",\"locality\":\"string\",\"address\":\"string\",\"suspend_submissions\":true,\"preference_logo\":null,\"preference_color1\":null,\"preference_color2\":null,\"allowed_iframe_domains\":null}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+          },
+          {
+            "lang": "Python + Requests",
+            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/account\"\n\npayload = {\n    \"name\": \"string\",\n    \"email\": None,\n    \"tax_id\": None,\n    \"invoice_kind\": None,\n    \"province\": \"string\",\n    \"locality\": \"string\",\n    \"address\": \"string\",\n    \"suspend_submissions\": True,\n    \"preference_logo\": None,\n    \"preference_color1\": None,\n    \"preference_color2\": None,\n    \"allowed_iframe_domains\": None\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"PUT\", url, json=payload, headers=headers)\n\nprint(response.text)"
+          },
+          {
+            "lang": "Java + Unirest",
+            "source": "HttpResponse<String> response = Unirest.put(\"https://api.debi.pro/v1/account\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"name\\\":\\\"string\\\",\\\"email\\\":null,\\\"tax_id\\\":null,\\\"invoice_kind\\\":null,\\\"province\\\":\\\"string\\\",\\\"locality\\\":\\\"string\\\",\\\"address\\\":\\\"string\\\",\\\"suspend_submissions\\\":true,\\\"preference_logo\\\":null,\\\"preference_color1\\\":null,\\\"preference_color2\\\":null,\\\"allowed_iframe_domains\\\":null}\")\n  .asString();"
+          },
+          {
+            "lang": "Ruby + Native",
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/account\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Put.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"name\\\":\\\"string\\\",\\\"email\\\":null,\\\"tax_id\\\":null,\\\"invoice_kind\\\":null,\\\"province\\\":\\\"string\\\",\\\"locality\\\":\\\"string\\\",\\\"address\\\":\\\"string\\\",\\\"suspend_submissions\\\":true,\\\"preference_logo\\\":null,\\\"preference_color1\\\":null,\\\"preference_color2\\\":null,\\\"allowed_iframe_domains\\\":null}\"\n\nresponse = http.request(request)\nputs response.read_body"
           }
         ]
       }
@@ -42206,6 +42398,13 @@
               "string"
             ]
           },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "email"
+          },
           "mobile_number": {
             "type": [
               "null",
@@ -42249,11 +42448,19 @@
             ]
           },
           "suspend_submissions": {
+            "description": "Si es `true`, Debi no envía pagos a los medios de cobro de esta cuenta.\n",
             "type": "boolean"
           },
           "customer_portal": {
             "description": "Si el portal de clientes está habilitado en esta cuenta.",
             "type": "boolean"
+          },
+          "allowed_iframe_domains": {
+            "description": "Orígenes de iframe permitidos (orígenes `http`/`https` normalizados).",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "livemode": {
             "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -42351,6 +42558,33 @@
         },
         "additionalProperties": false,
         "title": "Cuenta"
+      },
+      "validation-error": {
+        "description": "Error de Validación",
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "errors": {
+            "email": [
+              "El email es inválido."
+            ]
+          },
+          "message": "The given data was invalid."
+        },
+        "title": "Error de Validación"
       },
       "payment_method_types": {
         "description": "Array de tipos de métodos de pago permitidos. Si no se especifica, se permitirán todos los métodos de pago disponibles.\n",
@@ -44893,33 +45127,6 @@
         },
         "additionalProperties": false,
         "title": "Gateway"
-      },
-      "validation-error": {
-        "description": "Error de Validación",
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string"
-          },
-          "errors": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "example": {
-          "errors": {
-            "email": [
-              "El email es inválido."
-            ]
-          },
-          "message": "The given data was invalid."
-        },
-        "title": "Error de Validación"
       },
       "Export": {
         "description": "Objeto de exportación",
@@ -49068,6 +49275,13 @@
               "string"
             ]
           },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "email"
+          },
           "mobile_number": {
             "type": [
               "null",
@@ -49111,11 +49325,19 @@
             ]
           },
           "suspend_submissions": {
+            "description": "Si es `true`, Debi no envía pagos a los medios de cobro de esta cuenta.\n",
             "type": "boolean"
           },
           "customer_portal": {
             "description": "Si el portal de clientes está habilitado en esta cuenta.",
             "type": "boolean"
+          },
+          "allowed_iframe_domains": {
+            "description": "Orígenes de iframe permitidos (orígenes `http`/`https` normalizados).",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "livemode": {
             "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",

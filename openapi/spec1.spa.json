@@ -65,6 +65,13 @@
                             "string"
                           ]
                         },
+                        "email": {
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "format": "email"
+                        },
                         "mobile_number": {
                           "type": [
                             "null",
@@ -108,11 +115,19 @@
                           ]
                         },
                         "suspend_submissions": {
+                          "description": "Si es `true`, Debi no envía pagos a los medios de cobro de esta cuenta.\n",
                           "type": "boolean"
                         },
                         "customer_portal": {
                           "description": "Si el portal de clientes está habilitado en esta cuenta.",
                           "type": "boolean"
+                        },
+                        "allowed_iframe_domains": {
+                          "description": "Orígenes de iframe permitidos (orígenes `http`/`https` normalizados).",
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
                         },
                         "livemode": {
                           "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -241,6 +256,157 @@
         "tags": [
           "Cuenta"
         ]
+      },
+      "put": {
+        "operationId": "AccountUpdateAccount",
+        "summary": "Actualizar la cuenta actual",
+        "description": "Actualiza campos de la cuenta de comercio asociada a la clave de API autenticada.\nEnviá `suspend_submissions` en `true` para pausar el envío de pagos a los medios de cobro, o `false` para reactivarlo.\nCuando el llamador es una clave de API (no un usuario del dashboard), `suspend_submissions_by` queda sin atribuir.\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "suspend_submissions": true
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "Nombre visible de la cuenta / organización.",
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "email": {
+                    "description": "Email de facturación / contacto de la cuenta.",
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "format": "email",
+                    "maxLength": 255
+                  },
+                  "tax_id": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "invoice_kind": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "province": {
+                    "type": "string"
+                  },
+                  "locality": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "suspend_submissions": {
+                    "description": "Si es `true`, Debi no envía pagos a los medios de cobro de esta cuenta.\nSi es `false`, se reactiva el procesamiento.\n",
+                    "type": "boolean"
+                  },
+                  "preference_logo": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "preference_color1": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "preference_color2": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "allowed_iframe_domains": {
+                    "description": "Orígenes de iframe permitidos (orígenes `http`/`https` completos). Se guardan normalizados;\nenviá `null` o `[]` para limpiarlos.\n",
+                    "type": [
+                      "null",
+                      "array"
+                    ],
+                    "items": {
+                      "type": "string",
+                      "example": "https://shop.example.com"
+                    },
+                    "maxItems": 10
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Sin contenido"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "No autorizado",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  },
+                  "title": "No autorizado"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Error de Validación",
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "errors": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "example": {
+                    "errors": {
+                      "email": [
+                        "El email es inválido."
+                      ]
+                    },
+                    "message": "The given data was invalid."
+                  },
+                  "title": "Error de Validación"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Cuenta"
+        ],
+        "x-codegen-request-body-name": "body"
       }
     },
     "/v1/account/payment_methods": {
@@ -39641,6 +39807,13 @@
               "string"
             ]
           },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "email"
+          },
           "mobile_number": {
             "type": [
               "null",
@@ -39684,11 +39857,19 @@
             ]
           },
           "suspend_submissions": {
+            "description": "Si es `true`, Debi no envía pagos a los medios de cobro de esta cuenta.\n",
             "type": "boolean"
           },
           "customer_portal": {
             "description": "Si el portal de clientes está habilitado en esta cuenta.",
             "type": "boolean"
+          },
+          "allowed_iframe_domains": {
+            "description": "Orígenes de iframe permitidos (orígenes `http`/`https` normalizados).",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "livemode": {
             "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
@@ -39786,6 +39967,33 @@
         },
         "additionalProperties": false,
         "title": "Cuenta"
+      },
+      "validation-error": {
+        "description": "Error de Validación",
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "errors": {
+            "email": [
+              "El email es inválido."
+            ]
+          },
+          "message": "The given data was invalid."
+        },
+        "title": "Error de Validación"
       },
       "payment_method_types": {
         "description": "Array de tipos de métodos de pago permitidos. Si no se especifica, se permitirán todos los métodos de pago disponibles.\n",
@@ -42328,33 +42536,6 @@
         },
         "additionalProperties": false,
         "title": "Gateway"
-      },
-      "validation-error": {
-        "description": "Error de Validación",
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string"
-          },
-          "errors": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "example": {
-          "errors": {
-            "email": [
-              "El email es inválido."
-            ]
-          },
-          "message": "The given data was invalid."
-        },
-        "title": "Error de Validación"
       },
       "Export": {
         "description": "Objeto de exportación",
@@ -46503,6 +46684,13 @@
               "string"
             ]
           },
+          "email": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "email"
+          },
           "mobile_number": {
             "type": [
               "null",
@@ -46546,11 +46734,19 @@
             ]
           },
           "suspend_submissions": {
+            "description": "Si es `true`, Debi no envía pagos a los medios de cobro de esta cuenta.\n",
             "type": "boolean"
           },
           "customer_portal": {
             "description": "Si el portal de clientes está habilitado en esta cuenta.",
             "type": "boolean"
+          },
+          "allowed_iframe_domains": {
+            "description": "Orígenes de iframe permitidos (orígenes `http`/`https` normalizados).",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "livemode": {
             "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
