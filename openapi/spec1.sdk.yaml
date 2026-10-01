@@ -9242,14 +9242,18 @@ paths:
                   type: boolean
                   default: true
                 filters:
-                  description: Type-specific filters. `emulated_gateway_response` requires `import_id`.
+                  description: Type-specific filters. `emulated_gateway_response` requires either `import_id` or `gateway_id`.
                   type: object
                   additionalProperties: true
                   properties:
                     import_id:
+                      description: Answers this presentation file.
+                      type: string
+                    gateway_id:
+                      description: Reports this gateway's news across every presentation file it has sent. Requires a date range.
                       type: string
                 begin_date:
-                  description: Start date for the export (required for some export types)
+                  description: Start date for the export (required for some export types). An `emulated_gateway_response` given a date range reports only the outcomes settled within it.
                   type: string
                   format: date
                   example: 2025-01-01
@@ -9367,7 +9371,7 @@ paths:
               --url https://api.debi.pro/v1/exports \
               --header 'Authorization: Bearer sk_live_...' \
               --header 'content-type: application/json' \
-              --data '{"type":"payments_monthly","format":"csv","csv_delimiter":",","columns":[{"key":"string","label":"string"}],"display_timezone":"America/Argentina/Buenos_Aires","headings":true,"filters":{"import_id":"string"},"begin_date":"2025-01-01","end_date":"2025-01-31"}'
+              --data '{"type":"payments_monthly","format":"csv","csv_delimiter":",","columns":[{"key":"string","label":"string"}],"display_timezone":"America/Argentina/Buenos_Aires","headings":true,"filters":{"import_id":"string","gateway_id":"string"},"begin_date":"2025-01-01","end_date":"2025-01-31"}'
         - lang: Node + Request
           source: |
             const request = require('request');
@@ -9386,7 +9390,7 @@ paths:
                 columns: [{key: 'string', label: 'string'}],
                 display_timezone: 'America/Argentina/Buenos_Aires',
                 headings: true,
-                filters: {import_id: 'string'},
+                filters: {import_id: 'string', gateway_id: 'string'},
                 begin_date: '2025-01-01',
                 end_date: '2025-01-31'
               },
@@ -9411,7 +9415,7 @@ paths:
               'Authorization' => 'Bearer sk_live_...'
             ]);
 
-            $request->setBody('{"type":"payments_monthly","format":"csv","csv_delimiter":",","columns":[{"key":"string","label":"string"}],"display_timezone":"America/Argentina/Buenos_Aires","headings":true,"filters":{"import_id":"string"},"begin_date":"2025-01-01","end_date":"2025-01-31"}');
+            $request->setBody('{"type":"payments_monthly","format":"csv","csv_delimiter":",","columns":[{"key":"string","label":"string"}],"display_timezone":"America/Argentina/Buenos_Aires","headings":true,"filters":{"import_id":"string","gateway_id":"string"},"begin_date":"2025-01-01","end_date":"2025-01-31"}');
 
             try {
               $response = $request->send();
@@ -9438,7 +9442,10 @@ paths:
                 ],
                 "display_timezone": "America/Argentina/Buenos_Aires",
                 "headings": True,
-                "filters": {"import_id": "string"},
+                "filters": {
+                    "import_id": "string",
+                    "gateway_id": "string"
+                },
                 "begin_date": "2025-01-01",
                 "end_date": "2025-01-31"
             }
@@ -9455,7 +9462,7 @@ paths:
             HttpResponse<String> response = Unirest.post("https://api.debi.pro/v1/exports")
               .header("content-type", "application/json")
               .header("Authorization", "Bearer sk_live_...")
-              .body("{\"type\":\"payments_monthly\",\"format\":\"csv\",\"csv_delimiter\":\",\",\"columns\":[{\"key\":\"string\",\"label\":\"string\"}],\"display_timezone\":\"America/Argentina/Buenos_Aires\",\"headings\":true,\"filters\":{\"import_id\":\"string\"},\"begin_date\":\"2025-01-01\",\"end_date\":\"2025-01-31\"}")
+              .body("{\"type\":\"payments_monthly\",\"format\":\"csv\",\"csv_delimiter\":\",\",\"columns\":[{\"key\":\"string\",\"label\":\"string\"}],\"display_timezone\":\"America/Argentina/Buenos_Aires\",\"headings\":true,\"filters\":{\"import_id\":\"string\",\"gateway_id\":\"string\"},\"begin_date\":\"2025-01-01\",\"end_date\":\"2025-01-31\"}")
               .asString();
         - lang: Ruby + Native
           source: |-
@@ -9472,7 +9479,7 @@ paths:
             request = Net::HTTP::Post.new(url)
             request["content-type"] = 'application/json'
             request["Authorization"] = 'Bearer sk_live_...'
-            request.body = "{\"type\":\"payments_monthly\",\"format\":\"csv\",\"csv_delimiter\":\",\",\"columns\":[{\"key\":\"string\",\"label\":\"string\"}],\"display_timezone\":\"America/Argentina/Buenos_Aires\",\"headings\":true,\"filters\":{\"import_id\":\"string\"},\"begin_date\":\"2025-01-01\",\"end_date\":\"2025-01-31\"}"
+            request.body = "{\"type\":\"payments_monthly\",\"format\":\"csv\",\"csv_delimiter\":\",\",\"columns\":[{\"key\":\"string\",\"label\":\"string\"}],\"display_timezone\":\"America/Argentina/Buenos_Aires\",\"headings\":true,\"filters\":{\"import_id\":\"string\",\"gateway_id\":\"string\"},\"begin_date\":\"2025-01-01\",\"end_date\":\"2025-01-31\"}"
 
             response = http.request(request)
             puts response.read_body

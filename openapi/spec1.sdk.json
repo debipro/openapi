@@ -9305,17 +9305,22 @@
                     "default": true
                   },
                   "filters": {
-                    "description": "Type-specific filters. `emulated_gateway_response` requires `import_id`.",
+                    "description": "Type-specific filters. `emulated_gateway_response` requires either `import_id` or `gateway_id`.",
                     "type": "object",
                     "additionalProperties": true,
                     "properties": {
                       "import_id": {
+                        "description": "Answers this presentation file.",
+                        "type": "string"
+                      },
+                      "gateway_id": {
+                        "description": "Reports this gateway's news across every presentation file it has sent. Requires a date range.",
                         "type": "string"
                       }
                     }
                   },
                   "begin_date": {
-                    "description": "Start date for the export (required for some export types)",
+                    "description": "Start date for the export (required for some export types). An `emulated_gateway_response` given a date range reports only the outcomes settled within it.",
                     "type": "string",
                     "format": "date",
                     "example": "2025-01-01"
@@ -9473,27 +9478,27 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://api.debi.pro/v1/exports \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"type\":\"payments_monthly\",\"format\":\"csv\",\"csv_delimiter\":\",\",\"columns\":[{\"key\":\"string\",\"label\":\"string\"}],\"display_timezone\":\"America/Argentina/Buenos_Aires\",\"headings\":true,\"filters\":{\"import_id\":\"string\"},\"begin_date\":\"2025-01-01\",\"end_date\":\"2025-01-31\"}'"
+            "source": "curl --request POST \\\n  --url https://api.debi.pro/v1/exports \\\n  --header 'Authorization: Bearer sk_live_...' \\\n  --header 'content-type: application/json' \\\n  --data '{\"type\":\"payments_monthly\",\"format\":\"csv\",\"csv_delimiter\":\",\",\"columns\":[{\"key\":\"string\",\"label\":\"string\"}],\"display_timezone\":\"America/Argentina/Buenos_Aires\",\"headings\":true,\"filters\":{\"import_id\":\"string\",\"gateway_id\":\"string\"},\"begin_date\":\"2025-01-01\",\"end_date\":\"2025-01-31\"}'"
           },
           {
             "lang": "Node + Request",
-            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.debi.pro/v1/exports',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    type: 'payments_monthly',\n    format: 'csv',\n    csv_delimiter: ',',\n    columns: [{key: 'string', label: 'string'}],\n    display_timezone: 'America/Argentina/Buenos_Aires',\n    headings: true,\n    filters: {import_id: 'string'},\n    begin_date: '2025-01-01',\n    end_date: '2025-01-31'\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'POST',\n  url: 'https://api.debi.pro/v1/exports',\n  headers: {\n    'content-type': 'application/json',\n    Authorization: 'Bearer sk_live_...'\n  },\n  body: {\n    type: 'payments_monthly',\n    format: 'csv',\n    csv_delimiter: ',',\n    columns: [{key: 'string', label: 'string'}],\n    display_timezone: 'America/Argentina/Buenos_Aires',\n    headings: true,\n    filters: {import_id: 'string', gateway_id: 'string'},\n    begin_date: '2025-01-01',\n    end_date: '2025-01-31'\n  },\n  json: true\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
           },
           {
             "lang": "Php + Http1",
-            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/exports');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"type\":\"payments_monthly\",\"format\":\"csv\",\"csv_delimiter\":\",\",\"columns\":[{\"key\":\"string\",\"label\":\"string\"}],\"display_timezone\":\"America/Argentina/Buenos_Aires\",\"headings\":true,\"filters\":{\"import_id\":\"string\"},\"begin_date\":\"2025-01-01\",\"end_date\":\"2025-01-31\"}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/exports');\n$request->setMethod(HTTP_METH_POST);\n\n$request->setHeaders([\n  'content-type' => 'application/json',\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\n$request->setBody('{\"type\":\"payments_monthly\",\"format\":\"csv\",\"csv_delimiter\":\",\",\"columns\":[{\"key\":\"string\",\"label\":\"string\"}],\"display_timezone\":\"America/Argentina/Buenos_Aires\",\"headings\":true,\"filters\":{\"import_id\":\"string\",\"gateway_id\":\"string\"},\"begin_date\":\"2025-01-01\",\"end_date\":\"2025-01-31\"}');\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
           },
           {
             "lang": "Python + Requests",
-            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/exports\"\n\npayload = {\n    \"type\": \"payments_monthly\",\n    \"format\": \"csv\",\n    \"csv_delimiter\": \",\",\n    \"columns\": [\n        {\n            \"key\": \"string\",\n            \"label\": \"string\"\n        }\n    ],\n    \"display_timezone\": \"America/Argentina/Buenos_Aires\",\n    \"headings\": True,\n    \"filters\": {\"import_id\": \"string\"},\n    \"begin_date\": \"2025-01-01\",\n    \"end_date\": \"2025-01-31\"\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
+            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/exports\"\n\npayload = {\n    \"type\": \"payments_monthly\",\n    \"format\": \"csv\",\n    \"csv_delimiter\": \",\",\n    \"columns\": [\n        {\n            \"key\": \"string\",\n            \"label\": \"string\"\n        }\n    ],\n    \"display_timezone\": \"America/Argentina/Buenos_Aires\",\n    \"headings\": True,\n    \"filters\": {\n        \"import_id\": \"string\",\n        \"gateway_id\": \"string\"\n    },\n    \"begin_date\": \"2025-01-01\",\n    \"end_date\": \"2025-01-31\"\n}\nheaders = {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Bearer sk_live_...\"\n}\n\nresponse = requests.request(\"POST\", url, json=payload, headers=headers)\n\nprint(response.text)"
           },
           {
             "lang": "Java + Unirest",
-            "source": "HttpResponse<String> response = Unirest.post(\"https://api.debi.pro/v1/exports\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"type\\\":\\\"payments_monthly\\\",\\\"format\\\":\\\"csv\\\",\\\"csv_delimiter\\\":\\\",\\\",\\\"columns\\\":[{\\\"key\\\":\\\"string\\\",\\\"label\\\":\\\"string\\\"}],\\\"display_timezone\\\":\\\"America/Argentina/Buenos_Aires\\\",\\\"headings\\\":true,\\\"filters\\\":{\\\"import_id\\\":\\\"string\\\"},\\\"begin_date\\\":\\\"2025-01-01\\\",\\\"end_date\\\":\\\"2025-01-31\\\"}\")\n  .asString();"
+            "source": "HttpResponse<String> response = Unirest.post(\"https://api.debi.pro/v1/exports\")\n  .header(\"content-type\", \"application/json\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .body(\"{\\\"type\\\":\\\"payments_monthly\\\",\\\"format\\\":\\\"csv\\\",\\\"csv_delimiter\\\":\\\",\\\",\\\"columns\\\":[{\\\"key\\\":\\\"string\\\",\\\"label\\\":\\\"string\\\"}],\\\"display_timezone\\\":\\\"America/Argentina/Buenos_Aires\\\",\\\"headings\\\":true,\\\"filters\\\":{\\\"import_id\\\":\\\"string\\\",\\\"gateway_id\\\":\\\"string\\\"},\\\"begin_date\\\":\\\"2025-01-01\\\",\\\"end_date\\\":\\\"2025-01-31\\\"}\")\n  .asString();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/exports\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"payments_monthly\\\",\\\"format\\\":\\\"csv\\\",\\\"csv_delimiter\\\":\\\",\\\",\\\"columns\\\":[{\\\"key\\\":\\\"string\\\",\\\"label\\\":\\\"string\\\"}],\\\"display_timezone\\\":\\\"America/Argentina/Buenos_Aires\\\",\\\"headings\\\":true,\\\"filters\\\":{\\\"import_id\\\":\\\"string\\\"},\\\"begin_date\\\":\\\"2025-01-01\\\",\\\"end_date\\\":\\\"2025-01-31\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/exports\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\nrequest.body = \"{\\\"type\\\":\\\"payments_monthly\\\",\\\"format\\\":\\\"csv\\\",\\\"csv_delimiter\\\":\\\",\\\",\\\"columns\\\":[{\\\"key\\\":\\\"string\\\",\\\"label\\\":\\\"string\\\"}],\\\"display_timezone\\\":\\\"America/Argentina/Buenos_Aires\\\",\\\"headings\\\":true,\\\"filters\\\":{\\\"import_id\\\":\\\"string\\\",\\\"gateway_id\\\":\\\"string\\\"},\\\"begin_date\\\":\\\"2025-01-01\\\",\\\"end_date\\\":\\\"2025-01-31\\\"}\"\n\nresponse = http.request(request)\nputs response.read_body"
           },
           {
             "lang": "Debi CLI",

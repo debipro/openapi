@@ -8513,17 +8513,22 @@
                     "default": true
                   },
                   "filters": {
-                    "description": "Type-specific filters. `emulated_gateway_response` requires `import_id`.",
+                    "description": "Type-specific filters. `emulated_gateway_response` requires either `import_id` or `gateway_id`.",
                     "type": "object",
                     "additionalProperties": true,
                     "properties": {
                       "import_id": {
+                        "description": "Responde a este archivo de presentación.",
+                        "type": "string"
+                      },
+                      "gateway_id": {
+                        "description": "Reporta las novedades de esta pasarela en todos los archivos de presentación que envió. Requiere un rango de fechas.",
                         "type": "string"
                       }
                     }
                   },
                   "begin_date": {
-                    "description": "Fecha de inicio para la exportación (requerido para algunos tipos de exportación)",
+                    "description": "Fecha de inicio para la exportación (requerido para algunos tipos de exportación). Un `emulated_gateway_response` con rango de fechas reporta solo los resultados resueltos dentro de él.",
                     "type": "string",
                     "format": "date",
                     "example": "2025-01-01"
