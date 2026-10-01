@@ -9253,7 +9253,7 @@ paths:
                       description: Reports this gateway's news across every presentation file it has sent. Requires a date range.
                       type: string
                 begin_date:
-                  description: Start date for the export (required for some export types). An `emulated_gateway_response` given a date range reports only the outcomes settled within it.
+                  description: Start date for the export (required for some export types). An `emulated_gateway_response` given a date range reports only the payments whose final outcome was settled within it. A payment Debi settled again after the range ends belongs to the later range instead.
                   type: string
                   format: date
                   example: 2025-01-01

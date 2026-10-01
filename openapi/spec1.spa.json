@@ -8528,7 +8528,7 @@
                     }
                   },
                   "begin_date": {
-                    "description": "Fecha de inicio para la exportación (requerido para algunos tipos de exportación). Un `emulated_gateway_response` con rango de fechas reporta solo los resultados resueltos dentro de él.",
+                    "description": "Fecha de inicio para la exportación (requerido para algunos tipos de exportación). Un `emulated_gateway_response` con rango de fechas reporta solo los pagos cuyo resultado final se resolvió dentro de él. Un pago que Debi volvió a resolver después del fin del rango pertenece al rango posterior.",
                     "type": "string",
                     "format": "date",
                     "example": "2025-01-01"
