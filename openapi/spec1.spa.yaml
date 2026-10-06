@@ -4002,7 +4002,7 @@ paths:
                               enum:
                                 - AR
                             cuit:
-                              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                               type: string
                               example: '20312528046'
                             fingerprint:
@@ -11088,7 +11088,7 @@ paths:
                                   enum:
                                     - AR
                                 cuit:
-                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                   type: string
                                   example: '20312528046'
                                 fingerprint:
@@ -11851,7 +11851,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -12571,7 +12571,7 @@ paths:
                                   enum:
                                     - AR
                                 cuit:
-                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                   type: string
                                   example: '20312528046'
                                 fingerprint:
@@ -13179,7 +13179,7 @@ paths:
                               enum:
                                 - AR
                             cuit:
-                              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                               type: string
                               example: '20312528046'
                             fingerprint:
@@ -13580,7 +13580,7 @@ paths:
                       description: Número de cuenta bancaria llamado `CBU` en Argentina (22 dígitos). Si el parámetro `identification` es `true`, requiere enviar la `secret key` en el header de la solicitud, de lo contrario con la `public key` es suficiente (útil cuando se crean métodos de pago desde el navegador). `Requerido` si no envías un `alias` en el payload. Si envías el `alias` en el POST y el parámetro `identification` es `true`, no es necesario indicar el número de CBU, y como respuesta obtendremos el número de CBU correspondiente a ese `alias`.
                       type: string
                     cuit:
-                      description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria, 11 dígitos sin separadores. `Requerido` cuando tu cuenta tiene un gateway que declara `cuit` dentro de `supported_payment_methods.cbu.required_fields`, como `debin-bind`. En los demás casos es opcional.
+                      description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria, 11 dígitos sin separadores. `Requerido` cuando tu cuenta tiene un gateway que declara `cuit` dentro de `supported_payment_methods.cbu.required_fields` (como `debin-bind`) y no estás identificando la cuenta. Cuando `identification` es `true` o envías un `alias`, Debi puede tomar el CUIT del único titular identificado y puedes omitir este campo. Si la identificación no devuelve titulares, hay más de uno, o el valor enviado no coincide con el único titular, la solicitud falla con un error de validación en `cbu.cuit`.
                       type: string
                       example: '20312528046'
                     alias:
@@ -13588,7 +13588,7 @@ paths:
                       type: string
                       example: juanperez
                     identification:
-                      description: Requiere enviar la `secret key` en el header de la solicitud. Identificación extendida de la cuenta bancaria, al enviar en el POST, realizará la identificación, devolviendo en este parámetro los propietarios o co propietarios de la cuenta. También si envías un `alias` en el payload, no es necesario indicar el número de `cbu`, y como respuesta obtendremos el número de `cbu` correspondiente a ese `alias`. Para activar esta funcionalidad, contacte a Soporte.
+                      description: Requiere enviar la `secret key` en el header de la solicitud. Identificación extendida de la cuenta bancaria, al enviar en el POST, realizará la identificación, devolviendo en este parámetro los propietarios o co propietarios de la cuenta. También si envías un `alias` en el payload, no es necesario indicar el número de `cbu`, y como respuesta obtendremos el número de `cbu` correspondiente a ese `alias`. Cuando un gateway requiere `cbu.cuit` (por ejemplo `debin-bind`) y la identificación devuelve un único titular, puedes omitir `cbu.cuit` y Debi guardará el CUIT de ese titular en el método de pago. Para activar esta funcionalidad, contacte a Soporte.
                       type: boolean
                   title: CBU
                 sepa_debit:
@@ -13720,7 +13720,7 @@ paths:
                     alias: juanperez
                     identification: true
               cbu-number:
-                summary: CBU - Usando Número de Cuenta con Identificación
+                summary: CBU - Número de cuenta con identificación (CUIT opcional si hay un único titular)
                 value:
                   type: cbu
                   cbu:
@@ -13933,7 +13933,7 @@ paths:
                             enum:
                               - AR
                           cuit:
-                            description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                            description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                             type: string
                             example: '20312528046'
                           fingerprint:
@@ -14595,7 +14595,7 @@ paths:
                             enum:
                               - AR
                           cuit:
-                            description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                            description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                             type: string
                             example: '20312528046'
                           fingerprint:
@@ -15125,7 +15125,7 @@ paths:
                               enum:
                                 - AR
                             cuit:
-                              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                               type: string
                               example: '20312528046'
                             fingerprint:
@@ -16266,7 +16266,7 @@ paths:
                                   enum:
                                     - AR
                                 cuit:
-                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                   type: string
                                   example: '20312528046'
                                 fingerprint:
@@ -17266,7 +17266,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -18140,7 +18140,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -19076,7 +19076,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -20063,7 +20063,7 @@ paths:
                             enum:
                               - AR
                           cuit:
-                            description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                            description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                             type: string
                             example: '20312528046'
                           fingerprint:
@@ -21306,7 +21306,7 @@ paths:
                                   enum:
                                     - AR
                                 cuit:
-                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                   type: string
                                   example: '20312528046'
                                 fingerprint:
@@ -23815,7 +23815,7 @@ paths:
                                   enum:
                                     - AR
                                 cuit:
-                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                   type: string
                                   example: '20312528046'
                                 fingerprint:
@@ -24686,7 +24686,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -25481,7 +25481,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -26361,7 +26361,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -27088,7 +27088,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -27813,7 +27813,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -28544,7 +28544,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -29292,7 +29292,7 @@ paths:
                                   enum:
                                     - AR
                                 cuit:
-                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                                   type: string
                                   example: '20312528046'
                                 fingerprint:
@@ -32214,7 +32214,7 @@ components:
           enum:
             - AR
         cuit:
-          description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+          description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
           type: string
           example: '20312528046'
         fingerprint:
@@ -32585,7 +32585,7 @@ components:
               enum:
                 - AR
             cuit:
-              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
               type: string
               example: '20312528046'
             fingerprint:
@@ -34534,7 +34534,7 @@ components:
                   enum:
                     - AR
                 cuit:
-                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                   type: string
                   example: '20312528046'
                 fingerprint:
@@ -35403,7 +35403,7 @@ components:
                   enum:
                     - AR
                 cuit:
-                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                   type: string
                   example: '20312528046'
                 fingerprint:
@@ -36494,7 +36494,7 @@ components:
                   enum:
                     - AR
                 cuit:
-                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                   type: string
                   example: '20312528046'
                 fingerprint:
@@ -38593,7 +38593,7 @@ components:
                   enum:
                     - AR
                 cuit:
-                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                   type: string
                   example: '20312528046'
                 fingerprint:
@@ -39342,7 +39342,7 @@ components:
                   enum:
                     - AR
                 cuit:
-                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                   type: string
                   example: '20312528046'
                 fingerprint:
@@ -39902,7 +39902,7 @@ components:
               enum:
                 - AR
             cuit:
-              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+              description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
               type: string
               example: '20312528046'
             fingerprint:
@@ -40926,7 +40926,7 @@ components:
                   enum:
                     - AR
                 cuit:
-                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Sólo está presente si fue enviado al momento de la creación.
+                  description: Número de identificación fiscal (`CUIT`/`CUIL`) del titular de la cuenta bancaria. Está presente si fue enviado al crear el método de pago, o si Debi lo obtuvo del único titular devuelto por la identificación de la cuenta bancaria.
                   type: string
                   example: '20312528046'
                 fingerprint:

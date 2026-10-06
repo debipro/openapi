@@ -5381,7 +5381,7 @@ paths:
                               enum:
                                 - AR
                             cuit:
-                              description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                              description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                               type: string
                               example: '20312528046'
                             fingerprint:
@@ -14944,7 +14944,7 @@ paths:
                                   enum:
                                     - AR
                                 cuit:
-                                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                   type: string
                                   example: '20312528046'
                                 fingerprint:
@@ -15888,7 +15888,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -16825,7 +16825,7 @@ paths:
                                   enum:
                                     - AR
                                 cuit:
-                                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                   type: string
                                   example: '20312528046'
                                 fingerprint:
@@ -17510,7 +17510,7 @@ paths:
                               enum:
                                 - AR
                             cuit:
-                              description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                              description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                               type: string
                               example: '20312528046'
                             fingerprint:
@@ -17991,7 +17991,7 @@ paths:
                         Bank account number called `CBU` in Argentina (22 digits). If `identification` is `true`, requires sending the `secret key` in the header of the request, otherwise with public key is enough (useful when creating payment methods from the browser). `Required` if you don't send an `alias` in the payload. If you send the `alias` in the POST and the identification is `true`, you don't need to indicate the `cbu` number, and as a response you will receive the `cbu` number corresponding to that `alias`.
                       type: string
                     cuit:
-                      description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder, 11 digits without separators. `Required` when your account has a gateway that lists `cuit` under `supported_payment_methods.cbu.required_fields`, such as `debin-bind`. Optional otherwise.
+                      description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder, 11 digits without separators. `Required` when your account has a gateway that lists `cuit` under `supported_payment_methods.cbu.required_fields` (such as `debin-bind`) and you are not identifying the account. When `identification` is `true` or you send an `alias`, Debi can take the CUIT from the sole identified owner and you may omit this field. If identification returns zero or multiple owners, or the value you send disagrees with the sole owner, the request fails with a `cbu.cuit` validation error.
                       type: string
                       example: '20312528046'
                     alias:
@@ -17999,7 +17999,7 @@ paths:
                       type: string
                       example: juanperez
                     identification:
-                      description: Requires sending the `secret key` in the header of the request. Enhanced bank account identification, when sending in the POST, it will perform the identification, returning in this parameter the owners or co-owners of the account. Also if you send an `alias` in the payload, you don't need to indicate the `cbu` number, and as a response you will receive the CBU corresponding to that alias. Available upon request, contact Support.
+                      description: Requires sending the `secret key` in the header of the request. Enhanced bank account identification, when sending in the POST, it will perform the identification, returning in this parameter the owners or co-owners of the account. Also if you send an `alias` in the payload, you don't need to indicate the `cbu` number, and as a response you will receive the CBU corresponding to that alias. When a gateway requires `cbu.cuit` (for example `debin-bind`) and identification returns a sole owner, you may omit `cbu.cuit` and Debi will store that owner's CUIT on the payment method. Available upon request, contact Support.
                       type: boolean
                   title: CBU
                 sepa_debit:
@@ -18130,7 +18130,7 @@ paths:
                     alias: juanperez
                     identification: true
               cbu-number:
-                summary: CBU - Using Account Number with Identification
+                summary: CBU - Account number with identification (CUIT optional when sole owner)
                 value:
                   type: cbu
                   cbu:
@@ -18343,7 +18343,7 @@ paths:
                             enum:
                               - AR
                           cuit:
-                            description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                            description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                             type: string
                             example: '20312528046'
                           fingerprint:
@@ -19165,7 +19165,7 @@ paths:
                             enum:
                               - AR
                           cuit:
-                            description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                            description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                             type: string
                             example: '20312528046'
                           fingerprint:
@@ -19766,7 +19766,7 @@ paths:
                               enum:
                                 - AR
                             cuit:
-                              description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                              description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                               type: string
                               example: '20312528046'
                             fingerprint:
@@ -21247,7 +21247,7 @@ paths:
                                   enum:
                                     - AR
                                 cuit:
-                                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                   type: string
                                   example: '20312528046'
                                 fingerprint:
@@ -22346,7 +22346,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -23313,7 +23313,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -24314,7 +24314,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -25612,7 +25612,7 @@ paths:
                             enum:
                               - AR
                           cuit:
-                            description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                            description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                             type: string
                             example: '20312528046'
                           fingerprint:
@@ -27157,7 +27157,7 @@ paths:
                                   enum:
                                     - AR
                                 cuit:
-                                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                   type: string
                                   example: '20312528046'
                                 fingerprint:
@@ -30201,7 +30201,7 @@ paths:
                                   enum:
                                     - AR
                                 cuit:
-                                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                   type: string
                                   example: '20312528046'
                                 fingerprint:
@@ -31164,7 +31164,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -32059,7 +32059,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -33005,7 +33005,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -33830,7 +33830,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -34621,7 +34621,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -35418,7 +35418,7 @@ paths:
                                 enum:
                                   - AR
                               cuit:
-                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                 type: string
                                 example: '20312528046'
                               fingerprint:
@@ -36232,7 +36232,7 @@ paths:
                                   enum:
                                     - AR
                                 cuit:
-                                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                                   type: string
                                   example: '20312528046'
                                 fingerprint:
@@ -39807,7 +39807,7 @@ components:
           enum:
             - AR
         cuit:
-          description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+          description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
           type: string
           example: '20312528046'
         fingerprint:
@@ -40175,7 +40175,7 @@ components:
               enum:
                 - AR
             cuit:
-              description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+              description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
               type: string
               example: '20312528046'
             fingerprint:
@@ -42085,7 +42085,7 @@ components:
                   enum:
                     - AR
                 cuit:
-                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                   type: string
                   example: '20312528046'
                 fingerprint:
@@ -42939,7 +42939,7 @@ components:
                   enum:
                     - AR
                 cuit:
-                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                   type: string
                   example: '20312528046'
                 fingerprint:
@@ -44019,7 +44019,7 @@ components:
                   enum:
                     - AR
                 cuit:
-                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                   type: string
                   example: '20312528046'
                 fingerprint:
@@ -46086,7 +46086,7 @@ components:
                   enum:
                     - AR
                 cuit:
-                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                   type: string
                   example: '20312528046'
                 fingerprint:
@@ -46822,7 +46822,7 @@ components:
                   enum:
                     - AR
                 cuit:
-                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                   type: string
                   example: '20312528046'
                 fingerprint:
@@ -47376,7 +47376,7 @@ components:
               enum:
                 - AR
             cuit:
-              description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+              description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
               type: string
               example: '20312528046'
             fingerprint:
@@ -48389,7 +48389,7 @@ components:
                   enum:
                     - AR
                 cuit:
-                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Only present when it was sent on creation.
+                  description: Tax identification number (`CUIT`/`CUIL`) of the bank account holder. Present when it was sent on creation, or when Debi derived it from a sole owner returned by bank-account identification.
                   type: string
                   example: '20312528046'
                 fingerprint:
