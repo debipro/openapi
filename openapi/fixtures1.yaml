@@ -340,6 +340,8 @@ resources:
     description: Cuota mensual
     currency: ARS
     status: active
+    auto_retries_max_attempts:
+    can_auto_retry_until_day:
     count:
     start_date: '2021-07-01'
     interval_unit: monthly

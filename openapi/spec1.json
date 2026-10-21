@@ -4695,8 +4695,7 @@
                                     "description": "Available gateways for this card.",
                                     "type": "array",
                                     "items": {
-                                      "type": "string",
-                                      "properties": {}
+                                      "type": "string"
                                     },
                                     "example": [
                                       "fiserv-argentina"
@@ -4752,8 +4751,7 @@
                                     "description": "Available gateways for this account.",
                                     "type": "array",
                                     "items": {
-                                      "type": "string",
-                                      "properties": {}
+                                      "type": "string"
                                     },
                                     "example": [
                                       "santander-es"
@@ -4814,8 +4812,7 @@
                                     "description": "Available gateways for this account.",
                                     "type": "array",
                                     "items": {
-                                      "type": "string",
-                                      "properties": {}
+                                      "type": "string"
                                     },
                                     "example": [
                                       "cbu-galicia"
@@ -6034,8 +6031,7 @@
                                 "description": "One of: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.\n",
                                 "type": "array",
                                 "items": {
-                                  "type": "string",
-                                  "properties": {}
+                                  "type": "string"
                                 },
                                 "example": [
                                   "customer.created",
@@ -14282,8 +14278,7 @@
                                         "description": "Available gateways for this card.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "fiserv-argentina"
@@ -14339,8 +14334,7 @@
                                         "description": "Available gateways for this account.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "santander-es"
@@ -14401,8 +14395,7 @@
                                         "description": "Available gateways for this account.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "cbu-galicia"
@@ -15240,8 +15233,7 @@
                                       "description": "Available gateways for this card.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "fiserv-argentina"
@@ -15297,8 +15289,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "santander-es"
@@ -15359,8 +15350,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "cbu-galicia"
@@ -16152,8 +16142,7 @@
                                         "description": "Available gateways for this card.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "fiserv-argentina"
@@ -16209,8 +16198,7 @@
                                         "description": "Available gateways for this account.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "santander-es"
@@ -16271,8 +16259,7 @@
                                         "description": "Available gateways for this account.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "cbu-galicia"
@@ -16916,8 +16903,7 @@
                                     "description": "Available gateways for this card.",
                                     "type": "array",
                                     "items": {
-                                      "type": "string",
-                                      "properties": {}
+                                      "type": "string"
                                     },
                                     "example": [
                                       "fiserv-argentina"
@@ -16973,8 +16959,7 @@
                                     "description": "Available gateways for this account.",
                                     "type": "array",
                                     "items": {
-                                      "type": "string",
-                                      "properties": {}
+                                      "type": "string"
                                     },
                                     "example": [
                                       "santander-es"
@@ -17035,8 +17020,7 @@
                                     "description": "Available gateways for this account.",
                                     "type": "array",
                                     "items": {
-                                      "type": "string",
-                                      "properties": {}
+                                      "type": "string"
                                     },
                                     "example": [
                                       "cbu-galicia"
@@ -17870,8 +17854,7 @@
                                   "description": "Available gateways for this card.",
                                   "type": "array",
                                   "items": {
-                                    "type": "string",
-                                    "properties": {}
+                                    "type": "string"
                                   },
                                   "example": [
                                     "fiserv-argentina"
@@ -17927,8 +17910,7 @@
                                   "description": "Available gateways for this account.",
                                   "type": "array",
                                   "items": {
-                                    "type": "string",
-                                    "properties": {}
+                                    "type": "string"
                                   },
                                   "example": [
                                     "santander-es"
@@ -17989,8 +17971,7 @@
                                   "description": "Available gateways for this account.",
                                   "type": "array",
                                   "items": {
-                                    "type": "string",
-                                    "properties": {}
+                                    "type": "string"
                                   },
                                   "example": [
                                     "cbu-galicia"
@@ -18720,8 +18701,7 @@
                                   "description": "Available gateways for this card.",
                                   "type": "array",
                                   "items": {
-                                    "type": "string",
-                                    "properties": {}
+                                    "type": "string"
                                   },
                                   "example": [
                                     "fiserv-argentina"
@@ -18777,8 +18757,7 @@
                                   "description": "Available gateways for this account.",
                                   "type": "array",
                                   "items": {
-                                    "type": "string",
-                                    "properties": {}
+                                    "type": "string"
                                   },
                                   "example": [
                                     "santander-es"
@@ -18839,8 +18818,7 @@
                                   "description": "Available gateways for this account.",
                                   "type": "array",
                                   "items": {
-                                    "type": "string",
-                                    "properties": {}
+                                    "type": "string"
                                   },
                                   "example": [
                                     "cbu-galicia"
@@ -19399,8 +19377,7 @@
                                     "description": "Available gateways for this card.",
                                     "type": "array",
                                     "items": {
-                                      "type": "string",
-                                      "properties": {}
+                                      "type": "string"
                                     },
                                     "example": [
                                       "fiserv-argentina"
@@ -19456,8 +19433,7 @@
                                     "description": "Available gateways for this account.",
                                     "type": "array",
                                     "items": {
-                                      "type": "string",
-                                      "properties": {}
+                                      "type": "string"
                                     },
                                     "example": [
                                       "santander-es"
@@ -19518,8 +19494,7 @@
                                     "description": "Available gateways for this account.",
                                     "type": "array",
                                     "items": {
-                                      "type": "string",
-                                      "properties": {}
+                                      "type": "string"
                                     },
                                     "example": [
                                       "cbu-galicia"
@@ -20895,8 +20870,7 @@
                                         "description": "Available gateways for this card.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "fiserv-argentina"
@@ -20952,8 +20926,7 @@
                                         "description": "Available gateways for this account.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "santander-es"
@@ -21014,8 +20987,7 @@
                                         "description": "Available gateways for this account.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "cbu-galicia"
@@ -22133,8 +22105,7 @@
                                       "description": "Available gateways for this card.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "fiserv-argentina"
@@ -22190,8 +22161,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "santander-es"
@@ -22252,8 +22222,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "cbu-galicia"
@@ -23212,8 +23181,7 @@
                                       "description": "Available gateways for this card.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "fiserv-argentina"
@@ -23269,8 +23237,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "santander-es"
@@ -23331,8 +23298,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "cbu-galicia"
@@ -24372,8 +24338,7 @@
                                       "description": "Available gateways for this card.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "fiserv-argentina"
@@ -24429,8 +24394,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "santander-es"
@@ -24491,8 +24455,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "cbu-galicia"
@@ -25612,8 +25575,7 @@
                                   "description": "Available gateways for this card.",
                                   "type": "array",
                                   "items": {
-                                    "type": "string",
-                                    "properties": {}
+                                    "type": "string"
                                   },
                                   "example": [
                                     "fiserv-argentina"
@@ -25669,8 +25631,7 @@
                                   "description": "Available gateways for this account.",
                                   "type": "array",
                                   "items": {
-                                    "type": "string",
-                                    "properties": {}
+                                    "type": "string"
                                   },
                                   "example": [
                                     "santander-es"
@@ -25731,8 +25692,7 @@
                                   "description": "Available gateways for this account.",
                                   "type": "array",
                                   "items": {
-                                    "type": "string",
-                                    "properties": {}
+                                    "type": "string"
                                   },
                                   "example": [
                                     "cbu-galicia"
@@ -27173,8 +27133,7 @@
                                         "description": "Available gateways for this card.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "fiserv-argentina"
@@ -27230,8 +27189,7 @@
                                         "description": "Available gateways for this account.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "santander-es"
@@ -27292,8 +27250,7 @@
                                         "description": "Available gateways for this account.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "cbu-galicia"
@@ -30179,8 +30136,7 @@
                             "description": "Up to 5 upcoming payments charge dates.",
                             "type": "array",
                             "items": {
-                              "type": "string",
-                              "properties": {}
+                              "type": "string"
                             },
                             "example": [
                               "2022-09-04",
@@ -30432,8 +30388,7 @@
                                         "description": "Available gateways for this card.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "fiserv-argentina"
@@ -30489,8 +30444,7 @@
                                         "description": "Available gateways for this account.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "santander-es"
@@ -30551,8 +30505,7 @@
                                         "description": "Available gateways for this account.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "cbu-galicia"
@@ -31252,8 +31205,7 @@
                           "description": "Up to 5 upcoming payments charge dates.",
                           "type": "array",
                           "items": {
-                            "type": "string",
-                            "properties": {}
+                            "type": "string"
                           },
                           "example": [
                             "2022-09-04",
@@ -31505,8 +31457,7 @@
                                       "description": "Available gateways for this card.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "fiserv-argentina"
@@ -31562,8 +31513,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "santander-es"
@@ -31624,8 +31574,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "cbu-galicia"
@@ -31953,6 +31902,7 @@
                   "data": {
                     "amount": 100,
                     "auto_retries_max_attempts": null,
+                    "can_auto_retry_until_day": null,
                     "count": null,
                     "created_at": "2023-02-27T12:11:18-03:00",
                     "currency": "ARS",
@@ -32229,8 +32179,7 @@
                           "description": "Up to 5 upcoming payments charge dates.",
                           "type": "array",
                           "items": {
-                            "type": "string",
-                            "properties": {}
+                            "type": "string"
                           },
                           "example": [
                             "2022-09-04",
@@ -32482,8 +32431,7 @@
                                       "description": "Available gateways for this card.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "fiserv-argentina"
@@ -32539,8 +32487,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "santander-es"
@@ -32601,8 +32548,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "cbu-galicia"
@@ -33103,6 +33049,7 @@
                   "data": {
                     "amount": 100,
                     "auto_retries_max_attempts": null,
+                    "can_auto_retry_until_day": null,
                     "count": null,
                     "created_at": "2023-02-27T12:11:18-03:00",
                     "currency": "ARS",
@@ -33310,8 +33257,7 @@
                           "description": "Up to 5 upcoming payments charge dates.",
                           "type": "array",
                           "items": {
-                            "type": "string",
-                            "properties": {}
+                            "type": "string"
                           },
                           "example": [
                             "2022-09-04",
@@ -33563,8 +33509,7 @@
                                       "description": "Available gateways for this card.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "fiserv-argentina"
@@ -33620,8 +33565,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "santander-es"
@@ -33682,8 +33626,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "cbu-galicia"
@@ -34209,8 +34152,7 @@
                           "description": "Up to 5 upcoming payments charge dates.",
                           "type": "array",
                           "items": {
-                            "type": "string",
-                            "properties": {}
+                            "type": "string"
                           },
                           "example": [
                             "2022-09-04",
@@ -34462,8 +34404,7 @@
                                       "description": "Available gateways for this card.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "fiserv-argentina"
@@ -34519,8 +34460,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "santander-es"
@@ -34581,8 +34521,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "cbu-galicia"
@@ -35107,8 +35046,7 @@
                           "description": "Up to 5 upcoming payments charge dates.",
                           "type": "array",
                           "items": {
-                            "type": "string",
-                            "properties": {}
+                            "type": "string"
                           },
                           "example": [
                             "2022-09-04",
@@ -35360,8 +35298,7 @@
                                       "description": "Available gateways for this card.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "fiserv-argentina"
@@ -35417,8 +35354,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "santander-es"
@@ -35479,8 +35415,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "cbu-galicia"
@@ -36010,8 +35945,7 @@
                           "description": "Up to 5 upcoming payments charge dates.",
                           "type": "array",
                           "items": {
-                            "type": "string",
-                            "properties": {}
+                            "type": "string"
                           },
                           "example": [
                             "2022-09-04",
@@ -36263,8 +36197,7 @@
                                       "description": "Available gateways for this card.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "fiserv-argentina"
@@ -36320,8 +36253,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "santander-es"
@@ -36382,8 +36314,7 @@
                                       "description": "Available gateways for this account.",
                                       "type": "array",
                                       "items": {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       },
                                       "example": [
                                         "cbu-galicia"
@@ -36938,8 +36869,7 @@
                             "description": "Up to 5 upcoming payments charge dates.",
                             "type": "array",
                             "items": {
-                              "type": "string",
-                              "properties": {}
+                              "type": "string"
                             },
                             "example": [
                               "2022-09-04",
@@ -37191,8 +37121,7 @@
                                         "description": "Available gateways for this card.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "fiserv-argentina"
@@ -37248,8 +37177,7 @@
                                         "description": "Available gateways for this account.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "santander-es"
@@ -37310,8 +37238,7 @@
                                         "description": "Available gateways for this account.",
                                         "type": "array",
                                         "items": {
-                                          "type": "string",
-                                          "properties": {}
+                                          "type": "string"
                                         },
                                         "example": [
                                           "cbu-galicia"
@@ -37725,6 +37652,7 @@
                       "currency": "ARS",
                       "status": "active",
                       "auto_retries_max_attempts": null,
+                      "can_auto_retry_until_day": null,
                       "count": null,
                       "start_date": "2021-07-01",
                       "interval_unit": "monthly",
@@ -37933,8 +37861,7 @@
                             "description": "One of: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.\n",
                             "type": "array",
                             "items": {
-                              "type": "string",
-                              "properties": {}
+                              "type": "string"
                             },
                             "example": [
                               "customer.created",
@@ -38250,8 +38177,7 @@
                           "description": "One of: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.\n",
                           "type": "array",
                           "items": {
-                            "type": "string",
-                            "properties": {}
+                            "type": "string"
                           },
                           "example": [
                             "customer.created",
@@ -38412,8 +38338,7 @@
                           "description": "One of: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.\n",
                           "type": "array",
                           "items": {
-                            "type": "string",
-                            "properties": {}
+                            "type": "string"
                           },
                           "example": [
                             "customer.created",
@@ -38581,8 +38506,7 @@
                           "description": "One of: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.\n",
                           "type": "array",
                           "items": {
-                            "type": "string",
-                            "properties": {}
+                            "type": "string"
                           },
                           "example": [
                             "customer.created",
@@ -39018,8 +38942,7 @@
                                 "description": "One of: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.\n",
                                 "type": "array",
                                 "items": {
-                                  "type": "string",
-                                  "properties": {}
+                                  "type": "string"
                                 },
                                 "example": [
                                   "customer.created",
@@ -39512,8 +39435,7 @@
                               "description": "One of: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.\n",
                               "type": "array",
                               "items": {
-                                "type": "string",
-                                "properties": {}
+                                "type": "string"
                               },
                               "example": [
                                 "customer.created",
@@ -40944,8 +40866,7 @@
                 "description": "Available gateways for this card.",
                 "type": "array",
                 "items": {
-                  "type": "string",
-                  "properties": {}
+                  "type": "string"
                 },
                 "example": [
                   "fiserv-argentina"
@@ -41002,8 +40923,7 @@
                 "description": "Available gateways for this account.",
                 "type": "array",
                 "items": {
-                  "type": "string",
-                  "properties": {}
+                  "type": "string"
                 },
                 "example": [
                   "santander-es"
@@ -41064,8 +40984,7 @@
                 "description": "Available gateways for this account.",
                 "type": "array",
                 "items": {
-                  "type": "string",
-                  "properties": {}
+                  "type": "string"
                 },
                 "example": [
                   "cbu-galicia"
@@ -41405,8 +41324,7 @@
                     "description": "Available gateways for this card.",
                     "type": "array",
                     "items": {
-                      "type": "string",
-                      "properties": {}
+                      "type": "string"
                     },
                     "example": [
                       "fiserv-argentina"
@@ -41462,8 +41380,7 @@
                     "description": "Available gateways for this account.",
                     "type": "array",
                     "items": {
-                      "type": "string",
-                      "properties": {}
+                      "type": "string"
                     },
                     "example": [
                       "santander-es"
@@ -41524,8 +41441,7 @@
                     "description": "Available gateways for this account.",
                     "type": "array",
                     "items": {
-                      "type": "string",
-                      "properties": {}
+                      "type": "string"
                     },
                     "example": [
                       "cbu-galicia"
@@ -41982,8 +41898,7 @@
             "description": "One of: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.\n",
             "type": "array",
             "items": {
-              "type": "string",
-              "properties": {}
+              "type": "string"
             },
             "example": [
               "customer.created",
@@ -42303,8 +42218,7 @@
                 "description": "One of: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.\n",
                 "type": "array",
                 "items": {
-                  "type": "string",
-                  "properties": {}
+                  "type": "string"
                 },
                 "example": [
                   "customer.created",
@@ -43867,8 +43781,7 @@
                         "description": "Available gateways for this card.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "fiserv-argentina"
@@ -43924,8 +43837,7 @@
                         "description": "Available gateways for this account.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "santander-es"
@@ -43986,8 +43898,7 @@
                         "description": "Available gateways for this account.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "cbu-galicia"
@@ -44931,8 +44842,7 @@
                         "description": "Available gateways for this card.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "fiserv-argentina"
@@ -44988,8 +44898,7 @@
                         "description": "Available gateways for this account.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "santander-es"
@@ -45050,8 +44959,7 @@
                         "description": "Available gateways for this account.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "cbu-galicia"
@@ -46045,8 +45953,7 @@
             "description": "Up to 5 upcoming payments charge dates.",
             "type": "array",
             "items": {
-              "type": "string",
-              "properties": {}
+              "type": "string"
             },
             "example": [
               "2022-09-04",
@@ -46298,8 +46205,7 @@
                         "description": "Available gateways for this card.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "fiserv-argentina"
@@ -46355,8 +46261,7 @@
                         "description": "Available gateways for this account.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "santander-es"
@@ -46417,8 +46322,7 @@
                         "description": "Available gateways for this account.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "cbu-galicia"
@@ -49012,8 +48916,7 @@
                         "description": "Available gateways for this card.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "fiserv-argentina"
@@ -49069,8 +48972,7 @@
                         "description": "Available gateways for this account.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "santander-es"
@@ -49131,8 +49033,7 @@
                         "description": "Available gateways for this account.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "cbu-galicia"
@@ -49932,8 +49833,7 @@
                         "description": "Available gateways for this card.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "fiserv-argentina"
@@ -49989,8 +49889,7 @@
                         "description": "Available gateways for this account.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "santander-es"
@@ -50051,8 +49950,7 @@
                         "description": "Available gateways for this account.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "cbu-galicia"
@@ -50615,8 +50513,7 @@
                     "description": "Available gateways for this card.",
                     "type": "array",
                     "items": {
-                      "type": "string",
-                      "properties": {}
+                      "type": "string"
                     },
                     "example": [
                       "fiserv-argentina"
@@ -50672,8 +50569,7 @@
                     "description": "Available gateways for this account.",
                     "type": "array",
                     "items": {
-                      "type": "string",
-                      "properties": {}
+                      "type": "string"
                     },
                     "example": [
                       "santander-es"
@@ -50734,8 +50630,7 @@
                     "description": "Available gateways for this account.",
                     "type": "array",
                     "items": {
-                      "type": "string",
-                      "properties": {}
+                      "type": "string"
                     },
                     "example": [
                       "cbu-galicia"
@@ -51647,8 +51542,7 @@
             "description": "Up to 5 upcoming payments charge dates.",
             "type": "array",
             "items": {
-              "type": "string",
-              "properties": {}
+              "type": "string"
             },
             "example": [
               "2022-09-04",
@@ -51900,8 +51794,7 @@
                         "description": "Available gateways for this card.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "fiserv-argentina"
@@ -51957,8 +51850,7 @@
                         "description": "Available gateways for this account.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "santander-es"
@@ -52019,8 +51911,7 @@
                         "description": "Available gateways for this account.",
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "properties": {}
+                          "type": "string"
                         },
                         "example": [
                           "cbu-galicia"
@@ -52536,8 +52427,7 @@
             "description": "One of: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.\n",
             "type": "array",
             "items": {
-              "type": "string",
-              "properties": {}
+              "type": "string"
             },
             "example": [
               "customer.created",
@@ -52857,8 +52747,7 @@
                 "description": "One of: `checkout.session.async_payment_failed`, `checkout.session.async_payment_succeeded`, `checkout.session.completed`, `checkout.session.expired`, `customer.created`, `customer.disabled`, `customer.restored`, `customer.updated`, `gateway.created`, `gateway.disabled`, `gateway.enabled`, `gateway.updated`, `import.processed`, `mandate.created`, `mandate.restored`, `mandate.revoked`, `payment.cancelled`, `payment.created`, `payment.retrying`, `payment.updated`, `payment_method.automatically_updated`, `payment_method.created`, `payment_method.updated`, `refund.approved`, `refund.created`, `refund.failed`, `subscription.automatically_paused`, `subscription.cancelled`, `subscription.created`, `subscription.finished`, `subscription.paused`, `subscription.resumed`, `subscription.updated`, `user.updated_available_brands`.\n",
                 "type": "array",
                 "items": {
-                  "type": "string",
-                  "properties": {}
+                  "type": "string"
                 },
                 "example": [
                   "customer.created",
@@ -53575,6 +53464,8 @@
           "description": "Cuota mensual",
           "currency": "ARS",
           "status": "active",
+          "auto_retries_max_attempts": null,
+          "can_auto_retry_until_day": null,
           "count": null,
           "start_date": "2021-07-01",
           "interval_unit": "monthly",

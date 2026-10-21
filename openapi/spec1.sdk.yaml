@@ -5323,7 +5323,6 @@ paths:
                                   type: array
                                   items:
                                     type: string
-                                    properties: {}
                                   example:
                                     - fiserv-argentina
                                 preferred:
@@ -5365,7 +5364,6 @@ paths:
                                   type: array
                                   items:
                                     type: string
-                                    properties: {}
                                   example:
                                     - santander-es
                                 preferred:
@@ -5411,7 +5409,6 @@ paths:
                                   type: array
                                   items:
                                     type: string
-                                    properties: {}
                                   example:
                                     - cbu-galicia
                                 preferred:
@@ -6637,7 +6634,6 @@ paths:
                               type: array
                               items:
                                 type: string
-                                properties: {}
                               example:
                                 - customer.created
                                 - customer.updated
@@ -14963,7 +14959,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - fiserv-argentina
                                     preferred:
@@ -15005,7 +15000,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - santander-es
                                     preferred:
@@ -15051,7 +15045,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - cbu-galicia
                                     preferred:
@@ -15907,7 +15900,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - fiserv-argentina
                                   preferred:
@@ -15949,7 +15941,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - santander-es
                                   preferred:
@@ -15995,7 +15986,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - cbu-galicia
                                   preferred:
@@ -16844,7 +16834,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - fiserv-argentina
                                     preferred:
@@ -16886,7 +16875,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - santander-es
                                     preferred:
@@ -16932,7 +16920,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - cbu-galicia
                                     preferred:
@@ -17529,7 +17516,6 @@ paths:
                                   type: array
                                   items:
                                     type: string
-                                    properties: {}
                                   example:
                                     - fiserv-argentina
                                 preferred:
@@ -17571,7 +17557,6 @@ paths:
                                   type: array
                                   items:
                                     type: string
-                                    properties: {}
                                   example:
                                     - santander-es
                                 preferred:
@@ -17617,7 +17602,6 @@ paths:
                                   type: array
                                   items:
                                     type: string
-                                    properties: {}
                                   example:
                                     - cbu-galicia
                                 preferred:
@@ -18365,7 +18349,6 @@ paths:
                                 type: array
                                 items:
                                   type: string
-                                  properties: {}
                                 example:
                                   - fiserv-argentina
                               preferred:
@@ -18407,7 +18390,6 @@ paths:
                                 type: array
                                 items:
                                   type: string
-                                  properties: {}
                                 example:
                                   - santander-es
                               preferred:
@@ -18453,7 +18435,6 @@ paths:
                                 type: array
                                 items:
                                   type: string
-                                  properties: {}
                                 example:
                                   - cbu-galicia
                               preferred:
@@ -19189,7 +19170,6 @@ paths:
                                 type: array
                                 items:
                                   type: string
-                                  properties: {}
                                 example:
                                   - fiserv-argentina
                               preferred:
@@ -19231,7 +19211,6 @@ paths:
                                 type: array
                                 items:
                                   type: string
-                                  properties: {}
                                 example:
                                   - santander-es
                               preferred:
@@ -19277,7 +19256,6 @@ paths:
                                 type: array
                                 items:
                                   type: string
-                                  properties: {}
                                 example:
                                   - cbu-galicia
                               preferred:
@@ -19790,7 +19768,6 @@ paths:
                                   type: array
                                   items:
                                     type: string
-                                    properties: {}
                                   example:
                                     - fiserv-argentina
                                 preferred:
@@ -19832,7 +19809,6 @@ paths:
                                   type: array
                                   items:
                                     type: string
-                                    properties: {}
                                   example:
                                     - santander-es
                                 preferred:
@@ -19878,7 +19854,6 @@ paths:
                                   type: array
                                   items:
                                     type: string
-                                    properties: {}
                                   example:
                                     - cbu-galicia
                                 preferred:
@@ -21271,7 +21246,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - fiserv-argentina
                                     preferred:
@@ -21313,7 +21287,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - santander-es
                                     preferred:
@@ -21359,7 +21332,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - cbu-galicia
                                     preferred:
@@ -22370,7 +22342,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - fiserv-argentina
                                   preferred:
@@ -22412,7 +22383,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - santander-es
                                   preferred:
@@ -22458,7 +22428,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - cbu-galicia
                                   preferred:
@@ -23337,7 +23306,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - fiserv-argentina
                                   preferred:
@@ -23379,7 +23347,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - santander-es
                                   preferred:
@@ -23425,7 +23392,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - cbu-galicia
                                   preferred:
@@ -24338,7 +24304,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - fiserv-argentina
                                   preferred:
@@ -24380,7 +24345,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - santander-es
                                   preferred:
@@ -24426,7 +24390,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - cbu-galicia
                                   preferred:
@@ -25636,7 +25599,6 @@ paths:
                                 type: array
                                 items:
                                   type: string
-                                  properties: {}
                                 example:
                                   - fiserv-argentina
                               preferred:
@@ -25678,7 +25640,6 @@ paths:
                                 type: array
                                 items:
                                   type: string
-                                  properties: {}
                                 example:
                                   - santander-es
                               preferred:
@@ -25724,7 +25685,6 @@ paths:
                                 type: array
                                 items:
                                   type: string
-                                  properties: {}
                                 example:
                                   - cbu-galicia
                               preferred:
@@ -27181,7 +27141,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - fiserv-argentina
                                     preferred:
@@ -27223,7 +27182,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - santander-es
                                     preferred:
@@ -27269,7 +27227,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - cbu-galicia
                                     preferred:
@@ -30020,7 +29977,6 @@ paths:
                           type: array
                           items:
                             type: string
-                            properties: {}
                           example:
                             - 2022-09-04
                             - 2022-10-04
@@ -30225,7 +30181,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - fiserv-argentina
                                     preferred:
@@ -30267,7 +30222,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - santander-es
                                     preferred:
@@ -30313,7 +30267,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - cbu-galicia
                                     preferred:
@@ -30983,7 +30936,6 @@ paths:
                         type: array
                         items:
                           type: string
-                          properties: {}
                         example:
                           - 2022-09-04
                           - 2022-10-04
@@ -31188,7 +31140,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - fiserv-argentina
                                   preferred:
@@ -31230,7 +31181,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - santander-es
                                   preferred:
@@ -31276,7 +31226,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - cbu-galicia
                                   preferred:
@@ -31548,6 +31497,7 @@ paths:
                 data:
                   amount: 100
                   auto_retries_max_attempts: null
+                  can_auto_retry_until_day: null
                   count: null
                   created_at: 2023-02-27T12:11:18-03:00
                   currency: ARS
@@ -31878,7 +31828,6 @@ paths:
                         type: array
                         items:
                           type: string
-                          properties: {}
                         example:
                           - 2022-09-04
                           - 2022-10-04
@@ -32083,7 +32032,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - fiserv-argentina
                                   preferred:
@@ -32125,7 +32073,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - santander-es
                                   preferred:
@@ -32171,7 +32118,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - cbu-galicia
                                   preferred:
@@ -32649,6 +32595,7 @@ paths:
                 data:
                   amount: 100
                   auto_retries_max_attempts: null
+                  can_auto_retry_until_day: null
                   count: null
                   created_at: 2023-02-27T12:11:18-03:00
                   currency: ARS
@@ -32824,7 +32771,6 @@ paths:
                         type: array
                         items:
                           type: string
-                          properties: {}
                         example:
                           - 2022-09-04
                           - 2022-10-04
@@ -33029,7 +32975,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - fiserv-argentina
                                   preferred:
@@ -33071,7 +33016,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - santander-es
                                   preferred:
@@ -33117,7 +33061,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - cbu-galicia
                                   preferred:
@@ -33649,7 +33592,6 @@ paths:
                         type: array
                         items:
                           type: string
-                          properties: {}
                         example:
                           - 2022-09-04
                           - 2022-10-04
@@ -33854,7 +33796,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - fiserv-argentina
                                   preferred:
@@ -33896,7 +33837,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - santander-es
                                   preferred:
@@ -33942,7 +33882,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - cbu-galicia
                                   preferred:
@@ -34440,7 +34379,6 @@ paths:
                         type: array
                         items:
                           type: string
-                          properties: {}
                         example:
                           - 2022-09-04
                           - 2022-10-04
@@ -34645,7 +34583,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - fiserv-argentina
                                   preferred:
@@ -34687,7 +34624,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - santander-es
                                   preferred:
@@ -34733,7 +34669,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - cbu-galicia
                                   preferred:
@@ -35237,7 +35172,6 @@ paths:
                         type: array
                         items:
                           type: string
-                          properties: {}
                         example:
                           - 2022-09-04
                           - 2022-10-04
@@ -35442,7 +35376,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - fiserv-argentina
                                   preferred:
@@ -35484,7 +35417,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - santander-es
                                   preferred:
@@ -35530,7 +35462,6 @@ paths:
                                     type: array
                                     items:
                                       type: string
-                                      properties: {}
                                     example:
                                       - cbu-galicia
                                   preferred:
@@ -36051,7 +35982,6 @@ paths:
                           type: array
                           items:
                             type: string
-                            properties: {}
                           example:
                             - 2022-09-04
                             - 2022-10-04
@@ -36256,7 +36186,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - fiserv-argentina
                                     preferred:
@@ -36298,7 +36227,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - santander-es
                                     preferred:
@@ -36344,7 +36272,6 @@ paths:
                                       type: array
                                       items:
                                         type: string
-                                        properties: {}
                                       example:
                                         - cbu-galicia
                                     preferred:
@@ -36678,6 +36605,7 @@ paths:
                     currency: ARS
                     status: active
                     auto_retries_max_attempts: null
+                    can_auto_retry_until_day: null
                     count: null
                     start_date: 2021-07-01
                     interval_unit: monthly
@@ -36930,7 +36858,6 @@ paths:
                           type: array
                           items:
                             type: string
-                            properties: {}
                           example:
                             - customer.created
                             - customer.updated
@@ -37272,7 +37199,6 @@ paths:
                         type: array
                         items:
                           type: string
-                          properties: {}
                         example:
                           - customer.created
                           - customer.updated
@@ -37493,7 +37419,6 @@ paths:
                         type: array
                         items:
                           type: string
-                          properties: {}
                         example:
                           - customer.created
                           - customer.updated
@@ -37698,7 +37623,6 @@ paths:
                         type: array
                         items:
                           type: string
-                          properties: {}
                         example:
                           - customer.created
                           - customer.updated
@@ -38210,7 +38134,6 @@ paths:
                               type: array
                               items:
                                 type: string
-                                properties: {}
                               example:
                                 - customer.created
                                 - customer.updated
@@ -38682,7 +38605,6 @@ paths:
                             type: array
                             items:
                               type: string
-                              properties: {}
                             example:
                               - customer.created
                               - customer.updated
@@ -39837,7 +39759,6 @@ components:
               type: array
               items:
                 type: string
-                properties: {}
               example:
                 - fiserv-argentina
             preferred:
@@ -39880,7 +39801,6 @@ components:
               type: array
               items:
                 type: string
-                properties: {}
               example:
                 - santander-es
             preferred:
@@ -39926,7 +39846,6 @@ components:
               type: array
               items:
                 type: string
-                properties: {}
               example:
                 - cbu-galicia
             preferred:
@@ -40206,7 +40125,6 @@ components:
                   type: array
                   items:
                     type: string
-                    properties: {}
                   example:
                     - fiserv-argentina
                 preferred:
@@ -40248,7 +40166,6 @@ components:
                   type: array
                   items:
                     type: string
-                    properties: {}
                   example:
                     - santander-es
                 preferred:
@@ -40294,7 +40211,6 @@ components:
                   type: array
                   items:
                     type: string
-                    properties: {}
                   example:
                     - cbu-galicia
                 preferred:
@@ -40678,7 +40594,6 @@ components:
           type: array
           items:
             type: string
-            properties: {}
           example:
             - customer.created
             - customer.updated
@@ -40943,7 +40858,6 @@ components:
               type: array
               items:
                 type: string
-                properties: {}
               example:
                 - customer.created
                 - customer.updated
@@ -42137,7 +42051,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - fiserv-argentina
                     preferred:
@@ -42179,7 +42092,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - santander-es
                     preferred:
@@ -42225,7 +42137,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - cbu-galicia
                     preferred:
@@ -42991,7 +42902,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - fiserv-argentina
                     preferred:
@@ -43033,7 +42943,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - santander-es
                     preferred:
@@ -43079,7 +42988,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - cbu-galicia
                     preferred:
@@ -43866,7 +43774,6 @@ components:
           type: array
           items:
             type: string
-            properties: {}
           example:
             - 2022-09-04
             - 2022-10-04
@@ -44071,7 +43978,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - fiserv-argentina
                     preferred:
@@ -44113,7 +44019,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - santander-es
                     preferred:
@@ -44159,7 +44064,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - cbu-galicia
                     preferred:
@@ -46166,7 +46070,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - fiserv-argentina
                     preferred:
@@ -46208,7 +46111,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - santander-es
                     preferred:
@@ -46254,7 +46156,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - cbu-galicia
                     preferred:
@@ -46902,7 +46803,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - fiserv-argentina
                     preferred:
@@ -46944,7 +46844,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - santander-es
                     preferred:
@@ -46990,7 +46889,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - cbu-galicia
                     preferred:
@@ -47456,7 +47354,6 @@ components:
                   type: array
                   items:
                     type: string
-                    properties: {}
                   example:
                     - fiserv-argentina
                 preferred:
@@ -47498,7 +47395,6 @@ components:
                   type: array
                   items:
                     type: string
-                    properties: {}
                   example:
                     - santander-es
                 preferred:
@@ -47544,7 +47440,6 @@ components:
                   type: array
                   items:
                     type: string
-                    properties: {}
                   example:
                     - cbu-galicia
                 preferred:
@@ -48264,7 +48159,6 @@ components:
           type: array
           items:
             type: string
-            properties: {}
           example:
             - 2022-09-04
             - 2022-10-04
@@ -48469,7 +48363,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - fiserv-argentina
                     preferred:
@@ -48511,7 +48404,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - santander-es
                     preferred:
@@ -48557,7 +48449,6 @@ components:
                       type: array
                       items:
                         type: string
-                        properties: {}
                       example:
                         - cbu-galicia
                     preferred:
@@ -49000,7 +48891,6 @@ components:
           type: array
           items:
             type: string
-            properties: {}
           example:
             - customer.created
             - customer.updated
@@ -49265,7 +49155,6 @@ components:
               type: array
               items:
                 type: string
-                properties: {}
               example:
                 - customer.created
                 - customer.updated
@@ -49849,6 +49738,8 @@ components:
         description: Cuota mensual
         currency: ARS
         status: active
+        auto_retries_max_attempts: null
+        can_auto_retry_until_day: null
         count: null
         start_date: 2021-07-01
         interval_unit: monthly

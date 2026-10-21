@@ -383,6 +383,8 @@
       "description": "Cuota mensual",
       "currency": "ARS",
       "status": "active",
+      "auto_retries_max_attempts": null,
+      "can_auto_retry_until_day": null,
       "count": null,
       "start_date": "2021-07-01",
       "interval_unit": "monthly",
