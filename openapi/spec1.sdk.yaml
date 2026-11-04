@@ -30491,6 +30491,18 @@ paths:
                               format: date-time
                               example: 2022-02-11T23:19:22-03:00
                           title: Payment Method
+                        session_id:
+                          description: Identifier of the checkout Session that created this subscription, when it was created through a hosted session. `null` for subscriptions created directly via the API or imported.
+                          type:
+                            - 'null'
+                            - string
+                          example: SSmQ6j9NWxblNv
+                        link_id:
+                          description: Identifier of the Link the originating Session belongs to, when the subscription was created through a link. `null` otherwise.
+                          type:
+                            - 'null'
+                            - string
+                          example: LKLj0JV8xzdMoRk549
                         metadata:
                           description: |
                             Set of [key-value pairs](#section/Metadata) that you can attach
@@ -30533,6 +30545,8 @@ paths:
                         - payment_method
                         - auto_retries_max_attempts
                         - can_auto_retry_until_day
+                        - session_id
+                        - link_id
                         - metadata
                   links:
                     description: Pagination links
@@ -31450,6 +31464,18 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Payment Method
+                      session_id:
+                        description: Identifier of the checkout Session that created this subscription, when it was created through a hosted session. `null` for subscriptions created directly via the API or imported.
+                        type:
+                          - 'null'
+                          - string
+                        example: SSmQ6j9NWxblNv
+                      link_id:
+                        description: Identifier of the Link the originating Session belongs to, when the subscription was created through a link. `null` otherwise.
+                        type:
+                          - 'null'
+                          - string
+                        example: LKLj0JV8xzdMoRk549
                       metadata:
                         description: |
                           Set of [key-value pairs](#section/Metadata) that you can attach
@@ -31491,6 +31517,8 @@ paths:
                       - payment_method
                       - auto_retries_max_attempts
                       - can_auto_retry_until_day
+                      - session_id
+                      - link_id
                       - metadata
                     title: Subscription
               example:
@@ -31523,9 +31551,11 @@ paths:
                   id: SBJ843BlLBbd5Y
                   interval: 1
                   interval_unit: monthly
+                  link_id: LKLj0JV8xzdMoRk549
                   livemode: false
                   metadata: null
                   object: subscription
+                  session_id: SSmQ6j9NWxblNv
                   payment_method:
                     card:
                       country: AR
@@ -32342,6 +32372,18 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Payment Method
+                      session_id:
+                        description: Identifier of the checkout Session that created this subscription, when it was created through a hosted session. `null` for subscriptions created directly via the API or imported.
+                        type:
+                          - 'null'
+                          - string
+                        example: SSmQ6j9NWxblNv
+                      link_id:
+                        description: Identifier of the Link the originating Session belongs to, when the subscription was created through a link. `null` otherwise.
+                        type:
+                          - 'null'
+                          - string
+                        example: LKLj0JV8xzdMoRk549
                       metadata:
                         description: |
                           Set of [key-value pairs](#section/Metadata) that you can attach
@@ -32383,6 +32425,8 @@ paths:
                       - payment_method
                       - auto_retries_max_attempts
                       - can_auto_retry_until_day
+                      - session_id
+                      - link_id
                       - metadata
                     title: Subscription
         '401':
@@ -32620,9 +32664,11 @@ paths:
                   id: SBJ843BlLBbd5Y
                   interval: 1
                   interval_unit: monthly
+                  link_id: LKLj0JV8xzdMoRk549
                   livemode: false
                   metadata: null
                   object: subscription
+                  session_id: SSmQ6j9NWxblNv
                   payment_method:
                     card:
                       country: AR
@@ -33285,6 +33331,18 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Payment Method
+                      session_id:
+                        description: Identifier of the checkout Session that created this subscription, when it was created through a hosted session. `null` for subscriptions created directly via the API or imported.
+                        type:
+                          - 'null'
+                          - string
+                        example: SSmQ6j9NWxblNv
+                      link_id:
+                        description: Identifier of the Link the originating Session belongs to, when the subscription was created through a link. `null` otherwise.
+                        type:
+                          - 'null'
+                          - string
+                        example: LKLj0JV8xzdMoRk549
                       metadata:
                         description: |
                           Set of [key-value pairs](#section/Metadata) that you can attach
@@ -33326,6 +33384,8 @@ paths:
                       - payment_method
                       - auto_retries_max_attempts
                       - can_auto_retry_until_day
+                      - session_id
+                      - link_id
                       - metadata
                     title: Subscription
         '401':
@@ -34106,6 +34166,18 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Payment Method
+                      session_id:
+                        description: Identifier of the checkout Session that created this subscription, when it was created through a hosted session. `null` for subscriptions created directly via the API or imported.
+                        type:
+                          - 'null'
+                          - string
+                        example: SSmQ6j9NWxblNv
+                      link_id:
+                        description: Identifier of the Link the originating Session belongs to, when the subscription was created through a link. `null` otherwise.
+                        type:
+                          - 'null'
+                          - string
+                        example: LKLj0JV8xzdMoRk549
                       metadata:
                         description: |
                           Set of [key-value pairs](#section/Metadata) that you can attach
@@ -34147,6 +34219,8 @@ paths:
                       - payment_method
                       - auto_retries_max_attempts
                       - can_auto_retry_until_day
+                      - session_id
+                      - link_id
                       - metadata
                     title: Subscription
         '401':
@@ -34893,6 +34967,18 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Payment Method
+                      session_id:
+                        description: Identifier of the checkout Session that created this subscription, when it was created through a hosted session. `null` for subscriptions created directly via the API or imported.
+                        type:
+                          - 'null'
+                          - string
+                        example: SSmQ6j9NWxblNv
+                      link_id:
+                        description: Identifier of the Link the originating Session belongs to, when the subscription was created through a link. `null` otherwise.
+                        type:
+                          - 'null'
+                          - string
+                        example: LKLj0JV8xzdMoRk549
                       metadata:
                         description: |
                           Set of [key-value pairs](#section/Metadata) that you can attach
@@ -34934,6 +35020,8 @@ paths:
                       - payment_method
                       - auto_retries_max_attempts
                       - can_auto_retry_until_day
+                      - session_id
+                      - link_id
                       - metadata
                     title: Subscription
         '401':
@@ -35686,6 +35774,18 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Payment Method
+                      session_id:
+                        description: Identifier of the checkout Session that created this subscription, when it was created through a hosted session. `null` for subscriptions created directly via the API or imported.
+                        type:
+                          - 'null'
+                          - string
+                        example: SSmQ6j9NWxblNv
+                      link_id:
+                        description: Identifier of the Link the originating Session belongs to, when the subscription was created through a link. `null` otherwise.
+                        type:
+                          - 'null'
+                          - string
+                        example: LKLj0JV8xzdMoRk549
                       metadata:
                         description: |
                           Set of [key-value pairs](#section/Metadata) that you can attach
@@ -35727,6 +35827,8 @@ paths:
                       - payment_method
                       - auto_retries_max_attempts
                       - can_auto_retry_until_day
+                      - session_id
+                      - link_id
                       - metadata
                     title: Subscription
         '401':
@@ -36496,6 +36598,18 @@ paths:
                               format: date-time
                               example: 2022-02-11T23:19:22-03:00
                           title: Payment Method
+                        session_id:
+                          description: Identifier of the checkout Session that created this subscription, when it was created through a hosted session. `null` for subscriptions created directly via the API or imported.
+                          type:
+                            - 'null'
+                            - string
+                          example: SSmQ6j9NWxblNv
+                        link_id:
+                          description: Identifier of the Link the originating Session belongs to, when the subscription was created through a link. `null` otherwise.
+                          type:
+                            - 'null'
+                            - string
+                          example: LKLj0JV8xzdMoRk549
                         metadata:
                           description: |
                             Set of [key-value pairs](#section/Metadata) that you can attach
@@ -36538,6 +36652,8 @@ paths:
                         - payment_method
                         - auto_retries_max_attempts
                         - can_auto_retry_until_day
+                        - session_id
+                        - link_id
                         - metadata
                   links:
                     description: Pagination links
@@ -36659,6 +36775,8 @@ paths:
                       object: payment_method
                       type: card
                       updated_at: 2022-02-01T23:13:04-03:00
+                    session_id: SSmQ6j9NWxblNv
+                    link_id: LKLj0JV8xzdMoRk549
                     metadata: null
                 links:
                   prev: https://api.debi.pro/subscriptions/search?q=john%20doe&page=1
@@ -44288,6 +44406,18 @@ components:
               format: date-time
               example: 2022-02-11T23:19:22-03:00
           title: Payment Method
+        session_id:
+          description: Identifier of the checkout Session that created this subscription, when it was created through a hosted session. `null` for subscriptions created directly via the API or imported.
+          type:
+            - 'null'
+            - string
+          example: SSmQ6j9NWxblNv
+        link_id:
+          description: Identifier of the Link the originating Session belongs to, when the subscription was created through a link. `null` otherwise.
+          type:
+            - 'null'
+            - string
+          example: LKLj0JV8xzdMoRk549
         metadata:
           description: |
             Set of [key-value pairs](#section/Metadata) that you can attach
@@ -44330,6 +44460,8 @@ components:
         - payment_method
         - auto_retries_max_attempts
         - can_auto_retry_until_day
+        - session_id
+        - link_id
         - metadata
       title: Subscription
     first_payment_in_binary_mode:
@@ -48673,6 +48805,18 @@ components:
               format: date-time
               example: 2022-02-11T23:19:22-03:00
           title: Payment Method
+        session_id:
+          description: Identifier of the checkout Session that created this subscription, when it was created through a hosted session. `null` for subscriptions created directly via the API or imported.
+          type:
+            - 'null'
+            - string
+          example: SSmQ6j9NWxblNv
+        link_id:
+          description: Identifier of the Link the originating Session belongs to, when the subscription was created through a link. `null` otherwise.
+          type:
+            - 'null'
+            - string
+          example: LKLj0JV8xzdMoRk549
         metadata:
           description: |
             Set of [key-value pairs](#section/Metadata) that you can attach
@@ -48715,6 +48859,8 @@ components:
         - payment_method
         - auto_retries_max_attempts
         - can_auto_retry_until_day
+        - session_id
+        - link_id
         - metadata
       title: Subscription
     transfer:
@@ -49793,6 +49939,8 @@ components:
           object: payment_method
           type: card
           updated_at: 2022-02-01T23:13:04-03:00
+        session_id: SSmQ6j9NWxblNv
+        link_id: LKLj0JV8xzdMoRk549
         metadata: null
     webhook:
       summary: Sample Webhook

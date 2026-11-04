@@ -32911,6 +32911,22 @@
                             },
                             "title": "Método de pago"
                           },
+                          "session_id": {
+                            "description": "Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.",
+                            "type": [
+                              "null",
+                              "string"
+                            ],
+                            "example": "SSmQ6j9NWxblNv"
+                          },
+                          "link_id": {
+                            "description": "Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.",
+                            "type": [
+                              "null",
+                              "string"
+                            ],
+                            "example": "LKLj0JV8xzdMoRk549"
+                          },
                           "metadata": {
                             "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
                             "type": [
@@ -32955,6 +32971,8 @@
                           "payment_method",
                           "auto_retries_max_attempts",
                           "can_auto_retry_until_day",
+                          "session_id",
+                          "link_id",
                           "metadata"
                         ]
                       }
@@ -34011,6 +34029,22 @@
                           },
                           "title": "Método de pago"
                         },
+                        "session_id": {
+                          "description": "Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "SSmQ6j9NWxblNv"
+                        },
+                        "link_id": {
+                          "description": "Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "LKLj0JV8xzdMoRk549"
+                        },
                         "metadata": {
                           "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
                           "type": [
@@ -34054,6 +34088,8 @@
                         "payment_method",
                         "auto_retries_max_attempts",
                         "can_auto_retry_until_day",
+                        "session_id",
+                        "link_id",
                         "metadata"
                       ],
                       "title": "Suscripción"
@@ -34091,9 +34127,11 @@
                     "id": "SBJ843BlLBbd5Y",
                     "interval": 1,
                     "interval_unit": "monthly",
+                    "link_id": "LKLj0JV8xzdMoRk549",
                     "livemode": false,
                     "metadata": null,
                     "object": "subscription",
+                    "session_id": "SSmQ6j9NWxblNv",
                     "payment_method": {
                       "card": {
                         "country": "AR",
@@ -35016,6 +35054,22 @@
                           },
                           "title": "Método de pago"
                         },
+                        "session_id": {
+                          "description": "Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "SSmQ6j9NWxblNv"
+                        },
+                        "link_id": {
+                          "description": "Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "LKLj0JV8xzdMoRk549"
+                        },
                         "metadata": {
                           "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
                           "type": [
@@ -35059,6 +35113,8 @@
                         "payment_method",
                         "auto_retries_max_attempts",
                         "can_auto_retry_until_day",
+                        "session_id",
+                        "link_id",
                         "metadata"
                       ],
                       "title": "Suscripción"
@@ -35299,9 +35355,11 @@
                     "id": "SBJ843BlLBbd5Y",
                     "interval": 1,
                     "interval_unit": "monthly",
+                    "link_id": "LKLj0JV8xzdMoRk549",
                     "livemode": false,
                     "metadata": null,
                     "object": "subscription",
+                    "session_id": "SSmQ6j9NWxblNv",
                     "payment_method": {
                       "card": {
                         "country": "AR",
@@ -36125,6 +36183,22 @@
                           },
                           "title": "Método de pago"
                         },
+                        "session_id": {
+                          "description": "Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "SSmQ6j9NWxblNv"
+                        },
+                        "link_id": {
+                          "description": "Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "LKLj0JV8xzdMoRk549"
+                        },
                         "metadata": {
                           "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
                           "type": [
@@ -36168,6 +36242,8 @@
                         "payment_method",
                         "auto_retries_max_attempts",
                         "can_auto_retry_until_day",
+                        "session_id",
+                        "link_id",
                         "metadata"
                       ],
                       "title": "Suscripción"
@@ -37051,6 +37127,22 @@
                           },
                           "title": "Método de pago"
                         },
+                        "session_id": {
+                          "description": "Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "SSmQ6j9NWxblNv"
+                        },
+                        "link_id": {
+                          "description": "Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "LKLj0JV8xzdMoRk549"
+                        },
                         "metadata": {
                           "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
                           "type": [
@@ -37094,6 +37186,8 @@
                         "payment_method",
                         "auto_retries_max_attempts",
                         "can_auto_retry_until_day",
+                        "session_id",
+                        "link_id",
                         "metadata"
                       ],
                       "title": "Suscripción"
@@ -37976,6 +38070,22 @@
                           },
                           "title": "Método de pago"
                         },
+                        "session_id": {
+                          "description": "Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "SSmQ6j9NWxblNv"
+                        },
+                        "link_id": {
+                          "description": "Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "LKLj0JV8xzdMoRk549"
+                        },
                         "metadata": {
                           "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
                           "type": [
@@ -38019,6 +38129,8 @@
                         "payment_method",
                         "auto_retries_max_attempts",
                         "can_auto_retry_until_day",
+                        "session_id",
+                        "link_id",
                         "metadata"
                       ],
                       "title": "Suscripción"
@@ -38906,6 +39018,22 @@
                           },
                           "title": "Método de pago"
                         },
+                        "session_id": {
+                          "description": "Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "SSmQ6j9NWxblNv"
+                        },
+                        "link_id": {
+                          "description": "Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "example": "LKLj0JV8xzdMoRk549"
+                        },
                         "metadata": {
                           "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
                           "type": [
@@ -38949,6 +39077,8 @@
                         "payment_method",
                         "auto_retries_max_attempts",
                         "can_auto_retry_until_day",
+                        "session_id",
+                        "link_id",
                         "metadata"
                       ],
                       "title": "Suscripción"
@@ -39861,6 +39991,22 @@
                             },
                             "title": "Método de pago"
                           },
+                          "session_id": {
+                            "description": "Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.",
+                            "type": [
+                              "null",
+                              "string"
+                            ],
+                            "example": "SSmQ6j9NWxblNv"
+                          },
+                          "link_id": {
+                            "description": "Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.",
+                            "type": [
+                              "null",
+                              "string"
+                            ],
+                            "example": "LKLj0JV8xzdMoRk549"
+                          },
                           "metadata": {
                             "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
                             "type": [
@@ -39905,6 +40051,8 @@
                           "payment_method",
                           "auto_retries_max_attempts",
                           "can_auto_retry_until_day",
+                          "session_id",
+                          "link_id",
                           "metadata"
                         ]
                       }
@@ -40061,6 +40209,8 @@
                         "type": "card",
                         "updated_at": "2022-02-01T23:13:04-03:00"
                       },
+                      "session_id": "SSmQ6j9NWxblNv",
+                      "link_id": "LKLj0JV8xzdMoRk549",
                       "metadata": null
                     }
                   ],
@@ -49188,6 +49338,22 @@
             },
             "title": "Método de pago"
           },
+          "session_id": {
+            "description": "Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.",
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": "SSmQ6j9NWxblNv"
+          },
+          "link_id": {
+            "description": "Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.",
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": "LKLj0JV8xzdMoRk549"
+          },
           "metadata": {
             "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
             "type": [
@@ -49232,6 +49398,8 @@
           "payment_method",
           "auto_retries_max_attempts",
           "can_auto_retry_until_day",
+          "session_id",
+          "link_id",
           "metadata"
         ],
         "title": "Suscripción"
@@ -54777,6 +54945,22 @@
             },
             "title": "Método de pago"
           },
+          "session_id": {
+            "description": "Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.",
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": "SSmQ6j9NWxblNv"
+          },
+          "link_id": {
+            "description": "Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.",
+            "type": [
+              "null",
+              "string"
+            ],
+            "example": "LKLj0JV8xzdMoRk549"
+          },
           "metadata": {
             "description": "Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar\na un objeto. Esto puede ser útil para almacenar información\nsobre el objeto en un formato estructurado.\nTodas las claves se pueden borrar publicando un valor `nulo` en `metadatos`.\n",
             "type": [
@@ -54821,6 +55005,8 @@
           "payment_method",
           "auto_retries_max_attempts",
           "can_auto_retry_until_day",
+          "session_id",
+          "link_id",
           "metadata"
         ],
         "title": "Suscripción"
@@ -56117,6 +56303,8 @@
             "type": "card",
             "updated_at": "2022-02-01T23:13:04-03:00"
           },
+          "session_id": "SSmQ6j9NWxblNv",
+          "link_id": "LKLj0JV8xzdMoRk549",
           "metadata": null
         }
       },

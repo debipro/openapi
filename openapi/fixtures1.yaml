@@ -395,6 +395,8 @@ resources:
       object: payment_method
       type: card
       updated_at: '2022-02-01T23:13:04-03:00'
+    session_id: SSmQ6j9NWxblNv
+    link_id: LKLj0JV8xzdMoRk549
     metadata:
   webhook:
     created_at: '2022-02-11T23:19:22-03:00'

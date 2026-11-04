@@ -24111,6 +24111,18 @@ paths:
                               format: date-time
                               example: 2022-02-11T23:19:22-03:00
                           title: Método de pago
+                        session_id:
+                          description: Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.
+                          type:
+                            - 'null'
+                            - string
+                          example: SSmQ6j9NWxblNv
+                        link_id:
+                          description: Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.
+                          type:
+                            - 'null'
+                            - string
+                          example: LKLj0JV8xzdMoRk549
                         metadata:
                           description: |
                             Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -24153,6 +24165,8 @@ paths:
                         - payment_method
                         - auto_retries_max_attempts
                         - can_auto_retry_until_day
+                        - session_id
+                        - link_id
                         - metadata
                   links:
                     description: Links de paginación
@@ -24978,6 +24992,18 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Método de pago
+                      session_id:
+                        description: Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.
+                        type:
+                          - 'null'
+                          - string
+                        example: SSmQ6j9NWxblNv
+                      link_id:
+                        description: Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.
+                        type:
+                          - 'null'
+                          - string
+                        example: LKLj0JV8xzdMoRk549
                       metadata:
                         description: |
                           Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -25019,6 +25045,8 @@ paths:
                       - payment_method
                       - auto_retries_max_attempts
                       - can_auto_retry_until_day
+                      - session_id
+                      - link_id
                       - metadata
                     title: Suscripción
               example:
@@ -25051,9 +25079,11 @@ paths:
                   id: SBJ843BlLBbd5Y
                   interval: 1
                   interval_unit: monthly
+                  link_id: LKLj0JV8xzdMoRk549
                   livemode: false
                   metadata: null
                   object: subscription
+                  session_id: SSmQ6j9NWxblNv
                   payment_method:
                     card:
                       country: AR
@@ -25770,6 +25800,18 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Método de pago
+                      session_id:
+                        description: Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.
+                        type:
+                          - 'null'
+                          - string
+                        example: SSmQ6j9NWxblNv
+                      link_id:
+                        description: Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.
+                        type:
+                          - 'null'
+                          - string
+                        example: LKLj0JV8xzdMoRk549
                       metadata:
                         description: |
                           Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -25811,6 +25853,8 @@ paths:
                       - payment_method
                       - auto_retries_max_attempts
                       - can_auto_retry_until_day
+                      - session_id
+                      - link_id
                       - metadata
                     title: Suscripción
         '401':
@@ -25972,9 +26016,11 @@ paths:
                   id: SBJ843BlLBbd5Y
                   interval: 1
                   interval_unit: monthly
+                  link_id: LKLj0JV8xzdMoRk549
                   livemode: false
                   metadata: null
                   object: subscription
+                  session_id: SSmQ6j9NWxblNv
                   payment_method:
                     card:
                       country: AR
@@ -26647,6 +26693,18 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Método de pago
+                      session_id:
+                        description: Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.
+                        type:
+                          - 'null'
+                          - string
+                        example: SSmQ6j9NWxblNv
+                      link_id:
+                        description: Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.
+                        type:
+                          - 'null'
+                          - string
+                        example: LKLj0JV8xzdMoRk549
                       metadata:
                         description: |
                           Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -26688,6 +26746,8 @@ paths:
                       - payment_method
                       - auto_retries_max_attempts
                       - can_auto_retry_until_day
+                      - session_id
+                      - link_id
                       - metadata
                     title: Suscripción
         '401':
@@ -27370,6 +27430,18 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Método de pago
+                      session_id:
+                        description: Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.
+                        type:
+                          - 'null'
+                          - string
+                        example: SSmQ6j9NWxblNv
+                      link_id:
+                        description: Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.
+                        type:
+                          - 'null'
+                          - string
+                        example: LKLj0JV8xzdMoRk549
                       metadata:
                         description: |
                           Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -27411,6 +27483,8 @@ paths:
                       - payment_method
                       - auto_retries_max_attempts
                       - can_auto_retry_until_day
+                      - session_id
+                      - link_id
                       - metadata
                     title: Suscripción
         '401':
@@ -28091,6 +28165,18 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Método de pago
+                      session_id:
+                        description: Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.
+                        type:
+                          - 'null'
+                          - string
+                        example: SSmQ6j9NWxblNv
+                      link_id:
+                        description: Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.
+                        type:
+                          - 'null'
+                          - string
+                        example: LKLj0JV8xzdMoRk549
                       metadata:
                         description: |
                           Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -28132,6 +28218,8 @@ paths:
                       - payment_method
                       - auto_retries_max_attempts
                       - can_auto_retry_until_day
+                      - session_id
+                      - link_id
                       - metadata
                     title: Suscripción
         '401':
@@ -28818,6 +28906,18 @@ paths:
                             format: date-time
                             example: 2022-02-11T23:19:22-03:00
                         title: Método de pago
+                      session_id:
+                        description: Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.
+                        type:
+                          - 'null'
+                          - string
+                        example: SSmQ6j9NWxblNv
+                      link_id:
+                        description: Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.
+                        type:
+                          - 'null'
+                          - string
+                        example: LKLj0JV8xzdMoRk549
                       metadata:
                         description: |
                           Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -28859,6 +28959,8 @@ paths:
                       - payment_method
                       - auto_retries_max_attempts
                       - can_auto_retry_until_day
+                      - session_id
+                      - link_id
                       - metadata
                     title: Suscripción
         '401':
@@ -29562,6 +29664,18 @@ paths:
                               format: date-time
                               example: 2022-02-11T23:19:22-03:00
                           title: Método de pago
+                        session_id:
+                          description: Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.
+                          type:
+                            - 'null'
+                            - string
+                          example: SSmQ6j9NWxblNv
+                        link_id:
+                          description: Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.
+                          type:
+                            - 'null'
+                            - string
+                          example: LKLj0JV8xzdMoRk549
                         metadata:
                           description: |
                             Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -29604,6 +29718,8 @@ paths:
                         - payment_method
                         - auto_retries_max_attempts
                         - can_auto_retry_until_day
+                        - session_id
+                        - link_id
                         - metadata
                   links:
                     description: Links de paginación
@@ -29725,6 +29841,8 @@ paths:
                       object: payment_method
                       type: card
                       updated_at: 2022-02-01T23:13:04-03:00
+                    session_id: SSmQ6j9NWxblNv
+                    link_id: LKLj0JV8xzdMoRk549
                     metadata: null
                 links:
                   prev: https://api.debi.pro/subscriptions/search?q=john%20doe&page=1
@@ -36769,6 +36887,18 @@ components:
               format: date-time
               example: 2022-02-11T23:19:22-03:00
           title: Método de pago
+        session_id:
+          description: Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.
+          type:
+            - 'null'
+            - string
+          example: SSmQ6j9NWxblNv
+        link_id:
+          description: Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.
+          type:
+            - 'null'
+            - string
+          example: LKLj0JV8xzdMoRk549
         metadata:
           description: |
             Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -36811,6 +36941,8 @@ components:
         - payment_method
         - auto_retries_max_attempts
         - can_auto_retry_until_day
+        - session_id
+        - link_id
         - metadata
       title: Suscripción
     first_payment_in_binary_mode:
@@ -41216,6 +41348,18 @@ components:
               format: date-time
               example: 2022-02-11T23:19:22-03:00
           title: Método de pago
+        session_id:
+          description: Identificador de la Session de checkout que creó esta suscripción, cuando fue creada a través de una sesión alojada. `null` para suscripciones creadas directamente por la API o importadas.
+          type:
+            - 'null'
+            - string
+          example: SSmQ6j9NWxblNv
+        link_id:
+          description: Identificador del Link al que pertenece la Session de origen, cuando la suscripción fue creada a través de un link. `null` en caso contrario.
+          type:
+            - 'null'
+            - string
+          example: LKLj0JV8xzdMoRk549
         metadata:
           description: |
             Conjunto de [pares clave/valor](#section/Metadata) que puede adjuntar
@@ -41258,6 +41402,8 @@ components:
         - payment_method
         - auto_retries_max_attempts
         - can_auto_retry_until_day
+        - session_id
+        - link_id
         - metadata
       title: Suscripción
     transfer:
@@ -42349,6 +42495,8 @@ components:
           object: payment_method
           type: card
           updated_at: 2022-02-01T23:13:04-03:00
+        session_id: SSmQ6j9NWxblNv
+        link_id: LKLj0JV8xzdMoRk549
         metadata: null
     webhook:
       summary: Ejemplo de Webhook
