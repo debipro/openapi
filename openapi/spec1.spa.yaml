@@ -16002,7 +16002,7 @@ paths:
                           type: number
                           example: 1
                         can_auto_retry_until:
-                          description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
+                          description: La última fecha en que se enviará el pago a la institución financiera. Nunca es anterior a la fecha de cobro. Nulo significa sin límite
                           type:
                             - 'null'
                             - string
@@ -16842,7 +16842,7 @@ paths:
                   type: string
                   format: date
                 can_auto_retry_until:
-                  description: La fecha máxima en la que se puede volver a intentar el pago automáticamente. Si es nulo, se aplicará el valor por defecto para el usuario.
+                  description: La fecha máxima en la que se puede volver a intentar el pago automáticamente. Debe ser igual o posterior a la fecha de cobro; de lo contrario, la solicitud es rechazada. Si es nulo, se aplicará el valor por defecto para el usuario.
                   type: string
                   format: date
                 auto_retries_max_attempts:
@@ -16999,7 +16999,7 @@ paths:
                         type: number
                         example: 1
                       can_auto_retry_until:
-                        description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
+                        description: La última fecha en que se enviará el pago a la institución financiera. Nunca es anterior a la fecha de cobro. Nulo significa sin límite
                         type:
                           - 'null'
                           - string
@@ -17870,7 +17870,7 @@ paths:
                         type: number
                         example: 1
                       can_auto_retry_until:
-                        description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
+                        description: La última fecha en que se enviará el pago a la institución financiera. Nunca es anterior a la fecha de cobro. Nulo significa sin límite
                         type:
                           - 'null'
                           - string
@@ -18650,7 +18650,7 @@ paths:
                   description: La cantidad máxima de veces que se puede volver a intentar el pago automáticamente.
                   type: integer
                 can_auto_retry_until:
-                  description: La fecha máxima en la que se puede volver a intentar el pago automáticamente.
+                  description: La fecha máxima en la que se puede volver a intentar el pago automáticamente. Debe ser igual o posterior a la fecha de cobro del pago; de lo contrario, la solicitud es rechazada.
                   type: string
                   format: date
                 charge_date:
@@ -18803,7 +18803,7 @@ paths:
                         type: number
                         example: 1
                       can_auto_retry_until:
-                        description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
+                        description: La última fecha en que se enviará el pago a la institución financiera. Nunca es anterior a la fecha de cobro. Nulo significa sin límite
                         type:
                           - 'null'
                           - string
@@ -19787,7 +19787,7 @@ paths:
                     type: number
                     example: 1
                   can_auto_retry_until:
-                    description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
+                    description: La última fecha en que se enviará el pago a la institución financiera. Nunca es anterior a la fecha de cobro. Nulo significa sin límite
                     type:
                       - 'null'
                       - string
@@ -21027,7 +21027,7 @@ paths:
                           type: number
                           example: 1
                         can_auto_retry_until:
-                          description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
+                          description: La última fecha en que se enviará el pago a la institución financiera. Nunca es anterior a la fecha de cobro. Nulo significa sin límite
                           type:
                             - 'null'
                             - string
@@ -23575,7 +23575,7 @@ paths:
                             - number
                           example: null
                         can_auto_retry_until_day:
-                          description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes. `null` significa que no se aplica ningún límite de reintentos.
+                          description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes; si ese día cae antes de la fecha de cobro, se traslada al mes siguiente para que el límite nunca sea anterior a la fecha de cobro. `null` significa que no se aplica ningún límite de reintentos.
                           type:
                             - 'null'
                             - number
@@ -24306,7 +24306,7 @@ paths:
                     - number
                   example: null
                 can_auto_retry_until_day:
-                  description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes. `null` significa que no se aplica ningún límite de reintentos.
+                  description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes; si ese día cae antes de la fecha de cobro, se traslada al mes siguiente para que el límite nunca sea anterior a la fecha de cobro. `null` significa que no se aplica ningún límite de reintentos.
                   type:
                     - 'null'
                     - number
@@ -24456,7 +24456,7 @@ paths:
                           - number
                         example: null
                       can_auto_retry_until_day:
-                        description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes. `null` significa que no se aplica ningún límite de reintentos.
+                        description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes; si ese día cae antes de la fecha de cobro, se traslada al mes siguiente para que el límite nunca sea anterior a la fecha de cobro. `null` significa que no se aplica ningún límite de reintentos.
                         type:
                           - 'null'
                           - number
@@ -25264,7 +25264,7 @@ paths:
                           - number
                         example: null
                       can_auto_retry_until_day:
-                        description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes. `null` significa que no se aplica ningún límite de reintentos.
+                        description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes; si ese día cae antes de la fecha de cobro, se traslada al mes siguiente para que el límite nunca sea anterior a la fecha de cobro. `null` significa que no se aplica ningún límite de reintentos.
                         type:
                           - 'null'
                           - number
@@ -25949,7 +25949,7 @@ paths:
                     - number
                   example: null
                 can_auto_retry_until_day:
-                  description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes. `null` significa que no se aplica ningún límite de reintentos.
+                  description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes; si ese día cae antes de la fecha de cobro, se traslada al mes siguiente para que el límite nunca sea anterior a la fecha de cobro. `null` significa que no se aplica ningún límite de reintentos.
                   type:
                     - 'null'
                     - number
@@ -26157,7 +26157,7 @@ paths:
                           - number
                         example: null
                       can_auto_retry_until_day:
-                        description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes. `null` significa que no se aplica ningún límite de reintentos.
+                        description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes; si ese día cae antes de la fecha de cobro, se traslada al mes siguiente para que el límite nunca sea anterior a la fecha de cobro. `null` significa que no se aplica ningún límite de reintentos.
                         type:
                           - 'null'
                           - number
@@ -26894,7 +26894,7 @@ paths:
                           - number
                         example: null
                       can_auto_retry_until_day:
-                        description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes. `null` significa que no se aplica ningún límite de reintentos.
+                        description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes; si ese día cae antes de la fecha de cobro, se traslada al mes siguiente para que el límite nunca sea anterior a la fecha de cobro. `null` significa que no se aplica ningún límite de reintentos.
                         type:
                           - 'null'
                           - number
@@ -27629,7 +27629,7 @@ paths:
                           - number
                         example: null
                       can_auto_retry_until_day:
-                        description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes. `null` significa que no se aplica ningún límite de reintentos.
+                        description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes; si ese día cae antes de la fecha de cobro, se traslada al mes siguiente para que el límite nunca sea anterior a la fecha de cobro. `null` significa que no se aplica ningún límite de reintentos.
                         type:
                           - 'null'
                           - number
@@ -28370,7 +28370,7 @@ paths:
                           - number
                         example: null
                       can_auto_retry_until_day:
-                        description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes. `null` significa que no se aplica ningún límite de reintentos.
+                        description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes; si ese día cae antes de la fecha de cobro, se traslada al mes siguiente para que el límite nunca sea anterior a la fecha de cobro. `null` significa que no se aplica ningún límite de reintentos.
                         type:
                           - 'null'
                           - number
@@ -29128,7 +29128,7 @@ paths:
                             - number
                           example: null
                         can_auto_retry_until_day:
-                          description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes. `null` significa que no se aplica ningún límite de reintentos.
+                          description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes; si ese día cae antes de la fecha de cobro, se traslada al mes siguiente para que el límite nunca sea anterior a la fecha de cobro. `null` significa que no se aplica ningún límite de reintentos.
                           type:
                             - 'null'
                             - number
@@ -35221,7 +35221,7 @@ components:
           type: number
           example: 1
         can_auto_retry_until:
-          description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
+          description: La última fecha en que se enviará el pago a la institución financiera. Nunca es anterior a la fecha de cobro. Nulo significa sin límite
           type:
             - 'null'
             - string
@@ -36351,7 +36351,7 @@ components:
             - number
           example: null
         can_auto_retry_until_day:
-          description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes. `null` significa que no se aplica ningún límite de reintentos.
+          description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes; si ese día cae antes de la fecha de cobro, se traslada al mes siguiente para que el límite nunca sea anterior a la fecha de cobro. `null` significa que no se aplica ningún límite de reintentos.
           type:
             - 'null'
             - number
@@ -39192,7 +39192,7 @@ components:
           type: number
           example: 1
         can_auto_retry_until:
-          description: La última fecha en que se enviará el pago a la institución financiera. Nulo significa sin límite
+          description: La última fecha en que se enviará el pago a la institución financiera. Nunca es anterior a la fecha de cobro. Nulo significa sin límite
           type:
             - 'null'
             - string
@@ -40812,7 +40812,7 @@ components:
             - number
           example: null
         can_auto_retry_until_day:
-          description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes. `null` significa que no se aplica ningún límite de reintentos.
+          description: Día del mes, del 1 al 31, o -1 para el último día del mes, hasta el cual los pagos generados por esta suscripción pueden reintentarse automáticamente. Se calcula dentro del mes de cobro de cada pago y se ajusta al último día de ese mes; si ese día cae antes de la fecha de cobro, se traslada al mes siguiente para que el límite nunca sea anterior a la fecha de cobro. `null` significa que no se aplica ningún límite de reintentos.
           type:
             - 'null'
             - number
