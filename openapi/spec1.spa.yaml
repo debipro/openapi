@@ -22423,7 +22423,10 @@ paths:
               type: object
               properties:
                 kind:
-                  description: Uno de `payment`, `subscription` o `mandate`.
+                  description: |
+                    Uno de `payment`, `subscription` o `mandate`.
+
+                    Una sesión `mandate` no le cobra al cliente. Cuando el cliente la completa, Debi crea una [adhesión](#tag/Adhesiones) que autoriza cargos futuros al medio de pago que ingresó, y asocia ese medio de pago al cliente. Si el cliente todavía no tiene un medio de pago predeterminado, ese pasa a ser el predeterminado, así los pagos creados después sin `payment_method_id` lo usan. Nunca se reemplaza un predeterminado existente.
                   type: string
                   enum:
                     - payment

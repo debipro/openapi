@@ -28571,7 +28571,7 @@
                 "type": "object",
                 "properties": {
                   "kind": {
-                    "description": "One of payment, subscription or mandate.",
+                    "description": "One of payment, subscription or mandate.\n\nA `mandate` session does not charge the customer. When the customer completes it, Debi creates a [mandate](#tag/Mandates) that authorizes future charges to the payment method they entered, and attaches that payment method to the customer. If the customer has no default payment method yet, it becomes their default, so payments created later without a `payment_method_id` use it. An existing default is never replaced.\n",
                     "type": "string",
                     "enum": [
                       "payment",
