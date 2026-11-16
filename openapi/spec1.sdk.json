@@ -9073,6 +9073,13 @@
                               "skipped"
                             ]
                           },
+                          "records_count": {
+                            "description": "How many records the file holds, not counting headers or trailers. Null until the file is written, and for exports that predate the count.",
+                            "type": [
+                              "null",
+                              "integer"
+                            ]
+                          },
                           "created_from": {
                             "description": "Origin of the export (`api`, dashboard, scheduled, …).",
                             "type": [
@@ -9441,6 +9448,13 @@
                             "skipped"
                           ]
                         },
+                        "records_count": {
+                          "description": "How many records the file holds, not counting headers or trailers. Null until the file is written, and for exports that predate the count.",
+                          "type": [
+                            "null",
+                            "integer"
+                          ]
+                        },
                         "created_from": {
                           "description": "Origin of the export (`api`, dashboard, scheduled, …).",
                           "type": [
@@ -9649,6 +9663,13 @@
                             "ready",
                             "failed",
                             "skipped"
+                          ]
+                        },
+                        "records_count": {
+                          "description": "How many records the file holds, not counting headers or trailers. Null until the file is written, and for exports that predate the count.",
+                          "type": [
+                            "null",
+                            "integer"
                           ]
                         },
                         "created_from": {
@@ -45396,6 +45417,13 @@
               "skipped"
             ]
           },
+          "records_count": {
+            "description": "How many records the file holds, not counting headers or trailers. Null until the file is written, and for exports that predate the count.",
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
           "created_from": {
             "description": "Origin of the export (`api`, dashboard, scheduled, …).",
             "type": [
@@ -50564,6 +50592,13 @@
               "ready",
               "failed",
               "skipped"
+            ]
+          },
+          "records_count": {
+            "description": "How many records the file holds, not counting headers or trailers. Null until the file is written, and for exports that predate the count.",
+            "type": [
+              "null",
+              "integer"
             ]
           },
           "created_from": {

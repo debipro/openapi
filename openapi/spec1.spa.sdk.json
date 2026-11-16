@@ -9073,6 +9073,13 @@
                               "skipped"
                             ]
                           },
+                          "records_count": {
+                            "description": "Cuántos registros tiene el archivo, sin contar encabezados ni pies. Es nulo hasta que el archivo se genera, y en exportaciones anteriores al conteo.",
+                            "type": [
+                              "null",
+                              "integer"
+                            ]
+                          },
                           "created_from": {
                             "description": "Origen de la exportación (`api`, panel, programada, …).",
                             "type": [
@@ -9441,6 +9448,13 @@
                             "skipped"
                           ]
                         },
+                        "records_count": {
+                          "description": "Cuántos registros tiene el archivo, sin contar encabezados ni pies. Es nulo hasta que el archivo se genera, y en exportaciones anteriores al conteo.",
+                          "type": [
+                            "null",
+                            "integer"
+                          ]
+                        },
                         "created_from": {
                           "description": "Origen de la exportación (`api`, panel, programada, …).",
                           "type": [
@@ -9649,6 +9663,13 @@
                             "ready",
                             "failed",
                             "skipped"
+                          ]
+                        },
+                        "records_count": {
+                          "description": "Cuántos registros tiene el archivo, sin contar encabezados ni pies. Es nulo hasta que el archivo se genera, y en exportaciones anteriores al conteo.",
+                          "type": [
+                            "null",
+                            "integer"
                           ]
                         },
                         "created_from": {
@@ -45396,6 +45417,13 @@
               "skipped"
             ]
           },
+          "records_count": {
+            "description": "Cuántos registros tiene el archivo, sin contar encabezados ni pies. Es nulo hasta que el archivo se genera, y en exportaciones anteriores al conteo.",
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
           "created_from": {
             "description": "Origen de la exportación (`api`, panel, programada, …).",
             "type": [
@@ -50564,6 +50592,13 @@
               "ready",
               "failed",
               "skipped"
+            ]
+          },
+          "records_count": {
+            "description": "Cuántos registros tiene el archivo, sin contar encabezados ni pies. Es nulo hasta que el archivo se genera, y en exportaciones anteriores al conteo.",
+            "type": [
+              "null",
+              "integer"
             ]
           },
           "created_from": {
