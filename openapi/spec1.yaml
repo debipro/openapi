@@ -6491,6 +6491,18 @@ paths:
           required: false
           schema:
             type: string
+        - name: scheduled
+          in: query
+          description: When `true`, only exports produced under a scheduled export are returned, including every response file of a presentation.
+          required: false
+          schema:
+            type: boolean
+        - name: pending_download
+          in: query
+          description: When `true`, only ready exports nobody from the account has downloaded yet are returned. Exports created before downloads were tracked are left out.
+          required: false
+          schema:
+            type: boolean
         - name: limit
           in: query
           description: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 25.
@@ -6600,6 +6612,12 @@ paths:
                           format: date-time
                         end_date:
                           description: End of the window this export covers, when it is windowed.
+                          type:
+                            - 'null'
+                            - string
+                          format: date-time
+                        downloaded_at:
+                          description: When someone from the account first downloaded the file. Null if nobody has, or if the export predates download tracking.
                           type:
                             - 'null'
                             - string
@@ -6850,6 +6868,12 @@ paths:
                           - 'null'
                           - string
                         format: date-time
+                      downloaded_at:
+                        description: When someone from the account first downloaded the file. Null if nobody has, or if the export predates download tracking.
+                        type:
+                          - 'null'
+                          - string
+                        format: date-time
                       livemode:
                         description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
                         type: boolean
@@ -6972,6 +6996,12 @@ paths:
                         format: date-time
                       end_date:
                         description: End of the window this export covers, when it is windowed.
+                        type:
+                          - 'null'
+                          - string
+                        format: date-time
+                      downloaded_at:
+                        description: When someone from the account first downloaded the file. Null if nobody has, or if the export predates download tracking.
                         type:
                           - 'null'
                           - string
@@ -33373,6 +33403,12 @@ components:
             - 'null'
             - string
           format: date-time
+        downloaded_at:
+          description: When someone from the account first downloaded the file. Null if nobody has, or if the export predates download tracking.
+          type:
+            - 'null'
+            - string
+          format: date-time
         livemode:
           description: Has the value `true` if the object exists in live mode or the value `false` if the object exists in test mode.
           type: boolean
@@ -37408,6 +37444,12 @@ components:
           format: date-time
         end_date:
           description: End of the window this export covers, when it is windowed.
+          type:
+            - 'null'
+            - string
+          format: date-time
+        downloaded_at:
+          description: When someone from the account first downloaded the file. Null if nobody has, or if the export predates download tracking.
           type:
             - 'null'
             - string

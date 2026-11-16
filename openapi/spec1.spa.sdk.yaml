@@ -8957,6 +8957,18 @@ paths:
           required: false
           schema:
             type: string
+        - name: scheduled
+          in: query
+          description: Cuando es `true`, solo se devuelven las exportaciones generadas dentro de una exportación programada, incluidos todos los archivos de respuesta de una presentación.
+          required: false
+          schema:
+            type: boolean
+        - name: pending_download
+          in: query
+          description: Cuando es `true`, solo se devuelven las exportaciones listas que nadie de la cuenta descargó todavía. Se excluyen las creadas antes de que se registraran las descargas.
+          required: false
+          schema:
+            type: boolean
         - name: limit
           in: query
           description: Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.
@@ -9070,6 +9082,12 @@ paths:
                             - 'null'
                             - string
                           format: date-time
+                        downloaded_at:
+                          description: Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.
+                          type:
+                            - 'null'
+                            - string
+                          format: date-time
                         livemode:
                           description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
                           type: boolean
@@ -9170,7 +9188,7 @@ paths:
         - lang: Shell + Curl
           source: |-
             curl --request GET \
-              --url 'https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE' \
+              --url 'https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&scheduled=SOME_BOOLEAN_VALUE&pending_download=SOME_BOOLEAN_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE' \
               --header 'Authorization: Bearer sk_live_...'
         - lang: Node + Request
           source: |
@@ -9181,6 +9199,8 @@ paths:
               url: 'https://api.debi.pro/v1/exports',
               qs: {
                 search: 'SOME_STRING_VALUE',
+                scheduled: 'SOME_BOOLEAN_VALUE',
+                pending_download: 'SOME_BOOLEAN_VALUE',
                 limit: 'SOME_INTEGER_VALUE',
                 starting_after: 'SOME_STRING_VALUE',
                 ending_before: 'SOME_STRING_VALUE',
@@ -9204,6 +9224,8 @@ paths:
 
             $request->setQueryData([
               'search' => 'SOME_STRING_VALUE',
+              'scheduled' => 'SOME_BOOLEAN_VALUE',
+              'pending_download' => 'SOME_BOOLEAN_VALUE',
               'limit' => 'SOME_INTEGER_VALUE',
               'starting_after' => 'SOME_STRING_VALUE',
               'ending_before' => 'SOME_STRING_VALUE',
@@ -9227,7 +9249,7 @@ paths:
 
             url = "https://api.debi.pro/v1/exports"
 
-            querystring = {"search":"SOME_STRING_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE","ending_before":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE"}
+            querystring = {"search":"SOME_STRING_VALUE","scheduled":"SOME_BOOLEAN_VALUE","pending_download":"SOME_BOOLEAN_VALUE","limit":"SOME_INTEGER_VALUE","starting_after":"SOME_STRING_VALUE","ending_before":"SOME_STRING_VALUE","created_at":"SOME_OBJECT_VALUE"}
 
             headers = {"Authorization": "Bearer sk_live_..."}
 
@@ -9236,7 +9258,7 @@ paths:
             print(response.text)
         - lang: Java + Unirest
           source: |-
-            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE")
+            HttpResponse<String> response = Unirest.get("https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&scheduled=SOME_BOOLEAN_VALUE&pending_download=SOME_BOOLEAN_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE")
               .header("Authorization", "Bearer sk_live_...")
               .asString();
         - lang: Ruby + Native
@@ -9245,7 +9267,7 @@ paths:
             require 'net/http'
             require 'openssl'
 
-            url = URI("https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE")
+            url = URI("https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&scheduled=SOME_BOOLEAN_VALUE&pending_download=SOME_BOOLEAN_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE")
 
             http = Net::HTTP.new(url.host, url.port)
             http.use_ssl = true
@@ -9407,6 +9429,12 @@ paths:
                         format: date-time
                       end_date:
                         description: Fin de la ventana que cubre esta exportación, cuando tiene ventana.
+                        type:
+                          - 'null'
+                          - string
+                        format: date-time
+                      downloaded_at:
+                        description: Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.
                         type:
                           - 'null'
                           - string
@@ -9654,6 +9682,12 @@ paths:
                         format: date-time
                       end_date:
                         description: Fin de la ventana que cubre esta exportación, cuando tiene ventana.
+                        type:
+                          - 'null'
+                          - string
+                        format: date-time
+                      downloaded_at:
+                        description: Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.
                         type:
                           - 'null'
                           - string
@@ -41652,6 +41686,12 @@ components:
             - 'null'
             - string
           format: date-time
+        downloaded_at:
+          description: Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.
+          type:
+            - 'null'
+            - string
+          format: date-time
         livemode:
           description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
           type: boolean
@@ -45747,6 +45787,12 @@ components:
           format: date-time
         end_date:
           description: Fin de la ventana que cubre esta exportación, cuando tiene ventana.
+          type:
+            - 'null'
+            - string
+          format: date-time
+        downloaded_at:
+          description: Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.
           type:
             - 'null'
             - string

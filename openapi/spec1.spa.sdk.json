@@ -8933,6 +8933,24 @@
             }
           },
           {
+            "name": "scheduled",
+            "in": "query",
+            "description": "Cuando es `true`, solo se devuelven las exportaciones generadas dentro de una exportación programada, incluidos todos los archivos de respuesta de una presentación.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "pending_download",
+            "in": "query",
+            "description": "Cuando es `true`, solo se devuelven las exportaciones listas que nadie de la cuenta descargó todavía. Se excluyen las creadas antes de que se registraran las descargas.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.",
@@ -9072,6 +9090,14 @@
                           },
                           "end_date": {
                             "description": "Fin de la ventana que cubre esta exportación, cuando tiene ventana.",
+                            "type": [
+                              "null",
+                              "string"
+                            ],
+                            "format": "date-time"
+                          },
+                          "downloaded_at": {
+                            "description": "Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.",
                             "type": [
                               "null",
                               "string"
@@ -9219,27 +9245,27 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request GET \\\n  --url 'https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE' \\\n  --header 'Authorization: Bearer sk_live_...'"
+            "source": "curl --request GET \\\n  --url 'https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&scheduled=SOME_BOOLEAN_VALUE&pending_download=SOME_BOOLEAN_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE' \\\n  --header 'Authorization: Bearer sk_live_...'"
           },
           {
             "lang": "Node + Request",
-            "source": "const request = require('request');\n\nconst options = {\n  method: 'GET',\n  url: 'https://api.debi.pro/v1/exports',\n  qs: {\n    search: 'SOME_STRING_VALUE',\n    limit: 'SOME_INTEGER_VALUE',\n    starting_after: 'SOME_STRING_VALUE',\n    ending_before: 'SOME_STRING_VALUE',\n    created_at: 'SOME_OBJECT_VALUE'\n  },\n  headers: {Authorization: 'Bearer sk_live_...'}\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
+            "source": "const request = require('request');\n\nconst options = {\n  method: 'GET',\n  url: 'https://api.debi.pro/v1/exports',\n  qs: {\n    search: 'SOME_STRING_VALUE',\n    scheduled: 'SOME_BOOLEAN_VALUE',\n    pending_download: 'SOME_BOOLEAN_VALUE',\n    limit: 'SOME_INTEGER_VALUE',\n    starting_after: 'SOME_STRING_VALUE',\n    ending_before: 'SOME_STRING_VALUE',\n    created_at: 'SOME_OBJECT_VALUE'\n  },\n  headers: {Authorization: 'Bearer sk_live_...'}\n};\n\nrequest(options, function (error, response, body) {\n  if (error) throw new Error(error);\n\n  console.log(body);\n});\n"
           },
           {
             "lang": "Php + Http1",
-            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/exports');\n$request->setMethod(HTTP_METH_GET);\n\n$request->setQueryData([\n  'search' => 'SOME_STRING_VALUE',\n  'limit' => 'SOME_INTEGER_VALUE',\n  'starting_after' => 'SOME_STRING_VALUE',\n  'ending_before' => 'SOME_STRING_VALUE',\n  'created_at' => 'SOME_OBJECT_VALUE'\n]);\n\n$request->setHeaders([\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
+            "source": "<?php\n\n$request = new HttpRequest();\n$request->setUrl('https://api.debi.pro/v1/exports');\n$request->setMethod(HTTP_METH_GET);\n\n$request->setQueryData([\n  'search' => 'SOME_STRING_VALUE',\n  'scheduled' => 'SOME_BOOLEAN_VALUE',\n  'pending_download' => 'SOME_BOOLEAN_VALUE',\n  'limit' => 'SOME_INTEGER_VALUE',\n  'starting_after' => 'SOME_STRING_VALUE',\n  'ending_before' => 'SOME_STRING_VALUE',\n  'created_at' => 'SOME_OBJECT_VALUE'\n]);\n\n$request->setHeaders([\n  'Authorization' => 'Bearer sk_live_...'\n]);\n\ntry {\n  $response = $request->send();\n\n  echo $response->getBody();\n} catch (HttpException $ex) {\n  echo $ex;\n}"
           },
           {
             "lang": "Python + Requests",
-            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/exports\"\n\nquerystring = {\"search\":\"SOME_STRING_VALUE\",\"limit\":\"SOME_INTEGER_VALUE\",\"starting_after\":\"SOME_STRING_VALUE\",\"ending_before\":\"SOME_STRING_VALUE\",\"created_at\":\"SOME_OBJECT_VALUE\"}\n\nheaders = {\"Authorization\": \"Bearer sk_live_...\"}\n\nresponse = requests.request(\"GET\", url, headers=headers, params=querystring)\n\nprint(response.text)"
+            "source": "import requests\n\nurl = \"https://api.debi.pro/v1/exports\"\n\nquerystring = {\"search\":\"SOME_STRING_VALUE\",\"scheduled\":\"SOME_BOOLEAN_VALUE\",\"pending_download\":\"SOME_BOOLEAN_VALUE\",\"limit\":\"SOME_INTEGER_VALUE\",\"starting_after\":\"SOME_STRING_VALUE\",\"ending_before\":\"SOME_STRING_VALUE\",\"created_at\":\"SOME_OBJECT_VALUE\"}\n\nheaders = {\"Authorization\": \"Bearer sk_live_...\"}\n\nresponse = requests.request(\"GET\", url, headers=headers, params=querystring)\n\nprint(response.text)"
           },
           {
             "lang": "Java + Unirest",
-            "source": "HttpResponse<String> response = Unirest.get(\"https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .asString();"
+            "source": "HttpResponse<String> response = Unirest.get(\"https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&scheduled=SOME_BOOLEAN_VALUE&pending_download=SOME_BOOLEAN_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE\")\n  .header(\"Authorization\", \"Bearer sk_live_...\")\n  .asString();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://api.debi.pro/v1/exports?search=SOME_STRING_VALUE&scheduled=SOME_BOOLEAN_VALUE&pending_download=SOME_BOOLEAN_VALUE&limit=SOME_INTEGER_VALUE&starting_after=SOME_STRING_VALUE&ending_before=SOME_STRING_VALUE&created_at=SOME_OBJECT_VALUE\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Bearer sk_live_...'\n\nresponse = http.request(request)\nputs response.read_body"
           },
           {
             "lang": "Debi CLI",
@@ -9432,6 +9458,14 @@
                         },
                         "end_date": {
                           "description": "Fin de la ventana que cubre esta exportación, cuando tiene ventana.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "format": "date-time"
+                        },
+                        "downloaded_at": {
+                          "description": "Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.",
                           "type": [
                             "null",
                             "string"
@@ -9634,6 +9668,14 @@
                         },
                         "end_date": {
                           "description": "Fin de la ventana que cubre esta exportación, cuando tiene ventana.",
+                          "type": [
+                            "null",
+                            "string"
+                          ],
+                          "format": "date-time"
+                        },
+                        "downloaded_at": {
+                          "description": "Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.",
                           "type": [
                             "null",
                             "string"
@@ -45377,6 +45419,14 @@
             ],
             "format": "date-time"
           },
+          "downloaded_at": {
+            "description": "Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.",
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
           "livemode": {
             "description": "Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.",
             "type": "boolean",
@@ -50533,6 +50583,14 @@
           },
           "end_date": {
             "description": "Fin de la ventana que cubre esta exportación, cuando tiene ventana.",
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "downloaded_at": {
+            "description": "Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.",
             "type": [
               "null",
               "string"

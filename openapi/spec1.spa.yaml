@@ -6557,6 +6557,18 @@ paths:
           required: false
           schema:
             type: string
+        - name: scheduled
+          in: query
+          description: Cuando es `true`, solo se devuelven las exportaciones generadas dentro de una exportación programada, incluidos todos los archivos de respuesta de una presentación.
+          required: false
+          schema:
+            type: boolean
+        - name: pending_download
+          in: query
+          description: Cuando es `true`, solo se devuelven las exportaciones listas que nadie de la cuenta descargó todavía. Se excluyen las creadas antes de que se registraran las descargas.
+          required: false
+          schema:
+            type: boolean
         - name: limit
           in: query
           description: Especifica el número máximo de ítems a ser retornados. El límite puede variar entre 1 y 100, y el valor predeterminado es 25.
@@ -6666,6 +6678,12 @@ paths:
                           format: date-time
                         end_date:
                           description: Fin de la ventana que cubre esta exportación, cuando tiene ventana.
+                          type:
+                            - 'null'
+                            - string
+                          format: date-time
+                        downloaded_at:
+                          description: Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.
                           type:
                             - 'null'
                             - string
@@ -6918,6 +6936,12 @@ paths:
                           - 'null'
                           - string
                         format: date-time
+                      downloaded_at:
+                        description: Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.
+                        type:
+                          - 'null'
+                          - string
+                        format: date-time
                       livemode:
                         description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
                         type: boolean
@@ -7042,6 +7066,12 @@ paths:
                         format: date-time
                       end_date:
                         description: Fin de la ventana que cubre esta exportación, cuando tiene ventana.
+                        type:
+                          - 'null'
+                          - string
+                        format: date-time
+                      downloaded_at:
+                        description: Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.
                         type:
                           - 'null'
                           - string
@@ -33729,6 +33759,12 @@ components:
             - 'null'
             - string
           format: date-time
+        downloaded_at:
+          description: Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.
+          type:
+            - 'null'
+            - string
+          format: date-time
         livemode:
           description: Tiene el valor `true` si el objeto existe en mode de producción o el valor `false` si el objeto existe en modo de prueba.
           type: boolean
@@ -37824,6 +37860,12 @@ components:
           format: date-time
         end_date:
           description: Fin de la ventana que cubre esta exportación, cuando tiene ventana.
+          type:
+            - 'null'
+            - string
+          format: date-time
+        downloaded_at:
+          description: Cuándo alguien de la cuenta descargó el archivo por primera vez. Es nulo si nadie lo hizo o si la exportación es anterior al registro de descargas.
           type:
             - 'null'
             - string
